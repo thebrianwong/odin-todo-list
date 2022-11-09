@@ -5,7 +5,7 @@ const checklistObject = () => {
     };
     const removeTask = (task) => {
         for (item in checklist) {
-            if (checklist[item] === task.getTaskDescription()) {
+            if (checklist[item].getTaskDescription() === task.getTaskDescription()) {
                 checklist.splice(item, 1);
                 break;
             };
