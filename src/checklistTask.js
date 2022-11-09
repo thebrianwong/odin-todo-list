@@ -15,3 +15,5 @@ const checklistTaskObject = (description) => {
     };
     return { getTaskDescription, setTaskDescription, toggleCompleted };
 };
+
+export { checklistTaskObject };

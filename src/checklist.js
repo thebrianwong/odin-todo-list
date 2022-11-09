@@ -15,3 +15,5 @@ const checklistObject = () => {
     };
     return { addTask, removeTask };
 };
+
+export { checklistObject };

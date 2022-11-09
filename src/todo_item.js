@@ -43,3 +43,5 @@ const toDoItem = (title, description, dueDate, notes, checklist) => {
     return { getTitle, setTitle, getDescription, setDescription, getDueDate, setDueDate,
         getNotes, setNotes, getChecklist, setChecklist, getPinned, togglePinned };
 };
+
+export { toDoItem };
