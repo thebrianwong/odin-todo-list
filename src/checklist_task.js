@@ -1,5 +1,10 @@
+import { canComplete } from "./complete_component";
+
 const checklistTaskObject = (description) => {
-    let completed = false;
+    let state = {
+        completed: false
+    }
+    // let completed = false;
     const getTaskDescription = () => {
         return description;
     };
@@ -13,7 +18,9 @@ const checklistTaskObject = (description) => {
             completed = true;
         };
     };
-    return { getTaskDescription, setTaskDescription, toggleCompleted };
+    // Object.assign(state, canComplete())
+    return { getTaskDescription, setTaskDescription, toggleCompleted, canComplete, state };
 };
+// Object.assign(checklistTaskObject, canComplete())
 
 export { checklistTaskObject };
