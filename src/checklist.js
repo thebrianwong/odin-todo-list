@@ -3,6 +3,8 @@ const checklistObject = () => {
     const addTask = (task) => {
         checklist.push(task);
     };
+    // might have to change later so that the logic is not based on description,
+    // maybe add some id to each task
     const removeTask = (task) => {
         for (item in checklist) {
             if (checklist[item].getTaskDescription() === task.getTaskDescription()) {
