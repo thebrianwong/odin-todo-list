@@ -1,10 +1,10 @@
 import { canComplete } from "./complete_component";
 
 const checklistTaskObject = (description) => {
-    let state = {
-        completed: false
-    }
-    // let completed = false;
+    // let state = {
+    //     completed: false
+    // }
+    let completed = false;
     const getTaskDescription = () => {
         return description;
     };
@@ -18,9 +18,14 @@ const checklistTaskObject = (description) => {
             completed = true;
         };
     };
-    // Object.assign(state, canComplete())
-    return { getTaskDescription, setTaskDescription, toggleCompleted, canComplete, state };
+    const getCompleted = () => {
+        return completed;
+    };
+    // console.log(self)
+    // const {canComplete} = canComplete(state);
+    // Object.assign(state, canComplete(state))
+    // Object.assign(completed, canComplete(completed))
+    return { getTaskDescription, setTaskDescription, toggleCompleted, getCompleted, canComplete, completed };
 };
-// Object.assign(checklistTaskObject, canComplete())
 
 export { checklistTaskObject };
