@@ -1,5 +1,5 @@
-const descriptionBehaviorComponent = (object, descriptionParameter) => {
-    let description = descriptionParameter;
+const descriptionBehaviorComponent = (object, initialDescription) => {
+    let description = initialDescription;
     return Object.assign(object, {
         getTaskDescription() {
             return description;
