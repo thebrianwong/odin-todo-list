@@ -13,10 +13,10 @@ const checklistObject = () => {
             };
         };
     };
-    const getChecklist = () => {
+    const getChecklistTasks = () => {
         return checklist
     }
-    return { addTask, removeTask, getChecklist };
+    return { addTask, removeTask, getChecklistTasks };
 };
 
 export { checklistObject };
