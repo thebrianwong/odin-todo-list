@@ -1,6 +1,7 @@
 import { toDoItem } from "./todo_item";
 import { checklistObject } from "./checklist";
 import { checklistTaskObject } from "./checklist_task";
+import { descriptionBehaviorComponent } from "./description_component";
 import { completedBehaviorComponent } from "./completed_component";
 
 
@@ -34,3 +35,7 @@ if (test.getCompletedState()) {
 console.log(test.getCompletedState())
 
 console.log(test)
+
+console.log(test.getTaskDescription())
+test.setTaskDescription("wowwie")
+console.log(test.getTaskDescription())

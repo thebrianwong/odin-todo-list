@@ -1,3 +1,4 @@
+import { descriptionBehaviorComponent } from "./description_component";
 import { completedBehaviorComponent } from "./completed_component";
 
 // original where object would need to have Object.assign() for every instance
@@ -12,8 +13,9 @@ import { completedBehaviorComponent } from "./completed_component";
 //     return { getTaskDescription, setTaskDescription };
 // };
 
-const checklistTaskObject = () => {
+const checklistTaskObject = (description) => {
     let object = {};
+    Object.assign(object, descriptionBehaviorComponent(object, description));
     Object.assign(object, completedBehaviorComponent(object));
     return object;
 }
