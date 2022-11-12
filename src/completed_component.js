@@ -16,7 +16,7 @@
 
 const completedBehaviorComponent = (object) => {
     let completed = false;
-    return Object.assign({}, object, {
+    return Object.assign(object, {
         toggleCompletedState() {
             if (completed) {
                 completed = false;
