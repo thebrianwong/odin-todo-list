@@ -1,4 +1,4 @@
-import { completedBehaviorComponent } from "./complete_component";
+import { completedBehaviorComponent } from "./completed_component";
 
 // original where object would need to have Object.assign() for every instance
 // keeping for posterity, probably will deleted at the end

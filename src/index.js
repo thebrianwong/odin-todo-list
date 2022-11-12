@@ -1,7 +1,7 @@
 import { toDoItem } from "./todo_item";
 import { checklistObject } from "./checklist";
 import { checklistTaskObject } from "./checklist_task";
-import { canComplete } from "./complete_component";
+import { completedBehaviorComponent } from "./completed_component";
 
 
 
