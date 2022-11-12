@@ -1,34 +1,5 @@
-/* const canComplete = (state) => ({
-    toggle: () => {
-        // if (state.completed) {
-        //     state.completed = false;
-        // } else {
-        //     state.completed = true;
-        // };
-        // console.log("it works");
-    // };
-    if (state.completed) {
-        state.completed = false;
-    } else {
-        state.completed = true;
-    };
-    // return { toggle };
-    }
-}); */
-
-// const canComplete = (object) => ({
-//     toggle: () => {
-//         if (object.state.completed) {
-//             object.state.completed = false;
-//         } else {
-//             object.state.completed = true;
-//         };
-//     },
-//     getCompletedState: () => {
-//         return object.state.completed
-//     }
-// });
-
+// original where all properties and methods get returned, so no private fields (completed should be private)
+// keeping for posterity, probably will deleted at the end
 // const canComplete = (object) => ({
 //     completed: false,
 //     toggle: () => {
@@ -43,35 +14,20 @@
 //     }
 // });
 
-const canComplete = (object) => ({
-    completed: false,
-    toggle: () => {
-        if (object.completed) {
-            object.completed = false;
-        } else {
-            object.completed = true;
-        };
-    },
-    getCompletedState: () => {
-        return object.completed
-    }
-});
-
-// const canComplete = (object) => {
-//     const obj = {
-//         completed: false,
-//         toggle: () => {
-//             if (object.completed) {
-//                 object.completed = false;
-//             } else {
-//                 object.completed = true;
-//             };
-//         },
-//         getCompletedState: () => {
-//             return object.completed
-//         }
-//     }
-//     return obj
-// };
+const canComplete = (object) => {
+    let completed = false;
+    return Object.assign({}, object, {
+        toggle() {
+            if (completed) {
+                completed = false;
+            } else {
+                completed = true;
+            };
+        },
+        getCompletedState() {
+            return completed;
+        }
+    });
+};
 
 export { canComplete };

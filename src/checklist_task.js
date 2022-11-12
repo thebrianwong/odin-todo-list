@@ -1,37 +1,21 @@
 import { canComplete } from "./complete_component";
 
-const checklistTaskObject = (description) => {
-    // let state = {
-    //     completed: false
-    // }
-    // let completed = false;
-    const getTaskDescription = () => {
-        return description;
-    };
-    const setTaskDescription = (newDescription) => {
-        description = newDescription;
-    };
-    
-    // const toggleCompleted = () => {
-    //     if (completed) {
-    //         completed = false;
-    //     } else {
-    //         completed = true;
-    //     };
-    // };
-    // const getCompleted = () => {
-    //     return completed;
-    // };
+// original where object would need to have Object.assign() for every instance
+// keeping for posterity, probably will deleted at the end
+// const checklistTaskObject = (description) => {
+//     const getTaskDescription = () => {
+//         return description;
+//     };
+//     const setTaskDescription = (newDescription) => {
+//         description = newDescription;
+//     };
+//     return { getTaskDescription, setTaskDescription };
+// };
 
-    // console.log(self)
-    // const {canComplete} = canComplete(state);
-    // Object.assign(state, canComplete(state))
-    // Object.assign(completed, canComplete(completed))
-    // return { getTaskDescription, setTaskDescription, toggleCompleted, getCompleted };
-    return { getTaskDescription, setTaskDescription };
-    // return Object.assign({ getTaskDescription, setTaskDescription, toggleCompleted, getCompleted, canComplete }, canComplete)
-};
-
-// Object.assign(checklistTaskObject.prototype, canComplete);
+const checklistTaskObject = () => {
+    let object = {};
+    Object.assign(object, canComplete(object));
+    return object;
+}
 
 export { checklistTaskObject };
