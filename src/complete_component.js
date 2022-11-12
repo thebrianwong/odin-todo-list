@@ -14,10 +14,10 @@
 //     }
 // });
 
-const canComplete = (object) => {
+const completedBehaviorComponent = (object) => {
     let completed = false;
     return Object.assign({}, object, {
-        toggle() {
+        toggleCompletedState() {
             if (completed) {
                 completed = false;
             } else {
@@ -30,4 +30,4 @@ const canComplete = (object) => {
     });
 };
 
-export { canComplete };
+export { completedBehaviorComponent };

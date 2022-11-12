@@ -20,7 +20,7 @@ if (test.getCompletedState()) {
 
 console.log(test.getCompletedState())
 
-console.log(test.toggle())
+console.log(test.toggleCompletedState())
 
 console.log(test.getCompletedState())
 

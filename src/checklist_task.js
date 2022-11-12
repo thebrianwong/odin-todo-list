@@ -1,4 +1,4 @@
-import { canComplete } from "./complete_component";
+import { completedBehaviorComponent } from "./complete_component";
 
 // original where object would need to have Object.assign() for every instance
 // keeping for posterity, probably will deleted at the end
@@ -14,7 +14,7 @@ import { canComplete } from "./complete_component";
 
 const checklistTaskObject = () => {
     let object = {};
-    Object.assign(object, canComplete(object));
+    Object.assign(object, completedBehaviorComponent(object));
     return object;
 }
 
