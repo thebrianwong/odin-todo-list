@@ -1,4 +1,4 @@
-import { toDoItem } from "./todo_item";
+import { toDoTask } from "./todo_task";
 import { checklistObject } from "./checklist";
 import { checklistTaskObject } from "./checklist_task";
 import { descriptionBehaviorComponent } from "./description_component";

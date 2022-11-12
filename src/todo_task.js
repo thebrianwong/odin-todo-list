@@ -1,4 +1,4 @@
-const toDoItem = (title, description, dueDate, notes, checklist) => {
+const toDoTask = (title, description, dueDate, notes, checklist) => {
     let pinned = false;
     const getTitle = () => {
         return title;
@@ -44,4 +44,4 @@ const toDoItem = (title, description, dueDate, notes, checklist) => {
         getNotes, setNotes, getChecklist, setChecklist, getPinned, togglePinned };
 };
 
-export { toDoItem };
+export { toDoTask };
