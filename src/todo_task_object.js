@@ -1,47 +1,21 @@
-const toDoTask = (title, description, dueDate, notes, checklist) => {
-    let pinned = false;
-    const getTitle = () => {
-        return title;
-    };
-    const setTitle = (newTitle) => {
-        title = newTitle;
-    };
-    const getDescription = () => {
-        return description;
-    };
-    const setDescription = (newDescription) => {
-        description = newDescription;
-    };
-    const getDueDate = () => {
-        return dueDate;
-    };
-    const setDueDate = (newDueDate) => {
-        dueDate = newDueDate;
-    };
-    const getNotes = () => {
-        return notes;
-    };
-    const setNotes = (newNotes) => {
-        notes = newNotes;
-    };
-    const getChecklist = () => {
-        return checklist;
-    };
-    const setChecklist = (newChecklist) => {
-        checklist = newChecklist;
-    };
-    const getPinned = () => {
-        return pinned;
-    };
-    const togglePinned = () => {
-        if (pinned) {
-            pinned = false;
-        } else {
-            pinned = true;
-        };
-    };
-    return { getTitle, setTitle, getDescription, setDescription, getDueDate, setDueDate,
-        getNotes, setNotes, getChecklist, setChecklist, getPinned, togglePinned };
+import { titleBehaviorComponent } from "./title_component";
+import { descriptionBehaviorComponent } from "./description_component";
+import { dueDateBehaviorComponent } from "./due_date_component";
+import { notesBehaviorComponent } from "./notes_component";
+import { checklistBehaviorComponent } from "./checklist_component";
+import { pinnedBehaviorComponent } from "./pinned_component";
+import { completedBehaviorComponent } from "./completed_component";
+
+const toDoTask = (title, description, dueDate, notes) => {
+    let object = {};
+    Object.assign(object, titleBehaviorComponent(object, title));
+    Object.assign(object, descriptionBehaviorComponent(object, description));
+    Object.assign(object, dueDateBehaviorComponent(object, dueDate));
+    Object.assign(object, notesBehaviorComponent(object, notes));
+    Object.assign(object, checklistBehaviorComponent(object));
+    Object.assign(object, pinnedBehaviorComponent(object));
+    Object.assign(object, completedBehaviorComponent(object));
+    return object;
 };
 
 export { toDoTask };
