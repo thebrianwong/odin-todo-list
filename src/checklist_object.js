@@ -16,7 +16,10 @@ const checklistObject = () => {
     const getChecklistTasks = () => {
         return checklist
     }
-    return { addTask, removeTask, getChecklistTasks };
+    const getSpecificChecklistTask = (index) => {
+        return checklist[index];
+    }
+    return { addTask, removeTask, getChecklistTasks, getSpecificChecklistTask };
 };
 
 export { checklistObject };
