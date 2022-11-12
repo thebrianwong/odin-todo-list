@@ -1,6 +1,6 @@
-import { toDoTask } from "./todo_task";
-import { checklistObject } from "./checklist";
-import { checklistTaskObject } from "./checklist_task";
+import { toDoTask } from "./todo_task_object";
+import { checklistObject } from "./checklist_object";
+import { checklistTaskObject } from "./checklist_task_object";
 import { descriptionBehaviorComponent } from "./description_component";
 import { completedBehaviorComponent } from "./completed_component";
 
