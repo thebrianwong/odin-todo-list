@@ -1,4 +1,4 @@
-const checklistBehaviorComponent = (object) => {
+const containsChecklistBehaviorComponent = (object) => {
     let checklistObject = undefined;
     return Object.assign(object, {
         addChecklist(checklist) {
@@ -13,4 +13,4 @@ const checklistBehaviorComponent = (object) => {
     });
 };
 
-export { checklistBehaviorComponent };
+export { containsChecklistBehaviorComponent };

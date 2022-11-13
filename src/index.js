@@ -9,7 +9,7 @@ import { titleBehaviorComponent } from "./title_component";
 // import { descriptionBehaviorComponent } from "./description_component";
 import { dueDateBehaviorComponent } from "./due_date_component";
 import { notesBehaviorComponent } from "./notes_component";
-import { checklistBehaviorComponent } from "./checklist_component";
+import { containsChecklistBehaviorComponent } from "./contains_checklist_component";
 import { pinnedBehaviorComponent } from "./pinned_component";
 
 
