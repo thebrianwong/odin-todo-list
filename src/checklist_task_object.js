@@ -15,8 +15,10 @@ import { completedBehaviorComponent } from "./completed_component";
 
 const checklistTaskObject = (description) => {
     let object = {};
-    Object.assign(object, descriptionBehaviorComponent(object, description));
-    Object.assign(object, completedBehaviorComponent(object));
+    Object.assign(object,
+        descriptionBehaviorComponent(object, description),
+        completedBehaviorComponent(object)
+    );
     return object;
 }
 
