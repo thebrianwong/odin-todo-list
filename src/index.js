@@ -19,6 +19,9 @@ import { containsChecklistTaskBehaviorComponent } from "./components/contains_ch
 // testing tabs (arrays that contain many to do tasks)
 import { toDoTab } from "./objects/todo_tab_object";
 
+// testing list that contain everything
+import { toDoList } from "./objects/todo_list_object";
+
 let test = checklistTaskObject("ddtest");
 console.log(test)
 
@@ -117,3 +120,14 @@ console.log(tab.getChecklist())
 console.log(tab.getChecklist().addTask(anotherImportantTask))
 console.log(tab.getChecklist().getSpecificChecklistTask(1))
 console.log(tab.getChecklist().getSpecificChecklistTask(1).getTaskTitle())
+
+console.log(toDoList)
+let theList = toDoList;
+console.log(theList)
+console.log(toDoList.getChecklist())
+console.log(toDoList.addChecklist(tab))
+console.log(toDoList.getChecklist())
+console.log(toDoList.getChecklist().getChecklist())
+console.log(toDoList.getChecklist().getChecklist().getChecklistTasks())
+console.log(toDoList.getChecklist().getChecklist().getSpecificChecklistTask(0))
+console.log(toDoList.getChecklist().getChecklist().getSpecificChecklistTask(0).getTaskTitle())
