@@ -5,6 +5,7 @@ import { notesBehaviorComponent } from "../components/notes_component";
 import { containsChecklistBehaviorComponent } from "../components/contains_checklist_component";
 import { pinnedBehaviorComponent } from "../components/pinned_component";
 import { completedBehaviorComponent } from "../components/completed_component";
+import { containsChecklistTaskBehaviorComponent } from "../components/contains_checklist_task_component";
 
 const toDoTask = (title, description, dueDate, notes) => {
     let object = {};
@@ -15,7 +16,8 @@ const toDoTask = (title, description, dueDate, notes) => {
         notesBehaviorComponent(object, notes),
         containsChecklistBehaviorComponent(object),
         pinnedBehaviorComponent(object),
-        completedBehaviorComponent(object)
+        completedBehaviorComponent(object),
+        containsChecklistTaskBehaviorComponent(object)
     );
     return object;
 };

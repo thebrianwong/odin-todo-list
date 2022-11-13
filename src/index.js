@@ -16,6 +16,8 @@ import { pinnedBehaviorComponent } from "./components/pinned_component";
 // import { checklistObject } from "./checklist_object";
 import { containsChecklistTaskBehaviorComponent } from "./components/contains_checklist_task_component";
 
+// testing tabs (arrays that contain many to do tasks)
+import { toDoTab } from "./objects/todo_tab_object";
 
 let test = checklistTaskObject("ddtest");
 console.log(test)
@@ -99,3 +101,19 @@ console.log(importantTask.getChecklist().getSpecificChecklistTask(2).toggleCompl
 console.log(importantTask.getChecklist().getSpecificChecklistTask(2).getCompletedState())
 console.log(importantTask.getChecklist().getSpecificChecklistTask(2).setTaskDescription("IT WORKS"))
 console.log(importantTask.getChecklist().getSpecificChecklistTask(2).getTaskDescription())
+
+let tab = toDoTab("kitchen stuff")
+let listOfStuff = checklistObject()
+tab.addChecklist(listOfStuff)
+console.log(tab.getChecklist().addTask(importantTask))
+console.log(tab)
+console.log(tab.getChecklist())
+console.log(tab.getChecklist().getSpecificChecklistTask(0))
+console.log(tab.getChecklist().getSpecificChecklistTask(0).getTaskTitle())
+
+let anotherImportantTask = toDoTask("Clean pot", "part of chores plan", "this afternoon", "make sure to use soap");
+console.log(tab)
+console.log(tab.getChecklist())
+console.log(tab.getChecklist().addTask(anotherImportantTask))
+console.log(tab.getChecklist().getSpecificChecklistTask(1))
+console.log(tab.getChecklist().getSpecificChecklistTask(1).getTaskTitle())
