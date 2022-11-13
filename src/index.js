@@ -12,7 +12,9 @@ import { notesBehaviorComponent } from "./notes_component";
 import { containsChecklistBehaviorComponent } from "./contains_checklist_component";
 import { pinnedBehaviorComponent } from "./pinned_component";
 
-
+// testing checklist object
+// import { checklistObject } from "./checklist_object";
+import { containsChecklistTaskBehaviorComponent } from "./contains_checklist_task_component";
 
 
 let test = checklistTaskObject("ddtest");
@@ -75,3 +77,12 @@ importantTask.addChecklist(["chicken", "broth"])
 console.log(importantTask.getChecklist());
 importantTask.removeChecklist();
 console.log(importantTask.getChecklist());
+
+let checklist = checklistObject();
+console.log(checklist)
+console.log(checklist.addTask("bend toilet"))
+console.log(checklist.addTask("pinch toilet"))
+console.log(checklist.getChecklistTasks())
+console.log(checklist.getSpecificChecklistTask(1))
+checklist.removeTask(0)
+console.log(checklist.getChecklistTasks())
