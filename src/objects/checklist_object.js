@@ -22,7 +22,7 @@
 //     return { addTask, removeTask, getChecklistTasks, getSpecificChecklistTask };
 // };
 
-import { containsChecklistTaskBehaviorComponent } from "./contains_checklist_task_component";
+import { containsChecklistTaskBehaviorComponent } from "../components/contains_checklist_task_component";
 
 const checklistObject = () => {
     let object = {};

@@ -1,20 +1,20 @@
-import { toDoTask } from "./todo_task_object";
-import { checklistObject } from "./checklist_object";
-import { checklistTaskObject } from "./checklist_task_object";
-import { descriptionBehaviorComponent } from "./description_component";
-import { completedBehaviorComponent } from "./completed_component";
+import { toDoTask } from "./objects/todo_task_object";
+import { checklistObject } from "./objects/checklist_object";
+import { checklistTaskObject } from "./objects/checklist_task_object";
+import { descriptionBehaviorComponent } from "./components/description_component";
+import { completedBehaviorComponent } from "./components/completed_component";
 
 // testing todo task object
-import { titleBehaviorComponent } from "./title_component";
+import { titleBehaviorComponent } from "./components/title_component";
 // import { descriptionBehaviorComponent } from "./description_component";
-import { dueDateBehaviorComponent } from "./due_date_component";
-import { notesBehaviorComponent } from "./notes_component";
-import { containsChecklistBehaviorComponent } from "./contains_checklist_component";
-import { pinnedBehaviorComponent } from "./pinned_component";
+import { dueDateBehaviorComponent } from "./components/due_date_component";
+import { notesBehaviorComponent } from "./components/notes_component";
+import { containsChecklistBehaviorComponent } from "./components/contains_checklist_component";
+import { pinnedBehaviorComponent } from "./components/pinned_component";
 
 // testing checklist object
 // import { checklistObject } from "./checklist_object";
-import { containsChecklistTaskBehaviorComponent } from "./contains_checklist_task_component";
+import { containsChecklistTaskBehaviorComponent } from "./components/contains_checklist_task_component";
 
 
 let test = checklistTaskObject("ddtest");

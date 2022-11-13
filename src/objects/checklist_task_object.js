@@ -1,5 +1,5 @@
-import { descriptionBehaviorComponent } from "./description_component";
-import { completedBehaviorComponent } from "./completed_component";
+import { descriptionBehaviorComponent } from "../components/description_component";
+import { completedBehaviorComponent } from "../components/completed_component";
 
 // original where object would need to have Object.assign() for every instance
 // keeping for posterity, probably will deleted at the end
