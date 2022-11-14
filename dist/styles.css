@@ -78,6 +78,7 @@ button {
 
 .to-do-task-overview-top {
     display: flex;
+    align-items: center;
 }
 
 .to-do-title {
@@ -85,7 +86,14 @@ button {
 }
 
 .to-do-pin {
-
+    border: none;
+    outline: none;
+    background-color: white;
+    padding: 0;
+    height: 24px;
+    width: 24px;
+    vertical-align: -8px;
+    cursor: pointer;
 }
 
 .to-do-complete {
@@ -94,7 +102,6 @@ button {
 
 .to-do-complete-label {
     padding: 5px 10px;
-    vertical-align: -8px;
 }
 
 .to-do-complete-checkbox {
