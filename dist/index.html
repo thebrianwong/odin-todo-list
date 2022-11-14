@@ -11,26 +11,45 @@
 </head>
 <body>
     <div class="to-do-list">
-        <h1>Todo List</h1>
+        <h1 class="title">Todo List</h1>
         <div class="to-do-tab-section">
-            <h2 class="tab-title">Default</h2>
-            <h2 class="tab-title">Homework</h2>
+            <button class="tab-title">
+                <h2>Default</h2>
+            </button>
+            <button class="tab-title">
+                <h2>Homework</h2>
+            </button>
         </div>
-        <div class="tab-content">
+        <div class="to-do-content">
             <div class="to-do-task">
-                <h3 class="to-do-title">Make Money</h3>
+                <div class="to-do-task-overview">
+                    <div class="to-do-task-overview-top">
+                        <h3 class="to-do-title">Make Money</h3>
+                        <button class="to-do-pin">
+                            <img src="" alt="">
+                        </button>
+                        <form class="to-do-complete" action="">
+                            <label for="to-do-complete-checkbox-0" class="to-do-complete-label">Completed</label>
+                            <input type="checkbox" name="" class="to-do-complete-checkbo" id="to-do-complete-checkbox-0">
+                        </form>
+                    </div>
+                    <div class="to-do-task-overview-bottom">
+                        <p class="to-do-due-date">tomorrow</p>
+                    </div>
+                </div>
                 <p class="to-do-description">dollars good</p>
-                <p class="to-do-due-date">tomorrow</p>
                 <p class="to-do-notes">don't forget</p>
-                <div class="task-checklist">
-                    <form action="">
-                        <legend>Checklist</legend>
+                <form action="" class="task-checklist">
+                    <legend>Checklist</legend>
+                    <div class="checklist-task">
                         <input type="checkbox" name="" id="checklist-0-0">
                         <label for="checklist-0-0">open wallet</label>
+                    </div>
+                    <div class="checklist-task">
                         <input type="checkbox" name="" id="checklist-0-1">
                         <label for="checklist-0-1">put money in wallet</label>
-                    </form>
-                </div>
+                    </div>
+                </form>
             </div>
             <div class="to-do-task">
                 <h3 class="to-do-title">Eat Money</h3>
