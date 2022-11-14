@@ -22,6 +22,9 @@ import { toDoTab } from "./objects/todo_tab_object";
 // testing list that contain everything
 import { toDoList } from "./objects/todo_list_object";
 
+// testing for DOM controller objects
+import { DOMControllerAdd } from "./objects/DOM_controller_add_object";
+
 let test = checklistTaskObject("ddtest");
 console.log(test)
 
@@ -77,14 +80,14 @@ console.log(importantTask.getTaskNotes())
 console.log(importantTask.getPinnedState())
 console.log(importantTask.getCompletedState())
 
-console.log(importantTask.addTask(test))
+console.log(DOMControllerAdd.addChecklistTask(importantTask, test))
 console.log(importantTask.getChecklistTasks())
 console.log(importantTask.getSpecificChecklistTask(0))
 console.log(importantTask.getSpecificChecklistTask(0).getTaskDescription())
 
 let tab = toDoTab("kitchen stuff")
 console.log(tab)
-console.log(tab.addTask(importantTask))
+console.log(DOMControllerAdd.addToDoTask(tab, importantTask))
 console.log(tab)
 console.log(tab.getChecklistTasks())
 console.log(tab.getSpecificChecklistTask(0))
@@ -92,11 +95,11 @@ console.log(tab.getSpecificChecklistTask(0).getTaskTitle())
 
 let anotherImportantTask = toDoTask("Clean pot", "part of chores plan", "this afternoon", "make sure to use soap");
 console.log(tab)
-console.log(tab.addTask(anotherImportantTask))
+console.log(DOMControllerAdd.addToDoTask(tab, anotherImportantTask))
 console.log(tab.getSpecificChecklistTask(1))
 console.log(tab.getSpecificChecklistTask(1).getTaskTitle())
 
-toDoList.addTask(tab)
+console.log(DOMControllerAdd.addTab(tab))
 console.log(toDoList.getChecklistTasks())
 console.log(toDoList.getSpecificChecklistTask(0))
 console.log(toDoList.getSpecificChecklistTask(0).getTaskTitle())
