@@ -77,11 +77,36 @@ console.log(importantTask.getTaskNotes())
 console.log(importantTask.getPinnedState())
 console.log(importantTask.getCompletedState())
 
-console.log(importantTask.getChecklist());
-importantTask.addChecklist(["chicken", "broth"])
-console.log(importantTask.getChecklist());
-importantTask.removeChecklist();
-console.log(importantTask.getChecklist());
+console.log(importantTask.addTask(test))
+console.log(importantTask.getChecklistTasks())
+console.log(importantTask.getSpecificChecklistTask(0))
+console.log(importantTask.getSpecificChecklistTask(0).getTaskDescription())
+
+let tab = toDoTab("kitchen stuff")
+console.log(tab)
+console.log(tab.addTask(importantTask))
+console.log(tab)
+console.log(tab.getChecklistTasks())
+console.log(tab.getSpecificChecklistTask(0))
+console.log(tab.getSpecificChecklistTask(0).getTaskTitle())
+
+let anotherImportantTask = toDoTask("Clean pot", "part of chores plan", "this afternoon", "make sure to use soap");
+console.log(tab)
+console.log(tab.addTask(anotherImportantTask))
+console.log(tab.getSpecificChecklistTask(1))
+console.log(tab.getSpecificChecklistTask(1).getTaskTitle())
+
+toDoList.addTask(tab)
+console.log(toDoList.getChecklistTasks())
+console.log(toDoList.getSpecificChecklistTask(0))
+console.log(toDoList.getSpecificChecklistTask(0).getTaskTitle())
+
+/* 
+console.log(importantTask.getChecklistTasks());
+let index1 = importantTask.addTask(["chicken", "broth"])
+console.log(importantTask.getChecklistTasks());
+importantTask.removeTask(index1);
+console.log(importantTask.getChecklistTasks());
 
 let checklist = checklistObject();
 console.log(checklist)
@@ -92,42 +117,43 @@ console.log(checklist.getSpecificChecklistTask(1))
 checklist.removeTask(0)
 console.log(checklist.getChecklistTasks())
 
-importantTask.addChecklist(checklist)
+let index2 = importantTask.addTask(checklist)
 console.log(importantTask)
-console.log(importantTask.getChecklist())
-console.log(importantTask.getChecklist().getChecklistTasks())
-console.log(importantTask.getChecklist().addTask(test))
-console.log(importantTask.getChecklist().getSpecificChecklistTask(2))
-console.log(importantTask.getChecklist().getSpecificChecklistTask(2).getTaskDescription())
-console.log(importantTask.getChecklist().getSpecificChecklistTask(2).getCompletedState())
-console.log(importantTask.getChecklist().getSpecificChecklistTask(2).toggleCompletedState())
-console.log(importantTask.getChecklist().getSpecificChecklistTask(2).getCompletedState())
-console.log(importantTask.getChecklist().getSpecificChecklistTask(2).setTaskDescription("IT WORKS"))
-console.log(importantTask.getChecklist().getSpecificChecklistTask(2).getTaskDescription())
+console.log(importantTask.getChecklistTasks())
+// console.log(importantTask.getChecklist().getChecklistTasks())
+let index3 = console.log(importantTask.addTask(test))
+console.log(importantTask.getSpecificChecklistTask(index2))
+console.log(importantTask.getSpecificChecklistTask(2).getTaskDescription())
+console.log(importantTask.getSpecificChecklistTask(2).getCompletedState())
+console.log(importantTask.getSpecificChecklistTask(2).toggleCompletedState())
+console.log(importantTask.getSpecificChecklistTask(2).getCompletedState())
+console.log(importantTask.getSpecificChecklistTask(2).setTaskDescription("IT WORKS"))
+console.log(importantTask.getSpecificChecklistTask(2).getTaskDescription())
 
 let tab = toDoTab("kitchen stuff")
 let listOfStuff = checklistObject()
-tab.addChecklist(listOfStuff)
-console.log(tab.getChecklist().addTask(importantTask))
+// tab.addChecklist(listOfStuff)
+console.log(tab.addTask(importantTask))
 console.log(tab)
-console.log(tab.getChecklist())
-console.log(tab.getChecklist().getSpecificChecklistTask(0))
-console.log(tab.getChecklist().getSpecificChecklistTask(0).getTaskTitle())
+// console.log(tab.getChecklist())
+console.log(tab.getSpecificChecklistTask(0))
+console.log(tab.getSpecificChecklistTask(0).getTaskTitle())
 
 let anotherImportantTask = toDoTask("Clean pot", "part of chores plan", "this afternoon", "make sure to use soap");
 console.log(tab)
-console.log(tab.getChecklist())
-console.log(tab.getChecklist().addTask(anotherImportantTask))
-console.log(tab.getChecklist().getSpecificChecklistTask(1))
-console.log(tab.getChecklist().getSpecificChecklistTask(1).getTaskTitle())
+// console.log(tab.getChecklist())
+console.log(tab.addTask(anotherImportantTask))
+console.log(tab.getSpecificChecklistTask(1))
+console.log(tab.getSpecificChecklistTask(1).getTaskTitle())
 
 console.log(toDoList)
 let theList = toDoList;
 console.log(theList)
-console.log(toDoList.getChecklist())
-console.log(toDoList.addChecklist(tab))
-console.log(toDoList.getChecklist())
-console.log(toDoList.getChecklist().getChecklist())
-console.log(toDoList.getChecklist().getChecklist().getChecklistTasks())
-console.log(toDoList.getChecklist().getChecklist().getSpecificChecklistTask(0))
-console.log(toDoList.getChecklist().getChecklist().getSpecificChecklistTask(0).getTaskTitle())
+// console.log(toDoList.getChecklist())
+let index4 = console.log(toDoList.addTask(tab))
+// console.log(toDoList.getChecklist())
+console.log(toDoList.getChecklistTasks())
+// console.log(toDoList.getChecklist().getChecklist().getChecklistTasks())
+console.log(toDoList.getSpecificChecklistTask(0))
+console.log(toDoList.getSpecificChecklistTask(0).getTaskTitle())
+ */
