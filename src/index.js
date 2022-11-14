@@ -24,6 +24,7 @@ import { toDoList } from "./objects/todo_list_object";
 
 // testing for DOM controller objects
 import { DOMControllerAdd } from "./objects/DOM_controller_add_object";
+import { DOMControllerRemove } from "./objects/DOM_controller_remove_object";
 
 let test = checklistTaskObject("ddtest");
 console.log(test)
@@ -103,6 +104,12 @@ console.log(DOMControllerAdd.addTab(tab))
 console.log(toDoList.getChecklistTasks())
 console.log(toDoList.getSpecificChecklistTask(0))
 console.log(toDoList.getSpecificChecklistTask(0).getTaskTitle())
+
+DOMControllerRemove.removeTab(0);
+console.log(toDoList.getChecklistTasks())
+
+console.log(DOMControllerAdd.addTab(tab))
+console.log(toDoList.getChecklistTasks())
 
 /* 
 console.log(importantTask.getChecklistTasks());
