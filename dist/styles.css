@@ -1,3 +1,120 @@
 * {
     border: solid 1px red;
 }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin: 0;
+}
+
+input,
+button {
+    appearance: none;
+}
+
+.to-do-list {
+    display: flex;
+    flex-direction: column;
+    margin: 10vh auto;
+    padding: 10px;
+    width: 80%;
+    max-width: 600px;
+    border: solid 6px #fdbdfd;
+    border-radius: 8px;
+    gap: 15px;
+}
+
+.title {
+    background-color: #fdfdbd;
+    border: solid 4px lightgray;
+    border-radius: 8px;
+    text-align: center;
+    padding: 5px;
+}
+
+.to-do-tab-section {
+    display: flex;
+    flex-wrap: wrap;
+    border: solid 4px lightgray;
+    border-radius: 8px;
+}
+
+.to-do-tab-section .tab-title:nth-child(3n+1) {
+    background-color: #c8ffd4;
+}
+
+.to-do-tab-section .tab-title:nth-child(3n+2) {
+    background-color: #b8e8fc;
+}
+
+.to-do-tab-section .tab-title:nth-child(3n) {
+    background-color: #b1afff;
+}
+
+.tab-title {
+    padding: 5px 10px;
+    border: none;
+}
+
+.to-do-content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.to-do-task {
+    padding: 10px;
+}
+
+.to-do-task-overview {
+    display: flex;
+    flex-direction: column;
+}
+
+.to-do-task-overview-top {
+    display: flex;
+}
+
+.to-do-title {
+    padding: 5px 0 5px 10px;
+}
+
+.to-do-pin {
+
+}
+
+.to-do-complete {
+    margin-left: auto;
+}
+
+.to-do-complete-label {
+    padding: 5px 10px;
+    vertical-align: -8px;
+}
+
+.to-do-complete-checkbox {
+    vertical-align: -8px;
+}
+
+.to-do-task-overview-bottom {
+    padding: 5px 10px;
+}
+
+.to-do-description,
+.to-do-notes {
+    padding: 5px 10px;
+}
+
+.task-checklist {
+    display: flex;
+    flex-direction: column;
+}
+
+.task-checklist > * {
+    padding: 5px 10px;
+}
