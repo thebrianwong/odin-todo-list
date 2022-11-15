@@ -68,7 +68,52 @@ button {
 }
 
 .to-do-task {
+    border: solid 4px lightgray;
+    border-radius: 8px;
     padding: 10px;
+}
+
+
+/* Alternating colors for overviews */
+.to-do-task:nth-child(3n+1) .to-do-task-overview,
+.to-do-task:nth-child(3n+1) .to-do-pin {
+    background-color: #fdbdfd;
+}
+
+.to-do-task:nth-child(3n+2) .to-do-task-overview,
+.to-do-task:nth-child(3n+2) .to-do-pin {
+    background-color: #bdfdbd;
+}
+
+.to-do-task:nth-child(3n) .to-do-task-overview,
+.to-do-task:nth-child(3n) .to-do-pin {
+    background-color: #fdddbd;
+}
+
+/* Alternating colors for descriptions */
+.to-do-task:nth-child(3n+1) > *:nth-child(3n+2) {
+    background-color: #bdfdbd;
+}
+
+.to-do-task:nth-child(3n+2) > *:nth-child(3n+2) {
+    background-color: #fdddbd;
+}
+
+.to-do-task:nth-child(3n) > *:nth-child(3n+2) {
+    background-color: #fdbdfd;
+}
+
+/* Alternating colors for notes */
+.to-do-task:nth-child(3n+1) > *:nth-child(3n) {
+    background-color: #fdddbd;
+}
+
+.to-do-task:nth-child(3n+2) > *:nth-child(3n) {
+    background-color: #fdbdfd;
+}
+
+.to-do-task:nth-child(3n) > *:nth-child(3n) {
+    background-color: #bdfdbd;
 }
 
 .to-do-task-overview {
@@ -88,7 +133,6 @@ button {
 .to-do-pin {
     border: none;
     outline: none;
-    background-color: white;
     padding: 0;
     height: 24px;
     width: 24px;
@@ -98,6 +142,7 @@ button {
 
 .to-do-complete {
     margin-left: auto;
+    padding: 0 10px;
 }
 
 .to-do-complete-label {
@@ -109,12 +154,53 @@ button {
 }
 
 .to-do-task-overview-bottom {
+    display: flex;
     padding: 5px 10px;
 }
 
 .to-do-description,
 .to-do-notes {
+    display: flex;
     padding: 5px 10px;
+}
+
+/* Alternating colors for first of three sections of checklist (including the legend) */
+.to-do-task:nth-child(3n+1) .task-checklist > *:nth-child(3n+1) {
+    background-color: #fdbdfd;
+}
+
+.to-do-task:nth-child(3n+2) .task-checklist > *:nth-child(3n+1) {
+    background-color: #bdfdbd;
+}
+
+.to-do-task:nth-child(3n) .task-checklist > *:nth-child(3n+1) {
+    background-color: #fdddbd;
+}
+
+/* Alternating colors for second of three sections of checklist */
+.to-do-task:nth-child(3n+1) .task-checklist > *:nth-child(3n+2) {
+    background-color: #bdfdbd;
+}
+
+.to-do-task:nth-child(3n+2) .task-checklist > *:nth-child(3n+2) {
+    background-color: #fdddbd;
+}
+
+.to-do-task:nth-child(3n) .task-checklist > *:nth-child(3n+2) {
+    background-color: #fdbdfd;
+}
+
+/* Alternating colors for third of three sections of checklist */
+.to-do-task:nth-child(3n+1) .task-checklist > *:nth-child(3n) {
+    background-color: #fdddbd;
+}
+
+.to-do-task:nth-child(3n+2) .task-checklist > *:nth-child(3n) {
+    background-color: #fdbdfd;
+}
+
+.to-do-task:nth-child(3n) .task-checklist > *:nth-child(3n) {
+    background-color: #bdfdbd;
 }
 
 .task-checklist {
@@ -125,3 +211,4 @@ button {
 .task-checklist > * {
     padding: 5px 10px;
 }
+
