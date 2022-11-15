@@ -20,6 +20,12 @@ button {
     cursor: pointer;
 }
 
+input:focus-visible,
+button:focus-visible {
+    outline: solid 2px black;
+    z-index: 1;
+}
+
 .to-do-list {
     display: flex;
     flex-direction: column;
