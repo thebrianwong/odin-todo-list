@@ -16,6 +16,8 @@ p {
 input,
 button {
     appearance: none;
+    border: none;
+    cursor: pointer;
 }
 
 .to-do-list {
@@ -61,7 +63,14 @@ button {
 
 .tab-title {
     padding: 5px 10px;
-    border: none;
+}
+
+.add-tab {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    height: auto;
+    width: auto;
 }
 
 .to-do-content {
