@@ -117,15 +117,18 @@ button:focus-visible {
 }
 
 /* Alternating colors for descriptions */
-.to-do-task:nth-child(3n+1) > *:nth-child(3n+2) {
+.to-do-task:nth-child(3n+1) > *:nth-child(3n+2),
+.to-do-task:nth-child(3n+1) > *:nth-child(3n+2) .edit-description {
     background-color: #bdfdbd;
 }
 
-.to-do-task:nth-child(3n+2) > *:nth-child(3n+2) {
+.to-do-task:nth-child(3n+2) > *:nth-child(3n+2),
+.to-do-task:nth-child(3n+2) > *:nth-child(3n+2) .edit-description {
     background-color: #fdddbd;
 }
 
-.to-do-task:nth-child(3n) > *:nth-child(3n+2) {
+.to-do-task:nth-child(3n) > *:nth-child(3n+2),
+.to-do-task:nth-child(3n) > *:nth-child(3n+2) .edit-description {
     background-color: #fdbdfd;
 }
 
@@ -195,7 +198,14 @@ input[type="checkbox"]:checked {
 .to-do-description,
 .to-do-notes {
     display: flex;
-    padding: 5px 20px;
+    padding: 5px 10px 5px 20px;
+}
+
+.edit-description {
+    margin-left: auto;
+    padding: 0;
+    height: 24px;
+    width: 24px;
 }
 
 /* Alternating colors for first of three sections of checklist (including the legend) */
