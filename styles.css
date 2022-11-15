@@ -160,19 +160,27 @@ button {
     padding: 5px 10px;
 }
 
-.to-do-complete-checkbox {
-    vertical-align: -8px;
+input[type="checkbox"] {
+    width: 15px;
+    height: 15px;
+    border: solid 2px darkgray;
+    border-radius: 3px;
+    vertical-align: -4px;
+}
+
+input[type="checkbox"]:checked {
+    background-color: #b1afff;
 }
 
 .to-do-task-overview-bottom {
     display: flex;
-    padding: 5px 10px;
+    padding: 5px 20px;
 }
 
 .to-do-description,
 .to-do-notes {
     display: flex;
-    padding: 5px 10px;
+    padding: 5px 20px;
 }
 
 /* Alternating colors for first of three sections of checklist (including the legend) */
@@ -220,6 +228,5 @@ button {
 }
 
 .task-checklist > * {
-    padding: 5px 10px;
+    padding: 5px 20px;
 }
-
