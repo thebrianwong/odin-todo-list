@@ -75,6 +75,8 @@ button:focus-visible {
 }
 
 .tab-title {
+    display: flex;
+    justify-content: center;
     flex: auto;
     padding: 10px 15px;
 }
@@ -211,6 +213,7 @@ input[type="checkbox"]:checked {
     margin-right: 15px;
 }
 
+.edit-tab,
 .edit-title,
 .edit-due-date,
 .edit-description,
@@ -223,6 +226,7 @@ input[type="checkbox"]:checked {
     width: 24px;
 }
 
+.edit-tab,
 .edit-title {
     align-self: center;
     margin: 0 5px 0 0;
