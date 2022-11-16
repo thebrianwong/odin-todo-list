@@ -70,6 +70,7 @@ button:focus-visible {
 }
 
 .tab-title {
+    flex: auto;
     padding: 10px 15px;
 }
 
