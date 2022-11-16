@@ -211,6 +211,7 @@ input[type="checkbox"]:checked {
     margin-right: 15px;
 }
 
+.edit-title,
 .edit-due-date,
 .edit-description,
 .edit-notes,
@@ -220,6 +221,11 @@ input[type="checkbox"]:checked {
     padding: 0;
     height: 24px;
     width: 24px;
+}
+
+.edit-title {
+    align-self: center;
+    margin: 0 5px 0 0;
 }
 
 /* Alternating colors for first of three sections of checklist (including the legend) */
