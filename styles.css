@@ -205,7 +205,8 @@ input[type="checkbox"]:checked {
 }
 
 .edit-description,
-.edit-notes {
+.edit-notes,
+.edit-checklist-task {
     align-self: flex-start;
     margin-left: auto;
     padding: 0;
@@ -257,6 +258,16 @@ input[type="checkbox"]:checked {
     flex-direction: column;
 }
 
-.task-checklist > * {
+.checklist-label {
     padding: 10px 30px;
+}
+
+.checklist-task {
+    display: flex;
+    align-items: center;
+    padding: 10px 10px 10px 30px;
+}
+
+.checklist-task-description {
+    margin-left: 5px;
 }
