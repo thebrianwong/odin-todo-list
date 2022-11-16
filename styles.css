@@ -1,6 +1,7 @@
 * {
     border: solid 1px red;
     font-family: 'Gamja Flower', cursive;
+    word-break: break-all;
 }
 
 h1,
@@ -144,6 +145,7 @@ button:focus-visible {
 .to-do-task-overview {
     display: flex;
     flex-direction: column;
+    padding: 10px;
 }
 
 .to-do-task-overview-top {
@@ -167,7 +169,6 @@ button:focus-visible {
 
 .to-do-complete {
     margin-left: auto;
-    padding: 0 10px;
 }
 
 .to-do-complete-label {
@@ -194,10 +195,17 @@ input[type="checkbox"]:checked {
 .to-do-description,
 .to-do-notes {
     display: flex;
-    padding: 5px 10px 5px 20px;
+    align-items: center;
+    padding: 10px 10px 10px 30px;
+}
+
+.to-do-description p,
+.to-do-notes p {
+    margin-right: 15px;
 }
 
 .edit-description {
+    align-self: flex-start;
     margin-left: auto;
     padding: 0;
     height: 24px;
@@ -249,5 +257,5 @@ input[type="checkbox"]:checked {
 }
 
 .task-checklist > * {
-    padding: 5px 20px;
+    padding: 10px 30px;
 }
