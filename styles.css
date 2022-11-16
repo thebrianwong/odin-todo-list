@@ -46,7 +46,7 @@ button:focus-visible {
     border: solid 4px lightgray;
     border-radius: 8px;
     text-align: center;
-    padding: 5px;
+    padding: 10px;
 }
 
 .to-do-tab-section {
@@ -70,7 +70,7 @@ button:focus-visible {
 }
 
 .tab-title {
-    padding: 5px 10px;
+    padding: 10px 15px;
 }
 
 .add-tab {
@@ -154,7 +154,7 @@ button:focus-visible {
 }
 
 .to-do-title {
-    padding: 5px 0 5px 10px;
+    padding: 10px;
 }
 
 .to-do-pin {
@@ -172,7 +172,7 @@ button:focus-visible {
 }
 
 .to-do-complete-label {
-    padding: 5px 10px;
+    padding: 10px;
 }
 
 input[type="checkbox"] {
@@ -189,7 +189,7 @@ input[type="checkbox"]:checked {
 
 .to-do-task-overview-bottom {
     display: flex;
-    padding: 5px 20px;
+    padding: 10px 20px;
 }
 
 .to-do-description,
