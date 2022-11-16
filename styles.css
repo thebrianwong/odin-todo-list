@@ -204,7 +204,8 @@ input[type="checkbox"]:checked {
     margin-right: 15px;
 }
 
-.edit-description {
+.edit-description,
+.edit-notes {
     align-self: flex-start;
     margin-left: auto;
     padding: 0;
