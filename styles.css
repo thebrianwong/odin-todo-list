@@ -18,6 +18,7 @@ button {
     appearance: none;
     border: none;
     cursor: pointer;
+    background-color: transparent;
 }
 
 input:focus-visible,
@@ -77,6 +78,7 @@ button:focus-visible {
     margin-left: auto;
     height: auto;
     width: auto;
+    background-color: #f0f0f0;
 }
 
 .to-do-content {
@@ -101,34 +103,28 @@ button:focus-visible {
 }
 
 /* Alternating colors for overviews */
-.to-do-task:nth-child(3n+1) .to-do-task-overview,
-.to-do-task:nth-child(3n+1) .to-do-pin {
+.to-do-task:nth-child(3n+1) .to-do-task-overview {
     background-color: #fdbdfd;
 }
 
-.to-do-task:nth-child(3n+2) .to-do-task-overview,
-.to-do-task:nth-child(3n+2) .to-do-pin {
+.to-do-task:nth-child(3n+2) .to-do-task-overview {
     background-color: #bdfdbd;
 }
 
-.to-do-task:nth-child(3n) .to-do-task-overview,
-.to-do-task:nth-child(3n) .to-do-pin {
+.to-do-task:nth-child(3n) .to-do-task-overview {
     background-color: #fdddbd;
 }
 
 /* Alternating colors for descriptions */
-.to-do-task:nth-child(3n+1) > *:nth-child(3n+2),
-.to-do-task:nth-child(3n+1) > *:nth-child(3n+2) .edit-description {
+.to-do-task:nth-child(3n+1) > *:nth-child(3n+2) {
     background-color: #bdfdbd;
 }
 
-.to-do-task:nth-child(3n+2) > *:nth-child(3n+2),
-.to-do-task:nth-child(3n+2) > *:nth-child(3n+2) .edit-description {
+.to-do-task:nth-child(3n+2) > *:nth-child(3n+2) {
     background-color: #fdddbd;
 }
 
-.to-do-task:nth-child(3n) > *:nth-child(3n+2),
-.to-do-task:nth-child(3n) > *:nth-child(3n+2) .edit-description {
+.to-do-task:nth-child(3n) > *:nth-child(3n+2) {
     background-color: #fdbdfd;
 }
 
