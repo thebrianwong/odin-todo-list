@@ -159,11 +159,14 @@ button:focus-visible {
 .to-do-task-overview-top {
     display: flex;
     align-items: center;
-    box-shadow: 0 1px 0 black;
+}
+
+.to-do-task-overview-top button {
+    margin-top: 10px;
 }
 
 .to-do-title {
-    padding: 10px 10px 10px 0;
+    margin: 10px 10px 0 0;
 }
 
 .to-do-pin {
@@ -176,12 +179,21 @@ button:focus-visible {
     cursor: pointer;
 }
 
-.to-do-complete {
+.to-do-overview-middle {
+    display: flex;
+    align-items: center;
+    box-shadow: 0 1px 0 black;
+    margin-top: 10px;
+    padding-bottom: 10px;
+}
+
+.to-do-remove-task {
     margin-left: auto;
+    padding: 0;
 }
 
 .to-do-complete-label {
-    padding: 10px;
+    margin-right: 5px;
 }
 
 input[type="checkbox"] {
