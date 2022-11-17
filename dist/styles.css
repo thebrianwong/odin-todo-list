@@ -208,6 +208,13 @@ input[type="checkbox"]:checked {
     background-color: #b1afff;
 }
 
+.to-do-task-change-display {
+    width: 24px;
+    height: 24px;
+    margin-left: auto;
+    padding: 0;
+}
+
 .to-do-task-overview-bottom {
     display: flex;
     padding: 10px 0 10px 20px;
