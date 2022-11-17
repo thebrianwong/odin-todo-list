@@ -297,8 +297,21 @@ input[type="checkbox"]:checked {
     flex-direction: column;
 }
 
+.checklist-header {
+    display: flex;
+    flex-direction: row;
+    padding: 10px 10px 10px 30px;
+}
+
 .checklist-label {
-    padding: 10px 30px;
+    /* padding: 10px 30px; */
+}
+
+.add-checklist-task {
+    width: 24px;
+    height: 24px;
+    margin-left: auto;
+    padding: 0;
 }
 
 .checklist-task {
