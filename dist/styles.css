@@ -112,6 +112,11 @@ button:focus-visible {
     border-radius: 8px;
 }
 
+.to-do-task p,
+.to-do-task label {
+    margin-right: 10px;
+}
+
 /* Alternating colors for overviews */
 .to-do-task:nth-child(3n+1) .to-do-task-overview {
     background-color: #fdbdfd;
@@ -182,7 +187,7 @@ button:focus-visible {
 
 .to-do-overview-middle {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     box-shadow: 0 1px 0 black;
     margin-top: 10px;
     padding-bottom: 10px;
@@ -194,10 +199,11 @@ button:focus-visible {
 }
 
 .to-do-complete-label {
-    margin-right: 5px;
+    margin-right: 5px !important;
 }
 
 input[type="checkbox"] {
+    flex: none;
     width: 15px;
     height: 15px;
     border: solid 2px darkgray;
@@ -249,7 +255,8 @@ input[type="checkbox"]:checked {
 
 .edit-tab,
 .remove-tab,
-.edit-title {
+.edit-title,
+.to-do-pin {
     align-self: center;
     margin: 0 5px 0 0;
 }
@@ -301,6 +308,7 @@ input[type="checkbox"]:checked {
 .checklist-header {
     display: flex;
     flex-direction: row;
+    align-items: center;
     padding: 10px 10px 10px 30px;
 }
 
