@@ -52,7 +52,7 @@ button:focus-visible {
 .to-do-tab-section {
     display: flex;
     flex-wrap: wrap;
-    background-color: white;
+    background-color: #fdfdbd;
     border: solid 4px lightgray;
     border-radius: 8px;
 }
