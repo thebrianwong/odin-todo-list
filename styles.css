@@ -250,6 +250,7 @@ input[type="checkbox"]:checked {
 .edit-due-date,
 .edit-description,
 .edit-notes,
+.remove-checklist-task,
 .edit-checklist-task {
     align-self: flex-start;
     margin-left: auto;
@@ -268,6 +269,10 @@ input[type="checkbox"]:checked {
 .remove-tab {
     align-self: center;
     margin: 0;
+}
+
+.remove-checklist-task {
+    margin-left: 10px;
 }
 
 /* Alternating colors for first of three sections of checklist (including the legend) */
