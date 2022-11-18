@@ -198,6 +198,11 @@ button:focus-visible {
     padding-bottom: 10px;
 }
 
+.to-do-complete {
+    display: flex;
+    align-items: center;
+}
+
 .to-do-remove-task {
     margin-left: auto;
     padding: 0;
