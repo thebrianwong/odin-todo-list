@@ -169,7 +169,7 @@ button:focus-visible {
 
 .to-do-task-overview-top {
     display: flex;
-    align-items: center;
+    gap: 10px;
 }
 
 .to-do-task-overview-top button {
@@ -177,7 +177,7 @@ button:focus-visible {
 }
 
 .to-do-title {
-    margin: 10px 10px 0 0;
+    margin-top: 10px;
 }
 
 .to-do-pin {
@@ -247,6 +247,7 @@ input[type="checkbox"]:checked {
 .edit-tab,
 .remove-tab,
 .edit-title,
+.to-do-remove-task,
 .edit-due-date,
 .edit-description,
 .edit-notes,
@@ -260,9 +261,13 @@ input[type="checkbox"]:checked {
 }
 
 .edit-title,
-.to-do-pin {
-    align-self: center;
-    margin: 0 5px 0 0;
+.to-do-pin,
+.to-do-remove-task {
+    margin: 0;
+}
+
+.edit-title {
+    margin-left: auto;
 }
 
 .edit-tab,
