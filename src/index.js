@@ -167,3 +167,31 @@ console.log(toDoList.getChecklistTasks())
 console.log(toDoList.getSpecificChecklistTask(0))
 console.log(toDoList.getSpecificChecklistTask(0).getTaskTitle())
  */
+
+const addTabButton = document.querySelector(".add-tab");
+addTabButton.addEventListener("click", () => {
+    const toDoTabSection = document.querySelector(".to-do-tab-section");
+    const newTab = document.createElement("div");
+    newTab.classList.add("tab-title");
+    newTab.innerHTML = `
+    <button class="switch-tab">
+        <h2>Homework</h2>
+    </button>
+    <button class="edit-tab">
+        <img src="assets/pencil.png" alt="Edit tab name button">
+    </button>
+    <button class="remove-tab">
+        <img src="assets/close.png" alt="Remove tab button">
+    </button>
+    `;
+    toDoTabSection.insertBefore(newTab, addTabButton);
+})
+
+const newTabNameInput = (event) => {
+    if (event.code === "Enter") {
+        console.log("This works")
+    }
+}
+
+const tabInput = document.querySelector(".tab-name-input")
+tabInput.addEventListener("keydown", newTabNameInput)
