@@ -117,8 +117,7 @@ button:focus-visible {
     border-radius: 8px;
 }
 
-.to-do-task p,
-.to-do-task label {
+.to-do-task p {
     margin-right: 10px;
 }
 
@@ -209,7 +208,7 @@ button:focus-visible {
 }
 
 .to-do-complete-label {
-    margin-right: 5px !important;
+    margin-right: 5px;
 }
 
 input[type="checkbox"] {
@@ -351,6 +350,12 @@ input[type="checkbox"]:checked {
     display: flex;
     align-items: center;
     padding: 10px 10px 10px 30px;
+}
+
+.checklist-complete {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
 }
 
 .checklist-task-description {
