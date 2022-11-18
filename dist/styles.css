@@ -79,6 +79,11 @@ button:focus-visible {
     justify-content: center;
     flex: auto;
     padding: 10px 15px;
+    gap: 5px;
+}
+
+.switch-tab {
+    padding: 0;
 }
 
 .add-tab {
@@ -253,12 +258,16 @@ input[type="checkbox"]:checked {
     width: 24px;
 }
 
-.edit-tab,
-.remove-tab,
 .edit-title,
 .to-do-pin {
     align-self: center;
     margin: 0 5px 0 0;
+}
+
+.edit-tab,
+.remove-tab {
+    align-self: center;
+    margin: 0;
 }
 
 /* Alternating colors for first of three sections of checklist (including the legend) */
