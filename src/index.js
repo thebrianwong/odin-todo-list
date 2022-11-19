@@ -25,6 +25,7 @@ import { toDoList } from "./objects/todo_list_object";
 // testing for DOM controller objects
 import { DOMControllerAdd } from "./objects/DOM_controller_add_object";
 import { DOMControllerRemove } from "./objects/DOM_controller_remove_object";
+import { DOMControllerAttachEvent } from "./objects/DOM_controller_event_attacher";
 
 let test = checklistTaskObject("ddtest");
 console.log(test)
@@ -169,29 +170,37 @@ console.log(toDoList.getSpecificChecklistTask(0).getTaskTitle())
  */
 
 const addTabButton = document.querySelector(".add-tab");
-addTabButton.addEventListener("click", () => {
-    const toDoTabSection = document.querySelector(".to-do-tab-section");
-    const newTab = document.createElement("div");
-    newTab.classList.add("tab-title");
-    newTab.innerHTML = `
-    <button class="switch-tab">
-        <h2>Homework</h2>
-    </button>
-    <button class="edit-tab">
-        <img src="assets/pencil.png" alt="Edit tab name button">
-    </button>
-    <button class="remove-tab">
-        <img src="assets/close.png" alt="Remove tab button">
-    </button>
-    `;
-    toDoTabSection.insertBefore(newTab, addTabButton);
-})
+// addTabButton.addEventListener("click", () => {
+//     const toDoTabSection = document.querySelector(".to-do-tab-section");
+//     const newTab = document.createElement("div");
+//     newTab.classList.add("tab-title");
+//     newTab.innerHTML = `
+//     <button class="switch-tab">
+//         <h2>Homework</h2>
+//     </button>
+//     <button class="edit-tab">
+//         <img src="assets/pencil.png" alt="Edit tab name button">
+//     </button>
+//     <button class="remove-tab">
+//         <img src="assets/close.png" alt="Remove tab button">
+//     </button>
+//     `;
+//     toDoTabSection.insertBefore(newTab, addTabButton);
+// })
 
 const newTabNameInput = (event) => {
     if (event.code === "Enter") {
         console.log("This works")
+        console.log(event)
+        console.log(event.srcElement)
+        console.log(event.srcElement.previousElementSibling)
+        console.log(event.srcElement.previousElementSibling.childNodes)
+        console.log(event.srcElement.previousElementSibling.childNodes[1])
+        event.srcElement.previousElementSibling.childNodes[1].textContent = event.srcElement.value
     }
 }
 
 const tabInput = document.querySelector(".tab-name-input")
 tabInput.addEventListener("keydown", newTabNameInput)
+
+DOMControllerAttachEvent.addClickListener(addTabButton, addTabButton.getAttribute("class"));
