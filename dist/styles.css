@@ -22,6 +22,11 @@ button {
     background-color: transparent;
 }
 
+input[type="text"] {
+    background-color: whitesmoke;
+    border: solid 1px black;
+}
+
 input:focus-visible,
 button:focus-visible {
     outline: solid 2px black;
