@@ -45,12 +45,19 @@ const DOMUpdateController = (() => {
         tabElement.removeChild(switchTab);
         switchTab = null
     }
+    const setInputElementValue = (tabElement, inputElement) => {
+        const index = tabElement.dataset.tabIndex;
+        const tabObject = toDoList.getSpecificChecklistTask(index);
+        const tabName = tabObject.getTaskTitle();
+        inputElement.value = tabName;
+    }
     const insertTabInputElement = (event) => {
         const tabElement = ensureCorrectTabElement(event);
         const inputElement = document.createElement("input");
         inputElement.classList.add("tab-name-input");
         inputElement.setAttribute("type", "text");
         tabElement.insertBefore(inputElement, tabElement.firstChild);
+        setInputElementValue(tabElement, inputElement);
     }
     return { addNewTabToDOM, editTabNameDOM, removeTabNameElement, insertTabInputElement, };
 })();
