@@ -93,7 +93,6 @@ const eventBundler = (() => {
         node.addEventListener("click", action);
     };
     // ignore for now end
-    
     const addTab = () => {
         const newTabIndex = objectControllerAddObject.addNewTabToTodoArray();
         DOMUpdateController.addNewTabToDOM(newTabIndex)
@@ -105,8 +104,10 @@ const eventBundler = (() => {
         }
     }
     const insertTabInputElement = (event) => {
-        DOMUpdateController.removeTabNameElement(event);
-        DOMUpdateController.insertTabInputElement(event);
+        if (!DOMUpdateController.checkForTabInputElement(event)) {
+            DOMUpdateController.removeTabNameElement(event);
+            DOMUpdateController.insertTabInputElement(event);
+        };
     }
     return { addTab, editTab, insertTabInputElement};
 })();

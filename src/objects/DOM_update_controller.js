@@ -59,7 +59,15 @@ const DOMUpdateController = (() => {
         tabElement.insertBefore(inputElement, tabElement.firstChild);
         setInputElementValue(tabElement, inputElement);
     }
-    return { addNewTabToDOM, editTabNameDOM, removeTabNameElement, insertTabInputElement, };
+    const checkForTabInputElement = (event) => {
+        const tabElement = ensureCorrectTabElement(event);
+        if (tabElement.firstElementChild.tagName === "INPUT") {
+            return true;
+        } else {
+            return false;
+        };
+    };
+    return { addNewTabToDOM, editTabNameDOM, removeTabNameElement, insertTabInputElement, checkForTabInputElement, };
 })();
 
 export { DOMUpdateController };
