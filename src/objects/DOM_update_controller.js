@@ -2,6 +2,13 @@ import { toDoList } from "./todo_list_object";
 import { toDoTab } from "./todo_tab_object";
 
 const DOMUpdateController = (() => {
+    const ensureCorrectTabElement = (event) => {
+        let tabElement = event.target.parentElement;
+        while (tabElement.getAttribute("class") !== "tab-title") {
+            tabElement = tabElement.parentElement;
+        };
+        return tabElement;
+    }
     const addNewTabToDOM = (index) => {
         const addTabButton = document.querySelector(".add-tab");
         const toDoTabSection = document.querySelector(".to-do-tab-section");
@@ -33,15 +40,19 @@ const DOMUpdateController = (() => {
         tabName.textContent = newTabName;
     }
     const removeTabNameElement = (event) => {
-        let tabElement = event.target.parentElement;
-        while (tabElement.getAttribute("class") !== "tab-title") {
-            tabElement = tabElement.parentElement
-        }
+        const tabElement = ensureCorrectTabElement(event);
         let switchTab = tabElement.querySelector(".switch-tab")
         tabElement.removeChild(switchTab);
         switchTab = null
     }
-    return { addNewTabToDOM, editTabNameDOM, removeTabNameElement,  };
+    const insertTabInputElement = (event) => {
+        const tabElement = ensureCorrectTabElement(event);
+        const inputElement = document.createElement("input");
+        inputElement.classList.add("tab-name-input");
+        inputElement.setAttribute("type", "text");
+        tabElement.insertBefore(inputElement, tabElement.firstChild);
+    }
+    return { addNewTabToDOM, editTabNameDOM, removeTabNameElement, insertTabInputElement, };
 })();
 
 export { DOMUpdateController };
