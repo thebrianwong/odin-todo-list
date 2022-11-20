@@ -4,6 +4,7 @@ import { titleBehaviorComponent } from "../components/title_component";
 import { containsChecklistTaskBehaviorComponent } from "../components/contains_checklist_task_component";
 import { objectControllerAddObject } from "./object_controller_add_object";
 import { DOMUpdateController } from "./DOM_update_controller";
+import { eventAssigner } from "./event_assigner_object";
 
 const eventBundler = (() => {
     // ignore for now start
@@ -108,9 +109,15 @@ const eventBundler = (() => {
             DOMUpdateController.removeTabNameElement(event);
             const inputElement = DOMUpdateController.insertTabInputElement(event);
             DOMUpdateController.setInputElementValue(event, inputElement);
+            eventAssigner.addTabInputListener(inputElement);
         };
     }
-    return { addTab, editTab, insertTabInputElement};
+    const updateTab = (event) => {
+        if (event.code === 'Enter') {
+            objectControllerAddObject.editTabName(event);
+        };
+    };
+    return { addTab, editTab, insertTabInputElement, updateTab, };
 })();
 
 export { eventBundler };
