@@ -32,7 +32,16 @@ const DOMUpdateController = (() => {
         const newTabName = tabObject.getTaskTitle();
         tabName.textContent = newTabName;
     }
-    return { addNewTabToDOM, editTabNameDOM};
+    const removeTabNameElement = (event) => {
+        let tabElement = event.target.parentElement;
+        while (tabElement.getAttribute("class") !== "tab-title") {
+            tabElement = tabElement.parentElement
+        }
+        let switchTab = tabElement.querySelector(".switch-tab")
+        tabElement.removeChild(switchTab);
+        switchTab = null
+    }
+    return { addNewTabToDOM, editTabNameDOM, removeTabNameElement,  };
 })();
 
 export { DOMUpdateController };

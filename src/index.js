@@ -172,3 +172,18 @@ console.log(toDoList.getSpecificChecklistTask(0).getTaskTitle())
 
 eventAssigner.addNewTabListener();
 eventAssigner.addEditTabListener();
+eventAssigner.addTabInputElementListener();
+
+// button (target button will always work)
+
+/* const test1 = document.querySelector("#test1")
+test1.addEventListener("click", () => {
+    console.log("test1")
+}) */
+
+// img
+
+/* const test2 = document.querySelector("#test2")
+test2.addEventListener("click", () => {
+    console.log("test2")
+}) */

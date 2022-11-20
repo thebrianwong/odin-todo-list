@@ -104,7 +104,10 @@ const eventBundler = (() => {
             DOMUpdateController.editTabNameDOM(event)
         }
     }
-    return { addTab, editTab, };
+    const insertTabInputElement = (event) => {
+        DOMUpdateController.removeTabNameElement(event);
+    }
+    return { addTab, editTab, insertTabInputElement};
 })();
 
 export { eventBundler };
