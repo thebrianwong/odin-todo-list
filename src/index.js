@@ -88,29 +88,30 @@ console.log(importantTask.getChecklistTasks())
 console.log(importantTask.getSpecificChecklistTask(0))
 console.log(importantTask.getSpecificChecklistTask(0).getTaskDescription())
 
-let tab = toDoTab("kitchen stuff")
-console.log(tab)
-console.log(DOMControllerAdd.addToDoTask(tab, importantTask))
-console.log(tab)
-console.log(tab.getChecklistTasks())
-console.log(tab.getSpecificChecklistTask(0))
-console.log(tab.getSpecificChecklistTask(0).getTaskTitle())
+let tab1 = toDoTab("kitchen stuff")
+console.log(tab1)
+console.log(DOMControllerAdd.addToDoTask(tab1, importantTask))
+console.log(tab1)
+console.log(tab1.getChecklistTasks())
+console.log(tab1.getSpecificChecklistTask(0))
+console.log(tab1.getSpecificChecklistTask(0).getTaskTitle())
 
 let anotherImportantTask = toDoTask("Clean pot", "part of chores plan", "this afternoon", "make sure to use soap");
-console.log(tab)
-console.log(DOMControllerAdd.addToDoTask(tab, anotherImportantTask))
-console.log(tab.getSpecificChecklistTask(1))
-console.log(tab.getSpecificChecklistTask(1).getTaskTitle())
+console.log(tab1)
+console.log(DOMControllerAdd.addToDoTask(tab1, anotherImportantTask))
+console.log(tab1.getSpecificChecklistTask(1))
+console.log(tab1.getSpecificChecklistTask(1).getTaskTitle())
 
-console.log(DOMControllerAdd.addTab(tab))
+console.log(DOMControllerAdd.addTab(tab1))
 console.log(toDoList.getChecklistTasks())
 console.log(toDoList.getSpecificChecklistTask(0))
 console.log(toDoList.getSpecificChecklistTask(0).getTaskTitle())
 
-DOMControllerRemove.removeTab(0);
+// DOMControllerRemove.removeTab(0);
 console.log(toDoList.getChecklistTasks())
 
-console.log(DOMControllerAdd.addTab(tab))
+let tab2 = toDoTab("hee hee")
+console.log(DOMControllerAdd.addTab(tab2))
 console.log(toDoList.getChecklistTasks())
 
 /* 
