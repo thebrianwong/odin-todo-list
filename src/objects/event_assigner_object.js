@@ -5,7 +5,11 @@ const eventAssigner = (() => {
         const addTabButton = document.querySelector(".add-tab");
         addTabButton.addEventListener("click", eventBundler.addTab);
     };
-    return { addNewTabListener, };
+    const addEditTabListener = () => {
+        const tabInput = document.querySelector(".tab-name-input");
+        tabInput.addEventListener("keydown", eventBundler.editTab);
+    }
+    return { addNewTabListener, addEditTabListener };
 })();
 
 export { eventAssigner };

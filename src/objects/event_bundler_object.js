@@ -98,7 +98,13 @@ const eventBundler = (() => {
         const newTabIndex = objectControllerAddObject.addNewTabToTodoArray();
         DOMUpdateController.addNewTabToDOM(newTabIndex)
     }
-    return { addTab, };
+    const editTab = (event) => {
+        if (event.code === "Enter") {
+            objectControllerAddObject.editTabName(event);
+            DOMUpdateController.editTabNameDOM(event)
+        }
+    }
+    return { addTab, editTab, };
 })();
 
 export { eventBundler };

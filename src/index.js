@@ -183,6 +183,7 @@ const newTabNameInput = (event) => {
 }
 
 const tabInput = document.querySelector(".tab-name-input")
-tabInput.addEventListener("keydown", newTabNameInput)
+// tabInput.addEventListener("keydown", newTabNameInput)
 
 eventAssigner.addNewTabListener();
+eventAssigner.addEditTabListener();

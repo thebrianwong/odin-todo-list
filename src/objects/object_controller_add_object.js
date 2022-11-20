@@ -8,7 +8,12 @@ const objectControllerAddObject = (() => {
         const newTab = toDoTab("New Tab");
         return toDoList.addTask(newTab);
     }
-    return { addNewTabToTodoArray, };
+    const editTabName = (event) => {
+        const index = event.target.parentElement.dataset.tabIndex;
+        const targetTab = toDoList.getSpecificChecklistTask(index);
+        targetTab.setTaskTitle(event.target.value);
+    }
+    return { addNewTabToTodoArray, editTabName };
 })();
 
 export { objectControllerAddObject };

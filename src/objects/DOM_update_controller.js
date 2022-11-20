@@ -23,7 +23,16 @@ const DOMUpdateController = (() => {
             `;
         toDoTabSection.insertBefore(newTabNode, addTabButton);
     }
-    return { addNewTabToDOM, };
+    const editTabNameDOM = (event) => {
+        const tabElement = event.target.parentElement;
+        const tabButton = tabElement.querySelector("button");
+        const tabName = tabButton.querySelector("h2");
+        const index = tabElement.dataset.tabIndex;
+        const tabObject = toDoList.getSpecificChecklistTask(index);
+        const newTabName = tabObject.getTaskTitle();
+        tabName.textContent = newTabName;
+    }
+    return { addNewTabToDOM, editTabNameDOM};
 })();
 
 export { DOMUpdateController };
