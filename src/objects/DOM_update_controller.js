@@ -45,7 +45,8 @@ const DOMUpdateController = (() => {
         tabElement.removeChild(switchTab);
         switchTab = null
     }
-    const setInputElementValue = (tabElement, inputElement) => {
+    const setInputElementValue = (event, inputElement) => {
+        const tabElement = ensureCorrectTabElement(event);
         const index = tabElement.dataset.tabIndex;
         const tabObject = toDoList.getSpecificChecklistTask(index);
         const tabName = tabObject.getTaskTitle();
@@ -57,7 +58,7 @@ const DOMUpdateController = (() => {
         inputElement.classList.add("tab-name-input");
         inputElement.setAttribute("type", "text");
         tabElement.insertBefore(inputElement, tabElement.firstChild);
-        setInputElementValue(tabElement, inputElement);
+        return inputElement;
     }
     const checkForTabInputElement = (event) => {
         const tabElement = ensureCorrectTabElement(event);
@@ -67,7 +68,7 @@ const DOMUpdateController = (() => {
             return false;
         };
     };
-    return { addNewTabToDOM, editTabNameDOM, removeTabNameElement, insertTabInputElement, checkForTabInputElement, };
+    return { addNewTabToDOM, editTabNameDOM, removeTabNameElement, setInputElementValue, insertTabInputElement, checkForTabInputElement, };
 })();
 
 export { DOMUpdateController };

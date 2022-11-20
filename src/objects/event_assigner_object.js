@@ -10,13 +10,13 @@ const eventAssigner = (() => {
         const tabInput = document.querySelector(".tab-name-input");
         tabInput.addEventListener("keydown", eventBundler.editTab);
     }
-    const addTabInputElementListener = () => {
+    const addEditTabButtonListener = () => {
         const tabEditButtons = Array.from(document.querySelectorAll(".edit-tab"));
         for (const button of tabEditButtons) {
             button.addEventListener("click", eventBundler.insertTabInputElement);
         }
     }
-    return { addNewTabListener, addEditTabListener, addTabInputElementListener };
+    return { addNewTabListener, addEditTabListener, addEditTabButtonListener };
 })();
 
 export { eventAssigner };

@@ -173,7 +173,7 @@ console.log(toDoList.getSpecificChecklistTask(0).getTaskTitle())
 
 eventAssigner.addNewTabListener();
 eventAssigner.addEditTabListener();
-eventAssigner.addTabInputElementListener();
+eventAssigner.addEditTabButtonListener();
 
 // button (target button will always work)
 
