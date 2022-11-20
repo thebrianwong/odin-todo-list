@@ -170,20 +170,5 @@ console.log(toDoList.getSpecificChecklistTask(0))
 console.log(toDoList.getSpecificChecklistTask(0).getTaskTitle())
  */
 
-const newTabNameInput = (event) => {
-    if (event.code === "Enter") {
-        console.log("This works")
-        console.log(event)
-        console.log(event.srcElement)
-        console.log(event.srcElement.previousElementSibling)
-        console.log(event.srcElement.previousElementSibling.childNodes)
-        console.log(event.srcElement.previousElementSibling.childNodes[1])
-        event.srcElement.previousElementSibling.childNodes[1].textContent = event.srcElement.value
-    }
-}
-
-const tabInput = document.querySelector(".tab-name-input")
-// tabInput.addEventListener("keydown", newTabNameInput)
-
 eventAssigner.addNewTabListener();
 eventAssigner.addEditTabListener();
