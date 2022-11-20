@@ -95,8 +95,8 @@ const eventBundler = (() => {
     // ignore for now end
     
     const addTab = () => {
-        objectControllerAddObject.addNewTabToTodoArray();
-        DOMUpdateController.addNewTabToDOM()
+        const newTabIndex = objectControllerAddObject.addNewTabToTodoArray();
+        DOMUpdateController.addNewTabToDOM(newTabIndex)
     }
     return { addTab, };
 })();
