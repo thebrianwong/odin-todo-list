@@ -5,7 +5,8 @@ import { containsChecklistTaskBehaviorComponent } from "../components/contains_c
 import { objectControllerAddObject } from "./object_controller_add_object";
 import { DOMUpdateController } from "./DOM_update_controller";
 
-const DOMControllerAttachEvent = (() => {
+const eventBundler = (() => {
+    // ignore for now start
     const determineEvent = (node, indicator) => {
         switch (indicator) {
             case "add-tab":
@@ -91,7 +92,13 @@ const DOMControllerAttachEvent = (() => {
         const action = determineEvent(node, indicator);
         node.addEventListener("click", action);
     };
-    return { addKeyDownListener, addClickListener };
+    // ignore for now end
+    
+    const addTab = () => {
+        objectControllerAddObject.addNewTabToTodoArray();
+        DOMUpdateController.addNewTabToDOM()
+    }
+    return { addTab, };
 })();
 
-export { DOMControllerAttachEvent };
+export { eventBundler };

@@ -25,7 +25,8 @@ import { toDoList } from "./objects/todo_list_object";
 // testing for DOM controller objects
 import { DOMControllerAdd } from "./objects/DOM_controller_add_object";
 import { DOMControllerRemove } from "./objects/DOM_controller_remove_object";
-import { DOMControllerAttachEvent } from "./objects/DOM_controller_event_attacher";
+import { eventBundler } from "./objects/event_bundler_object";
+import { eventAssigner } from "./objects/event_assigner_object";
 
 let test = checklistTaskObject("ddtest");
 console.log(test)
@@ -169,25 +170,6 @@ console.log(toDoList.getSpecificChecklistTask(0))
 console.log(toDoList.getSpecificChecklistTask(0).getTaskTitle())
  */
 
-const addTabButton = document.querySelector(".add-tab");
-// addTabButton.addEventListener("click", () => {
-//     const toDoTabSection = document.querySelector(".to-do-tab-section");
-//     const newTab = document.createElement("div");
-//     newTab.classList.add("tab-title");
-//     newTab.innerHTML = `
-//     <button class="switch-tab">
-//         <h2>Homework</h2>
-//     </button>
-//     <button class="edit-tab">
-//         <img src="assets/pencil.png" alt="Edit tab name button">
-//     </button>
-//     <button class="remove-tab">
-//         <img src="assets/close.png" alt="Remove tab button">
-//     </button>
-//     `;
-//     toDoTabSection.insertBefore(newTab, addTabButton);
-// })
-
 const newTabNameInput = (event) => {
     if (event.code === "Enter") {
         console.log("This works")
@@ -203,4 +185,4 @@ const newTabNameInput = (event) => {
 const tabInput = document.querySelector(".tab-name-input")
 tabInput.addEventListener("keydown", newTabNameInput)
 
-DOMControllerAttachEvent.addClickListener(addTabButton, addTabButton.getAttribute("class"));
+eventAssigner.addNewTabListener();
