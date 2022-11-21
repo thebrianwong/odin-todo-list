@@ -1,4 +1,4 @@
-import { DOMUpdateController } from "./DOM_update_controller";
+import { DOMUpdateController } from "./DOM_controller_add_edit";
 import { eventBundler } from "./event_bundler_object";
 
 const eventAssigner = (() => {

@@ -2,7 +2,7 @@ import { toDoList } from "./todo_list_object";
 import { toDoTab } from "./todo_tab_object";
 import { helperFunctions } from "./helper_functions";
 
-const DOMUpdateController = (() => {
+const DOMControllerAddEdit = (() => {
     const addNewTabToDOM = (index) => {
         const addTabButton = document.querySelector(".add-tab");
         const toDoTabSection = document.querySelector(".to-do-tab-section");
@@ -56,4 +56,4 @@ const DOMUpdateController = (() => {
         insertTabInputElement, insertTabNameElement, };
 })();
 
-export { DOMUpdateController };
+export { DOMControllerAddEdit };

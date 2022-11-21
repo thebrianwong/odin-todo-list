@@ -1,6 +1,6 @@
 import { toDoList } from "./todo_list_object";
 import { toDoTab } from "./todo_tab_object";
-import { DOMUpdateController } from "./DOM_update_controller";
+import { DOMControllerAddEdit } from "./DOM_controller_add_edit";
 import { helperFunctions } from "./helper_functions";
 
 const objectControllerRemoveObject = (() => {
