@@ -57,6 +57,7 @@ const eventBundler = (() => {
         console.log(toDoList.getChecklistTasks())
         console.log(toDoList.getSpecificChecklistTask(0))
         console.log(toDoList.getSpecificChecklistTask(0).getSpecificChecklistTask(2).getTaskDescription())
+        DOMControllerAddEdit.addNewTaskToDOM(newTaskIndex);
     }
     return { addTab, insertTabInputElement, updateTab, removeTab, switchTab, newTask, };
 })();

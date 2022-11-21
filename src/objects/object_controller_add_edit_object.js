@@ -34,7 +34,7 @@ const objectControllerAddEditObject = (() => {
     const addNewTaskToTab = () => {
         const currentTabIndex = toDoList.getCurrentTab();
         const currentTab = toDoList.getSpecificChecklistTask(currentTabIndex);
-        const newTask = toDoTask("New Task", "Task Description", "Task Due Date", "Task Notes");
+        const newTask = toDoTask("New Task", "Task Due Date", "Task Description", "Task Notes");
         const newTaskIndex = currentTab.addTask(newTask);
         return newTaskIndex;
     };

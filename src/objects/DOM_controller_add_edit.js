@@ -70,8 +70,81 @@ const DOMControllerAddEdit = (() => {
         const firstTab = toDoTabSection.querySelector(`[data-tab-index='${firstTabIndex}']`)
         firstTab.setAttribute("id", "current-tab");
     }
+    const addNewTaskToDOM = (index) => {
+        const currentTabIndex = toDoList.getCurrentTab();
+        const currentTabObject = toDoList.getSpecificChecklistTask(currentTabIndex);
+        const newTaskObject = currentTabObject.getSpecificChecklistTask(index);
+        const toDoContent = document.querySelector(".to-do-content");
+        const newTaskNode = document.createElement("div");
+        newTaskNode.classList.add("to-do-task");
+        newTaskNode.dataset.taskIndex = index;
+        const newTaskTitle = newTaskObject.getTaskTitle();
+        const newTaskDescription = newTaskObject.getTaskDescription();
+        const newTaskDueDate = newTaskObject.getTaskDueDate();
+        const newTaskNotes = newTaskObject.getTaskNotes();
+        newTaskNode.innerHTML = `
+            <div class="to-do-task-overview">
+                <div class="to-do-task-overview-top">
+                    <h3 class="to-do-title">TITLE PLACEHOLDER</h3>
+                    <button class="to-do-pin">
+                        <img src="./assets/pin-outline.png" alt="Pin task button">
+                    </button>
+                    <button class="edit-title">
+                        <img src="assets/pencil.png" alt="Edit task title button">
+                    </button>
+                    <button class="to-do-remove-task">
+                        <img src="assets/close.png" alt="Remove task button">
+                    </button>
+                </div>
+                <div class="to-do-overview-middle">
+                    <div class="to-do-complete">
+                        <label for="to-do-complete-checkbox" class="to-do-complete-label">Completed:</label>
+                        <input type="checkbox" name="" class="to-do-complete-checkbox" id="to-do-complete-checkbox">
+                    </div>
+                    <button class="to-do-task-change-display">
+                        <img src="assets/chevron-down.png" alt="Change task display button">
+                    </button>
+                </div>
+                <div class="to-do-task-overview-bottom">
+                    <p class="to-do-due-date">DUE DATE PLACEHOLDER</p>
+                    <button class="edit-due-date">
+                        <img src="assets/pencil.png" alt="Edit task due date button">
+                    </button>
+                </div>
+            </div>
+            <div class="to-do-description-section">
+                <p class="to-do-description">DESCRIPTION PLACEHOLDER</p>
+                <button class="edit-description">
+                    <img src="assets/pencil.png" alt="Edit task description button">
+                </button>
+            </div>
+            <div class="to-do-notes-section">
+                <p class="to-do-notes">NOTES PLACEHOLDER</p>
+                <button class="edit-notes">
+                    <img src="assets/pencil.png" alt="Edit task notes button">
+                </button>
+            </div>
+            <form action="" class="task-checklist">
+                <div class="checklist-header">
+                    <legend class="checklist-label">Checklist</legend>
+                    <button class="add-checklist-task">
+                        <img src="assets/plus.png" alt="Add checklist task button">
+                    </button>
+                </div>
+            </form>
+        `;
+        const titleDOM = newTaskNode.querySelector(".to-do-title");
+        titleDOM.textContent = newTaskTitle;
+        const dueDateDOM = newTaskNode.querySelector(".to-do-due-date");
+        dueDateDOM.textContent = newTaskDueDate;
+        const descriptionDOM = newTaskNode.querySelector(".to-do-description");
+        descriptionDOM.textContent = newTaskDescription;
+        const notesDOM = newTaskNode.querySelector(".to-do-notes");
+        notesDOM.textContent = newTaskNotes;
+        toDoContent.appendChild(newTaskNode);
+    }
     return { addNewTabToDOM, setInputElementValue,
-        insertTabInputElement, insertTabNameElement, setDefaultCurrentTabDOM, setCurrentTabDOM, setFirstTabToCurrentTab, };
+        insertTabInputElement, insertTabNameElement, setDefaultCurrentTabDOM, setCurrentTabDOM, setFirstTabToCurrentTab, addNewTaskToDOM, };
 })();
 
 export { DOMControllerAddEdit };
