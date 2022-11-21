@@ -35,9 +35,13 @@ const eventAssigner = (() => {
             button.addEventListener("click", eventBundler.switchTab);
         };
     }
+    const addSwitchTabListenerForNewTabs = (tabElement) => {
+        const tabSwitchButton = tabElement.querySelector(".switch-tab");
+        tabSwitchButton.addEventListener("click", eventBundler.switchTab)
+    }
     return { addNewTabListener, addEditTabButtonListener, addTabInputListener,
         addEditTabButtonListenerForNewTabs, addRemoveTabButtonListenerForInitialTabs,
-        addRemoveTabButtonListenerForNewTabs, addSwitchTabListenerForInitialTabs, };
+        addRemoveTabButtonListenerForNewTabs, addSwitchTabListenerForInitialTabs, addSwitchTabListenerForNewTabs, };
 })();
 
 export { eventAssigner };

@@ -15,6 +15,7 @@ const eventBundler = (() => {
         const newTabNode = DOMControllerAddEdit.addNewTabToDOM(newTabIndex);
         eventAssigner.addEditTabButtonListenerForNewTabs(newTabNode);
         eventAssigner.addRemoveTabButtonListenerForNewTabs(newTabNode);
+        eventAssigner.addSwitchTabListenerForNewTabs(newTabNode);
     }
     const insertTabInputElement = (event) => {
         if (!helperFunctions.checkForTabInputElement(event)) {
