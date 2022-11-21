@@ -192,6 +192,6 @@ test2.addEventListener("click", () => {
 console.log(toDoList)
 console.log(toDoList.getCurrentTab())
 
-DOMControllerAddEdit.setDefaultCurrentTabDOM(1)
+DOMControllerAddEdit.setDefaultCurrentTabDOM(0)
 
 eventAssigner.addSwitchTabListenerForInitialTabs()
