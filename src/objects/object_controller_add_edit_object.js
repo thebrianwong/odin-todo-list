@@ -21,7 +21,6 @@ const objectControllerAddEditObject = (() => {
     }
     const setFirstTabToCurrentTab = () => {
         const tabArray = toDoList.getChecklistTasks();
-        console.log(tabArray)
         let firstTab = undefined;
         for (const tab in tabArray) {
             if (tabArray[tab] !== undefined) {

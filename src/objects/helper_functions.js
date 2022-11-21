@@ -25,7 +25,6 @@ const helperFunctions = (() => {
     const checkIfOnlyOneTab = () => {
         const toDoTabSection = document.querySelector(".to-do-tab-section");
         const toDoTabs = Array.from(toDoTabSection.querySelectorAll(".tab-title"));
-        console.log(toDoTabs.length)
         if (toDoTabs.length === 1) {
             return true;
         } else {
