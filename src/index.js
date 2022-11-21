@@ -25,6 +25,7 @@ import { toDoList } from "./objects/todo_list_object";
 // testing for DOM controller objects
 import { eventBundler } from "./objects/event_bundler_object";
 import { eventAssigner } from "./objects/event_assigner_object";
+import { DOMControllerAddEdit } from "./objects/DOM_controller_add_edit";
 
 let test = checklistTaskObject("ddtest");
 console.log(test)
@@ -190,3 +191,5 @@ test2.addEventListener("click", () => {
 
 console.log(toDoList)
 console.log(toDoList.getCurrentTab())
+
+DOMControllerAddEdit.setCurrentTabDOM(0)

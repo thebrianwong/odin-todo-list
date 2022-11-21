@@ -53,8 +53,13 @@ const DOMControllerAddEdit = (() => {
         tabButton.appendChild(tabButtonName);
         tabElement.insertBefore(tabButton, tabElement.firstChild);
     };
+    const setCurrentTabDOM = (index) => {
+        const toDoTabSection = document.querySelector(".to-do-tab-section");
+        const currentTab = toDoTabSection.querySelector(`[data-tab-index='${index}']`);
+        currentTab.setAttribute("id", "current-tab");
+    };
     return { addNewTabToDOM, setInputElementValue,
-        insertTabInputElement, insertTabNameElement, };
+        insertTabInputElement, insertTabNameElement, setCurrentTabDOM, };
 })();
 
 export { DOMControllerAddEdit };
