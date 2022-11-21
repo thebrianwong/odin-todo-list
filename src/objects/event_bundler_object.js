@@ -50,14 +50,8 @@ const eventBundler = (() => {
         DOMControllerAddEdit.setCurrentTabDOM(event);
     }
     const newTask = () => {
-        console.log(toDoList.getChecklistTasks())
-        console.log(toDoList.getSpecificChecklistTask(0).getTaskTitle())
-        console.log(toDoList.getSpecificChecklistTask(0).getChecklistTasks())
         const newTaskIndex = objectControllerAddEditObject.addNewTaskToTab();
-        console.log(toDoList.getChecklistTasks())
-        console.log(toDoList.getSpecificChecklistTask(0))
-        console.log(toDoList.getSpecificChecklistTask(0).getSpecificChecklistTask(2).getTaskDescription())
-        DOMControllerAddEdit.addNewTaskToDOM(newTaskIndex);
+        const newTaskNode = DOMControllerAddEdit.addNewTaskToDOM(newTaskIndex);
     }
     return { addTab, insertTabInputElement, updateTab, removeTab, switchTab, newTask, };
 })();

@@ -144,6 +144,7 @@ const DOMControllerAddEdit = (() => {
         const notesDOM = newTaskNode.querySelector(".to-do-notes");
         notesDOM.textContent = newTaskNotes;
         toDoContent.appendChild(newTaskNode);
+        return newTaskNode;
     }
     return { addNewTabToDOM, setInputElementValue,
         insertTabInputElement, insertTabNameElement, setDefaultCurrentTabDOM, setCurrentTabDOM, setFirstTabToCurrentTab, addNewTaskToDOM, };
