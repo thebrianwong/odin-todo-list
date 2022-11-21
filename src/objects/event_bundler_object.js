@@ -5,6 +5,7 @@ import { containsChecklistTaskBehaviorComponent } from "../components/contains_c
 import { objectControllerAddObject } from "./object_controller_add_object";
 import { DOMUpdateController } from "./DOM_update_controller";
 import { eventAssigner } from "./event_assigner_object";
+import { objectControllerRemoveObject } from "./object_controller_remove_object";
 
 const eventBundler = (() => {
     // ignore for now start
@@ -120,7 +121,10 @@ const eventBundler = (() => {
             DOMUpdateController.removeTabInputElement(event);
         };
     };
-    return { addTab, insertTabInputElement, updateTab, };
+    const removeTab = (event) => {
+        objectControllerRemoveObject.removeTabFromTodoArray(event);
+    }
+    return { addTab, insertTabInputElement, updateTab, removeTab, };
 })();
 
 export { eventBundler };

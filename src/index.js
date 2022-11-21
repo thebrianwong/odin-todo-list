@@ -174,6 +174,7 @@ console.log(toDoList.getSpecificChecklistTask(0).getTaskTitle())
 eventAssigner.addNewTabListener();
 // eventAssigner.addEditTabListener();
 eventAssigner.addEditTabButtonListener();
+eventAssigner.addRemoveTabButtonListenerForInitialTabs();
 
 // button (target button will always work)
 

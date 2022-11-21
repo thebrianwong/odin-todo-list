@@ -23,7 +23,13 @@ const eventAssigner = (() => {
         const tabEditButton = tabElement.querySelector(".edit-tab");
         tabEditButton.addEventListener("click", eventBundler.insertTabInputElement);
     };
-    return { addNewTabListener, addEditTabButtonListener, addTabInputListener, addEditTabButtonListenerForNewTabs, };
+    const addRemoveTabButtonListenerForInitialTabs = () => {
+        const tabRemoveButtons = Array.from(document.querySelectorAll(".remove-tab"));
+        for (const button of tabRemoveButtons) {
+            button.addEventListener("click", eventBundler.removeTab);
+        };
+    };
+    return { addNewTabListener, addEditTabButtonListener, addTabInputListener, addEditTabButtonListenerForNewTabs, addRemoveTabButtonListenerForInitialTabs, };
 })();
 
 export { eventAssigner };
