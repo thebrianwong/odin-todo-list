@@ -23,8 +23,6 @@ import { toDoTab } from "./objects/todo_tab_object";
 import { toDoList } from "./objects/todo_list_object";
 
 // testing for DOM controller objects
-import { DOMControllerAdd } from "./objects/DOM_controller_add_object";
-import { DOMControllerRemove } from "./objects/DOM_controller_remove_object";
 import { eventBundler } from "./objects/event_bundler_object";
 import { eventAssigner } from "./objects/event_assigner_object";
 
@@ -83,14 +81,14 @@ console.log(importantTask.getTaskNotes())
 console.log(importantTask.getPinnedState())
 console.log(importantTask.getCompletedState())
 
-console.log(DOMControllerAdd.addChecklistTask(importantTask, test))
+importantTask.addTask(test)
 console.log(importantTask.getChecklistTasks())
 console.log(importantTask.getSpecificChecklistTask(0))
 console.log(importantTask.getSpecificChecklistTask(0).getTaskDescription())
 
 let tab1 = toDoTab("kitchen stuff")
 console.log(tab1)
-console.log(DOMControllerAdd.addToDoTask(tab1, importantTask))
+tab1.addTask(importantTask)
 console.log(tab1)
 console.log(tab1.getChecklistTasks())
 console.log(tab1.getSpecificChecklistTask(0))
@@ -98,11 +96,11 @@ console.log(tab1.getSpecificChecklistTask(0).getTaskTitle())
 
 let anotherImportantTask = toDoTask("Clean pot", "part of chores plan", "this afternoon", "make sure to use soap");
 console.log(tab1)
-console.log(DOMControllerAdd.addToDoTask(tab1, anotherImportantTask))
+tab1.addTask(anotherImportantTask)
 console.log(tab1.getSpecificChecklistTask(1))
 console.log(tab1.getSpecificChecklistTask(1).getTaskTitle())
 
-console.log(DOMControllerAdd.addTab(tab1))
+toDoList.addTask(tab1)
 console.log(toDoList.getChecklistTasks())
 console.log(toDoList.getSpecificChecklistTask(0))
 console.log(toDoList.getSpecificChecklistTask(0).getTaskTitle())
@@ -111,7 +109,7 @@ console.log(toDoList.getSpecificChecklistTask(0).getTaskTitle())
 console.log(toDoList.getChecklistTasks())
 
 let tab2 = toDoTab("hee hee")
-console.log(DOMControllerAdd.addTab(tab2))
+toDoList.addTask(tab2)
 console.log(toDoList.getChecklistTasks())
 
 /* 
