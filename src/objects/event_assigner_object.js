@@ -6,10 +6,10 @@ const eventAssigner = (() => {
         const addTabButton = document.querySelector(".add-tab");
         addTabButton.addEventListener("click", eventBundler.addTab);
     };
-    const addEditTabListener = () => {
-        const tabInput = document.querySelector(".tab-name-input");
-        tabInput.addEventListener("keydown", eventBundler.editTab);
-    }
+    // const addEditTabListener = () => {
+    //     const tabInput = document.querySelector(".tab-name-input");
+    //     tabInput.addEventListener("keydown", eventBundler.editTab);
+    // }
     const addEditTabButtonListener = () => {
         const tabEditButtons = Array.from(document.querySelectorAll(".edit-tab"));
         for (const button of tabEditButtons) {
@@ -19,7 +19,7 @@ const eventAssigner = (() => {
     const addTabInputListener = (inputElement) => {
         inputElement.addEventListener("keydown", eventBundler.updateTab)
     }
-    return { addNewTabListener, addEditTabListener, addEditTabButtonListener, addTabInputListener, };
+    return { addNewTabListener, addEditTabButtonListener, addTabInputListener, };
 })();
 
 export { eventAssigner };

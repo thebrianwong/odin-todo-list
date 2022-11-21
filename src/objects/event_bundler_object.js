@@ -98,12 +98,12 @@ const eventBundler = (() => {
         const newTabIndex = objectControllerAddObject.addNewTabToTodoArray();
         DOMUpdateController.addNewTabToDOM(newTabIndex)
     }
-    const editTab = (event) => {
-        if (event.code === "Enter") {
-            objectControllerAddObject.editTabName(event);
-            DOMUpdateController.editTabNameDOM(event)
-        }
-    }
+    // const editTab = (event) => {
+    //     if (event.code === "Enter") {
+    //         objectControllerAddObject.editTabName(event);
+    //         DOMUpdateController.editTabNameDOM(event)
+    //     }
+    // }
     const insertTabInputElement = (event) => {
         if (!DOMUpdateController.checkForTabInputElement(event)) {
             const inputElement = DOMUpdateController.insertTabInputElement(event);
@@ -119,7 +119,7 @@ const eventBundler = (() => {
             DOMUpdateController.removeTabInputElement(event);
         };
     };
-    return { addTab, editTab, insertTabInputElement, updateTab, };
+    return { addTab, insertTabInputElement, updateTab, };
 })();
 
 export { eventBundler };

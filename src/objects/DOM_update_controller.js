@@ -30,15 +30,15 @@ const DOMUpdateController = (() => {
             `;
         toDoTabSection.insertBefore(newTabNode, addTabButton);
     }
-    const editTabNameDOM = (event) => {
-        const tabElement = event.target.parentElement;
-        const tabButton = tabElement.querySelector("button");
-        const tabName = tabButton.querySelector("h2");
-        const index = tabElement.dataset.tabIndex;
-        const tabObject = toDoList.getSpecificChecklistTask(index);
-        const newTabName = tabObject.getTaskTitle();
-        tabName.textContent = newTabName;
-    }
+    // const editTabNameDOM = (event) => {
+    //     const tabElement = event.target.parentElement;
+    //     const tabButton = tabElement.querySelector("button");
+    //     const tabName = tabButton.querySelector("h2");
+    //     const index = tabElement.dataset.tabIndex;
+    //     const tabObject = toDoList.getSpecificChecklistTask(index);
+    //     const newTabName = tabObject.getTaskTitle();
+    //     tabName.textContent = newTabName;
+    // }
     const removeTabNameElement = (event) => {
         const tabElement = ensureCorrectTabElement(event);
         let switchTab = tabElement.querySelector(".switch-tab")
@@ -86,7 +86,7 @@ const DOMUpdateController = (() => {
         tabButton.appendChild(tabButtonName);
         tabElement.insertBefore(tabButton, tabElement.firstChild);
     };
-    return { addNewTabToDOM, editTabNameDOM, removeTabNameElement, setInputElementValue, insertTabInputElement, checkForTabInputElement, removeTabInputElement, insertTabNameElement, };
+    return { addNewTabToDOM, removeTabNameElement, setInputElementValue, insertTabInputElement, checkForTabInputElement, removeTabInputElement, insertTabNameElement, };
 })();
 
 export { DOMUpdateController };
