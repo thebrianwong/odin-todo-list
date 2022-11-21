@@ -81,7 +81,13 @@ const DOMUpdateController = (() => {
         tabButton.appendChild(tabButtonName);
         tabElement.insertBefore(tabButton, tabElement.firstChild);
     };
-    return { addNewTabToDOM, removeTabNameElement, setInputElementValue, insertTabInputElement, checkForTabInputElement, removeTabInputElement, insertTabNameElement, };
+    const removeTabElementFromDOM = (event) => {
+        const tabElement = helperFunctions.ensureCorrectTabElement(event);
+        const toDoTabSection = document.querySelector(".to-do-tab-section");
+        toDoTabSection.removeChild(tabElement);
+        tabElement = null;
+    };
+    return { addNewTabToDOM, removeTabNameElement, setInputElementValue, insertTabInputElement, checkForTabInputElement, removeTabInputElement, insertTabNameElement, removeTabElementFromDOM, };
 })();
 
 export { DOMUpdateController };

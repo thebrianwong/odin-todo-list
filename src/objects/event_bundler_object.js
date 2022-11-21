@@ -123,7 +123,8 @@ const eventBundler = (() => {
     };
     const removeTab = (event) => {
         objectControllerRemoveObject.removeTabFromTodoArray(event);
-    }
+        DOMUpdateController.removeTabElementFromDOM(event);
+    };
     return { addTab, insertTabInputElement, updateTab, removeTab, };
 })();
 
