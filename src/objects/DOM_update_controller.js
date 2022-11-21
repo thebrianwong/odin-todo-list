@@ -73,8 +73,20 @@ const DOMUpdateController = (() => {
         let inputElement = tabElement.querySelector("input");
         tabElement.removeChild(inputElement);
         inputElement = null;
-    }
-    return { addNewTabToDOM, editTabNameDOM, removeTabNameElement, setInputElementValue, insertTabInputElement, checkForTabInputElement, removeTabInputElement, };
+    };
+    const insertTabNameElement = (event) => {
+        const tabElement = ensureCorrectTabElement(event);
+        const index = tabElement.dataset.tabIndex;
+        const tabObject = toDoList.getSpecificChecklistTask(index);
+        const tabName = tabObject.getTaskTitle();
+        const tabButton = document.createElement("button");
+        tabButton.classList.add("switch-tab");
+        const tabButtonName = document.createElement("h2");
+        tabButtonName.textContent = tabName;
+        tabButton.appendChild(tabButtonName);
+        tabElement.insertBefore(tabButton, tabElement.firstChild);
+    };
+    return { addNewTabToDOM, editTabNameDOM, removeTabNameElement, setInputElementValue, insertTabInputElement, checkForTabInputElement, removeTabInputElement, insertTabNameElement, };
 })();
 
 export { DOMUpdateController };

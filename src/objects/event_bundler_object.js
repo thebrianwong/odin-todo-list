@@ -106,8 +106,8 @@ const eventBundler = (() => {
     }
     const insertTabInputElement = (event) => {
         if (!DOMUpdateController.checkForTabInputElement(event)) {
-            DOMUpdateController.removeTabNameElement(event);
             const inputElement = DOMUpdateController.insertTabInputElement(event);
+            DOMUpdateController.removeTabNameElement(event);
             DOMUpdateController.setInputElementValue(event, inputElement);
             eventAssigner.addTabInputListener(inputElement);
         };
@@ -115,6 +115,7 @@ const eventBundler = (() => {
     const updateTab = (event) => {
         if (event.code === 'Enter') {
             objectControllerAddObject.editTabName(event);
+            DOMUpdateController.insertTabNameElement(event);
             DOMUpdateController.removeTabInputElement(event);
         };
     };
