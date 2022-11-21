@@ -6,6 +6,7 @@ import { objectControllerAddObject } from "./object_controller_add_object";
 import { DOMUpdateController } from "./DOM_update_controller";
 import { eventAssigner } from "./event_assigner_object";
 import { objectControllerRemoveObject } from "./object_controller_remove_object";
+import { helperFunctions } from "./helper_functions";
 
 const eventBundler = (() => {
     // ignore for now start
@@ -108,7 +109,7 @@ const eventBundler = (() => {
     //     }
     // }
     const insertTabInputElement = (event) => {
-        if (!DOMUpdateController.checkForTabInputElement(event)) {
+        if (!helperFunctions.checkForTabInputElement(event)) {
             const inputElement = DOMUpdateController.insertTabInputElement(event);
             DOMUpdateController.removeTabNameElement(event);
             DOMUpdateController.setInputElementValue(event, inputElement);

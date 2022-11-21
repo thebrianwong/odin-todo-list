@@ -6,7 +6,15 @@ const helperFunctions = (() => {
         };
         return tabElement;
     };
-    return { ensureCorrectTabElement, };
+    const checkForTabInputElement = (event) => {
+        const tabElement = ensureCorrectTabElement(event);
+        if (tabElement.firstElementChild.tagName === "INPUT") {
+            return true;
+        } else {
+            return false;
+        };
+    };
+    return { ensureCorrectTabElement, checkForTabInputElement, };
 })();
 
 export { helperFunctions };

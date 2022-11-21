@@ -55,14 +55,6 @@ const DOMUpdateController = (() => {
         tabElement.insertBefore(inputElement, tabElement.firstChild);
         return inputElement;
     }
-    const checkForTabInputElement = (event) => {
-        const tabElement = helperFunctions.ensureCorrectTabElement(event);
-        if (tabElement.firstElementChild.tagName === "INPUT") {
-            return true;
-        } else {
-            return false;
-        };
-    };
     const removeTabInputElement = (event) => {
         const tabElement = helperFunctions.ensureCorrectTabElement(event);
         let inputElement = tabElement.querySelector("input");
@@ -87,7 +79,7 @@ const DOMUpdateController = (() => {
         toDoTabSection.removeChild(tabElement);
         tabElement = null;
     };
-    return { addNewTabToDOM, removeTabNameElement, setInputElementValue, insertTabInputElement, checkForTabInputElement, removeTabInputElement, insertTabNameElement, removeTabElementFromDOM, };
+    return { addNewTabToDOM, removeTabNameElement, setInputElementValue, insertTabInputElement, removeTabInputElement, insertTabNameElement, removeTabElementFromDOM, };
 })();
 
 export { DOMUpdateController };
