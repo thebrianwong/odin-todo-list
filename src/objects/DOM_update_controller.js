@@ -68,7 +68,13 @@ const DOMUpdateController = (() => {
             return false;
         };
     };
-    return { addNewTabToDOM, editTabNameDOM, removeTabNameElement, setInputElementValue, insertTabInputElement, checkForTabInputElement, };
+    const removeTabInputElement = (event) => {
+        const tabElement = ensureCorrectTabElement(event);
+        let inputElement = tabElement.querySelector("input");
+        tabElement.removeChild(inputElement);
+        inputElement = null;
+    }
+    return { addNewTabToDOM, editTabNameDOM, removeTabNameElement, setInputElementValue, insertTabInputElement, checkForTabInputElement, removeTabInputElement, };
 })();
 
 export { DOMUpdateController };
