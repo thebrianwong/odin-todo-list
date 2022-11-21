@@ -1,14 +1,8 @@
 import { toDoList } from "./todo_list_object";
 import { toDoTab } from "./todo_tab_object";
+import { helperFunctions } from "./helper_functions";
 
 const DOMUpdateController = (() => {
-    const ensureCorrectTabElement = (event) => {
-        let tabElement = event.target.parentElement;
-        while (tabElement.getAttribute("class") !== "tab-title") {
-            tabElement = tabElement.parentElement;
-        };
-        return tabElement;
-    }
     const addNewTabToDOM = (index) => {
         const addTabButton = document.querySelector(".add-tab");
         const toDoTabSection = document.querySelector(".to-do-tab-section");
@@ -41,20 +35,20 @@ const DOMUpdateController = (() => {
     //     tabName.textContent = newTabName;
     // }
     const removeTabNameElement = (event) => {
-        const tabElement = ensureCorrectTabElement(event);
+        const tabElement = helperFunctions.ensureCorrectTabElement(event);
         let switchTab = tabElement.querySelector(".switch-tab")
         tabElement.removeChild(switchTab);
         switchTab = null
     }
     const setInputElementValue = (event, inputElement) => {
-        const tabElement = ensureCorrectTabElement(event);
+        const tabElement = helperFunctions.ensureCorrectTabElement(event);
         const index = tabElement.dataset.tabIndex;
         const tabObject = toDoList.getSpecificChecklistTask(index);
         const tabName = tabObject.getTaskTitle();
         inputElement.value = tabName;
     }
     const insertTabInputElement = (event) => {
-        const tabElement = ensureCorrectTabElement(event);
+        const tabElement = helperFunctions.ensureCorrectTabElement(event);
         const inputElement = document.createElement("input");
         inputElement.classList.add("tab-name-input");
         inputElement.setAttribute("type", "text");
@@ -62,7 +56,7 @@ const DOMUpdateController = (() => {
         return inputElement;
     }
     const checkForTabInputElement = (event) => {
-        const tabElement = ensureCorrectTabElement(event);
+        const tabElement = helperFunctions.ensureCorrectTabElement(event);
         if (tabElement.firstElementChild.tagName === "INPUT") {
             return true;
         } else {
@@ -70,13 +64,13 @@ const DOMUpdateController = (() => {
         };
     };
     const removeTabInputElement = (event) => {
-        const tabElement = ensureCorrectTabElement(event);
+        const tabElement = helperFunctions.ensureCorrectTabElement(event);
         let inputElement = tabElement.querySelector("input");
         tabElement.removeChild(inputElement);
         inputElement = null;
     };
     const insertTabNameElement = (event) => {
-        const tabElement = ensureCorrectTabElement(event);
+        const tabElement = helperFunctions.ensureCorrectTabElement(event);
         const index = tabElement.dataset.tabIndex;
         const tabObject = toDoList.getSpecificChecklistTask(index);
         const tabName = tabObject.getTaskTitle();
