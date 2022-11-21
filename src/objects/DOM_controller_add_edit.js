@@ -13,7 +13,7 @@ const DOMControllerAddEdit = (() => {
         newTabNode.dataset.tabIndex = index;
         newTabNode.innerHTML = `
             <button class="switch-tab">
-                <h2>${newTabObjectTitle}</h2>
+                <h2 class="tab-name">TAB NAME PLACEHOLDER</h2>
             </button>
             <button class="edit-tab">
                 <img src="assets/pencil.png" alt="Edit tab name button">
@@ -21,7 +21,9 @@ const DOMControllerAddEdit = (() => {
             <button class="remove-tab">
                 <img src="assets/close.png" alt="Remove tab button">
             </button>
-            `;
+        `;
+        const tabNameDOM = newTabNode.querySelector(".tab-name");
+        tabNameDOM.textContent = newTabObjectTitle;
         toDoTabSection.insertBefore(newTabNode, addTabButton);
         return newTabNode;
     }
