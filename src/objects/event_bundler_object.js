@@ -7,6 +7,7 @@ import { DOMUpdateController } from "./DOM_update_controller";
 import { eventAssigner } from "./event_assigner_object";
 import { objectControllerRemoveObject } from "./object_controller_remove_object";
 import { helperFunctions } from "./helper_functions";
+import { DOMControllerRemove } from "./DOM_controller_remove";
 
 const eventBundler = (() => {
     const addTab = () => {
@@ -18,7 +19,7 @@ const eventBundler = (() => {
     const insertTabInputElement = (event) => {
         if (!helperFunctions.checkForTabInputElement(event)) {
             const inputElement = DOMUpdateController.insertTabInputElement(event);
-            DOMUpdateController.removeTabNameElement(event);
+            DOMControllerRemove.removeTabNameElement(event);
             DOMUpdateController.setInputElementValue(event, inputElement);
             eventAssigner.addTabInputListener(inputElement);
         };
@@ -27,12 +28,12 @@ const eventBundler = (() => {
         if (event.code === 'Enter') {
             objectControllerAddEditObject.editTabName(event);
             DOMUpdateController.insertTabNameElement(event);
-            DOMUpdateController.removeTabInputElement(event);
+            DOMControllerRemove.removeTabInputElement(event);
         };
     };
     const removeTab = (event) => {
         objectControllerRemoveObject.removeTabFromTodoArray(event);
-        DOMUpdateController.removeTabElementFromDOM(event);
+        DOMControllerRemove.removeTabElementFromDOM(event);
     };
     return { addTab, insertTabInputElement, updateTab, removeTab, };
 })();
