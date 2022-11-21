@@ -187,3 +187,6 @@ test1.addEventListener("click", () => {
 test2.addEventListener("click", () => {
     console.log("test2")
 }) */
+
+console.log(toDoList)
+console.log(toDoList.getCurrentTab())

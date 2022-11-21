@@ -2,9 +2,19 @@
 import { containsChecklistTaskBehaviorComponent } from "../components/contains_checklist_task_component";
 
 const toDoList = (() => {
-    let object = {};
+    let currentTab = 0;
+    const getCurrentTab = () => {
+        return currentTab;
+    };
+    const setCurrentTab = (newCurrentTab) => {
+        currentTab = newCurrentTab;
+    };
+    let object = {
+        getCurrentTab,
+        setCurrentTab
+    };
     Object.assign(object,
-        containsChecklistTaskBehaviorComponent(object)
+        containsChecklistTaskBehaviorComponent(object),
     );
     return object;
 })();
