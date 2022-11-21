@@ -25,15 +25,6 @@ const DOMUpdateController = (() => {
         toDoTabSection.insertBefore(newTabNode, addTabButton);
         return newTabNode;
     }
-    // const editTabNameDOM = (event) => {
-    //     const tabElement = event.target.parentElement;
-    //     const tabButton = tabElement.querySelector("button");
-    //     const tabName = tabButton.querySelector("h2");
-    //     const index = tabElement.dataset.tabIndex;
-    //     const tabObject = toDoList.getSpecificChecklistTask(index);
-    //     const newTabName = tabObject.getTaskTitle();
-    //     tabName.textContent = newTabName;
-    // }
     const removeTabNameElement = (event) => {
         const tabElement = helperFunctions.ensureCorrectTabElement(event);
         let switchTab = tabElement.querySelector(".switch-tab")
@@ -79,7 +70,9 @@ const DOMUpdateController = (() => {
         toDoTabSection.removeChild(tabElement);
         tabElement = null;
     };
-    return { addNewTabToDOM, removeTabNameElement, setInputElementValue, insertTabInputElement, removeTabInputElement, insertTabNameElement, removeTabElementFromDOM, };
+    return { addNewTabToDOM, removeTabNameElement, setInputElementValue,
+        insertTabInputElement, removeTabInputElement, insertTabNameElement,
+        removeTabElementFromDOM, };
 })();
 
 export { DOMUpdateController };
