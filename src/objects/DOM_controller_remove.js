@@ -21,7 +21,11 @@ const DOMControllerRemove = (() => {
         toDoTabSection.removeChild(tabElement);
         tabElement = null;
     };
-    return { removeTabNameElement, removeTabInputElement, removeTabElementFromDOM, }
+    const resetCurrentTabStatus = () => {
+        const currentTab = document.querySelector("#current-tab");
+        currentTab.removeAttribute("id");
+    }
+    return { removeTabNameElement, removeTabInputElement, removeTabElementFromDOM, resetCurrentTabStatus}
 })();
 
 export { DOMControllerRemove };

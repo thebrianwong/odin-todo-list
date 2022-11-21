@@ -35,7 +35,12 @@ const eventBundler = (() => {
         objectControllerRemoveObject.removeTabFromTodoArray(event);
         DOMControllerRemove.removeTabElementFromDOM(event);
     };
-    return { addTab, insertTabInputElement, updateTab, removeTab, };
+    const switchTab = (event) => {
+        objectControllerAddEditObject.updateCurrentTab(event);
+        DOMControllerRemove.resetCurrentTabStatus();
+        DOMControllerAddEdit.setCurrentTabDOM(event);
+    }
+    return { addTab, insertTabInputElement, updateTab, removeTab, switchTab, };
 })();
 
 export { eventBundler };
