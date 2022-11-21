@@ -22,7 +22,17 @@ const helperFunctions = (() => {
             return false;
         };
     };
-    return { ensureCorrectTabElement, checkForTabInputElement, checkIfWasCurrentTab,  };
+    const checkIfOnlyOneTab = () => {
+        const toDoTabSection = document.querySelector(".to-do-tab-section");
+        const toDoTabs = Array.from(toDoTabSection.querySelectorAll(".tab-title"));
+        console.log(toDoTabs.length)
+        if (toDoTabs.length === 1) {
+            return true;
+        } else {
+            return false;
+        };
+    };
+    return { ensureCorrectTabElement, checkForTabInputElement, checkIfWasCurrentTab, checkIfOnlyOneTab, };
 })();
 
 export { helperFunctions };

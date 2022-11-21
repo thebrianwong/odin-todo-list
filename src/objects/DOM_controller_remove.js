@@ -23,7 +23,11 @@ const DOMControllerRemove = (() => {
     };
     const resetCurrentTabStatus = () => {
         const currentTab = document.querySelector("#current-tab");
-        currentTab.removeAttribute("id");
+        if (currentTab !== null) {
+            currentTab.removeAttribute("id");
+        } else {
+            return;
+        };
     }
     return { removeTabNameElement, removeTabInputElement, removeTabElementFromDOM, resetCurrentTabStatus}
 })();

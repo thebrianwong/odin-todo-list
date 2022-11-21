@@ -16,6 +16,10 @@ const eventBundler = (() => {
         eventAssigner.addEditTabButtonListenerForNewTabs(newTabNode);
         eventAssigner.addRemoveTabButtonListenerForNewTabs(newTabNode);
         eventAssigner.addSwitchTabListenerForNewTabs(newTabNode);
+        if (helperFunctions.checkIfOnlyOneTab()) {
+            const firstTabIndex = objectControllerAddEditObject.setFirstTabToCurrentTab();
+            DOMControllerAddEdit.setFirstTabToCurrentTab(firstTabIndex)
+        };
     }
     const insertTabInputElement = (event) => {
         if (!helperFunctions.checkForTabInputElement(event)) {
