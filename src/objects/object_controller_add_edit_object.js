@@ -3,6 +3,7 @@ import { toDoTab } from "./todo_tab_object";
 import { titleBehaviorComponent } from "../components/title_component";
 import { containsChecklistTaskBehaviorComponent } from "../components/contains_checklist_task_component";
 import { helperFunctions } from "./helper_functions";
+import { toDoTask } from "./todo_task_object";
 
 const objectControllerAddEditObject = (() => {
     const addNewTabToTodoArray = () => {
@@ -30,7 +31,14 @@ const objectControllerAddEditObject = (() => {
             }
         }
     };
-    return { addNewTabToTodoArray, editTabName, updateCurrentTab, setFirstTabToCurrentTab };
+    const addNewTaskToTab = () => {
+        const currentTabIndex = toDoList.getCurrentTab();
+        const currentTab = toDoList.getSpecificChecklistTask(currentTabIndex);
+        const newTask = toDoTask("New Task", "Task Description", "Task Due Date", "Task Notes");
+        const newTaskIndex = currentTab.addTask(newTask);
+        return newTaskIndex;
+    };
+    return { addNewTabToTodoArray, editTabName, updateCurrentTab, setFirstTabToCurrentTab, addNewTaskToTab };
 })();
 
 export { objectControllerAddEditObject };

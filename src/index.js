@@ -195,3 +195,5 @@ console.log(toDoList.getCurrentTab())
 DOMControllerAddEdit.setDefaultCurrentTabDOM(0)
 
 eventAssigner.addSwitchTabListenerForInitialTabs()
+
+eventAssigner.addNewTaskListener();
