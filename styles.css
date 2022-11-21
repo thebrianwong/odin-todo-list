@@ -91,7 +91,7 @@ button:focus-visible {
     padding: 0;
 }
 
-#current-tab h2 {
+#current-tab .tab-name {
     color: white;
     text-shadow: 0 0 10px black;
 }
