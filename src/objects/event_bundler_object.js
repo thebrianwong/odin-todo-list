@@ -96,7 +96,8 @@ const eventBundler = (() => {
     // ignore for now end
     const addTab = () => {
         const newTabIndex = objectControllerAddObject.addNewTabToTodoArray();
-        DOMUpdateController.addNewTabToDOM(newTabIndex)
+        const newTabNode = DOMUpdateController.addNewTabToDOM(newTabIndex);
+        eventAssigner.addEditTabButtonListenerForNewTabs(newTabNode);
     }
     // const editTab = (event) => {
     //     if (event.code === "Enter") {

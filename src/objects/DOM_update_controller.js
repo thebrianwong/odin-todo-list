@@ -29,6 +29,7 @@ const DOMUpdateController = (() => {
             </button>
             `;
         toDoTabSection.insertBefore(newTabNode, addTabButton);
+        return newTabNode;
     }
     // const editTabNameDOM = (event) => {
     //     const tabElement = event.target.parentElement;

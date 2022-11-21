@@ -19,7 +19,11 @@ const eventAssigner = (() => {
     const addTabInputListener = (inputElement) => {
         inputElement.addEventListener("keydown", eventBundler.updateTab)
     }
-    return { addNewTabListener, addEditTabButtonListener, addTabInputListener, };
+    const addEditTabButtonListenerForNewTabs = (tabElement) => {
+        const tabEditButton = tabElement.querySelector(".edit-tab");
+        tabEditButton.addEventListener("click", eventBundler.insertTabInputElement);
+    };
+    return { addNewTabListener, addEditTabButtonListener, addTabInputListener, addEditTabButtonListenerForNewTabs, };
 })();
 
 export { eventAssigner };
