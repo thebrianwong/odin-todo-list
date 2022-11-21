@@ -246,15 +246,15 @@ input[type="checkbox"]:checked {
     padding: 10px 0 10px 20px;
 }
 
-.to-do-description,
-.to-do-notes {
+.to-do-description-section,
+.to-do-notes-section {
     display: flex;
     align-items: center;
     padding: 10px 10px 10px 30px;
 }
 
-.to-do-description p,
-.to-do-notes p {
+.to-do-description,
+.to-do-notes {
     margin-right: 15px;
 }
 
