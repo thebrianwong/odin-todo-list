@@ -99,6 +99,7 @@ const eventBundler = (() => {
         const newTabIndex = objectControllerAddObject.addNewTabToTodoArray();
         const newTabNode = DOMUpdateController.addNewTabToDOM(newTabIndex);
         eventAssigner.addEditTabButtonListenerForNewTabs(newTabNode);
+        eventAssigner.addRemoveTabButtonListenerForNewTabs(newTabNode);
     }
     // const editTab = (event) => {
     //     if (event.code === "Enter") {

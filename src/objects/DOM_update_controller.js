@@ -82,7 +82,7 @@ const DOMUpdateController = (() => {
         tabElement.insertBefore(tabButton, tabElement.firstChild);
     };
     const removeTabElementFromDOM = (event) => {
-        const tabElement = helperFunctions.ensureCorrectTabElement(event);
+        let tabElement = helperFunctions.ensureCorrectTabElement(event);
         const toDoTabSection = document.querySelector(".to-do-tab-section");
         toDoTabSection.removeChild(tabElement);
         tabElement = null;
