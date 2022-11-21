@@ -14,7 +14,15 @@ const helperFunctions = (() => {
             return false;
         };
     };
-    return { ensureCorrectTabElement, checkForTabInputElement, };
+    const checkIfWasCurrentTab = (event) => {
+        const tabElement = ensureCorrectTabElement(event);
+        if (tabElement.getAttribute("id") === "current-tab") {
+            return true;
+        } else {
+            return false;
+        };
+    };
+    return { ensureCorrectTabElement, checkForTabInputElement, checkIfWasCurrentTab,  };
 })();
 
 export { helperFunctions };

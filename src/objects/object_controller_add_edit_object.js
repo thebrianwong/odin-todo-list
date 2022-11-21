@@ -18,7 +18,10 @@ const objectControllerAddEditObject = (() => {
         const newCurrentTab = helperFunctions.ensureCorrectTabElement(event);
         const index = newCurrentTab.dataset.tabIndex;
     }
-    return { addNewTabToTodoArray, editTabName, updateCurrentTab };
+    const setFirstTabToCurrentTab = () => {
+        toDoList.setCurrentTab(0);
+    };
+    return { addNewTabToTodoArray, editTabName, updateCurrentTab, setFirstTabToCurrentTab };
 })();
 
 export { objectControllerAddEditObject };

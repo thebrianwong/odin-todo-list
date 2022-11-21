@@ -62,8 +62,13 @@ const DOMControllerAddEdit = (() => {
         const newCurrentTab = helperFunctions.ensureCorrectTabElement(event);
         newCurrentTab.setAttribute("id", "current-tab");
     }
+    const setFirstTabToCurrentTab = () => {
+        const toDoTabSection = document.querySelector(".to-do-tab-section");
+        const firstTab = toDoTabSection.firstElementChild;
+        firstTab.setAttribute("id", "current-tab");
+    }
     return { addNewTabToDOM, setInputElementValue,
-        insertTabInputElement, insertTabNameElement, setDefaultCurrentTabDOM, setCurrentTabDOM, };
+        insertTabInputElement, insertTabNameElement, setDefaultCurrentTabDOM, setCurrentTabDOM, setFirstTabToCurrentTab, };
 })();
 
 export { DOMControllerAddEdit };
