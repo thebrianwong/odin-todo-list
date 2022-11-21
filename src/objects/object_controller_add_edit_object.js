@@ -3,7 +3,7 @@ import { toDoTab } from "./todo_tab_object";
 import { titleBehaviorComponent } from "../components/title_component";
 import { containsChecklistTaskBehaviorComponent } from "../components/contains_checklist_task_component";
 
-const objectControllerAddObject = (() => {
+const objectControllerAddEditObject = (() => {
     const addNewTabToTodoArray = () => {
         const newTab = toDoTab("New Tab");
         return toDoList.addTask(newTab);
@@ -16,4 +16,4 @@ const objectControllerAddObject = (() => {
     return { addNewTabToTodoArray, editTabName };
 })();
 
-export { objectControllerAddObject };
+export { objectControllerAddEditObject };

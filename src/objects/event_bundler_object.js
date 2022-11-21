@@ -2,7 +2,7 @@ import { toDoList } from "./todo_list_object";
 import { toDoTab } from "./todo_tab_object";
 import { titleBehaviorComponent } from "../components/title_component";
 import { containsChecklistTaskBehaviorComponent } from "../components/contains_checklist_task_component";
-import { objectControllerAddObject } from "./object_controller_add_object";
+import { objectControllerAddEditObject } from "./object_controller_add_edit_object";
 import { DOMUpdateController } from "./DOM_update_controller";
 import { eventAssigner } from "./event_assigner_object";
 import { objectControllerRemoveObject } from "./object_controller_remove_object";
@@ -10,7 +10,7 @@ import { helperFunctions } from "./helper_functions";
 
 const eventBundler = (() => {
     const addTab = () => {
-        const newTabIndex = objectControllerAddObject.addNewTabToTodoArray();
+        const newTabIndex = objectControllerAddEditObject.addNewTabToTodoArray();
         const newTabNode = DOMUpdateController.addNewTabToDOM(newTabIndex);
         eventAssigner.addEditTabButtonListenerForNewTabs(newTabNode);
         eventAssigner.addRemoveTabButtonListenerForNewTabs(newTabNode);
@@ -25,7 +25,7 @@ const eventBundler = (() => {
     }
     const updateTab = (event) => {
         if (event.code === 'Enter') {
-            objectControllerAddObject.editTabName(event);
+            objectControllerAddEditObject.editTabName(event);
             DOMUpdateController.insertTabNameElement(event);
             DOMUpdateController.removeTabInputElement(event);
         };
