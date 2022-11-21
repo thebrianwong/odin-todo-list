@@ -38,6 +38,7 @@ const DOMControllerAddEdit = (() => {
         inputElement.classList.add("tab-name-input");
         inputElement.setAttribute("type", "text");
         tabElement.insertBefore(inputElement, tabElement.firstChild);
+        inputElement.focus();
         return inputElement;
     }
     const insertTabNameElement = (event) => {
