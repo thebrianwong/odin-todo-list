@@ -210,21 +210,30 @@ const DOMControllerAddEdit = (() => {
     }
     const getTaskInfo = (event, taskObject) => {
         const buttonType = helperFunctions.getButtonType(event);
-        switch (buttonType) {
-            case "edit-task-title":
-                return taskObject.getTaskTitle()
-                break;
-            case "edit-task-due-date":
-                return taskObject.getTaskDueDate()
-                break;
-            case "edit-task-description":
-                return taskObject.getTaskDescription()
-                break;
-            case "edit-task-notes":
-                return taskObject.getTaskNotes()
-                break;
-            default:
-                break;
+        // switch (buttonType) {
+        //     case "edit-task-title":
+        //         return taskObject.getTaskTitle()
+        //         break;
+        //     case "edit-task-due-date":
+        //         return taskObject.getTaskDueDate()
+        //         break;
+        //     case "edit-task-description":
+        //         return taskObject.getTaskDescription()
+        //         break;
+        //     case "edit-task-notes":
+        //         return taskObject.getTaskNotes()
+        //         break;
+        //     default:
+        //         break;
+        // }
+        if (buttonType.includes("edit-task-title")) {
+            return taskObject.getTaskTitle();
+        } else if (buttonType.includes("edit-task-due-date")) {
+            return taskObject.getTaskDueDate();
+        } else if (buttonType.includes("edit-task-description")) {
+            return taskObject.getTaskDescription();
+        } else if (buttonType.includes("edit-task-notes")) {
+            return taskObject.getTaskNotes();
         }
     }
     return { addNewTabToDOM, setTabInputElementValue,

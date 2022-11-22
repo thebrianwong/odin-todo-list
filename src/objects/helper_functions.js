@@ -74,9 +74,8 @@ const helperFunctions = (() => {
     };
     const getButtonType = (event) => {
         const buttonElement = ensureCorrectButtonElement(event);
-        const buttonClassList = buttonElement.classList;
-        const buttonType = Array.from(buttonClassList)[0];
-        return buttonType;
+        const buttonClasses = Array.from(buttonElement.classList);
+        return buttonClasses;
     };
     const getSubcontainerType = (event) => {
         const taskSubcontainer = ensureCorrectSubcontainer(event);
