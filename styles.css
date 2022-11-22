@@ -122,6 +122,10 @@ button:focus-visible {
     padding: 10px;
 }
 
+.task-input {
+    margin-top: 10px
+}
+
 .to-do-task > * {
     border: solid 4px #b8e8fc;
     border-radius: 8px;
