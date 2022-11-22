@@ -167,10 +167,45 @@ const DOMControllerAddEdit = (() => {
     const insertTaskTitleElement = (event) => {
         const taskSubcontainer = helperFunctions.ensureCorrectSubcontainer(event);
         const taskObject = helperFunctions.getTargetTaskObject(event);
-        const taskTitle = taskObject.getTaskTitle();
-        const taskSubcontentElement = document.createElement("h3");
-        taskSubcontentElement.classList.add("to-do-title");
-        taskSubcontentElement.textContent = taskTitle;
+
+        const taskSubcontainerType = helperFunctions.getSubcontainerType(event);
+        let taskSubcontentElement = undefined;
+        if (taskSubcontainerType.includes("to-do-title-section")) {
+
+            const taskTitle = taskObject.getTaskTitle();
+            taskSubcontentElement = document.createElement("h3");
+            taskSubcontentElement.classList.add("to-do-title");
+            taskSubcontentElement.textContent = taskTitle;
+
+        } else if (taskSubcontainerType.includes("to-do-due-date-section")) {
+
+            const taskDueDate = taskObject.getTaskDueDate();
+            taskSubcontentElement = document.createElement("p");
+            taskSubcontentElement.classList.add("to-do-due-date");
+            taskSubcontentElement.textContent = taskDueDate;
+
+        } else if (taskSubcontainerType.includes("to-do-description-section")) {
+
+            const taskDescription = taskObject.getTaskDescription();
+            taskSubcontentElement = document.createElement("p");
+            taskSubcontentElement.classList.add("to-do-description");
+            taskSubcontentElement.textContent = taskDescription;
+
+        } else if (taskSubcontainerType.includes("to-do-notes-section")) {
+
+            const taskNotes = taskObject.getTaskNotes();
+            taskSubcontentElement = document.createElement("p");
+            taskSubcontentElement.classList.add("to-do-notes");
+            taskSubcontentElement.textContent = taskNotes;
+
+        };
+
+        // const taskTitle = taskObject.getTaskTitle();
+        // const taskSubcontentElement = document.createElement("h3");
+        // taskSubcontentElement.classList.add("to-do-title");
+        // taskSubcontentElement.textContent = taskTitle;
+
+
         taskSubcontainer.insertBefore(taskSubcontentElement, taskSubcontainer.firstChild);
     }
     const getTaskInfo = (event, taskObject) => {

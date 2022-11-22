@@ -80,8 +80,8 @@ const helperFunctions = (() => {
     };
     const getSubcontainerType = (event) => {
         const taskSubcontainer = ensureCorrectSubcontainer(event);
-        const classList = Array.from(taskSubcontainer.classList);
-        return classList;
+        const subcontainerClasses = Array.from(taskSubcontainer.classList);
+        return subcontainerClasses;
     };
     return { ensureCorrectTabElement, checkForTabInputElement, checkIfWasCurrentTab,
         checkIfOnlyOneTab, ensureCorrectTaskElement, ensureCorrectSubcontainer,
