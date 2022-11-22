@@ -49,9 +49,13 @@ const eventAssigner = (() => {
             button.addEventListener("click", eventBundler.removeTask);
         };
     };
+    const addRemoveTaskButtonListenerForNewTasks = (taskElement) => {
+        const taskRemoveButton = taskElement.querySelector(".to-do-remove-task");
+        taskRemoveButton.addEventListener("click", eventBundler.removeTask);
+    };
     return { addNewTabListener, addEditTabButtonListener, addTabInputListener,
         addEditTabButtonListenerForNewTabs, addRemoveTabButtonListenerForInitialTabs,
-        addRemoveTabButtonListenerForNewTabs, addSwitchTabListenerForInitialTabs, addSwitchTabListenerForNewTabs, addNewTaskListener, addRemoveTaskButtonListenerForInitialTabs,  };
+        addRemoveTabButtonListenerForNewTabs, addSwitchTabListenerForInitialTabs, addSwitchTabListenerForNewTabs, addNewTaskListener, addRemoveTaskButtonListenerForInitialTabs, addRemoveTaskButtonListenerForNewTasks, };
 })();
 
 export { eventAssigner };
