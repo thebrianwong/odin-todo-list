@@ -54,7 +54,7 @@ const eventAssigner = (() => {
         taskRemoveButton.addEventListener("click", eventBundler.removeTask);
     };
     const addEditTaskTitleListenerForInitialTasks = () => {
-        const taskEditTitleButtons = Array.from(document.querySelectorAll(".edit-task-title"));
+        const taskEditTitleButtons = Array.from(document.querySelectorAll(".edit-task"));
         for (const button of taskEditTitleButtons) {
             button.addEventListener("click", eventBundler.insertTaskTitleInputElement);
         };
@@ -63,8 +63,10 @@ const eventAssigner = (() => {
         inputElement.addEventListener("keydown", eventBundler.updateTaskTitle);
     };
     const addEditTaskTitleListenerForNewTasks = (taskElement) => {
-        const taskEditTitleButton = taskElement.querySelector(".edit-task-title");
-        taskEditTitleButton.addEventListener("click", eventBundler.insertTaskTitleInputElement);
+        const taskEditTitleButton = Array.from(taskElement.querySelectorAll(".edit-task"));
+        for (const button of taskEditTitleButton) {
+            button.addEventListener("click", eventBundler.insertTaskTitleInputElement);
+        };
     }
     return { addNewTabListener, addEditTabButtonListener, addTabInputListener,
         addEditTabButtonListenerForNewTabs, addRemoveTabButtonListenerForInitialTabs,
