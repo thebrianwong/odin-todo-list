@@ -159,8 +159,21 @@ const DOMControllerAddEdit = (() => {
     const setTaskInputElementValue = (event, inputElement) => {
         const taskObject = helperFunctions.getTargetTaskObject(event);
         //
+
+        const buttonType = helperFunctions.getButtonType(event);
+        let taskSubcontent = undefined;
+        if (buttonType.includes("edit-task-title")) {
+            taskSubcontent = taskObject.getTaskTitle();
+        } else if (buttonType.includes("edit-task-due-date")) {
+            taskSubcontent = taskObject.getTaskDueDate();
+        } else if (buttonType.includes("edit-task-description")) {
+            taskSubcontent = taskObject.getTaskDescription();
+        } else if (buttonType.includes("edit-task-notes")) {
+            taskSubcontent = taskObject.getTaskNotes();
+        }
+
         // const taskSubcontent = taskObject.getTaskTitle();
-        const taskSubcontent = getTaskInfo(event, taskObject);
+        // const taskSubcontent = getTaskInfo(event, taskObject);
         //
         inputElement.value = taskSubcontent;
     }
@@ -207,34 +220,6 @@ const DOMControllerAddEdit = (() => {
 
 
         taskSubcontainer.insertBefore(taskSubcontentElement, taskSubcontainer.firstChild);
-    }
-    const getTaskInfo = (event, taskObject) => {
-        const buttonType = helperFunctions.getButtonType(event);
-        // switch (buttonType) {
-        //     case "edit-task-title":
-        //         return taskObject.getTaskTitle()
-        //         break;
-        //     case "edit-task-due-date":
-        //         return taskObject.getTaskDueDate()
-        //         break;
-        //     case "edit-task-description":
-        //         return taskObject.getTaskDescription()
-        //         break;
-        //     case "edit-task-notes":
-        //         return taskObject.getTaskNotes()
-        //         break;
-        //     default:
-        //         break;
-        // }
-        if (buttonType.includes("edit-task-title")) {
-            return taskObject.getTaskTitle();
-        } else if (buttonType.includes("edit-task-due-date")) {
-            return taskObject.getTaskDueDate();
-        } else if (buttonType.includes("edit-task-description")) {
-            return taskObject.getTaskDescription();
-        } else if (buttonType.includes("edit-task-notes")) {
-            return taskObject.getTaskNotes();
-        }
     }
     return { addNewTabToDOM, setTabInputElementValue,
         insertTabInputElement, insertTabNameElement, setDefaultCurrentTabDOM,
