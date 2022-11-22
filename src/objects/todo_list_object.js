@@ -3,15 +3,15 @@ import { containsChecklistTaskBehaviorComponent } from "../components/contains_c
 
 const toDoList = (() => {
     let currentTab = 0;
-    const getCurrentTab = () => {
+    const getCurrentTabIndex = () => {
         return currentTab;
     };
-    const setCurrentTab = (newCurrentTab) => {
+    const setCurrentTabIndex = (newCurrentTab) => {
         currentTab = newCurrentTab;
     };
     let object = {
-        getCurrentTab,
-        setCurrentTab
+        getCurrentTabIndex,
+        setCurrentTabIndex
     };
     Object.assign(object,
         containsChecklistTaskBehaviorComponent(object),

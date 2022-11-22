@@ -73,7 +73,7 @@ const DOMControllerAddEdit = (() => {
         firstTab.setAttribute("id", "current-tab");
     }
     const addNewTaskToDOM = (index) => {
-        const currentTabIndex = toDoList.getCurrentTab();
+        const currentTabIndex = toDoList.getCurrentTabIndex();
         const currentTabObject = toDoList.getSpecificChecklistTask(currentTabIndex);
         const newTaskObject = currentTabObject.getSpecificChecklistTask(index);
         const toDoContent = document.querySelector(".to-do-content");

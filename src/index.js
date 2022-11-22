@@ -124,10 +124,12 @@ eventAssigner.addRemoveTabButtonListenerForInitialTabs();
 
 console.log(toDoList)
 console.log(toDoList.getChecklistTasks())
-console.log(toDoList.getCurrentTab())
+console.log(toDoList.getCurrentTabIndex())
 
 DOMControllerAddEdit.setDefaultCurrentTabDOM(0)
 
 eventAssigner.addSwitchTabListenerForInitialTabs()
 
 eventAssigner.addNewTaskListener();
+
+eventAssigner.addRemoveTaskButtonListenerForInitialTabs();

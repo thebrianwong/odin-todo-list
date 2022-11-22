@@ -18,21 +18,21 @@ const objectControllerAddEditObject = (() => {
     const updateCurrentTab = (event) => {
         const newCurrentTab = helperFunctions.ensureCorrectTabElement(event);
         const index = newCurrentTab.dataset.tabIndex;
-        toDoList.setCurrentTab(index)
+        toDoList.setCurrentTabIndex(index)
     }
     const setFirstTabToCurrentTab = () => {
         const tabArray = toDoList.getChecklistTasks();
         let firstTab = undefined;
         for (const tab in tabArray) {
             if (tabArray[tab] !== undefined) {
-                toDoList.setCurrentTab(tab);
+                toDoList.setCurrentTabIndex(tab);
                 firstTab = tab;
                 return firstTab;
             }
         }
     };
     const addNewTaskToTab = () => {
-        const currentTabIndex = toDoList.getCurrentTab();
+        const currentTabIndex = toDoList.getCurrentTabIndex();
         const currentTab = toDoList.getSpecificChecklistTask(currentTabIndex);
         const newTask = toDoTask("New Task", "Task Due Date", "Task Description", "Task Notes");
         const newTaskIndex = currentTab.addTask(newTask);
