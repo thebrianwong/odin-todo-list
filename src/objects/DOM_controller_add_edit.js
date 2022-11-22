@@ -155,8 +155,17 @@ const DOMControllerAddEdit = (() => {
         inputElement.focus();
         return inputElement;
     };
+    const setTaskInputElementValue = (event, inputElement) => {
+        const taskElement = helperFunctions.ensureCorrectTaskElement(event);
+        const index = taskElement.dataset.taskIndex;
+        const currentTabIndex = toDoList.getCurrentTabIndex();
+        const currentTabObject = toDoList.getSpecificChecklistTask(currentTabIndex);
+        const taskObject = currentTabObject.getSpecificChecklistTask(index);
+        const taskSubcontent = taskObject.getTaskTitle();
+        inputElement.value = taskSubcontent;
+    }
     return { addNewTabToDOM, setTabInputElementValue,
-        insertTabInputElement, insertTabNameElement, setDefaultCurrentTabDOM, setCurrentTabDOM, setFirstTabToCurrentTab, addNewTaskToDOM, insertTaskInputElement,  };
+        insertTabInputElement, insertTabNameElement, setDefaultCurrentTabDOM, setCurrentTabDOM, setFirstTabToCurrentTab, addNewTaskToDOM, insertTaskInputElement, setTaskInputElementValue, };
 })();
 
 export { DOMControllerAddEdit };
