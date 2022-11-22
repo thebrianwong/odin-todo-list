@@ -260,11 +260,11 @@ input[type="checkbox"]:checked {
 
 .edit-tab,
 .remove-tab,
-.edit-title,
+.edit-task-title,
 .to-do-remove-task,
-.edit-due-date,
-.edit-description,
-.edit-notes,
+.edit-task-due-date,
+.edit-task-description,
+.edit-task-notes,
 .remove-checklist-task,
 .edit-checklist-task {
     align-self: flex-start;
@@ -274,13 +274,13 @@ input[type="checkbox"]:checked {
     width: 24px;
 }
 
-.edit-title,
+.edit-task-title,
 .to-do-pin,
 .to-do-remove-task {
     margin: 0;
 }
 
-.edit-title {
+.edit-task-title {
     margin-left: auto;
 }
 
