@@ -160,7 +160,7 @@ const DOMControllerAddEdit = (() => {
         const taskObject = helperFunctions.getTargetTaskObject(event);
         //
         // const taskSubcontent = taskObject.getTaskTitle();
-        const taskSubcontent = getCorrespondingTaskInfo(event, taskObject);
+        const taskSubcontent = getTaskInfo(event, taskObject);
         //
         inputElement.value = taskSubcontent;
     }
@@ -173,11 +173,8 @@ const DOMControllerAddEdit = (() => {
         taskSubcontentElement.textContent = taskTitle;
         taskSubcontainer.insertBefore(taskSubcontentElement, taskSubcontainer.firstChild);
     }
-    const getCorrespondingTaskInfo = (event, taskObject) => {
-        const buttonElement = helperFunctions.ensureCorrectButtonElement(event);
-        const buttonClassList = buttonElement.classList;
-        const buttonType = Array.from(buttonClassList)[0];
-        console.log(buttonType)
+    const getTaskInfo = (event, taskObject) => {
+        const buttonType = helperFunctions.getButtonType(event);
         switch (buttonType) {
             case "edit-task-title":
                 return taskObject.getTaskTitle()

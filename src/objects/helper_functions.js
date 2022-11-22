@@ -72,9 +72,15 @@ const helperFunctions = (() => {
         };
         return buttonElement;
     };
+    const getButtonType = (event) => {
+        const buttonElement = ensureCorrectButtonElement(event);
+        const buttonClassList = buttonElement.classList;
+        const buttonType = Array.from(buttonClassList)[0];
+        return buttonType;
+    };
     return { ensureCorrectTabElement, checkForTabInputElement, checkIfWasCurrentTab,
         checkIfOnlyOneTab, ensureCorrectTaskElement, ensureCorrectSubcontainer,
-        checkForTaskSubcontainerInputElement, getTargetTaskObject, ensureCorrectButtonElement, };
+        checkForTaskSubcontainerInputElement, getTargetTaskObject, ensureCorrectButtonElement, getButtonType, };
 })();
 
 export { helperFunctions };

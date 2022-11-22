@@ -70,7 +70,9 @@ const eventBundler = (() => {
     }
     const updateTaskTitle = (event) => {
         if (event.code === "Enter") {
+            // variation here
             objectControllerAddEditObject.editTaskTitle(event);
+            // variation here
             DOMControllerAddEdit.insertTaskTitleElement(event);
             DOMControllerRemove.removeTaskInputElement(event);
         };
