@@ -68,6 +68,7 @@ const eventBundler = (() => {
         if (event.code === "Enter") {
             objectControllerAddEditObject.editTaskTitle(event);
             DOMControllerAddEdit.insertTaskTitleElement(event);
+            DOMControllerRemove.removeTaskInputElement(event);
         };
     };
     return { addTab, insertTabInputElement, updateTab, removeTab, switchTab, newTask, removeTask, insertTaskTitleInputElement, updateTaskTitle, };

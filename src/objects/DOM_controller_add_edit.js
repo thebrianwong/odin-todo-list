@@ -172,7 +172,7 @@ const DOMControllerAddEdit = (() => {
         const currentTabObject = toDoList.getSpecificChecklistTask(currentTabIndex);
         const taskObject = currentTabObject.getSpecificChecklistTask(index);
         const taskTitle = taskObject.getTaskTitle();
-        const taskSubcontentElement = document.createElement("h2");
+        const taskSubcontentElement = document.createElement("h3");
         taskSubcontentElement.classList.add("to-do-title");
         taskSubcontentElement.textContent = taskTitle;
         taskSubcontainer.insertBefore(taskSubcontentElement, taskSubcontainer.firstChild);
