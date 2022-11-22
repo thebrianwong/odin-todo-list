@@ -54,10 +54,10 @@ const eventBundler = (() => {
         const newTaskNode = DOMControllerAddEdit.addNewTaskToDOM(newTaskIndex);
         eventAssigner.addRemoveTaskButtonListenerForNewTasks(newTaskNode);
     }
-    const removeTask = (event => {
+    const removeTask = (event) => {
         objectControllerRemoveObject.removeTaskFromTabArray(event);
         DOMControllerRemove.removeTaskElementFromDOM(event);
-    })
+    };
     return { addTab, insertTabInputElement, updateTab, removeTab, switchTab, newTask, removeTask, };
 })();
 
