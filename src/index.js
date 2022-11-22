@@ -138,4 +138,4 @@ eventAssigner.addNewTaskListener();
 
 eventAssigner.addRemoveTaskButtonListenerForInitialTabs();
 
-eventAssigner.addEditTaskTitleListenerForInitialTasks();
+eventAssigner.addEditTaskListenersForInitialTasks();

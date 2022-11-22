@@ -53,27 +53,27 @@ const eventAssigner = (() => {
         const taskRemoveButton = taskElement.querySelector(".to-do-remove-task");
         taskRemoveButton.addEventListener("click", eventBundler.removeTask);
     };
-    const addEditTaskTitleListenerForInitialTasks = () => {
-        const taskEditTitleButtons = Array.from(document.querySelectorAll(".edit-task"));
-        for (const button of taskEditTitleButtons) {
-            button.addEventListener("click", eventBundler.insertTaskTitleInputElement);
+    const addEditTaskListenersForInitialTasks = () => {
+        const taskEditButtons = Array.from(document.querySelectorAll(".edit-task"));
+        for (const button of taskEditButtons) {
+            button.addEventListener("click", eventBundler.insertTaskInputElement);
         };
     };
-    const addTaskTitleInputListener = (inputElement) => {
-        inputElement.addEventListener("keydown", eventBundler.updateTaskTitle);
+    const addTaskInputListener = (inputElement) => {
+        inputElement.addEventListener("keydown", eventBundler.updateTask);
     };
     const addEditTaskTitleListenerForNewTasks = (taskElement) => {
-        const taskEditTitleButton = Array.from(taskElement.querySelectorAll(".edit-task"));
-        for (const button of taskEditTitleButton) {
-            button.addEventListener("click", eventBundler.insertTaskTitleInputElement);
+        const taskEditButtons = Array.from(taskElement.querySelectorAll(".edit-task"));
+        for (const button of taskEditButtons) {
+            button.addEventListener("click", eventBundler.insertTaskInputElement);
         };
     }
     return { addNewTabListener, addEditTabButtonListener, addTabInputListener,
         addEditTabButtonListenerForNewTabs, addRemoveTabButtonListenerForInitialTabs,
         addRemoveTabButtonListenerForNewTabs, addSwitchTabListenerForInitialTabs,
         addSwitchTabListenerForNewTabs, addNewTaskListener, addRemoveTaskButtonListenerForInitialTabs,
-        addRemoveTaskButtonListenerForNewTasks, addEditTaskTitleListenerForInitialTasks,
-        addTaskTitleInputListener, addEditTaskTitleListenerForNewTasks };
+        addRemoveTaskButtonListenerForNewTasks, addEditTaskListenersForInitialTasks,
+        addTaskInputListener, addEditTaskTitleListenerForNewTasks };
 })();
 
 export { eventAssigner };

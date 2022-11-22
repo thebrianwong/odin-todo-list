@@ -59,26 +59,26 @@ const eventBundler = (() => {
         objectControllerRemoveObject.removeTaskFromTabArray(event);
         DOMControllerRemove.removeTaskElementFromDOM(event);
     };
-    const insertTaskTitleInputElement = (event) => {
+    const insertTaskInputElement = (event) => {
         if (!helperFunctions.checkForTaskSubcontainerInputElement(event)) {
             DOMControllerRemove.removeTaskSubcontentElementFromDOM(event);
             const inputElement = DOMControllerAddEdit.insertTaskInputElement(event);
             // variation here done
             DOMControllerAddEdit.setTaskInputElementValue(event, inputElement);
-            eventAssigner.addTaskTitleInputListener(inputElement);
+            eventAssigner.addTaskInputListener(inputElement);
         };
     }
-    const updateTaskTitle = (event) => {
+    const updateTask = (event) => {
         if (event.code === "Enter") {
             // variation here done
             objectControllerAddEditObject.editTaskObjectInfo(event);
             // variation here
-            DOMControllerAddEdit.insertTaskTitleElement(event);
+            DOMControllerAddEdit.insertTaskSubcontentElement(event);
             DOMControllerRemove.removeTaskInputElement(event);
         };
     };
     return { addTab, insertTabInputElement, updateTab, removeTab, switchTab,
-        newTask, removeTask, insertTaskTitleInputElement, updateTaskTitle, };
+        newTask, removeTask, insertTaskInputElement, updateTask, };
 })();
 
 export { eventBundler };

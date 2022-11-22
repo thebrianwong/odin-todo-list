@@ -155,7 +155,7 @@ const DOMControllerAddEdit = (() => {
         inputElement.focus();
         return inputElement;
     };
-    // variation here
+    // variation here (change later)
     const setTaskInputElementValue = (event, inputElement) => {
         const taskObject = helperFunctions.getTargetTaskObject(event);
         //
@@ -164,7 +164,7 @@ const DOMControllerAddEdit = (() => {
         //
         inputElement.value = taskSubcontent;
     }
-    const insertTaskTitleElement = (event) => {
+    const insertTaskSubcontentElement = (event) => {
         const taskSubcontainer = helperFunctions.ensureCorrectSubcontainer(event);
         const taskObject = helperFunctions.getTargetTaskObject(event);
 
@@ -239,7 +239,7 @@ const DOMControllerAddEdit = (() => {
     return { addNewTabToDOM, setTabInputElementValue,
         insertTabInputElement, insertTabNameElement, setDefaultCurrentTabDOM,
         setCurrentTabDOM, setFirstTabToCurrentTab, addNewTaskToDOM,
-        insertTaskInputElement, setTaskInputElementValue, insertTaskTitleElement, };
+        insertTaskInputElement, setTaskInputElementValue, insertTaskSubcontentElement, };
 })();
 
 export { DOMControllerAddEdit };
