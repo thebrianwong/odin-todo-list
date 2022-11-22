@@ -27,7 +27,7 @@ const DOMControllerAddEdit = (() => {
         toDoTabSection.insertBefore(newTabNode, addTabButton);
         return newTabNode;
     }
-    const setInputElementValue = (event, inputElement) => {
+    const setTabInputElementValue = (event, inputElement) => {
         const tabElement = helperFunctions.ensureCorrectTabElement(event);
         const index = tabElement.dataset.tabIndex;
         const tabObject = toDoList.getSpecificChecklistTask(index);
@@ -155,7 +155,7 @@ const DOMControllerAddEdit = (() => {
         inputElement.focus();
         return inputElement;
     };
-    return { addNewTabToDOM, setInputElementValue,
+    return { addNewTabToDOM, setTabInputElementValue,
         insertTabInputElement, insertTabNameElement, setDefaultCurrentTabDOM, setCurrentTabDOM, setFirstTabToCurrentTab, addNewTaskToDOM, insertTaskInputElement,  };
 })();
 

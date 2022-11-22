@@ -25,7 +25,7 @@ const eventBundler = (() => {
         if (!helperFunctions.checkForTabInputElement(event)) {
             const inputElement = DOMControllerAddEdit.insertTabInputElement(event);
             DOMControllerRemove.removeTabNameElement(event);
-            DOMControllerAddEdit.setInputElementValue(event, inputElement);
+            DOMControllerAddEdit.setTabInputElementValue(event, inputElement);
             eventAssigner.addTabInputListener(inputElement);
         };
     }
