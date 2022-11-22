@@ -53,9 +53,15 @@ const eventAssigner = (() => {
         const taskRemoveButton = taskElement.querySelector(".to-do-remove-task");
         taskRemoveButton.addEventListener("click", eventBundler.removeTask);
     };
+    const addEditTaskTitleListenerForInitialTasks = () => {
+        const taskEditTitleButtons = Array.from(document.querySelectorAll(".edit-task-title"));
+        for (const button of taskEditTitleButtons) {
+            button.addEventListener("click", eventBundler.insertTaskTitleInputElement);
+        };
+    };
     return { addNewTabListener, addEditTabButtonListener, addTabInputListener,
         addEditTabButtonListenerForNewTabs, addRemoveTabButtonListenerForInitialTabs,
-        addRemoveTabButtonListenerForNewTabs, addSwitchTabListenerForInitialTabs, addSwitchTabListenerForNewTabs, addNewTaskListener, addRemoveTaskButtonListenerForInitialTabs, addRemoveTaskButtonListenerForNewTasks, };
+        addRemoveTabButtonListenerForNewTabs, addSwitchTabListenerForInitialTabs, addSwitchTabListenerForNewTabs, addNewTaskListener, addRemoveTaskButtonListenerForInitialTabs, addRemoveTaskButtonListenerForNewTasks, addEditTaskTitleListenerForInitialTasks, };
 })();
 
 export { eventAssigner };

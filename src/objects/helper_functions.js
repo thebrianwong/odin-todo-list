@@ -38,7 +38,16 @@ const helperFunctions = (() => {
         };
         return taskElement;
     }
-    return { ensureCorrectTabElement, checkForTabInputElement, checkIfWasCurrentTab, checkIfOnlyOneTab, ensureCorrectTaskElement, };
+    const ensureCorrectSubcontainer = (event) => {
+        let taskSubcontainer = event.target.parentElement;
+        let classList = Array.from(taskSubcontainer.classList)
+        while (!classList.includes("to-do-task-subcontainer")) {
+            taskSubcontainer = taskSubcontainer.parentElement;
+            classList = Array.from(taskSubcontainer.classList)
+        }
+        return taskSubcontainer;
+    };
+    return { ensureCorrectTabElement, checkForTabInputElement, checkIfWasCurrentTab, checkIfOnlyOneTab, ensureCorrectTaskElement, ensureCorrectSubcontainer, };
 })();
 
 export { helperFunctions };

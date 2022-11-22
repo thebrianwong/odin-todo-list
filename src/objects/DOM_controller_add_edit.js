@@ -146,8 +146,17 @@ const DOMControllerAddEdit = (() => {
         toDoContent.appendChild(newTaskNode);
         return newTaskNode;
     }
+    const insertTaskInputElement = (event) => {
+        const taskSubcontainer = helperFunctions.ensureCorrectSubcontainer(event);
+        const inputElement = document.createElement("input");
+        inputElement.classList.add("task-input");
+        inputElement.setAttribute("type", "text");
+        taskSubcontainer.insertBefore(inputElement, taskSubcontainer.firstChild);
+        inputElement.focus();
+        return inputElement;
+    };
     return { addNewTabToDOM, setInputElementValue,
-        insertTabInputElement, insertTabNameElement, setDefaultCurrentTabDOM, setCurrentTabDOM, setFirstTabToCurrentTab, addNewTaskToDOM, };
+        insertTabInputElement, insertTabNameElement, setDefaultCurrentTabDOM, setCurrentTabDOM, setFirstTabToCurrentTab, addNewTaskToDOM, insertTaskInputElement,  };
 })();
 
 export { DOMControllerAddEdit };
