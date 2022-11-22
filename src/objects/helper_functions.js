@@ -65,9 +65,16 @@ const helperFunctions = (() => {
         const taskObject = currentTabObject.getSpecificChecklistTask(index);
         return taskObject;
     };
+    const ensureCorrectButtonElement = (event) => {
+        let buttonElement = event.target;
+        while (buttonElement.tagName !== "BUTTON") {
+            buttonElement = buttonElement.parentElement;
+        };
+        return buttonElement;
+    };
     return { ensureCorrectTabElement, checkForTabInputElement, checkIfWasCurrentTab,
         checkIfOnlyOneTab, ensureCorrectTaskElement, ensureCorrectSubcontainer,
-        checkForTaskSubcontainerInputElement, getTargetTaskObject, };
+        checkForTaskSubcontainerInputElement, getTargetTaskObject, ensureCorrectButtonElement, };
 })();
 
 export { helperFunctions };
