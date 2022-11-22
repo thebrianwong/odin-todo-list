@@ -39,13 +39,22 @@ const objectControllerAddEditObject = (() => {
         return newTaskIndex;
     };
     // variation here
-    const editTaskTitle = (event) => {
+    const editTaskObjectInfo = (event) => {
         const taskObject = helperFunctions.getTargetTaskObject(event);
         const newTaskTitleValue = event.target.value;
-        taskObject.setTaskTitle(newTaskTitleValue);
-    }
+        const taskSubcontainerType = helperFunctions.getSubcontainerType(event);
+        if (taskSubcontainerType.includes("to-do-title-section")) {
+            return taskObject.setTaskTitle(newTaskTitleValue);
+        } else if (taskSubcontainerType.includes("to-do-due-date-section")) {
+            return taskObject.setTaskDueDate(newTaskTitleValue);
+        } else if (taskSubcontainerType.includes("to-do-description-section")) {
+            return taskObject.setTaskDescription(newTaskTitleValue);
+        } else if (taskSubcontainerType.includes("to-do-notes-section")) {
+            return taskObject.setTaskNotes(newTaskTitleValue);
+        };
+    };
     return { addNewTabToTodoArray, editTabName, updateCurrentTab, setFirstTabToCurrentTab,
-        addNewTaskToTab, editTaskTitle, };
+        addNewTaskToTab, editTaskObjectInfo, };
 })();
 
 export { objectControllerAddEditObject };

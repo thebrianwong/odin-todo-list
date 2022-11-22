@@ -78,9 +78,14 @@ const helperFunctions = (() => {
         const buttonType = Array.from(buttonClassList)[0];
         return buttonType;
     };
+    const getSubcontainerType = (event) => {
+        const taskSubcontainer = ensureCorrectSubcontainer(event);
+        const classList = Array.from(taskSubcontainer.classList);
+        return classList;
+    };
     return { ensureCorrectTabElement, checkForTabInputElement, checkIfWasCurrentTab,
         checkIfOnlyOneTab, ensureCorrectTaskElement, ensureCorrectSubcontainer,
-        checkForTaskSubcontainerInputElement, getTargetTaskObject, ensureCorrectButtonElement, getButtonType, };
+        checkForTaskSubcontainerInputElement, getTargetTaskObject, ensureCorrectButtonElement, getButtonType, getSubcontainerType, };
 })();
 
 export { helperFunctions };

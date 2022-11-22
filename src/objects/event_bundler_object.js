@@ -63,7 +63,7 @@ const eventBundler = (() => {
         if (!helperFunctions.checkForTaskSubcontainerInputElement(event)) {
             DOMControllerRemove.removeTaskSubcontentElementFromDOM(event);
             const inputElement = DOMControllerAddEdit.insertTaskInputElement(event);
-            // variation here
+            // variation here done
             DOMControllerAddEdit.setTaskInputElementValue(event, inputElement);
             eventAssigner.addTaskTitleInputListener(inputElement);
         };
@@ -71,7 +71,7 @@ const eventBundler = (() => {
     const updateTaskTitle = (event) => {
         if (event.code === "Enter") {
             // variation here
-            objectControllerAddEditObject.editTaskTitle(event);
+            objectControllerAddEditObject.editTaskObjectInfo(event);
             // variation here
             DOMControllerAddEdit.insertTaskTitleElement(event);
             DOMControllerRemove.removeTaskInputElement(event);
