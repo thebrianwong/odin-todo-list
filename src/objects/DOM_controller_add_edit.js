@@ -164,8 +164,21 @@ const DOMControllerAddEdit = (() => {
         const taskSubcontent = taskObject.getTaskTitle();
         inputElement.value = taskSubcontent;
     }
+    const insertTaskTitleElement = (event) => {
+        const taskElement = helperFunctions.ensureCorrectTaskElement(event);
+        const taskSubcontainer = helperFunctions.ensureCorrectSubcontainer(event);
+        const index = taskElement.dataset.taskIndex;
+        const currentTabIndex = toDoList.getCurrentTabIndex();
+        const currentTabObject = toDoList.getSpecificChecklistTask(currentTabIndex);
+        const taskObject = currentTabObject.getSpecificChecklistTask(index);
+        const taskTitle = taskObject.getTaskTitle();
+        const taskSubcontentElement = document.createElement("h2");
+        taskSubcontentElement.classList.add("to-do-title");
+        taskSubcontentElement.textContent = taskTitle;
+        taskSubcontainer.insertBefore(taskSubcontentElement, taskSubcontainer.firstChild);
+    }
     return { addNewTabToDOM, setTabInputElementValue,
-        insertTabInputElement, insertTabNameElement, setDefaultCurrentTabDOM, setCurrentTabDOM, setFirstTabToCurrentTab, addNewTaskToDOM, insertTaskInputElement, setTaskInputElementValue, };
+        insertTabInputElement, insertTabNameElement, setDefaultCurrentTabDOM, setCurrentTabDOM, setFirstTabToCurrentTab, addNewTaskToDOM, insertTaskInputElement, setTaskInputElementValue, insertTaskTitleElement, };
 })();
 
 export { DOMControllerAddEdit };
