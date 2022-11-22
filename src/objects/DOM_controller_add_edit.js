@@ -86,7 +86,7 @@ const DOMControllerAddEdit = (() => {
         const newTaskNotes = newTaskObject.getTaskNotes();
         newTaskNode.innerHTML = `
             <div class="to-do-task-overview">
-                <div class="to-do-task-overview-top to-do-task-subcontainer">
+                <div class="to-do-title-section to-do-task-subcontainer">
                     <h3 class="to-do-title">TITLE PLACEHOLDER</h3>
                     <button class="to-do-pin">
                         <img src="./assets/pin-outline.png" alt="Pin task button">
@@ -98,7 +98,7 @@ const DOMControllerAddEdit = (() => {
                         <img src="assets/close.png" alt="Remove task button">
                     </button>
                 </div>
-                <div class="to-do-overview-middle">
+                <div class="to-do-complete-section">
                     <div class="to-do-complete">
                         <label for="to-do-complete-checkbox" class="to-do-complete-label">Completed:</label>
                         <input type="checkbox" name="" class="to-do-complete-checkbox" id="to-do-complete-checkbox">
@@ -107,7 +107,7 @@ const DOMControllerAddEdit = (() => {
                         <img src="assets/chevron-down.png" alt="Change task display button">
                     </button>
                 </div>
-                <div class="to-do-task-overview-bottom to-do-task-subcontainer">
+                <div class="to-do-due-date-section to-do-task-subcontainer">
                     <p class="to-do-due-date">DUE DATE PLACEHOLDER</p>
                     <button class="edit-task-due-date">
                         <img src="assets/pencil.png" alt="Edit task due date button">

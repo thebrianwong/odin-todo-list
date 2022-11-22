@@ -180,12 +180,12 @@ button:focus-visible {
     padding: 0 10px;
 }
 
-.to-do-task-overview-top {
+.to-do-title-section {
     display: flex;
     gap: 10px;
 }
 
-.to-do-task-overview-top button {
+.to-do-title-section button {
     margin-top: 10px;
 }
 
@@ -203,7 +203,7 @@ button:focus-visible {
     cursor: pointer;
 }
 
-.to-do-overview-middle {
+.to-do-complete-section {
     display: flex;
     align-items: flex-start;
     box-shadow: 0 1px 0 black;
@@ -245,7 +245,7 @@ input[type="checkbox"]:checked {
     padding: 0;
 }
 
-.to-do-task-overview-bottom {
+.to-do-due-date-section {
     display: flex;
     padding: 10px 0 10px 20px;
 }
