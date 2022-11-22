@@ -74,8 +74,12 @@ const eventBundler = (() => {
             DOMControllerRemove.removeTaskInputElement(event);
         };
     };
+    const toggleTaskComplete = (event) => {
+        objectControllerAddEditObject.toggleTaskComplete(event);
+        DOMControllerAddEdit.toggleTaskDOMComplete(event);
+    };
     return { addTab, insertTabInputElement, updateTab, removeTab, switchTab,
-        newTask, removeTask, insertTaskInputElement, updateTask, };
+        newTask, removeTask, insertTaskInputElement, updateTask, toggleTaskComplete, };
 })();
 
 export { eventBundler };

@@ -52,8 +52,12 @@ const objectControllerAddEditObject = (() => {
             return taskObject.setTaskNotes(newTaskTitleValue);
         };
     };
+    const toggleTaskComplete = (event) => {
+        const taskObject = helperFunctions.getTargetTaskObject(event);
+        taskObject.toggleCompletedState();
+    };
     return { addNewTabToTodoArray, editTabName, updateCurrentTab, setFirstTabToCurrentTab,
-        addNewTaskToTab, editTaskObjectInfo, };
+        addNewTaskToTab, editTaskObjectInfo, toggleTaskComplete, };
 })();
 
 export { objectControllerAddEditObject };

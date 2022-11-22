@@ -198,10 +198,21 @@ const DOMControllerAddEdit = (() => {
         };
         taskSubcontainer.insertBefore(taskSubcontentElement, taskSubcontainer.firstChild);
     }
+    const toggleTaskDOMComplete = (event) => {
+        const taskElement = helperFunctions.ensureCorrectTaskElement(event);
+        const completeCheckbox = taskElement.querySelector(".to-do-complete-checkbox");
+        const taskObject = helperFunctions.getTargetTaskObject(event);
+        const taskCompletedStated = taskObject.getCompletedState();
+        if (taskCompletedStated) {
+            completeCheckbox.checked = true;
+        } else {
+            completeCheckbox.checked = false;
+        };
+    };
     return { addNewTabToDOM, setTabInputElementValue,
         insertTabInputElement, insertTabNameElement, setDefaultCurrentTabDOM,
         setCurrentTabDOM, setFirstTabToCurrentTab, addNewTaskToDOM,
-        insertTaskInputElement, setTaskInputElementValue, insertTaskSubcontentElement, };
+        insertTaskInputElement, setTaskInputElementValue, insertTaskSubcontentElement, toggleTaskDOMComplete, };
 })();
 
 export { DOMControllerAddEdit };

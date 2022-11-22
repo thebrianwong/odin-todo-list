@@ -139,3 +139,12 @@ eventAssigner.addNewTaskListener();
 eventAssigner.addRemoveTaskButtonListenerForInitialTabs();
 
 eventAssigner.addEditTaskListenersForInitialTasks();
+
+// const heh = () => {
+//     console.log("bloop")
+// }
+
+// const boi = document.querySelector(".to-do-complete-checkbox")
+// boi.addEventListener("click", heh)
+
+eventAssigner.addToggleTaskCompleteListenerForInitialTasks();

@@ -68,12 +68,18 @@ const eventAssigner = (() => {
             button.addEventListener("click", eventBundler.insertTaskInputElement);
         };
     }
+    const addToggleTaskCompleteListenerForInitialTasks = () => {
+        const taskCompleteCheckboxes = document.querySelectorAll(".to-do-complete-checkbox");
+        for (const checkbox of taskCompleteCheckboxes) {
+            checkbox.addEventListener("click", eventBundler.toggleTaskComplete);
+        };
+    };
     return { addNewTabListener, addEditTabButtonListener, addTabInputListener,
         addEditTabButtonListenerForNewTabs, addRemoveTabButtonListenerForInitialTabs,
         addRemoveTabButtonListenerForNewTabs, addSwitchTabListenerForInitialTabs,
         addSwitchTabListenerForNewTabs, addNewTaskListener, addRemoveTaskButtonListenerForInitialTabs,
         addRemoveTaskButtonListenerForNewTasks, addEditTaskListenersForInitialTasks,
-        addTaskInputListener, addEditTaskTitleListenerForNewTasks };
+        addTaskInputListener, addEditTaskTitleListenerForNewTasks, addToggleTaskCompleteListenerForInitialTasks, };
 })();
 
 export { eventAssigner };
