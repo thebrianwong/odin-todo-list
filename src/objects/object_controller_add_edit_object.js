@@ -39,11 +39,7 @@ const objectControllerAddEditObject = (() => {
         return newTaskIndex;
     };
     const editTaskTitle = (event) => {
-        const taskElement = helperFunctions.ensureCorrectTaskElement(event);
-        const index = taskElement.dataset.taskIndex;
-        const currentTabIndex = toDoList.getCurrentTabIndex();
-        const currentTabObject = toDoList.getSpecificChecklistTask(currentTabIndex);
-        const taskObject = currentTabObject.getSpecificChecklistTask(index);
+        const taskObject = helperFunctions.getTargetTaskObject(event);
         const newTaskTitleValue = event.target.value;
         taskObject.setTaskTitle(newTaskTitleValue);
     }

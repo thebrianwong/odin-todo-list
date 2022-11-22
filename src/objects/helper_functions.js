@@ -1,3 +1,5 @@
+import { toDoList } from "./todo_list_object";
+
 const helperFunctions = (() => {
     const ensureCorrectTabElement = (event) => {
         let tabElement = event.target.parentElement;
@@ -55,9 +57,17 @@ const helperFunctions = (() => {
             return false;
         };
     };
+    const getTargetTaskObject = (event) => {
+        const taskElement = ensureCorrectTaskElement(event);
+        const index = taskElement.dataset.taskIndex;
+        const currentTabIndex = toDoList.getCurrentTabIndex();
+        const currentTabObject = toDoList.getSpecificChecklistTask(currentTabIndex);
+        const taskObject = currentTabObject.getSpecificChecklistTask(index);
+        return taskObject;
+    };
     return { ensureCorrectTabElement, checkForTabInputElement, checkIfWasCurrentTab,
         checkIfOnlyOneTab, ensureCorrectTaskElement, ensureCorrectSubcontainer,
-        checkForTaskSubcontainerInputElement, };
+        checkForTaskSubcontainerInputElement, getTargetTaskObject, };
 })();
 
 export { helperFunctions };

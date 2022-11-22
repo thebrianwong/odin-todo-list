@@ -156,21 +156,13 @@ const DOMControllerAddEdit = (() => {
         return inputElement;
     };
     const setTaskInputElementValue = (event, inputElement) => {
-        const taskElement = helperFunctions.ensureCorrectTaskElement(event);
-        const index = taskElement.dataset.taskIndex;
-        const currentTabIndex = toDoList.getCurrentTabIndex();
-        const currentTabObject = toDoList.getSpecificChecklistTask(currentTabIndex);
-        const taskObject = currentTabObject.getSpecificChecklistTask(index);
+        const taskObject = helperFunctions.getTargetTaskObject(event);
         const taskSubcontent = taskObject.getTaskTitle();
         inputElement.value = taskSubcontent;
     }
     const insertTaskTitleElement = (event) => {
-        const taskElement = helperFunctions.ensureCorrectTaskElement(event);
         const taskSubcontainer = helperFunctions.ensureCorrectSubcontainer(event);
-        const index = taskElement.dataset.taskIndex;
-        const currentTabIndex = toDoList.getCurrentTabIndex();
-        const currentTabObject = toDoList.getSpecificChecklistTask(currentTabIndex);
-        const taskObject = currentTabObject.getSpecificChecklistTask(index);
+        const taskObject = helperFunctions.getTargetTaskObject(event);
         const taskTitle = taskObject.getTaskTitle();
         const taskSubcontentElement = document.createElement("h3");
         taskSubcontentElement.classList.add("to-do-title");
