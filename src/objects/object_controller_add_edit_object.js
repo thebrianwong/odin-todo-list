@@ -38,7 +38,16 @@ const objectControllerAddEditObject = (() => {
         const newTaskIndex = currentTab.addTask(newTask);
         return newTaskIndex;
     };
-    return { addNewTabToTodoArray, editTabName, updateCurrentTab, setFirstTabToCurrentTab, addNewTaskToTab };
+    const editTaskTitle = (event) => {
+        const taskElement = helperFunctions.ensureCorrectTaskElement(event);
+        const index = taskElement.dataset.taskIndex;
+        const currentTabIndex = toDoList.getCurrentTabIndex();
+        const currentTabObject = toDoList.getSpecificChecklistTask(currentTabIndex);
+        const taskObject = currentTabObject.getSpecificChecklistTask(index);
+        const newTaskTitleValue = event.target.value;
+        taskObject.setTaskTitle(newTaskTitleValue);
+    }
+    return { addNewTabToTodoArray, editTabName, updateCurrentTab, setFirstTabToCurrentTab, addNewTaskToTab, editTaskTitle, };
 })();
 
 export { objectControllerAddEditObject };
