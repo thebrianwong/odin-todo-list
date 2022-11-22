@@ -68,7 +68,10 @@ const eventAssigner = (() => {
     }
     return { addNewTabListener, addEditTabButtonListener, addTabInputListener,
         addEditTabButtonListenerForNewTabs, addRemoveTabButtonListenerForInitialTabs,
-        addRemoveTabButtonListenerForNewTabs, addSwitchTabListenerForInitialTabs, addSwitchTabListenerForNewTabs, addNewTaskListener, addRemoveTaskButtonListenerForInitialTabs, addRemoveTaskButtonListenerForNewTasks, addEditTaskTitleListenerForInitialTasks, addTaskTitleInputListener, addEditTaskTitleListenerForNewTasks};
+        addRemoveTabButtonListenerForNewTabs, addSwitchTabListenerForInitialTabs,
+        addSwitchTabListenerForNewTabs, addNewTaskListener, addRemoveTaskButtonListenerForInitialTabs,
+        addRemoveTaskButtonListenerForNewTasks, addEditTaskTitleListenerForInitialTasks,
+        addTaskTitleInputListener, addEditTaskTitleListenerForNewTasks };
 })();
 
 export { eventAssigner };

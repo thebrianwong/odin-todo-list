@@ -178,7 +178,9 @@ const DOMControllerAddEdit = (() => {
         taskSubcontainer.insertBefore(taskSubcontentElement, taskSubcontainer.firstChild);
     }
     return { addNewTabToDOM, setTabInputElementValue,
-        insertTabInputElement, insertTabNameElement, setDefaultCurrentTabDOM, setCurrentTabDOM, setFirstTabToCurrentTab, addNewTaskToDOM, insertTaskInputElement, setTaskInputElementValue, insertTaskTitleElement, };
+        insertTabInputElement, insertTabNameElement, setDefaultCurrentTabDOM,
+        setCurrentTabDOM, setFirstTabToCurrentTab, addNewTaskToDOM,
+        insertTaskInputElement, setTaskInputElementValue, insertTaskTitleElement, };
 })();
 
 export { DOMControllerAddEdit };

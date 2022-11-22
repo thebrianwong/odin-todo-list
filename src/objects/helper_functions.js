@@ -55,7 +55,9 @@ const helperFunctions = (() => {
             return false;
         };
     };
-    return { ensureCorrectTabElement, checkForTabInputElement, checkIfWasCurrentTab, checkIfOnlyOneTab, ensureCorrectTaskElement, ensureCorrectSubcontainer, checkForTaskSubcontainerInputElement, };
+    return { ensureCorrectTabElement, checkForTabInputElement, checkIfWasCurrentTab,
+        checkIfOnlyOneTab, ensureCorrectTaskElement, ensureCorrectSubcontainer,
+        checkForTaskSubcontainerInputElement, };
 })();
 
 export { helperFunctions };

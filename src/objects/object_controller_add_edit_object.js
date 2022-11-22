@@ -47,7 +47,8 @@ const objectControllerAddEditObject = (() => {
         const newTaskTitleValue = event.target.value;
         taskObject.setTaskTitle(newTaskTitleValue);
     }
-    return { addNewTabToTodoArray, editTabName, updateCurrentTab, setFirstTabToCurrentTab, addNewTaskToTab, editTaskTitle, };
+    return { addNewTabToTodoArray, editTabName, updateCurrentTab, setFirstTabToCurrentTab,
+        addNewTaskToTab, editTaskTitle, };
 })();
 
 export { objectControllerAddEditObject };
