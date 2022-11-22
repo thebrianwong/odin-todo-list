@@ -113,7 +113,8 @@ toDoList.addTask(tab1)
 // toDoList.addTask(tab2)
 // console.log(toDoList.getChecklistTasks())
 
-
+let task1 = toDoTask("Make Money TEST", "Task Due Date", "Task Description", "Task Notes");
+console.log(tab1.addTask(task1))
 
 eventAssigner.addNewTabListener();
 // eventAssigner.addEditTabListener();
@@ -125,6 +126,9 @@ eventAssigner.addRemoveTabButtonListenerForInitialTabs();
 console.log(toDoList)
 console.log(toDoList.getChecklistTasks())
 console.log(toDoList.getCurrentTabIndex())
+console.log(tab1.getChecklistTasks())
+console.log(tab1.getSpecificChecklistTask(0))
+console.log(tab1.getSpecificChecklistTask(0).getTaskTitle())
 
 DOMControllerAddEdit.setDefaultCurrentTabDOM(0)
 

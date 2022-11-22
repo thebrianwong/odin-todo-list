@@ -31,7 +31,14 @@ const helperFunctions = (() => {
             return false;
         };
     };
-    return { ensureCorrectTabElement, checkForTabInputElement, checkIfWasCurrentTab, checkIfOnlyOneTab, };
+    const ensureCorrectTaskElement = (event) => {
+        let taskElement = event.target.parentElement;
+        while (taskElement.getAttribute("class") !== "to-do-task") {
+            taskElement = taskElement.parentElement;
+        };
+        return taskElement;
+    }
+    return { ensureCorrectTabElement, checkForTabInputElement, checkIfWasCurrentTab, checkIfOnlyOneTab, ensureCorrectTaskElement, };
 })();
 
 export { helperFunctions };
