@@ -47,7 +47,15 @@ const helperFunctions = (() => {
         }
         return taskSubcontainer;
     };
-    return { ensureCorrectTabElement, checkForTabInputElement, checkIfWasCurrentTab, checkIfOnlyOneTab, ensureCorrectTaskElement, ensureCorrectSubcontainer, };
+    const checkForTaskSubcontainerInputElement = (event) => {
+        const taskSubcontainer = ensureCorrectSubcontainer(event);
+        if (taskSubcontainer.firstElementChild.tagName === "INPUT") {
+            return true;
+        } else {
+            return false;
+        };
+    };
+    return { ensureCorrectTabElement, checkForTabInputElement, checkIfWasCurrentTab, checkIfOnlyOneTab, ensureCorrectTaskElement, ensureCorrectSubcontainer, checkForTaskSubcontainerInputElement, };
 })();
 
 export { helperFunctions };
