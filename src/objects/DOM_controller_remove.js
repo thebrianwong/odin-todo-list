@@ -29,7 +29,13 @@ const DOMControllerRemove = (() => {
             return;
         };
     }
-    return { removeTabNameElement, removeTabInputElement, removeTabElementFromDOM, resetCurrentTabStatus}
+    const removeTaskElementFromDOM = (event) => {
+        let taskElement = helperFunctions.ensureCorrectTaskElement(event);
+        const toDoTaskSection = document.querySelector(".to-do-content");
+        toDoTaskSection.removeChild(taskElement);
+        taskElement = null;
+    }
+    return { removeTabNameElement, removeTabInputElement, removeTabElementFromDOM, resetCurrentTabStatus, removeTaskElementFromDOM, }
 })();
 
 export { DOMControllerRemove };

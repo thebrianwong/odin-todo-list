@@ -54,12 +54,8 @@ const eventBundler = (() => {
         const newTaskNode = DOMControllerAddEdit.addNewTaskToDOM(newTaskIndex);
     }
     const removeTask = (event => {
-        console.log(toDoList.getSpecificChecklistTask(0).getChecklistTasks())
-        console.log(toDoList.getSpecificChecklistTask(0).getSpecificChecklistTask(0))
-        console.log(toDoList.getSpecificChecklistTask(0).getSpecificChecklistTask(0).getTaskTitle())
         objectControllerRemoveObject.removeTaskFromTabArray(event);
-        console.log(toDoList.getSpecificChecklistTask(0).getChecklistTasks())
-        console.log(toDoList.getSpecificChecklistTask(0).getSpecificChecklistTask(0))
+        DOMControllerRemove.removeTaskElementFromDOM(event);
     })
     return { addTab, insertTabInputElement, updateTab, removeTab, switchTab, newTask, removeTask, };
 })();
