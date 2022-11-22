@@ -91,7 +91,7 @@ const DOMControllerAddEdit = (() => {
                     <button class="to-do-pin">
                         <img src="./assets/pin-outline.png" alt="Pin task button">
                     </button>
-                    <button class="edit-task-title">
+                    <button class="edit-task-title edit-task">
                         <img src="assets/pencil.png" alt="Edit task title button">
                     </button>
                     <button class="to-do-remove-task">
@@ -109,20 +109,20 @@ const DOMControllerAddEdit = (() => {
                 </div>
                 <div class="to-do-due-date-section to-do-task-subcontainer">
                     <p class="to-do-due-date">DUE DATE PLACEHOLDER</p>
-                    <button class="edit-task-due-date">
+                    <button class="edit-task-due-date edit-task">
                         <img src="assets/pencil.png" alt="Edit task due date button">
                     </button>
                 </div>
             </div>
             <div class="to-do-description-section to-do-task-subcontainer">
                 <p class="to-do-description">DESCRIPTION PLACEHOLDER</p>
-                <button class="edit-task-description">
+                <button class="edit-task-description edit-task">
                     <img src="assets/pencil.png" alt="Edit task description button">
                 </button>
             </div>
             <div class="to-do-notes-section to-do-task-subcontainer">
                 <p class="to-do-notes">NOTES PLACEHOLDER</p>
-                <button class="edit-task-notes">
+                <button class="edit-task-notes edit-task">
                     <img src="assets/pencil.png" alt="Edit task notes button">
                 </button>
             </div>

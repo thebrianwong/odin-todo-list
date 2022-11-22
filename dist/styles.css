@@ -264,11 +264,12 @@ input[type="checkbox"]:checked {
 
 .edit-tab,
 .remove-tab,
-.edit-task-title,
+/* .edit-task-title, */
 .to-do-remove-task,
-.edit-task-due-date,
+/* .edit-task-due-date,
 .edit-task-description,
-.edit-task-notes,
+.edit-task-notes, */
+.edit-task,
 .remove-checklist-task,
 .edit-checklist-task {
     align-self: flex-start;
