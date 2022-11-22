@@ -38,7 +38,6 @@ const objectControllerAddEditObject = (() => {
         const newTaskIndex = currentTab.addTask(newTask);
         return newTaskIndex;
     };
-    // variation here
     const editTaskObjectInfo = (event) => {
         const taskObject = helperFunctions.getTargetTaskObject(event);
         const newTaskTitleValue = event.target.value;
