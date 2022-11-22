@@ -155,9 +155,13 @@ const DOMControllerAddEdit = (() => {
         inputElement.focus();
         return inputElement;
     };
+    // variation here
     const setTaskInputElementValue = (event, inputElement) => {
         const taskObject = helperFunctions.getTargetTaskObject(event);
-        const taskSubcontent = taskObject.getTaskTitle();
+        //
+        // const taskSubcontent = taskObject.getTaskTitle();
+        const taskSubcontent = getCorrespondingTaskInfo(event, taskObject);
+        //
         inputElement.value = taskSubcontent;
     }
     const insertTaskTitleElement = (event) => {
@@ -168,6 +172,28 @@ const DOMControllerAddEdit = (() => {
         taskSubcontentElement.classList.add("to-do-title");
         taskSubcontentElement.textContent = taskTitle;
         taskSubcontainer.insertBefore(taskSubcontentElement, taskSubcontainer.firstChild);
+    }
+    const getCorrespondingTaskInfo = (event, taskObject) => {
+        const buttonElement = helperFunctions.ensureCorrectButtonElement(event);
+        const buttonClassList = buttonElement.classList;
+        const buttonType = Array.from(buttonClassList)[0];
+        console.log(buttonType)
+        switch (buttonType) {
+            case "edit-task-title":
+                return taskObject.getTaskTitle()
+                break;
+            case "edit-task-due-date":
+                return taskObject.getTaskDueDate()
+                break;
+            case "edit-task-description":
+                return taskObject.getTaskDescription()
+                break;
+            case "edit-task-notes":
+                return taskObject.getTaskNotes()
+                break;
+            default:
+                break;
+        }
     }
     return { addNewTabToDOM, setTabInputElementValue,
         insertTabInputElement, insertTabNameElement, setDefaultCurrentTabDOM,
