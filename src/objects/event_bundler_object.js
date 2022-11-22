@@ -59,6 +59,8 @@ const eventBundler = (() => {
         DOMControllerRemove.removeTaskElementFromDOM(event);
     };
     const insertTaskTitleInputElement = (event) => {
+        // const inputElement = DOMControllerAddEdit.insertTaskInputElement(event);
+        DOMControllerRemove.removeTaskSubcontentElementFromDOM(event);
         const inputElement = DOMControllerAddEdit.insertTaskInputElement(event);
     }
     return { addTab, insertTabInputElement, updateTab, removeTab, switchTab, newTask, removeTask, insertTaskTitleInputElement, };

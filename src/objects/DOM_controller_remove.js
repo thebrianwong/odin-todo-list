@@ -35,7 +35,13 @@ const DOMControllerRemove = (() => {
         toDoTaskSection.removeChild(taskElement);
         taskElement = null;
     }
-    return { removeTabNameElement, removeTabInputElement, removeTabElementFromDOM, resetCurrentTabStatus, removeTaskElementFromDOM, }
+    const removeTaskSubcontentElementFromDOM = (event) => {
+        const taskSubcontainer = helperFunctions.ensureCorrectSubcontainer(event);
+        let taskSubcontentElement = taskSubcontainer.firstElementChild;
+        taskSubcontainer.removeChild(taskSubcontentElement);
+        taskSubcontentElement = null
+    }
+    return { removeTabNameElement, removeTabInputElement, removeTabElementFromDOM, resetCurrentTabStatus, removeTaskElementFromDOM, removeTaskSubcontentElementFromDOM, }
 })();
 
 export { DOMControllerRemove };
