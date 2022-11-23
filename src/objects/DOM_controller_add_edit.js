@@ -263,11 +263,26 @@ const DOMControllerAddEdit = (() => {
         const checklistTaskDescription = checklistTaskObject.getTaskDescription();
         inputElement.value = checklistTaskDescription;
     };
+    const insertChecklistTaskDescriptionElement = (event) => {
+        const checklistTaskElement = helperFunctions.ensureCorrectChecklistTaskElement(event);
+        const checklistCompleteSection = checklistTaskElement.querySelector(".checklist-complete-section");
+        const taskElement = helperFunctions.ensureCorrectTaskElement(event);
+        const taskIndex = taskElement.dataset.taskIndex;
+        const checklistTaskIndex = checklistTaskElement.dataset.checklistTaskIndex;
+        const taskObject = helperFunctions.getTargetTaskObject(event);
+        const checklistTaskObject = taskObject.getSpecificChecklistTask(checklistTaskIndex);
+        const checklistTaskDescription = checklistTaskObject.getTaskDescription();
+        const checklistTaskDescriptionElement = document.createElement("label");
+        checklistTaskDescriptionElement.setAttribute("for", `checklist-${taskIndex}-${checklistTaskIndex}`);
+        checklistTaskDescriptionElement.classList.add("checklist-task-description");
+        checklistTaskDescriptionElement.textContent = checklistTaskDescription;
+        checklistCompleteSection.appendChild(checklistTaskDescriptionElement);
+    };
     return { addNewTabToDOM, setTabInputElementValue,
         insertTabInputElement, insertTabNameElement, setDefaultCurrentTabDOM,
         setCurrentTabDOM, setFirstTabToCurrentTab, addNewTaskToDOM,
         insertTaskInputElement, setTaskInputElementValue, insertTaskSubcontentElement,
-        toggleTaskDOMComplete, addNewChecklistTaskToDOM, insertChecklistTaskInputElement, setChecklistTaskInputElementValue, };
+        toggleTaskDOMComplete, addNewChecklistTaskToDOM, insertChecklistTaskInputElement, setChecklistTaskInputElementValue, insertChecklistTaskDescriptionElement, };
 })();
 
 export { DOMControllerAddEdit };

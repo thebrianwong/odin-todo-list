@@ -93,6 +93,7 @@ const eventBundler = (() => {
     const updateChecklistTask = (event) => {
         if (event.code === "Enter") {
             objectControllerAddEditObject.editChecklistTaskDescription(event);
+            DOMControllerAddEdit.insertChecklistTaskDescriptionElement(event);
         }
     };
     return { addTab, insertTabInputElement, updateTab, removeTab, switchTab,
