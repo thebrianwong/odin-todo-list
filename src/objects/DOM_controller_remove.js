@@ -50,7 +50,6 @@ const DOMControllerRemove = (() => {
     const removeChecklistTaskDescriptionDOM = (event) => {
         const buttonElement = helperFunctions.ensureCorrectButtonElement(event);
         const checklistCompleteSection = buttonElement.previousElementSibling;
-        console.log(checklistCompleteSection);
         let checklistTaskDescription = checklistCompleteSection.querySelector("label");
         checklistCompleteSection.removeChild(checklistTaskDescription);
         checklistTaskDescription = null;
