@@ -223,7 +223,9 @@ const DOMControllerAddEdit = (() => {
         newChecklistTaskNode.innerHTML = `
             <div class="checklist-complete">
                 <input type="checkbox" id="checklist-${taskIndex}-${newChecklistTaskIndex}">
-                <label for="checklist-${taskIndex}-${newChecklistTaskIndex}" class="checklist-task-description">DESCRIPTION PLACEHOLDER</label>
+                <label for="checklist-${taskIndex}-${newChecklistTaskIndex}" class="checklist-task-description">
+                    DESCRIPTION PLACEHOLDER
+                </label>
             </div>
             <button class="edit-checklist-task" type="button">
                 <img src="assets/pencil.png" alt="Edit checklist task button">
@@ -246,7 +248,8 @@ const DOMControllerAddEdit = (() => {
     return { addNewTabToDOM, setTabInputElementValue,
         insertTabInputElement, insertTabNameElement, setDefaultCurrentTabDOM,
         setCurrentTabDOM, setFirstTabToCurrentTab, addNewTaskToDOM,
-        insertTaskInputElement, setTaskInputElementValue, insertTaskSubcontentElement, toggleTaskDOMComplete, addNewChecklistTaskToDOM, };
+        insertTaskInputElement, setTaskInputElementValue, insertTaskSubcontentElement,
+        toggleTaskDOMComplete, addNewChecklistTaskToDOM, };
 })();
 
 export { DOMControllerAddEdit };
