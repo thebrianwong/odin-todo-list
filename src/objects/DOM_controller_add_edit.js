@@ -278,11 +278,20 @@ const DOMControllerAddEdit = (() => {
         checklistTaskDescriptionElement.textContent = checklistTaskDescription;
         checklistCompleteSection.appendChild(checklistTaskDescriptionElement);
     };
+    const toggleChecklistTaskDOMComplete = (event) => {
+        const taskObject = helperFunctions.getTargetTaskObject(event);
+        const checklistTaskElement = helperFunctions.ensureCorrectChecklistTaskElement(event);
+        const checklistCompleteSection = checklistTaskElement.querySelector(".checklist-complete-section");
+        const checklistCompleteCheckbox = checklistCompleteSection.querySelector(".checklist-complete-checkbox");
+        const checklistTaskIndex = checklistTaskElement.dataset.checklistTaskIndex;
+        const checklistTaskObject = taskObject.getSpecificChecklistTask(checklistTaskIndex);
+        checklistCompleteCheckbox.checked = checklistTaskObject.getCompletedState();
+    };
     return { addNewTabToDOM, setTabInputElementValue,
         insertTabInputElement, insertTabNameElement, setDefaultCurrentTabDOM,
         setCurrentTabDOM, setFirstTabToCurrentTab, addNewTaskToDOM,
         insertTaskInputElement, setTaskInputElementValue, insertTaskSubcontentElement,
-        toggleTaskDOMComplete, addNewChecklistTaskToDOM, insertChecklistTaskInputElement, setChecklistTaskInputElementValue, insertChecklistTaskDescriptionElement, };
+        toggleTaskDOMComplete, addNewChecklistTaskToDOM, insertChecklistTaskInputElement, setChecklistTaskInputElementValue, insertChecklistTaskDescriptionElement, toggleChecklistTaskDOMComplete, };
 })();
 
 export { DOMControllerAddEdit };
