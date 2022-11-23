@@ -283,6 +283,7 @@ const DOMControllerAddEdit = (() => {
         const checklistCompleteCheckbox = checklistCompleteSection.querySelector(".checklist-complete-checkbox");
         const checklistTaskObject = helperFunctions.getTargetChecklistTaskObject(event);
         checklistCompleteCheckbox.checked = checklistTaskObject.getCompletedState();
+        console.log(checklistTaskObject.getCompletedState())
     };
     return { addNewTabToDOM, setTabInputElementValue,
         insertTabInputElement, insertTabNameElement, setDefaultCurrentTabDOM,
