@@ -54,6 +54,7 @@ const eventBundler = (() => {
         const newTaskNode = DOMControllerAddEdit.addNewTaskToDOM(newTaskIndex);
         eventAssigner.addRemoveTaskButtonListenerForNewTasks(newTaskNode);
         eventAssigner.addEditTaskTitleListenerForNewTasks(newTaskNode);
+        eventAssigner.addToggleTaskCompleteListenerForNewTasks(newTaskNode);
     }
     const removeTask = (event) => {
         objectControllerRemoveObject.removeTaskFromTabArray(event);
