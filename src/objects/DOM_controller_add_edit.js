@@ -126,7 +126,7 @@ const DOMControllerAddEdit = (() => {
                     <img src="assets/pencil.png" alt="Edit task notes button">
                 </button>
             </div>
-            <form action="" class="task-checklist">
+            <form action="" class="checklist">
                 <div class="checklist-header">
                     <legend class="checklist-label">Checklist</legend>
                     <button class="add-checklist-task" type="button">
@@ -255,11 +255,19 @@ const DOMControllerAddEdit = (() => {
         inputElement.focus();
         return inputElement;
     };
+    const setChecklistTaskInputElementValue = (event, inputElement) => {
+        const checklistTaskElement = helperFunctions.ensureCorrectChecklistTaskElement(event);
+        const checklistTaskIndex = checklistTaskElement.dataset.checklistTaskIndex;
+        const taskObject = helperFunctions.getTargetTaskObject(event);
+        const checklistTaskObject = taskObject.getSpecificChecklistTask(checklistTaskIndex);
+        const checklistTaskDescription = checklistTaskObject.getTaskDescription();
+        inputElement.value = checklistTaskDescription;
+    };
     return { addNewTabToDOM, setTabInputElementValue,
         insertTabInputElement, insertTabNameElement, setDefaultCurrentTabDOM,
         setCurrentTabDOM, setFirstTabToCurrentTab, addNewTaskToDOM,
         insertTaskInputElement, setTaskInputElementValue, insertTaskSubcontentElement,
-        toggleTaskDOMComplete, addNewChecklistTaskToDOM, insertChecklistTaskInputElement, };
+        toggleTaskDOMComplete, addNewChecklistTaskToDOM, insertChecklistTaskInputElement, setChecklistTaskInputElementValue, };
 })();
 
 export { DOMControllerAddEdit };
