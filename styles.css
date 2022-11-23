@@ -367,7 +367,7 @@ input[type="checkbox"]:checked {
     padding: 10px 10px 10px 30px;
 }
 
-.checklist-complete {
+.checklist-complete-section {
     display: flex;
     align-items: center;
     margin-right: 10px;
