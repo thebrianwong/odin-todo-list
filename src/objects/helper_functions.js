@@ -104,7 +104,6 @@ const helperFunctions = (() => {
         const checklistTaskElement = ensureCorrectChecklistTaskElement(event);
         const checklistCompleteSection = checklistTaskElement.querySelector(".checklist-complete-section");
         const inputElement = checklistCompleteSection.querySelector(".checklist-input");
-        console.log(inputElement)
         if (inputElement !== null) {
             return true;
         } else {

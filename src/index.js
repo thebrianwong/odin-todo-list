@@ -149,7 +149,7 @@ eventAssigner.addEditTaskListenersForInitialTasks();
 
 eventAssigner.addToggleTaskCompleteListenerForInitialTasks();
 eventAssigner.addNewChecklistTaskListenerForInitialTasks();
-eventAssigner.addEditChecklistTaskListenersForInitialTasks();
+eventAssigner.addEditChecklistTaskListenersForInitialChecklistTasks();
 
 let checklistTask1 = checklistTaskObject("Checklist Task Description TEST")
 task1.addTask(checklistTask1)
