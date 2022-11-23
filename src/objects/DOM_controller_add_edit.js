@@ -210,7 +210,7 @@ const DOMControllerAddEdit = (() => {
         };
     };
     const addNewChecklistTaskToDOM = (event, newChecklistTaskIndex) => {
-        const taskChecklistElement = helperFunctions.ensureCorrectChecklistFormElement(event);
+        const checklistFormElement = helperFunctions.ensureCorrectChecklistFormElement(event);
         const taskElement = helperFunctions.ensureCorrectTaskElement(event);
         const taskIndex = taskElement.dataset.taskIndex;
         const taskObject = helperFunctions.getTargetTaskObject(event);
@@ -242,7 +242,7 @@ const DOMControllerAddEdit = (() => {
         } else {
             checklistTaskCompletedElement.checked = false;
         };
-        taskChecklistElement.appendChild(newChecklistTaskNode);
+        checklistFormElement.appendChild(newChecklistTaskNode);
         return newChecklistTaskNode;
     };
     return { addNewTabToDOM, setTabInputElementValue,

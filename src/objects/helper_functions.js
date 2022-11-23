@@ -83,11 +83,11 @@ const helperFunctions = (() => {
         return subcontainerClasses;
     };
     const ensureCorrectChecklistFormElement = (event) => {
-        let taskChecklistElement = event.target;
-        while (taskChecklistElement.tagName !== "FORM") {
-            taskChecklistElement = taskChecklistElement.parentElement;
+        let checklistFormElement = event.target;
+        while (checklistFormElement.tagName !== "FORM") {
+            checklistFormElement = checklistFormElement.parentElement;
         };
-        return taskChecklistElement;
+        return checklistFormElement;
     };
     return { ensureCorrectTabElement, checkForTabInputElement, checkIfWasCurrentTab,
         checkIfOnlyOneTab, ensureCorrectTaskElement, ensureCorrectSubcontainer,
