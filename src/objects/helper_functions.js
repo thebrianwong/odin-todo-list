@@ -110,10 +110,17 @@ const helperFunctions = (() => {
             return false;
         };
     };
+    const getTargetChecklistTaskObject = (event) => {
+        const taskObject = getTargetTaskObject(event);
+        const checklistTaskElement = ensureCorrectChecklistTaskElement(event);
+        const checklistTaskIndex = checklistTaskElement.dataset.checklistTaskIndex;
+        const checklistTaskObject = taskObject.getSpecificChecklistTask(checklistTaskIndex);
+        return checklistTaskObject;
+    };
     return { ensureCorrectTabElement, checkForTabInputElement, checkIfWasCurrentTab,
         checkIfOnlyOneTab, ensureCorrectTaskElement, ensureCorrectSubcontainer,
         checkForTaskSubcontainerInputElement, getTargetTaskObject, ensureCorrectButtonElement,
-        getButtonType, getSubcontainerType, ensureCorrectChecklistElement, ensureCorrectChecklistTaskElement, checkForChecklistTaskInputElement, };
+        getButtonType, getSubcontainerType, ensureCorrectChecklistElement, ensureCorrectChecklistTaskElement, checkForChecklistTaskInputElement, getTargetChecklistTaskObject, };
 })();
 
 export { helperFunctions };
