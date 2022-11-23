@@ -129,7 +129,7 @@ const DOMControllerAddEdit = (() => {
             <form action="" class="task-checklist">
                 <div class="checklist-header">
                     <legend class="checklist-label">Checklist</legend>
-                    <button class="add-checklist-task">
+                    <button class="add-checklist-task" type="button">
                         <img src="assets/plus.png" alt="Add checklist task button">
                     </button>
                 </div>
