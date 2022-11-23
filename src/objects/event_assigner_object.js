@@ -115,7 +115,9 @@ const eventAssigner = (() => {
         addRemoveTaskButtonListenerForNewTasks, addEditTaskListenersForInitialTasks,
         addTaskInputListener, addEditTaskTitleListenerForNewTasks,
         addToggleTaskCompleteListenerForInitialTasks, addToggleTaskCompleteListenerForNewTasks, 
-        addNewChecklistTaskListenerForInitialTasks, addNewChecklistTaskListenerForNewTasks, addEditChecklistTaskListenersForInitialChecklistTasks, addChecklistTaskInputListener, addEditChecklistTaskListenersForNewChecklistTasks, addToggleChecklistTaskCompleteListenerForInitialChecklistTasks, };
+        addNewChecklistTaskListenerForInitialTasks, addNewChecklistTaskListenerForNewTasks,
+        addEditChecklistTaskListenersForInitialChecklistTasks, addChecklistTaskInputListener,
+        addEditChecklistTaskListenersForNewChecklistTasks, addToggleChecklistTaskCompleteListenerForInitialChecklistTasks, };
 })();
 
 export { eventAssigner };

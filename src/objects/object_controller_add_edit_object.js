@@ -73,7 +73,8 @@ const objectControllerAddEditObject = (() => {
         checklistTaskObject.toggleCompletedState();
     };
     return { addNewTabToTodoArray, editTabName, updateCurrentTab, setFirstTabToCurrentTab,
-        addNewTaskToTab, editTaskObjectInfo, toggleTaskComplete, addNewChecklistTaskToTask, editChecklistTaskDescription, toggleChecklistTaskComplete};
+        addNewTaskToTab, editTaskObjectInfo, toggleTaskComplete, addNewChecklistTaskToTask,
+        editChecklistTaskDescription, toggleChecklistTaskComplete};
 })();
 
 export { objectControllerAddEditObject };

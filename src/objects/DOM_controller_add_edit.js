@@ -288,7 +288,9 @@ const DOMControllerAddEdit = (() => {
         insertTabInputElement, insertTabNameElement, setDefaultCurrentTabDOM,
         setCurrentTabDOM, setFirstTabToCurrentTab, addNewTaskToDOM,
         insertTaskInputElement, setTaskInputElementValue, insertTaskSubcontentElement,
-        toggleTaskDOMComplete, addNewChecklistTaskToDOM, insertChecklistTaskInputElement, setChecklistTaskInputElementValue, insertChecklistTaskDescriptionElement, toggleChecklistTaskDOMComplete, };
+        toggleTaskDOMComplete, addNewChecklistTaskToDOM, insertChecklistTaskInputElement,
+        setChecklistTaskInputElementValue, insertChecklistTaskDescriptionElement,
+        toggleChecklistTaskDOMComplete, };
 })();
 
 export { DOMControllerAddEdit };
