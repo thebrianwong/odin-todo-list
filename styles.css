@@ -300,45 +300,45 @@ input[type="checkbox"]:checked {
 }
 
 /* Alternating colors for first of three sections of checklist (including the legend) */
-.to-do-task:nth-child(3n+1) .task-checklist > *:nth-child(3n+1) {
+.to-do-task:nth-child(3n+1) .checklist > *:nth-child(3n+1) {
     background-color: #fdbdfd;
 }
 
-.to-do-task:nth-child(3n+2) .task-checklist > *:nth-child(3n+1) {
+.to-do-task:nth-child(3n+2) .checklist > *:nth-child(3n+1) {
     background-color: #bdfdbd;
 }
 
-.to-do-task:nth-child(3n) .task-checklist > *:nth-child(3n+1) {
+.to-do-task:nth-child(3n) .checklist > *:nth-child(3n+1) {
     background-color: #fdddbd;
 }
 
 /* Alternating colors for second of three sections of checklist */
-.to-do-task:nth-child(3n+1) .task-checklist > *:nth-child(3n+2) {
+.to-do-task:nth-child(3n+1) .checklist > *:nth-child(3n+2) {
     background-color: #bdfdbd;
 }
 
-.to-do-task:nth-child(3n+2) .task-checklist > *:nth-child(3n+2) {
+.to-do-task:nth-child(3n+2) .checklist > *:nth-child(3n+2) {
     background-color: #fdddbd;
 }
 
-.to-do-task:nth-child(3n) .task-checklist > *:nth-child(3n+2) {
+.to-do-task:nth-child(3n) .checklist > *:nth-child(3n+2) {
     background-color: #fdbdfd;
 }
 
 /* Alternating colors for third of three sections of checklist */
-.to-do-task:nth-child(3n+1) .task-checklist > *:nth-child(3n) {
+.to-do-task:nth-child(3n+1) .checklist > *:nth-child(3n) {
     background-color: #fdddbd;
 }
 
-.to-do-task:nth-child(3n+2) .task-checklist > *:nth-child(3n) {
+.to-do-task:nth-child(3n+2) .checklist > *:nth-child(3n) {
     background-color: #fdbdfd;
 }
 
-.to-do-task:nth-child(3n) .task-checklist > *:nth-child(3n) {
+.to-do-task:nth-child(3n) .checklist > *:nth-child(3n) {
     background-color: #bdfdbd;
 }
 
-.task-checklist {
+.checklist {
     display: flex;
     flex-direction: column;
 }
