@@ -149,3 +149,4 @@ eventAssigner.addEditTaskListenersForInitialTasks();
 
 eventAssigner.addToggleTaskCompleteListenerForInitialTasks();
 eventAssigner.addNewChecklistTaskListenerForInitialTasks();
+eventAssigner.addEditChecklistTaskListenersForInitialTasks();

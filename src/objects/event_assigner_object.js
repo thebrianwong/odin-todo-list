@@ -88,6 +88,12 @@ const eventAssigner = (() => {
         const addChecklistTaskButton = newChecklistTaskNode.querySelector(".add-checklist-task");
         addChecklistTaskButton.addEventListener("click", eventBundler.addNewChecklistTask)
     };
+    const addEditChecklistTaskListenersForInitialTasks = () => {
+        const checklistEditButtons = Array.from(document.querySelectorAll(".edit-checklist-task"));
+        for (const button of checklistEditButtons) {
+            button.addEventListener("click", eventBundler.insertChecklistTaskInputElement);
+        };
+    };
     return { addNewTabListener, addEditTabButtonListener, addTabInputListener,
         addEditTabButtonListenerForNewTabs, addRemoveTabButtonListenerForInitialTabs,
         addRemoveTabButtonListenerForNewTabs, addSwitchTabListenerForInitialTabs,
@@ -95,7 +101,7 @@ const eventAssigner = (() => {
         addRemoveTaskButtonListenerForNewTasks, addEditTaskListenersForInitialTasks,
         addTaskInputListener, addEditTaskTitleListenerForNewTasks,
         addToggleTaskCompleteListenerForInitialTasks, addToggleTaskCompleteListenerForNewTasks, 
-        addNewChecklistTaskListenerForInitialTasks, addNewChecklistTaskListenerForNewTasks, };
+        addNewChecklistTaskListenerForInitialTasks, addNewChecklistTaskListenerForNewTasks, addEditChecklistTaskListenersForInitialTasks, };
 })();
 
 export { eventAssigner };
