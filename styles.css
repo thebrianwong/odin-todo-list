@@ -122,7 +122,7 @@ button:focus-visible {
     padding: 10px;
 }
 
-.task-input {
+.to-do-title-section .task-input {
     margin-top: 10px
 }
 
