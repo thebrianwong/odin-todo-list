@@ -82,12 +82,14 @@ const helperFunctions = (() => {
         const subcontainerClasses = Array.from(taskSubcontainer.classList);
         return subcontainerClasses;
     };
-    const ensureCorrectChecklistFormElement = (event) => {
-        let checklistFormElement = event.target;
-        while (checklistFormElement.tagName !== "FORM") {
-            checklistFormElement = checklistFormElement.parentElement;
+    const ensureCorrectChecklistElement = (event) => {
+        let checklistElement = event.target;
+        let classList = Array.from(checklistElement.classList);
+        while (!classList.includes("checklist")) {
+            checklistElement = checklistElement.parentElement;
+            classList = Array.from(checklistElement.classList);
         };
-        return checklistFormElement;
+        return checklistElement;
     };
     const ensureCorrectChecklistTaskElement = (event) => {
         let checklistTaskElement = event.target;
@@ -101,7 +103,7 @@ const helperFunctions = (() => {
     return { ensureCorrectTabElement, checkForTabInputElement, checkIfWasCurrentTab,
         checkIfOnlyOneTab, ensureCorrectTaskElement, ensureCorrectSubcontainer,
         checkForTaskSubcontainerInputElement, getTargetTaskObject, ensureCorrectButtonElement,
-        getButtonType, getSubcontainerType, ensureCorrectChecklistFormElement, ensureCorrectChecklistTaskElement, };
+        getButtonType, getSubcontainerType, ensureCorrectChecklistElement, ensureCorrectChecklistTaskElement, };
 })();
 
 export { helperFunctions };
