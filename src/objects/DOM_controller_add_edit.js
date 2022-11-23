@@ -126,14 +126,14 @@ const DOMControllerAddEdit = (() => {
                     <img src="assets/pencil.png" alt="Edit task notes button">
                 </button>
             </div>
-            <form action="" class="checklist">
+            <div action="" class="checklist">
                 <div class="checklist-header">
                     <legend class="checklist-label">Checklist</legend>
                     <button class="add-checklist-task" type="button">
                         <img src="assets/plus.png" alt="Add checklist task button">
                     </button>
                 </div>
-            </form>
+            </div>
         `;
         const titleDOM = newTaskNode.querySelector(".to-do-title");
         titleDOM.textContent = newTaskTitle;
