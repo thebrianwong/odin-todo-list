@@ -71,8 +71,15 @@ const objectControllerAddEditObject = (() => {
         const newChecklistTaskDescription = event.target.value;
         checklistTaskObject.setTaskDescription(newChecklistTaskDescription);
     };
+    const toggleChecklistTaskComplete = (event) => {
+        const taskObject = helperFunctions.getTargetTaskObject(event);
+        const checklistTaskElement = helperFunctions.ensureCorrectChecklistTaskElement(event);
+        const checklistTaskIndex = checklistTaskElement.dataset.checklistTaskIndex;
+        const checklistTaskObject = taskObject.getSpecificChecklistTask(checklistTaskIndex);
+        checklistTaskObject.toggleCompletedState();
+    };
     return { addNewTabToTodoArray, editTabName, updateCurrentTab, setFirstTabToCurrentTab,
-        addNewTaskToTab, editTaskObjectInfo, toggleTaskComplete, addNewChecklistTaskToTask, editChecklistTaskDescription, };
+        addNewTaskToTab, editTaskObjectInfo, toggleTaskComplete, addNewChecklistTaskToTask, editChecklistTaskDescription, toggleChecklistTaskComplete};
 })();
 
 export { objectControllerAddEditObject };

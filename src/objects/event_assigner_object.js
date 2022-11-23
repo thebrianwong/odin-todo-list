@@ -1,3 +1,4 @@
+import { checklistObject } from "./checklist_object";
 import { DOMUpdateController } from "./DOM_controller_add_edit";
 import { eventBundler } from "./event_bundler_object";
 
@@ -101,6 +102,12 @@ const eventAssigner = (() => {
         const checklistEditButton = newChecklistTaskNode.querySelector(".edit-checklist-task");
         checklistEditButton.addEventListener("click", eventBundler.insertChecklistTaskInputElement);
     };
+    const addToggleChecklistTaskCompleteListenerForInitialChecklistTasks = () => {
+        const checklistCompleteCheckboxes = document.querySelectorAll(".checklist-complete-checkbox");
+        for (const checkbox of checklistCompleteCheckboxes) {
+            checkbox.addEventListener("click", eventBundler.toggleChecklistTaskComplete);
+        };
+    };
     return { addNewTabListener, addEditTabButtonListener, addTabInputListener,
         addEditTabButtonListenerForNewTabs, addRemoveTabButtonListenerForInitialTabs,
         addRemoveTabButtonListenerForNewTabs, addSwitchTabListenerForInitialTabs,
@@ -108,7 +115,7 @@ const eventAssigner = (() => {
         addRemoveTaskButtonListenerForNewTasks, addEditTaskListenersForInitialTasks,
         addTaskInputListener, addEditTaskTitleListenerForNewTasks,
         addToggleTaskCompleteListenerForInitialTasks, addToggleTaskCompleteListenerForNewTasks, 
-        addNewChecklistTaskListenerForInitialTasks, addNewChecklistTaskListenerForNewTasks, addEditChecklistTaskListenersForInitialChecklistTasks, addChecklistTaskInputListener, addEditChecklistTaskListenersForNewChecklistTasks, };
+        addNewChecklistTaskListenerForInitialTasks, addNewChecklistTaskListenerForNewTasks, addEditChecklistTaskListenersForInitialChecklistTasks, addChecklistTaskInputListener, addEditChecklistTaskListenersForNewChecklistTasks, addToggleChecklistTaskCompleteListenerForInitialChecklistTasks, };
 })();
 
 export { eventAssigner };
