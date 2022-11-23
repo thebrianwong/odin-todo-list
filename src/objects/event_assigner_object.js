@@ -94,6 +94,9 @@ const eventAssigner = (() => {
             button.addEventListener("click", eventBundler.insertChecklistTaskInputElement);
         };
     };
+    const addChecklistTaskInputListener = (inputElement) => {
+        inputElement.addEventListener("keydown", eventBundler.updateChecklistTask);
+    };
     return { addNewTabListener, addEditTabButtonListener, addTabInputListener,
         addEditTabButtonListenerForNewTabs, addRemoveTabButtonListenerForInitialTabs,
         addRemoveTabButtonListenerForNewTabs, addSwitchTabListenerForInitialTabs,
@@ -101,7 +104,7 @@ const eventAssigner = (() => {
         addRemoveTaskButtonListenerForNewTasks, addEditTaskListenersForInitialTasks,
         addTaskInputListener, addEditTaskTitleListenerForNewTasks,
         addToggleTaskCompleteListenerForInitialTasks, addToggleTaskCompleteListenerForNewTasks, 
-        addNewChecklistTaskListenerForInitialTasks, addNewChecklistTaskListenerForNewTasks, addEditChecklistTaskListenersForInitialTasks, };
+        addNewChecklistTaskListenerForInitialTasks, addNewChecklistTaskListenerForNewTasks, addEditChecklistTaskListenersForInitialTasks, addChecklistTaskInputListener, };
 })();
 
 export { eventAssigner };
