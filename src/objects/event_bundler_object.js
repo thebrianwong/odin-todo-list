@@ -83,6 +83,7 @@ const eventBundler = (() => {
     const addNewChecklistTask = (event) => {
         const newChecklistTaskIndex = objectControllerAddEditObject.addNewChecklistTaskToTask(event);
         const newChecklistTaskNode = DOMControllerAddEdit.addNewChecklistTaskToDOM(event, newChecklistTaskIndex);
+        eventAssigner.addEditChecklistTaskListenersForNewChecklistTasks(newChecklistTaskNode);
     };
     const insertChecklistTaskInputElement = (event) => {
         if (!helperFunctions.checkForChecklistTaskInputElement(event)) {
