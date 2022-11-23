@@ -148,3 +148,4 @@ eventAssigner.addEditTaskListenersForInitialTasks();
 // boi.addEventListener("click", heh)
 
 eventAssigner.addToggleTaskCompleteListenerForInitialTasks();
+eventAssigner.addNewChecklistTaskListenerForInitialTasks();

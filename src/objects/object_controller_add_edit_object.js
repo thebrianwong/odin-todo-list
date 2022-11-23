@@ -4,6 +4,7 @@ import { titleBehaviorComponent } from "../components/title_component";
 import { containsChecklistTaskBehaviorComponent } from "../components/contains_checklist_task_component";
 import { helperFunctions } from "./helper_functions";
 import { toDoTask } from "./todo_task_object";
+import { checklistTaskObject } from "./checklist_task_object";
 
 const objectControllerAddEditObject = (() => {
     const addNewTabToTodoArray = () => {
@@ -56,8 +57,14 @@ const objectControllerAddEditObject = (() => {
         const taskObject = helperFunctions.getTargetTaskObject(event);
         taskObject.toggleCompletedState();
     };
+    const addNewChecklistTaskToTask = (event) => {
+        const taskObject = helperFunctions.getTargetTaskObject(event);
+        const newChecklistTask = checklistTaskObject("Checklist Task Description");
+        const newChecklistTaskIndex = taskObject.addTask(newChecklistTask);
+        return newChecklistTaskIndex
+    };
     return { addNewTabToTodoArray, editTabName, updateCurrentTab, setFirstTabToCurrentTab,
-        addNewTaskToTab, editTaskObjectInfo, toggleTaskComplete, };
+        addNewTaskToTab, editTaskObjectInfo, toggleTaskComplete, addNewChecklistTaskToTask, };
 })();
 
 export { objectControllerAddEditObject };

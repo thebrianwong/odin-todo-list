@@ -79,8 +79,11 @@ const eventBundler = (() => {
         objectControllerAddEditObject.toggleTaskComplete(event);
         DOMControllerAddEdit.toggleTaskDOMComplete(event);
     };
+    const addNewChecklistTask = (event) => {
+        const newChecklistTaskIndex = objectControllerAddEditObject.addNewChecklistTaskToTask(event);
+    };
     return { addTab, insertTabInputElement, updateTab, removeTab, switchTab,
-        newTask, removeTask, insertTaskInputElement, updateTask, toggleTaskComplete, };
+        newTask, removeTask, insertTaskInputElement, updateTask, toggleTaskComplete, addNewChecklistTask, };
 })();
 
 export { eventBundler };
