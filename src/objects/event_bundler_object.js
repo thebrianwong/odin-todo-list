@@ -81,6 +81,7 @@ const eventBundler = (() => {
     };
     const addNewChecklistTask = (event) => {
         const newChecklistTaskIndex = objectControllerAddEditObject.addNewChecklistTaskToTask(event);
+        const newTaskNode = DOMControllerAddEdit.addNewChecklistTaskToDOM(event, newChecklistTaskIndex);
     };
     return { addTab, insertTabInputElement, updateTab, removeTab, switchTab,
         newTask, removeTask, insertTaskInputElement, updateTask, toggleTaskComplete, addNewChecklistTask, };

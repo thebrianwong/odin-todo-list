@@ -209,10 +209,44 @@ const DOMControllerAddEdit = (() => {
             completeCheckbox.checked = false;
         };
     };
+    const addNewChecklistTaskToDOM = (event, newChecklistTaskIndex) => {
+        const taskChecklistElement = helperFunctions.ensureCorrectTaskChecklistElement(event);
+        const taskElement = helperFunctions.ensureCorrectTaskElement(event);
+        const taskIndex = taskElement.dataset.taskIndex;
+        const taskObject = helperFunctions.getTargetTaskObject(event);
+        const newChecklistTask = taskObject.getSpecificChecklistTask(newChecklistTaskIndex);
+        const newChecklistTaskDescription = newChecklistTask.getTaskDescription();
+        const newChecklistTaskCompleted = newChecklistTask.getCompletedState();
+        const newChecklistTaskNode = document.createElement("div");
+        newChecklistTaskNode.classList.add("checklist-task");
+        newChecklistTaskNode.dataset.checklistTaskIndex = newChecklistTaskIndex;
+        newChecklistTaskNode.innerHTML = `
+            <div class="checklist-complete">
+                <input type="checkbox" id="checklist-${taskIndex}-${newChecklistTaskIndex}">
+                <label for="checklist-${taskIndex}-${newChecklistTaskIndex}" class="checklist-task-description">DESCRIPTION PLACEHOLDER</label>
+            </div>
+            <button class="edit-checklist-task" type="button">
+                <img src="assets/pencil.png" alt="Edit checklist task button">
+            </button>
+            <button class="remove-checklist-task" type="button">
+                <img src="assets/close.png" alt="Edit checklist task button">
+            </button>
+        `
+        const checklistTaskDescriptionElement = newChecklistTaskNode.querySelector(".checklist-task-description");
+        checklistTaskDescriptionElement.textContent = newChecklistTaskDescription;
+        const checklistTaskCompletedElement = newChecklistTaskNode.querySelector(`#checklist-${taskIndex}-${newChecklistTaskIndex}`);
+        if (newChecklistTaskCompleted) {
+            checklistTaskCompletedElement.checked = true;
+        } else {
+            checklistTaskCompletedElement.checked = false;
+        };
+        taskChecklistElement.appendChild(newChecklistTaskNode);
+        return newChecklistTaskNode;
+    };
     return { addNewTabToDOM, setTabInputElementValue,
         insertTabInputElement, insertTabNameElement, setDefaultCurrentTabDOM,
         setCurrentTabDOM, setFirstTabToCurrentTab, addNewTaskToDOM,
-        insertTaskInputElement, setTaskInputElementValue, insertTaskSubcontentElement, toggleTaskDOMComplete, };
+        insertTaskInputElement, setTaskInputElementValue, insertTaskSubcontentElement, toggleTaskDOMComplete, addNewChecklistTaskToDOM, };
 })();
 
 export { DOMControllerAddEdit };
