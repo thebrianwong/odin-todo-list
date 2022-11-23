@@ -210,7 +210,7 @@ const DOMControllerAddEdit = (() => {
         };
     };
     const addNewChecklistTaskToDOM = (event, newChecklistTaskIndex) => {
-        const taskChecklistElement = helperFunctions.ensureCorrectTaskChecklistElement(event);
+        const taskChecklistElement = helperFunctions.ensureCorrectChecklistFormElement(event);
         const taskElement = helperFunctions.ensureCorrectTaskElement(event);
         const taskIndex = taskElement.dataset.taskIndex;
         const taskObject = helperFunctions.getTargetTaskObject(event);
