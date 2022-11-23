@@ -221,7 +221,7 @@ const DOMControllerAddEdit = (() => {
         newChecklistTaskNode.classList.add("checklist-task");
         newChecklistTaskNode.dataset.checklistTaskIndex = newChecklistTaskIndex;
         newChecklistTaskNode.innerHTML = `
-            <div class="checklist-complete">
+            <div class="checklist-complete-section">
                 <input type="checkbox" id="checklist-${taskIndex}-${newChecklistTaskIndex}">
                 <label for="checklist-${taskIndex}-${newChecklistTaskIndex}" class="checklist-task-description">
                     DESCRIPTION PLACEHOLDER
