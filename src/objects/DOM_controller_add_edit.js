@@ -265,12 +265,11 @@ const DOMControllerAddEdit = (() => {
     };
     const insertChecklistTaskDescriptionElement = (event) => {
         const checklistTaskElement = helperFunctions.ensureCorrectChecklistTaskElement(event);
+        const checklistTaskIndex = checklistTaskElement.dataset.checklistTaskIndex;
         const checklistCompleteSection = checklistTaskElement.querySelector(".checklist-complete-section");
         const taskElement = helperFunctions.ensureCorrectTaskElement(event);
         const taskIndex = taskElement.dataset.taskIndex;
-        const checklistTaskIndex = checklistTaskElement.dataset.checklistTaskIndex;
-        const taskObject = helperFunctions.getTargetTaskObject(event);
-        const checklistTaskObject = taskObject.getSpecificChecklistTask(checklistTaskIndex);
+        const checklistTaskObject = helperFunctions.getTargetChecklistTaskObject(event);
         const checklistTaskDescription = checklistTaskObject.getTaskDescription();
         const checklistTaskDescriptionElement = document.createElement("label");
         checklistTaskDescriptionElement.setAttribute("for", `checklist-${taskIndex}-${checklistTaskIndex}`);
@@ -279,12 +278,10 @@ const DOMControllerAddEdit = (() => {
         checklistCompleteSection.appendChild(checklistTaskDescriptionElement);
     };
     const toggleChecklistTaskDOMComplete = (event) => {
-        const taskObject = helperFunctions.getTargetTaskObject(event);
         const checklistTaskElement = helperFunctions.ensureCorrectChecklistTaskElement(event);
         const checklistCompleteSection = checklistTaskElement.querySelector(".checklist-complete-section");
         const checklistCompleteCheckbox = checklistCompleteSection.querySelector(".checklist-complete-checkbox");
-        const checklistTaskIndex = checklistTaskElement.dataset.checklistTaskIndex;
-        const checklistTaskObject = taskObject.getSpecificChecklistTask(checklistTaskIndex);
+        const checklistTaskObject = helperFunctions.getTargetChecklistTaskObject(event);
         checklistCompleteCheckbox.checked = checklistTaskObject.getCompletedState();
     };
     return { addNewTabToDOM, setTabInputElementValue,
