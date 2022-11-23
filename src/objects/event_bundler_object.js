@@ -85,17 +85,19 @@ const eventBundler = (() => {
         const newChecklistTaskNode = DOMControllerAddEdit.addNewChecklistTaskToDOM(event, newChecklistTaskIndex);
     };
     const insertChecklistTaskInputElement = (event) => {
-        DOMControllerRemove.removeChecklistTaskDescriptionDOM(event);
-        const inputElement = DOMControllerAddEdit.insertChecklistTaskInputElement(event);
-        DOMControllerAddEdit.setChecklistTaskInputElementValue(event, inputElement);
-        eventAssigner.addChecklistTaskInputListener(inputElement);
+        if (!helperFunctions.checkForChecklistTaskInputElement(event)) {
+            DOMControllerRemove.removeChecklistTaskDescriptionDOM(event);
+            const inputElement = DOMControllerAddEdit.insertChecklistTaskInputElement(event);
+            DOMControllerAddEdit.setChecklistTaskInputElementValue(event, inputElement);
+            eventAssigner.addChecklistTaskInputListener(inputElement);
+        };
     };
     const updateChecklistTask = (event) => {
         if (event.code === "Enter") {
             objectControllerAddEditObject.editChecklistTaskDescription(event);
             DOMControllerAddEdit.insertChecklistTaskDescriptionElement(event);
             DOMControllerRemove.removeChecklistTaskInputElement(event);
-        }
+        };
     };
     return { addTab, insertTabInputElement, updateTab, removeTab, switchTab,
         newTask, removeTask, insertTaskInputElement, updateTask, toggleTaskComplete, addNewChecklistTask, insertChecklistTaskInputElement, updateChecklistTask, };

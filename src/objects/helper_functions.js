@@ -100,10 +100,21 @@ const helperFunctions = (() => {
         };
         return checklistTaskElement;
     }
+    const checkForChecklistTaskInputElement = (event) => {
+        const checklistTaskElement = ensureCorrectChecklistTaskElement(event);
+        const checklistCompleteSection = checklistTaskElement.querySelector(".checklist-complete-section");
+        const inputElement = checklistCompleteSection.querySelector(".checklist-input");
+        console.log(inputElement)
+        if (inputElement !== null) {
+            return true;
+        } else {
+            return false;
+        };
+    };
     return { ensureCorrectTabElement, checkForTabInputElement, checkIfWasCurrentTab,
         checkIfOnlyOneTab, ensureCorrectTaskElement, ensureCorrectSubcontainer,
         checkForTaskSubcontainerInputElement, getTargetTaskObject, ensureCorrectButtonElement,
-        getButtonType, getSubcontainerType, ensureCorrectChecklistElement, ensureCorrectChecklistTaskElement, };
+        getButtonType, getSubcontainerType, ensureCorrectChecklistElement, ensureCorrectChecklistTaskElement, checkForChecklistTaskInputElement, };
 })();
 
 export { helperFunctions };
