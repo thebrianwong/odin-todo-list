@@ -284,13 +284,23 @@ const DOMControllerAddEdit = (() => {
         const checklistTaskObject = helperFunctions.getTargetChecklistTaskObject(event);
         checklistCompleteCheckbox.checked = checklistTaskObject.getCompletedState();
     };
+    const changePinButtonImage = (event) => {
+        const taskObject = helperFunctions.getTargetTaskObject(event);
+        const pinButton = helperFunctions.ensureCorrectButtonElement(event);
+        const pinButtonImage = pinButton.querySelector("img");
+        if (taskObject.getPinnedState()) {
+            pinButtonImage.setAttribute("src", "./assets/pin-pinned.png");
+        } else {
+            pinButtonImage.setAttribute("src", "./assets/pin-unpinned.png");
+        };
+    };
     return { addNewTabToDOM, setTabInputElementValue,
         insertTabInputElement, insertTabNameElement, setDefaultCurrentTabDOM,
         setCurrentTabDOM, setFirstTabToCurrentTab, addNewTaskToDOM,
         insertTaskInputElement, setTaskInputElementValue, insertTaskSubcontentElement,
         toggleTaskDOMComplete, addNewChecklistTaskToDOM, insertChecklistTaskInputElement,
         setChecklistTaskInputElementValue, insertChecklistTaskDescriptionElement,
-        toggleChecklistTaskDOMComplete, };
+        toggleChecklistTaskDOMComplete, changePinButtonImage, };
 })();
 
 export { DOMControllerAddEdit };
