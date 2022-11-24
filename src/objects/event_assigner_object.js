@@ -112,8 +112,8 @@ const eventAssigner = (() => {
         const checklistCompleteCheckbox = newChecklistTaskNode.querySelector(".checklist-complete-checkbox");
         checklistCompleteCheckbox.addEventListener("click", eventBundler.toggleChecklistTaskComplete);
     };
-    const addRemoveChecklistTaskListenerForInitialTabs = () => {
-        const checklistTaskRemoveButtons = document.querySelectorAll(".remove-checklist-task");
+    const addRemoveChecklistTaskListener = (scope=document) => {
+        const checklistTaskRemoveButtons = scope.querySelectorAll(".remove-checklist-task");
         for (const button of checklistTaskRemoveButtons) {
             button.addEventListener("click", eventBundler.removeChecklistTask);
         };
@@ -127,7 +127,7 @@ const eventAssigner = (() => {
         addToggleTaskCompleteListenerForInitialTasks, addToggleTaskCompleteListenerForNewTasks, 
         addNewChecklistTaskListenerForInitialTasks, addNewChecklistTaskListenerForNewTasks,
         addEditChecklistTaskListenersForInitialChecklistTasks, addChecklistTaskInputListener,
-        addEditChecklistTaskListenersForNewChecklistTasks, addToggleChecklistTaskCompleteListenerForInitialChecklistTasks, addToggleChecklistTaskCompleteListenerForNewChecklistTasks, addRemoveChecklistTaskListenerForInitialTabs, };
+        addEditChecklistTaskListenersForNewChecklistTasks, addToggleChecklistTaskCompleteListenerForInitialChecklistTasks, addToggleChecklistTaskCompleteListenerForNewChecklistTasks, addRemoveChecklistTaskListener, };
 })();
 
 export { eventAssigner };
