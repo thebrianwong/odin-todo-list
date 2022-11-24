@@ -119,6 +119,9 @@ console.log(tab1.addTask(task1))
 let task2 = toDoTask("Make Money TEST AGAIN", "Task Due Date", "Task Description", "Task Notes");
 tab1.addTask(task2)
 
+let task3 = toDoTask("Make Money TEST AGAIN AGAIN", "Task Due Date", "Task Description", "Task Notes");
+tab1.addTask(task3)
+
 eventAssigner.addNewTabListener();
 // eventAssigner.addEditTabListener();
 eventAssigner.addEditTabButtonListener();
