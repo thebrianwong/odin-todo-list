@@ -116,6 +116,9 @@ toDoList.addTask(tab1)
 let task1 = toDoTask("Make Money TEST", "Task Due Date", "Task Description", "Task Notes");
 console.log(tab1.addTask(task1))
 
+let task2 = toDoTask("Make Money TEST AGAIN", "Task Due Date", "Task Description", "Task Notes");
+tab1.addTask(task2)
+
 eventAssigner.addNewTabListener();
 // eventAssigner.addEditTabListener();
 eventAssigner.addEditTabButtonListener();
