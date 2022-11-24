@@ -61,9 +61,15 @@ const DOMControllerRemove = (() => {
         checklistCompleteSection.removeChild(inputElement);
         inputElement = null;
     };
+    const removeChecklistTaskElementDOM = (event) => {
+        let checklistTaskElement = helperFunctions.ensureCorrectChecklistTaskElement(event);
+        const checklistElement = helperFunctions.ensureCorrectChecklistElement(event);
+        checklistElement.removeChild(checklistTaskElement);
+        checklistTaskElement = null;
+    };
     return { removeTabNameElement, removeTabInputElement, removeTabElementFromDOM,
         resetCurrentTabStatus, removeTaskElementFromDOM, removeTaskSubcontentElementFromDOM,
-        removeTaskInputElement, removeChecklistTaskDescriptionDOM, removeChecklistTaskInputElement, }
+        removeTaskInputElement, removeChecklistTaskDescriptionDOM, removeChecklistTaskInputElement, removeChecklistTaskElementDOM, }
 })();
 
 export { DOMControllerRemove };

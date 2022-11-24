@@ -107,6 +107,7 @@ const eventBundler = (() => {
     };
     const removeChecklistTask = (event) => {
         objectControllerRemoveObject.removeChecklistTaskFromTaskArray(event);
+        DOMControllerRemove.removeChecklistTaskElementDOM(event);
     };
     return { addTab, insertTabInputElement, updateTab, removeTab, switchTab,
         newTask, removeTask, insertTaskInputElement, updateTask, toggleTaskComplete, addNewChecklistTask, insertChecklistTaskInputElement, updateChecklistTask, toggleChecklistTaskComplete, removeChecklistTask, };
