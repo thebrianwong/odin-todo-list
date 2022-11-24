@@ -113,6 +113,7 @@ const eventBundler = (() => {
     const toggleTaskPin = (event) => {
         objectControllerAddEditObject.toggleTaskPin(event);
         DOMControllerAddEdit.changePinButtonImage(event);
+        DOMControllerAddEdit.shiftTaskElementPosition(event);
     };
     return { addTab, insertTabInputElement, updateTab, removeTab, switchTab,
         newTask, removeTask, insertTaskInputElement, updateTask, toggleTaskComplete, addNewChecklistTask, insertChecklistTaskInputElement, updateChecklistTask, toggleChecklistTaskComplete, removeChecklistTask, toggleTaskPin, };

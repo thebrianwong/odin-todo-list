@@ -294,13 +294,48 @@ const DOMControllerAddEdit = (() => {
             pinButtonImage.setAttribute("src", "./assets/pin-unpinned.png");
         };
     };
+    const shiftTaskElementPosition = (event) => {
+        const taskObject = helperFunctions.getTargetTaskObject(event);
+        const taskElement = helperFunctions.ensureCorrectTaskElement(event);
+        const taskContentSection = document.querySelector(".to-do-content");
+        if (taskObject.getPinnedState()) {
+            const alreadyPinnedTasks = Array.from(document.querySelectorAll(".pinned-task"));
+            if (alreadyPinnedTasks.length === 0) {
+                taskContentSection.insertBefore(taskElement, taskContentSection.firstElementChild);
+            } else {
+                const arrayEndIndex = alreadyPinnedTasks.length - 1;
+                const lastPinnedTask = alreadyPinnedTasks[arrayEndIndex];
+                lastPinnedTask.insertAdjacentElement("afterend", taskElement);
+            };
+            taskElement.classList.add("pinned-task");
+        } else {
+            const listOfUnpinnedTaskElements = Array.from(taskContentSection.querySelectorAll(".to-do-task:not(.pinned-task)"));
+            if (listOfUnpinnedTaskElements.length === 0) {
+                taskContentSection.appendChild(taskElement);
+            } else {
+                const arrayEndIndex = listOfUnpinnedTaskElements.length - 1;
+                const lastUnpinnedTaskElement = listOfUnpinnedTaskElements[arrayEndIndex];
+                const taskElementIndex = taskElement.dataset.taskIndex;
+                for (const unpinnedTaskElement of listOfUnpinnedTaskElements) {
+                    const unpinnedTaskElementIndex = unpinnedTaskElement.dataset.taskIndex;
+                    if (taskElementIndex < unpinnedTaskElementIndex) {
+                        taskContentSection.insertBefore(taskElement, unpinnedTaskElement);
+                        break;
+                    } else if (unpinnedTaskElement === lastUnpinnedTaskElement) {
+                        taskContentSection.appendChild(taskElement, lastUnpinnedTaskElement);
+                    };
+                };
+            };
+            taskElement.classList.remove("pinned-task");
+        };
+    };
     return { addNewTabToDOM, setTabInputElementValue,
         insertTabInputElement, insertTabNameElement, setDefaultCurrentTabDOM,
         setCurrentTabDOM, setFirstTabToCurrentTab, addNewTaskToDOM,
         insertTaskInputElement, setTaskInputElementValue, insertTaskSubcontentElement,
         toggleTaskDOMComplete, addNewChecklistTaskToDOM, insertChecklistTaskInputElement,
         setChecklistTaskInputElementValue, insertChecklistTaskDescriptionElement,
-        toggleChecklistTaskDOMComplete, changePinButtonImage, };
+        toggleChecklistTaskDOMComplete, changePinButtonImage, shiftTaskElementPosition, };
 })();
 
 export { DOMControllerAddEdit };
