@@ -113,14 +113,17 @@ toDoList.addTask(tab1)
 // toDoList.addTask(tab2)
 // console.log(toDoList.getChecklistTasks())
 
-let task1 = toDoTask("Make Money TEST", "Task Due Date", "Task Description", "Task Notes");
+let task1 = toDoTask("Make Money TEST 0", "Task Due Date", "Task Description", "Task Notes");
 console.log(tab1.addTask(task1))
 
-let task2 = toDoTask("Make Money TEST AGAIN", "Task Due Date", "Task Description", "Task Notes");
+let task2 = toDoTask("Make Money TEST AGAIN 1", "Task Due Date", "Task Description", "Task Notes");
 tab1.addTask(task2)
 
-let task3 = toDoTask("Make Money TEST AGAIN AGAIN", "Task Due Date", "Task Description", "Task Notes");
+let task3 = toDoTask("Make Money TEST AGAIN AGAIN 2", "Task Due Date", "Task Description", "Task Notes");
 tab1.addTask(task3)
+
+let task4 = toDoTask("Make Money TEST AGAIN AGAIN AGAIN 3", "Task Due Date", "Task Description", "Task Notes");
+tab1.addTask(task4)
 
 eventAssigner.addNewTabListener();
 // eventAssigner.addEditTabListener();
