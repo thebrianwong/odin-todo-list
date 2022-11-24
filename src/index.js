@@ -155,3 +155,4 @@ let checklistTask1 = checklistTaskObject("Checklist Task Description TEST")
 task1.addTask(checklistTask1)
 
 eventAssigner.addToggleChecklistTaskCompleteListenerForInitialChecklistTasks();
+eventAssigner.addRemoveChecklistTaskListenerForInitialTabs();
