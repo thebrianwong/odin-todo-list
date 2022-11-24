@@ -89,7 +89,7 @@ const DOMControllerAddEdit = (() => {
                 <div class="to-do-title-section to-do-task-subcontainer">
                     <h3 class="to-do-title">TITLE PLACEHOLDER</h3>
                     <button class="to-do-pin">
-                        <img src="./assets/pin-outline.png" alt="Pin task button">
+                        <img src="./assets/pin-unpinned.png" alt="Pin task button">
                     </button>
                     <button class="edit-task-title edit-task">
                         <img src="assets/pencil.png" alt="Edit task title button">
