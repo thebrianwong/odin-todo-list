@@ -13,9 +13,9 @@ const eventBundler = (() => {
     const addTab = () => {
         const newTabIndex = objectControllerAddEditObject.addNewTabToTodoArray();
         const newTabNode = DOMControllerAddEdit.addNewTabToDOM(newTabIndex);
-        eventAssigner.addEditTabButtonListenerForNewTabs(newTabNode);
-        eventAssigner.addRemoveTabButtonListenerForNewTabs(newTabNode);
-        eventAssigner.addSwitchTabListenerForNewTabs(newTabNode);
+        eventAssigner.addEditTabButtonListener(newTabNode);
+        eventAssigner.addRemoveTabButtonListener(newTabNode);
+        eventAssigner.addSwitchTabListener(newTabNode);
         if (helperFunctions.checkIfOnlyOneTab()) {
             const firstTabIndex = objectControllerAddEditObject.setFirstTabToCurrentTab();
             DOMControllerAddEdit.setFirstTabToCurrentTab(firstTabIndex)

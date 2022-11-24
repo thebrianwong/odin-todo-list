@@ -119,7 +119,7 @@ console.log(tab1.addTask(task1))
 eventAssigner.addNewTabListener();
 // eventAssigner.addEditTabListener();
 eventAssigner.addEditTabButtonListener();
-eventAssigner.addRemoveTabButtonListenerForInitialTabs();
+eventAssigner.addRemoveTabButtonListener();
 
 
 
@@ -132,7 +132,7 @@ console.log(tab1.getSpecificChecklistTask(0).getTaskTitle())
 
 DOMControllerAddEdit.setDefaultCurrentTabDOM(0)
 
-eventAssigner.addSwitchTabListenerForInitialTabs()
+eventAssigner.addSwitchTabListener()
 
 eventAssigner.addNewTaskListener();
 

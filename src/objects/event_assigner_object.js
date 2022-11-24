@@ -7,8 +7,8 @@ const eventAssigner = (() => {
         const addTabButton = document.querySelector(".add-tab");
         addTabButton.addEventListener("click", eventBundler.addTab);
     };
-    const addEditTabButtonListener = () => {
-        const tabEditButtons = Array.from(document.querySelectorAll(".edit-tab"));
+    const addEditTabButtonListener = (scope=document) => {
+        const tabEditButtons = Array.from(scope.querySelectorAll(".edit-tab"));
         for (const button of tabEditButtons) {
             button.addEventListener("click", eventBundler.insertTabInputElement);
         }
@@ -16,30 +16,36 @@ const eventAssigner = (() => {
     const addTabInputListener = (inputElement) => {
         inputElement.addEventListener("keydown", eventBundler.updateTab)
     }
+    // remove
     const addEditTabButtonListenerForNewTabs = (tabElement) => {
         const tabEditButton = tabElement.querySelector(".edit-tab");
         tabEditButton.addEventListener("click", eventBundler.insertTabInputElement);
     };
-    const addRemoveTabButtonListenerForInitialTabs = () => {
-        const tabRemoveButtons = Array.from(document.querySelectorAll(".remove-tab"));
+    //
+    const addRemoveTabButtonListener = (scope=document) => {
+        const tabRemoveButtons = Array.from(scope.querySelectorAll(".remove-tab"));
         for (const button of tabRemoveButtons) {
             button.addEventListener("click", eventBundler.removeTab);
         };
     };
+    // remove
     const addRemoveTabButtonListenerForNewTabs = (tabElement) => {
         const tabRemoveButton = tabElement.querySelector(".remove-tab");
         tabRemoveButton.addEventListener("click", eventBundler.removeTab);
     }
-    const addSwitchTabListenerForInitialTabs = () => {
-        const tabSwitchButtons = Array.from(document.querySelectorAll(".switch-tab"));
+    //
+    const addSwitchTabListener = (scope=document) => {
+        const tabSwitchButtons = Array.from(scope.querySelectorAll(".switch-tab"));
         for (const button of tabSwitchButtons) {
             button.addEventListener("click", eventBundler.switchTab);
         };
     }
+    // remove
     const addSwitchTabListenerForNewTabs = (tabElement) => {
         const tabSwitchButton = tabElement.querySelector(".switch-tab");
         tabSwitchButton.addEventListener("click", eventBundler.switchTab)
     }
+    //
     const addNewTaskListener = () => {
         const newTaskButton = document.querySelector(".new-to-do-task");
         newTaskButton.addEventListener("click", eventBundler.newTask);
@@ -93,8 +99,8 @@ const eventAssigner = (() => {
         };
     };
     return { addNewTabListener, addEditTabButtonListener, addTabInputListener,
-        addEditTabButtonListenerForNewTabs, addRemoveTabButtonListenerForInitialTabs,
-        addRemoveTabButtonListenerForNewTabs, addSwitchTabListenerForInitialTabs,
+        addEditTabButtonListenerForNewTabs, addRemoveTabButtonListener,
+        addRemoveTabButtonListenerForNewTabs, addSwitchTabListener,
         addSwitchTabListenerForNewTabs, addNewTaskListener, addRemoveTaskButtonListener,
         addEditTaskListeners, addTaskInputListener, addToggleTaskCompleteListener,
         addNewChecklistTaskListener, addEditChecklistTaskListeners, addChecklistTaskInputListener,
