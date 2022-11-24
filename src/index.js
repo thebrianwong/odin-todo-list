@@ -156,3 +156,5 @@ task1.addTask(checklistTask1)
 
 eventAssigner.addToggleChecklistTaskCompleteListener();
 eventAssigner.addRemoveChecklistTaskListener();
+
+eventAssigner.addToggleTaskPinListeners();

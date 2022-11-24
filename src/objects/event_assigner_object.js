@@ -16,36 +16,18 @@ const eventAssigner = (() => {
     const addTabInputListener = (inputElement) => {
         inputElement.addEventListener("keydown", eventBundler.updateTab)
     }
-    // remove
-    const addEditTabButtonListenerForNewTabs = (tabElement) => {
-        const tabEditButton = tabElement.querySelector(".edit-tab");
-        tabEditButton.addEventListener("click", eventBundler.insertTabInputElement);
-    };
-    //
     const addRemoveTabButtonListener = (scope=document) => {
         const tabRemoveButtons = Array.from(scope.querySelectorAll(".remove-tab"));
         for (const button of tabRemoveButtons) {
             button.addEventListener("click", eventBundler.removeTab);
         };
     };
-    // remove
-    const addRemoveTabButtonListenerForNewTabs = (tabElement) => {
-        const tabRemoveButton = tabElement.querySelector(".remove-tab");
-        tabRemoveButton.addEventListener("click", eventBundler.removeTab);
-    }
-    //
     const addSwitchTabListener = (scope=document) => {
         const tabSwitchButtons = Array.from(scope.querySelectorAll(".switch-tab"));
         for (const button of tabSwitchButtons) {
             button.addEventListener("click", eventBundler.switchTab);
         };
     }
-    // remove
-    const addSwitchTabListenerForNewTabs = (tabElement) => {
-        const tabSwitchButton = tabElement.querySelector(".switch-tab");
-        tabSwitchButton.addEventListener("click", eventBundler.switchTab)
-    }
-    //
     const addNewTaskListener = () => {
         const newTaskButton = document.querySelector(".new-to-do-task");
         newTaskButton.addEventListener("click", eventBundler.newTask);
@@ -98,13 +80,17 @@ const eventAssigner = (() => {
             button.addEventListener("click", eventBundler.removeChecklistTask);
         };
     };
-    return { addNewTabListener, addEditTabButtonListener, addTabInputListener,
-        addEditTabButtonListenerForNewTabs, addRemoveTabButtonListener,
-        addRemoveTabButtonListenerForNewTabs, addSwitchTabListener,
-        addSwitchTabListenerForNewTabs, addNewTaskListener, addRemoveTaskButtonListener,
+    const addToggleTaskPinListeners = (scope=document) => {
+        const taskPinButtons = scope.querySelectorAll(".to-do-pin");
+        for (const button of taskPinButtons) {
+            button.addEventListener("click", eventBundler.toggleTaskPin);
+        };
+    };
+    return { addNewTabListener, addEditTabButtonListener, addTabInputListener, addRemoveTabButtonListener,
+        addSwitchTabListener, addNewTaskListener, addRemoveTaskButtonListener,
         addEditTaskListeners, addTaskInputListener, addToggleTaskCompleteListener,
         addNewChecklistTaskListener, addEditChecklistTaskListeners, addChecklistTaskInputListener,
-        addToggleChecklistTaskCompleteListener, addRemoveChecklistTaskListener, };
+        addToggleChecklistTaskCompleteListener, addRemoveChecklistTaskListener, addToggleTaskPinListeners, };
 })();
 
 export { eventAssigner };
