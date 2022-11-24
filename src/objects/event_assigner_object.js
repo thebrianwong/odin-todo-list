@@ -89,8 +89,8 @@ const eventAssigner = (() => {
         const addChecklistTaskButton = newChecklistTaskNode.querySelector(".add-checklist-task");
         addChecklistTaskButton.addEventListener("click", eventBundler.addNewChecklistTask)
     };
-    const addEditChecklistTaskListenersForInitialChecklistTasks = () => {
-        const checklistEditButtons = Array.from(document.querySelectorAll(".edit-checklist-task"));
+    const addEditChecklistTaskListeners = (scope=document) => {
+        const checklistEditButtons = Array.from(scope.querySelectorAll(".edit-checklist-task"));
         for (const button of checklistEditButtons) {
             button.addEventListener("click", eventBundler.insertChecklistTaskInputElement);
         };
@@ -98,19 +98,11 @@ const eventAssigner = (() => {
     const addChecklistTaskInputListener = (inputElement) => {
         inputElement.addEventListener("keydown", eventBundler.updateChecklistTask);
     };
-    const addEditChecklistTaskListenersForNewChecklistTasks = (newChecklistTaskNode) => {
-        const checklistEditButton = newChecklistTaskNode.querySelector(".edit-checklist-task");
-        checklistEditButton.addEventListener("click", eventBundler.insertChecklistTaskInputElement);
-    };
-    const addToggleChecklistTaskCompleteListenerForInitialChecklistTasks = () => {
-        const checklistCompleteCheckboxes = document.querySelectorAll(".checklist-complete-checkbox");
+    const addToggleChecklistTaskCompleteListener = (scope=document) => {
+        const checklistCompleteCheckboxes = scope.querySelectorAll(".checklist-complete-checkbox");
         for (const checkbox of checklistCompleteCheckboxes) {
             checkbox.addEventListener("click", eventBundler.toggleChecklistTaskComplete);
         };
-    };
-    const addToggleChecklistTaskCompleteListenerForNewChecklistTasks = (newChecklistTaskNode) => {
-        const checklistCompleteCheckbox = newChecklistTaskNode.querySelector(".checklist-complete-checkbox");
-        checklistCompleteCheckbox.addEventListener("click", eventBundler.toggleChecklistTaskComplete);
     };
     const addRemoveChecklistTaskListener = (scope=document) => {
         const checklistTaskRemoveButtons = scope.querySelectorAll(".remove-checklist-task");
@@ -126,8 +118,8 @@ const eventAssigner = (() => {
         addTaskInputListener, addEditTaskTitleListenerForNewTasks,
         addToggleTaskCompleteListenerForInitialTasks, addToggleTaskCompleteListenerForNewTasks, 
         addNewChecklistTaskListenerForInitialTasks, addNewChecklistTaskListenerForNewTasks,
-        addEditChecklistTaskListenersForInitialChecklistTasks, addChecklistTaskInputListener,
-        addEditChecklistTaskListenersForNewChecklistTasks, addToggleChecklistTaskCompleteListenerForInitialChecklistTasks, addToggleChecklistTaskCompleteListenerForNewChecklistTasks, addRemoveChecklistTaskListener, };
+        addEditChecklistTaskListeners, addChecklistTaskInputListener, addToggleChecklistTaskCompleteListener, 
+        addRemoveChecklistTaskListener, };
 })();
 
 export { eventAssigner };
