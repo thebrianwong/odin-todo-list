@@ -44,18 +44,20 @@ const eventAssigner = (() => {
         const newTaskButton = document.querySelector(".new-to-do-task");
         newTaskButton.addEventListener("click", eventBundler.newTask);
     }
-    const addRemoveTaskButtonListenerForInitialTabs = () => {
-        const taskRemoveButtons = Array.from(document.querySelectorAll(".to-do-remove-task"));
+    const addRemoveTaskButtonListener = (scope=document) => {
+        const taskRemoveButtons = Array.from(scope.querySelectorAll(".to-do-remove-task"));
         for (const button of taskRemoveButtons) {
             button.addEventListener("click", eventBundler.removeTask);
         };
     };
+    // remove
     const addRemoveTaskButtonListenerForNewTasks = (taskElement) => {
         const taskRemoveButton = taskElement.querySelector(".to-do-remove-task");
         taskRemoveButton.addEventListener("click", eventBundler.removeTask);
     };
-    const addEditTaskListenersForInitialTasks = () => {
-        const taskEditButtons = Array.from(document.querySelectorAll(".edit-task"));
+    //
+    const addEditTaskListeners = (scope=document) => {
+        const taskEditButtons = Array.from(scope.querySelectorAll(".edit-task"));
         for (const button of taskEditButtons) {
             button.addEventListener("click", eventBundler.insertTaskInputElement);
         };
@@ -63,32 +65,38 @@ const eventAssigner = (() => {
     const addTaskInputListener = (inputElement) => {
         inputElement.addEventListener("keydown", eventBundler.updateTask);
     };
+    // remove
     const addEditTaskTitleListenerForNewTasks = (taskElement) => {
         const taskEditButtons = Array.from(taskElement.querySelectorAll(".edit-task"));
         for (const button of taskEditButtons) {
             button.addEventListener("click", eventBundler.insertTaskInputElement);
         };
     }
-    const addToggleTaskCompleteListenerForInitialTasks = () => {
-        const taskCompleteCheckboxes = document.querySelectorAll(".to-do-complete-checkbox");
+    //
+    const addToggleTaskCompleteListener = (scope=document) => {
+        const taskCompleteCheckboxes = scope.querySelectorAll(".to-do-complete-checkbox");
         for (const checkbox of taskCompleteCheckboxes) {
             checkbox.addEventListener("click", eventBundler.toggleTaskComplete);
         };
     };
+    // remove
     const addToggleTaskCompleteListenerForNewTasks = (newTaskNode) => {
         const taskCompleteCheckbox = newTaskNode.querySelector(".to-do-complete-checkbox");
         taskCompleteCheckbox.addEventListener("click", eventBundler.toggleTaskComplete)
     }
-    const addNewChecklistTaskListenerForInitialTasks = () => {
-        const newChecklistTaskButtons = document.querySelectorAll(".add-checklist-task");
+    //
+    const addNewChecklistTaskListener = (scope=document) => {
+        const newChecklistTaskButtons = scope.querySelectorAll(".add-checklist-task");
         for (const button of newChecklistTaskButtons) {
             button.addEventListener("click", eventBundler.addNewChecklistTask)
         };
     };
+    // remove
     const addNewChecklistTaskListenerForNewTasks = (newChecklistTaskNode) => {
         const addChecklistTaskButton = newChecklistTaskNode.querySelector(".add-checklist-task");
         addChecklistTaskButton.addEventListener("click", eventBundler.addNewChecklistTask)
     };
+    //
     const addEditChecklistTaskListeners = (scope=document) => {
         const checklistEditButtons = Array.from(scope.querySelectorAll(".edit-checklist-task"));
         for (const button of checklistEditButtons) {
@@ -113,11 +121,11 @@ const eventAssigner = (() => {
     return { addNewTabListener, addEditTabButtonListener, addTabInputListener,
         addEditTabButtonListenerForNewTabs, addRemoveTabButtonListenerForInitialTabs,
         addRemoveTabButtonListenerForNewTabs, addSwitchTabListenerForInitialTabs,
-        addSwitchTabListenerForNewTabs, addNewTaskListener, addRemoveTaskButtonListenerForInitialTabs,
-        addRemoveTaskButtonListenerForNewTasks, addEditTaskListenersForInitialTasks,
+        addSwitchTabListenerForNewTabs, addNewTaskListener, addRemoveTaskButtonListener,
+        addRemoveTaskButtonListenerForNewTasks, addEditTaskListeners,
         addTaskInputListener, addEditTaskTitleListenerForNewTasks,
-        addToggleTaskCompleteListenerForInitialTasks, addToggleTaskCompleteListenerForNewTasks, 
-        addNewChecklistTaskListenerForInitialTasks, addNewChecklistTaskListenerForNewTasks,
+        addToggleTaskCompleteListener, addToggleTaskCompleteListenerForNewTasks, 
+        addNewChecklistTaskListener, addNewChecklistTaskListenerForNewTasks,
         addEditChecklistTaskListeners, addChecklistTaskInputListener, addToggleChecklistTaskCompleteListener, 
         addRemoveChecklistTaskListener, };
 })();

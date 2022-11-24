@@ -52,10 +52,10 @@ const eventBundler = (() => {
     const newTask = () => {
         const newTaskIndex = objectControllerAddEditObject.addNewTaskToTab();
         const newTaskNode = DOMControllerAddEdit.addNewTaskToDOM(newTaskIndex);
-        eventAssigner.addRemoveTaskButtonListenerForNewTasks(newTaskNode);
-        eventAssigner.addEditTaskTitleListenerForNewTasks(newTaskNode);
-        eventAssigner.addToggleTaskCompleteListenerForNewTasks(newTaskNode);
-        eventAssigner.addNewChecklistTaskListenerForNewTasks(newTaskNode);
+        eventAssigner.addRemoveTaskButtonListener(newTaskNode);
+        eventAssigner.addEditTaskListeners(newTaskNode);
+        eventAssigner.addToggleTaskCompleteListener(newTaskNode);
+        eventAssigner.addNewChecklistTaskListener(newTaskNode);
     }
     const removeTask = (event) => {
         objectControllerRemoveObject.removeTaskFromTabArray(event);

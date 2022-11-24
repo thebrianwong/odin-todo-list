@@ -136,9 +136,9 @@ eventAssigner.addSwitchTabListenerForInitialTabs()
 
 eventAssigner.addNewTaskListener();
 
-eventAssigner.addRemoveTaskButtonListenerForInitialTabs();
+eventAssigner.addRemoveTaskButtonListener();
 
-eventAssigner.addEditTaskListenersForInitialTasks();
+eventAssigner.addEditTaskListeners();
 
 // const heh = () => {
 //     console.log("bloop")
@@ -147,8 +147,8 @@ eventAssigner.addEditTaskListenersForInitialTasks();
 // const boi = document.querySelector(".to-do-complete-checkbox")
 // boi.addEventListener("click", heh)
 
-eventAssigner.addToggleTaskCompleteListenerForInitialTasks();
-eventAssigner.addNewChecklistTaskListenerForInitialTasks();
+eventAssigner.addToggleTaskCompleteListener();
+eventAssigner.addNewChecklistTaskListener();
 eventAssigner.addEditChecklistTaskListeners();
 
 let checklistTask1 = checklistTaskObject("Checklist Task Description TEST")
