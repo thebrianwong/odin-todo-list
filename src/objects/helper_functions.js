@@ -35,8 +35,10 @@ const helperFunctions = (() => {
     };
     const ensureCorrectTaskElement = (event) => {
         let taskElement = event.target.parentElement;
-        while (taskElement.getAttribute("class") !== "to-do-task") {
+        let classList = Array.from(taskElement.classList);
+        while (!classList.includes("to-do-task")) {
             taskElement = taskElement.parentElement;
+            classList = Array.from(taskElement.classList);
         };
         return taskElement;
     }
