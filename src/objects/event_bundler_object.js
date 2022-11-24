@@ -85,6 +85,7 @@ const eventBundler = (() => {
         const newChecklistTaskNode = DOMControllerAddEdit.addNewChecklistTaskToDOM(event, newChecklistTaskIndex);
         eventAssigner.addEditChecklistTaskListenersForNewChecklistTasks(newChecklistTaskNode);
         eventAssigner.addToggleChecklistTaskCompleteListenerForNewChecklistTasks(newChecklistTaskNode);
+        eventAssigner.addRemoveChecklistTaskListenerForInitialTabs(newChecklistTaskNode);
     };
     const insertChecklistTaskInputElement = (event) => {
         if (!helperFunctions.checkForChecklistTaskInputElement(event)) {
