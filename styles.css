@@ -33,6 +33,10 @@ button:focus-visible {
     z-index: 1;
 }
 
+.completed > .to-do-task-overview > .to-do-title-section > h3 {
+    text-decoration: line-through;
+}
+
 .to-do-list {
     display: flex;
     flex-direction: column;
