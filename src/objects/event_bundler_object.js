@@ -45,9 +45,11 @@ const eventBundler = (() => {
         }
     };
     const switchTab = (event) => {
-        objectControllerAddEditObject.updateCurrentTab(event);
-        DOMControllerRemove.resetCurrentTabStatus();
-        DOMControllerAddEdit.setCurrentTabDOM(event);
+        if (!helperFunctions.checkIfWasCurrentTab(event)) {
+            objectControllerAddEditObject.updateCurrentTab(event);
+            DOMControllerRemove.resetCurrentTabStatus();
+            DOMControllerAddEdit.setCurrentTabDOM(event);
+        };
     }
     const newTask = () => {
         const newTaskIndex = objectControllerAddEditObject.addNewTaskToTab();
