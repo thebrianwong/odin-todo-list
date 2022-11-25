@@ -283,6 +283,11 @@ const DOMControllerAddEdit = (() => {
         const checklistCompleteCheckbox = checklistCompleteSection.querySelector(".checklist-complete-checkbox");
         const checklistTaskObject = helperFunctions.getTargetChecklistTaskObject(event);
         checklistCompleteCheckbox.checked = checklistTaskObject.getCompletedState();
+        if (checklistTaskObject.getCompletedState()) {
+            checklistCompleteCheckbox.classList.add("checklist-task-completed");
+        } else {
+            checklistCompleteCheckbox.classList.remove("checklist-task-completed");
+        };
     };
     const changePinButtonImage = (event) => {
         const taskObject = helperFunctions.getTargetTaskObject(event);

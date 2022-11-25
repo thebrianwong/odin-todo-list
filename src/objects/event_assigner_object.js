@@ -82,6 +82,7 @@ const eventAssigner = (() => {
     };
     const addToggleTaskPinListeners = (scope=document) => {
         const taskPinButtons = scope.querySelectorAll(".to-do-pin");
+        console.log(taskPinButtons)
         for (const button of taskPinButtons) {
             button.addEventListener("click", eventBundler.toggleTaskPin);
         };

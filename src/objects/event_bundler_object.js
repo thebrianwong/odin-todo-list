@@ -56,6 +56,7 @@ const eventBundler = (() => {
         eventAssigner.addEditTaskListeners(newTaskNode);
         eventAssigner.addToggleTaskCompleteListener(newTaskNode);
         eventAssigner.addNewChecklistTaskListener(newTaskNode);
+        eventAssigner.addToggleTaskPinListeners(newTaskNode);
     }
     const removeTask = (event) => {
         objectControllerRemoveObject.removeTaskFromTabArray(event);
