@@ -49,6 +49,7 @@ const eventBundler = (() => {
             objectControllerAddEditObject.updateCurrentTab(event);
             DOMControllerRemove.resetCurrentTabStatus();
             DOMControllerAddEdit.setCurrentTabDOM(event);
+            DOMControllerRemove.removeAllTaskElements();
         };
     }
     const newTask = () => {

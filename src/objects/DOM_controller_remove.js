@@ -67,9 +67,13 @@ const DOMControllerRemove = (() => {
         checklistElement.removeChild(checklistTaskElement);
         checklistTaskElement = null;
     };
+    const removeAllTaskElements = () => {
+        const taskContentSection = document.querySelector(".to-do-content");
+        taskContentSection.replaceChildren();
+    };
     return { removeTabNameElement, removeTabInputElement, removeTabElementFromDOM,
         resetCurrentTabStatus, removeTaskElementFromDOM, removeTaskSubcontentElementFromDOM,
-        removeTaskInputElement, removeChecklistTaskDescriptionDOM, removeChecklistTaskInputElement, removeChecklistTaskElementDOM, }
+        removeTaskInputElement, removeChecklistTaskDescriptionDOM, removeChecklistTaskInputElement, removeChecklistTaskElementDOM, removeAllTaskElements, }
 })();
 
 export { DOMControllerRemove };
