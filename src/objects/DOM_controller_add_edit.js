@@ -205,10 +205,10 @@ const DOMControllerAddEdit = (() => {
         const taskCompletedStated = taskObject.getCompletedState();
         if (taskCompletedStated) {
             completeCheckbox.checked = true;
-            taskElement.classList.add("completed");
+            taskElement.classList.add("task-completed");
         } else {
             completeCheckbox.checked = false;
-            taskElement.classList.remove("completed");
+            taskElement.classList.remove("task-completed");
         };
     };
     const addNewChecklistTaskToDOM = (event, newChecklistTaskIndex) => {
