@@ -33,7 +33,8 @@ button:focus-visible {
     z-index: 1;
 }
 
-.completed > .to-do-task-overview > .to-do-title-section > h3 {
+.task-completed > .to-do-task-overview > .to-do-title-section > h3,
+.checklist-task-completed + label {
     text-decoration: line-through;
 }
 
@@ -380,10 +381,6 @@ input[type="checkbox"]:checked {
 .checklist-task-description,
 .checklist-input {
     margin-left: 5px;
-}
-
-.checklist-task-completed + label {
-    text-decoration: line-through;
 }
 
 .new-to-do-task {
