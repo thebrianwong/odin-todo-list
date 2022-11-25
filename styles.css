@@ -378,6 +378,10 @@ input[type="checkbox"]:checked {
     margin-left: 5px;
 }
 
+.checklist-task-completed + label {
+    text-decoration: line-through;
+}
+
 .new-to-do-task {
     display: flex;
     flex-direction: row;
