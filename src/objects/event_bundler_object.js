@@ -132,6 +132,7 @@ const eventBundler = (() => {
     };
     const toggleDisplayTaskDetails = (event) => {
         DOMControllerAddEdit.toggleDisplayTaskDetails(event);
+        DOMControllerAddEdit.rotateChevronButton(event);
     };
     return { addTab, insertTabInputElement, updateTab, removeTab, switchTab,
         newTask, removeTask, insertTaskInputElement, updateTask, toggleTaskComplete, addNewChecklistTask, insertChecklistTaskInputElement, updateChecklistTask, toggleChecklistTaskComplete, removeChecklistTask, toggleTaskPin, addTaskListeners, addChecklistTaskListeners, toggleDisplayTaskDetails, };

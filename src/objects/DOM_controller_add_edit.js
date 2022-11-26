@@ -456,13 +456,25 @@ const DOMControllerAddEdit = (() => {
             };
         });
     };
+    const rotateChevronButton = (event) => {
+        const buttonElement = helperFunctions.ensureCorrectButtonElement(event);
+        const buttonImage = buttonElement.querySelector("img");
+        const buttonImageClass = buttonImage.getAttribute("class");
+        if (buttonImageClass === null || buttonImageClass === "rotate-hide-task-details") {
+            buttonImage.classList.toggle("rotate-hide-task-details", false);
+            buttonImage.classList.add("rotate-display-task-details");
+        } else if (buttonImageClass === "rotate-display-task-details") {
+            buttonImage.classList.remove("rotate-display-task-details");
+            buttonImage.classList.add("rotate-hide-task-details");
+        };
+    };
     return { addNewTabToDOM, setTabInputElementValue,
         insertTabInputElement, insertTabNameElement, setDefaultCurrentTabDOM,
         setCurrentTabDOM, setFirstTabToCurrentTab, addNewTaskToDOM,
         insertTaskInputElement, setTaskInputElementValue, insertTaskSubcontentElement,
         toggleTaskDOMComplete, addNewChecklistTaskToDOM, insertChecklistTaskInputElement,
         setChecklistTaskInputElementValue, insertChecklistTaskDescriptionElement,
-        toggleChecklistTaskDOMComplete, changePinButtonImage, shiftTaskElementPosition, loadTasksFromNewCurrentTab, toggleDisplayTaskDetails, };
+        toggleChecklistTaskDOMComplete, changePinButtonImage, shiftTaskElementPosition, loadTasksFromNewCurrentTab, toggleDisplayTaskDetails, rotateChevronButton, };
 })();
 
 export { DOMControllerAddEdit };
