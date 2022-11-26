@@ -255,6 +255,10 @@ input[type="checkbox"]:checked {
     padding: 10px 0 10px 20px;
 }
 
+.hide-to-do-details {
+    display: none;
+}
+
 .to-do-description-section,
 .to-do-notes-section {
     display: flex;
