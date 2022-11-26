@@ -1,6 +1,8 @@
 import { toDoList } from "./todo_list_object";
 import { toDoTab } from "./todo_tab_object";
 import { helperFunctions } from "./helper_functions";
+import { eventAssigner } from "./event_assigner_object";
+import { eventBundler } from "./event_bundler_object";
 
 const DOMControllerAddEdit = (() => {
     const addNewTabToDOM = (index) => {
@@ -342,6 +344,8 @@ const DOMControllerAddEdit = (() => {
         for (const taskIndex in listOfTasks) {
             if (listOfTasks[taskIndex] !== undefined) {
                 const newTaskElement = addNewTaskToDOM(taskIndex);
+                eventBundler.addTaskListeners(newTaskElement);
+                setPinButtonImage(newTaskElement);
                 loadChecklistTasksFromTasks(newTaskElement);
             };
         };
@@ -383,7 +387,20 @@ const DOMControllerAddEdit = (() => {
                     checklistTaskCompletedElement.checked = false;
                 };
                 checklistElement.appendChild(newChecklistTaskNode);
+                eventBundler.addChecklistTaskListeners(checklistElement);
             };
+        };
+    };
+    const setPinButtonImage = (newTaskElement) => {
+        const currentTabObject = toDoList.getCurrentTabObject();
+        const currentTaskIndex = newTaskElement.dataset.taskIndex;
+        const currentTaskObject = currentTabObject.getSpecificChecklistTask(currentTaskIndex);
+        const pinButton = newTaskElement.querySelector(".to-do-pin");
+        const pinButtonImage = pinButton.querySelector("img");
+        if (currentTaskObject.getPinnedState()) {
+            pinButtonImage.setAttribute("src", "./assets/pin-pinned.png");
+        } else {
+            pinButtonImage.setAttribute("src", "./assets/pin-unpinned.png");
         };
     };
     return { addNewTabToDOM, setTabInputElementValue,
