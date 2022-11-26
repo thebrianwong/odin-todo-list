@@ -9,9 +9,15 @@ const toDoList = (() => {
     const setCurrentTabIndex = (newCurrentTab) => {
         currentTab = newCurrentTab;
     };
+    const getCurrentTabObject = () => {
+        const currentTabIndex = getCurrentTabIndex();
+        const currentTabObject = toDoList.getSpecificChecklistTask(currentTabIndex);
+        return currentTabObject;
+    }
     let object = {
         getCurrentTabIndex,
-        setCurrentTabIndex
+        setCurrentTabIndex,
+        getCurrentTabObject
     };
     Object.assign(object,
         containsChecklistTaskBehaviorComponent(object),
