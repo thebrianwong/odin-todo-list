@@ -70,7 +70,6 @@ const DOMControllerAddEdit = (() => {
     const setCurrentTabDOM = (event) => {
         const newCurrentTab = helperFunctions.ensureCorrectTabElement(event);
         newCurrentTab.setAttribute("id", "current-tab");
-        console.log("FIRINy")
     }
     const setFirstTabToCurrentTab = (firstTabIndex) => {
         if (firstTabIndex === undefined) {
