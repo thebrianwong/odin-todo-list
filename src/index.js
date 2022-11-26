@@ -125,6 +125,13 @@ tab1.addTask(task3)
 let task4 = toDoTask("Make Money TEST AGAIN AGAIN AGAIN 3", "Task Due Date", "Task Description", "Task Notes");
 tab1.addTask(task4)
 
+let tab2 = toDoTab("Test for loading in task objects")
+toDoList.addTask(tab2)
+let taskA = toDoTask("TEST OF THE OUTDOOR WARNING SYSTEM", "Task Due Date", "Task Description", "Task Notes");
+tab2.addTask(taskA)
+let taskB = toDoTask("THIS IS ONLY A TEST", "Task Due Date", "Task Description", "Task Notes");
+tab2.addTask(taskB)
+
 eventAssigner.addNewTabListener();
 // eventAssigner.addEditTabListener();
 eventAssigner.addEditTabButtonListener();
