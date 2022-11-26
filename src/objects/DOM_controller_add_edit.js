@@ -306,15 +306,24 @@ const DOMControllerAddEdit = (() => {
     const shiftTaskElementPosition = (event) => {
         const taskObject = helperFunctions.getTargetTaskObject(event);
         const taskElement = helperFunctions.ensureCorrectTaskElement(event);
+        const taskElementIndex = taskElement.dataset.taskIndex;
         const taskContentSection = document.querySelector(".to-do-content");
         if (taskObject.getPinnedState()) {
-            const alreadyPinnedTasks = Array.from(document.querySelectorAll(".pinned-task"));
-            if (alreadyPinnedTasks.length === 0) {
+            const listOfPinnedTaskElements = Array.from(document.querySelectorAll(".pinned-task"));
+            if (listOfPinnedTaskElements.length === 0) {
                 taskContentSection.insertBefore(taskElement, taskContentSection.firstElementChild);
             } else {
-                const arrayEndIndex = alreadyPinnedTasks.length - 1;
-                const lastPinnedTask = alreadyPinnedTasks[arrayEndIndex];
-                lastPinnedTask.insertAdjacentElement("afterend", taskElement);
+                const arrayEndIndex = listOfPinnedTaskElements.length - 1;
+                const lastPinnedTaskElement = listOfPinnedTaskElements[arrayEndIndex];
+                for (const pinnedTaskElement of listOfPinnedTaskElements) {
+                    const pinnedTaskElementIndex = pinnedTaskElement.dataset.taskIndex;
+                    if (taskElementIndex < pinnedTaskElementIndex) {
+                        taskContentSection.insertBefore(taskElement, pinnedTaskElement);
+                        break;
+                    } else if (pinnedTaskElement === lastPinnedTaskElement) {
+                        lastPinnedTaskElement.insertAdjacentElement("afterend", taskElement);
+                    };
+                };
             };
             taskElement.classList.add("pinned-task");
         } else {
@@ -324,7 +333,6 @@ const DOMControllerAddEdit = (() => {
             } else {
                 const arrayEndIndex = listOfUnpinnedTaskElements.length - 1;
                 const lastUnpinnedTaskElement = listOfUnpinnedTaskElements[arrayEndIndex];
-                const taskElementIndex = taskElement.dataset.taskIndex;
                 for (const unpinnedTaskElement of listOfUnpinnedTaskElements) {
                     const unpinnedTaskElementIndex = unpinnedTaskElement.dataset.taskIndex;
                     if (taskElementIndex < unpinnedTaskElementIndex) {
