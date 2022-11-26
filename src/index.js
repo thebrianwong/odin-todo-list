@@ -87,7 +87,7 @@ import { DOMControllerAddEdit } from "./objects/DOM_controller_add_edit";
 // console.log(importantTask.getSpecificChecklistTask(0))
 // console.log(importantTask.getSpecificChecklistTask(0).getTaskDescription())
 
-let tab1 = toDoTab("Default test")
+
 // console.log(tab1)
 // tab1.addTask(importantTask)
 // console.log(tab1)
@@ -101,7 +101,7 @@ let tab1 = toDoTab("Default test")
 // console.log(tab1.getSpecificChecklistTask(1))
 // console.log(tab1.getSpecificChecklistTask(1).getTaskTitle())
 
-toDoList.addTask(tab1)
+
 // console.log(toDoList.getChecklistTasks())
 // console.log(toDoList.getSpecificChecklistTask(0))
 // console.log(toDoList.getSpecificChecklistTask(0).getTaskTitle())
@@ -113,37 +113,40 @@ toDoList.addTask(tab1)
 // toDoList.addTask(tab2)
 // console.log(toDoList.getChecklistTasks())
 
-let task1 = toDoTask("Make Money TEST 0", "Task Due Date", "Task Description", "Task Notes");
-console.log(tab1.addTask(task1))
+// let tab1 = toDoTab("Default test")
+// toDoList.addTask(tab1)
 
-let task2 = toDoTask("Make Money TEST AGAIN 1", "Task Due Date", "Task Description", "Task Notes");
-tab1.addTask(task2)
+// let task1 = toDoTask("Make Money TEST 0", "Task Due Date", "Task Description", "Task Notes");
+// console.log(tab1.addTask(task1))
 
-let task3 = toDoTask("Make Money TEST AGAIN AGAIN 2", "Task Due Date", "Task Description", "Task Notes");
-tab1.addTask(task3)
+// let task2 = toDoTask("Make Money TEST AGAIN 1", "Task Due Date", "Task Description", "Task Notes");
+// tab1.addTask(task2)
 
-let task4 = toDoTask("Make Money TEST AGAIN AGAIN AGAIN 3", "Task Due Date", "Task Description", "Task Notes");
-tab1.addTask(task4)
+// let task3 = toDoTask("Make Money TEST AGAIN AGAIN 2", "Task Due Date", "Task Description", "Task Notes");
+// tab1.addTask(task3)
 
-let tab2 = toDoTab("Test for loading in task objects")
-toDoList.addTask(tab2)
-let taskA = toDoTask("TEST OF THE OUTDOOR WARNING SYSTEM", "Task Due Date", "Task Description", "Task Notes");
-tab2.addTask(taskA)
-let taskB = toDoTask("THIS IS ONLY A TEST", "Task Due Date", "Task Description", "Task Notes");
-tab2.addTask(taskB)
+// let task4 = toDoTask("Make Money TEST AGAIN AGAIN AGAIN 3", "Task Due Date", "Task Description", "Task Notes");
+// tab1.addTask(task4)
 
-let checklistTaskA = checklistTaskObject("Checklist Task Description TEST A")
-taskA.addTask(checklistTaskA)
-let checklistTaskB = checklistTaskObject("Checklist Task Description TEST B")
-taskA.addTask(checklistTaskB)
-let checklistTaskC = checklistTaskObject("Checklist Task Description TEST C")
-taskB.addTask(checklistTaskC)
-let checklistTaskD = checklistTaskObject("Checklist Task Description TEST D")
-taskB.addTask(checklistTaskD)
-let checklistTaskE = checklistTaskObject("Checklist Task Description TEST D")
-taskB.addTask(checklistTaskE)
+// let tab2 = toDoTab("Test for loading in task objects")
+// toDoList.addTask(tab2)
+// let taskA = toDoTask("TEST OF THE OUTDOOR WARNING SYSTEM", "Task Due Date", "Task Description", "Task Notes");
+// tab2.addTask(taskA)
+// let taskB = toDoTask("THIS IS ONLY A TEST", "Task Due Date", "Task Description", "Task Notes");
+// tab2.addTask(taskB)
 
-taskB.removeTask(1)
+// let checklistTaskA = checklistTaskObject("Checklist Task Description TEST A")
+// taskA.addTask(checklistTaskA)
+// let checklistTaskB = checklistTaskObject("Checklist Task Description TEST B")
+// taskA.addTask(checklistTaskB)
+// let checklistTaskC = checklistTaskObject("Checklist Task Description TEST C")
+// taskB.addTask(checklistTaskC)
+// let checklistTaskD = checklistTaskObject("Checklist Task Description TEST D")
+// taskB.addTask(checklistTaskD)
+// let checklistTaskE = checklistTaskObject("Checklist Task Description TEST D")
+// taskB.addTask(checklistTaskE)
+
+// taskB.removeTask(1)
 
 eventAssigner.addNewTabListener();
 // eventAssigner.addEditTabListener();
@@ -152,12 +155,12 @@ eventAssigner.addRemoveTabButtonListener();
 
 
 
-console.log(toDoList)
-console.log(toDoList.getChecklistTasks())
-console.log(toDoList.getCurrentTabIndex())
-console.log(tab1.getChecklistTasks())
-console.log(tab1.getSpecificChecklistTask(0))
-console.log(tab1.getSpecificChecklistTask(0).getTaskTitle())
+// console.log(toDoList)
+// console.log(toDoList.getChecklistTasks())
+// console.log(toDoList.getCurrentTabIndex())
+// console.log(tab1.getChecklistTasks())
+// console.log(tab1.getSpecificChecklistTask(0))
+// console.log(tab1.getSpecificChecklistTask(0).getTaskTitle())
 
 DOMControllerAddEdit.setDefaultCurrentTabDOM(0)
 
@@ -180,8 +183,8 @@ eventAssigner.addToggleTaskCompleteListener();
 eventAssigner.addNewChecklistTaskListener();
 eventAssigner.addEditChecklistTaskListeners();
 
-let checklistTask1 = checklistTaskObject("Checklist Task Description TEST")
-task1.addTask(checklistTask1)
+// let checklistTask1 = checklistTaskObject("Checklist Task Description TEST")
+// task1.addTask(checklistTask1)
 
 eventAssigner.addToggleChecklistTaskCompleteListener();
 eventAssigner.addRemoveChecklistTaskListener();
