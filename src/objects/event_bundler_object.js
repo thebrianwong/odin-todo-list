@@ -130,8 +130,11 @@ const eventBundler = (() => {
         eventAssigner.addToggleChecklistTaskCompleteListener(newChecklistTaskNode);
         eventAssigner.addRemoveChecklistTaskListener(newChecklistTaskNode);
     };
+    const toggleDisplayTaskDetails = (event) => {
+        DOMControllerRemove.toggleDisplayTaskDetails(event);
+    };
     return { addTab, insertTabInputElement, updateTab, removeTab, switchTab,
-        newTask, removeTask, insertTaskInputElement, updateTask, toggleTaskComplete, addNewChecklistTask, insertChecklistTaskInputElement, updateChecklistTask, toggleChecklistTaskComplete, removeChecklistTask, toggleTaskPin, addTaskListeners, addChecklistTaskListeners, };
+        newTask, removeTask, insertTaskInputElement, updateTask, toggleTaskComplete, addNewChecklistTask, insertChecklistTaskInputElement, updateChecklistTask, toggleChecklistTaskComplete, removeChecklistTask, toggleTaskPin, addTaskListeners, addChecklistTaskListeners, toggleDisplayTaskDetails, };
 })();
 
 export { eventBundler };

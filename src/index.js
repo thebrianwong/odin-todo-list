@@ -190,3 +190,4 @@ eventAssigner.addToggleChecklistTaskCompleteListener();
 eventAssigner.addRemoveChecklistTaskListener();
 
 eventAssigner.addToggleTaskPinListeners();
+eventAssigner.addToggleDisplayTaskDetailsListeners();

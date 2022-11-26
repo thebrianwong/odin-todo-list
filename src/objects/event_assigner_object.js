@@ -86,11 +86,17 @@ const eventAssigner = (() => {
             button.addEventListener("click", eventBundler.toggleTaskPin);
         };
     };
+    const addToggleDisplayTaskDetailsListeners = (scope=document) => {
+        const taskToggleDisplayButtons = scope.querySelectorAll(".to-do-task-change-display");
+        for (const button of taskToggleDisplayButtons) {
+            button.addEventListener("click", eventBundler.toggleDisplayTaskDetails);
+        }
+    };
     return { addNewTabListener, addEditTabButtonListener, addTabInputListener, addRemoveTabButtonListener,
         addSwitchTabListener, addNewTaskListener, addRemoveTaskButtonListener,
         addEditTaskListeners, addTaskInputListener, addToggleTaskCompleteListener,
         addNewChecklistTaskListener, addEditChecklistTaskListeners, addChecklistTaskInputListener,
-        addToggleChecklistTaskCompleteListener, addRemoveChecklistTaskListener, addToggleTaskPinListeners, };
+        addToggleChecklistTaskCompleteListener, addRemoveChecklistTaskListener, addToggleTaskPinListeners, addToggleDisplayTaskDetailsListeners, };
 })();
 
 export { eventAssigner };
