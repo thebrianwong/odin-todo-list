@@ -56,11 +56,7 @@ const eventBundler = (() => {
     const newTask = () => {
         const newTaskIndex = objectControllerAddEditObject.addNewTaskToTab();
         const newTaskNode = DOMControllerAddEdit.addNewTaskToDOM(newTaskIndex);
-        eventAssigner.addRemoveTaskButtonListener(newTaskNode);
-        eventAssigner.addEditTaskListeners(newTaskNode);
-        eventAssigner.addToggleTaskCompleteListener(newTaskNode);
-        eventAssigner.addNewChecklistTaskListener(newTaskNode);
-        eventAssigner.addToggleTaskPinListeners(newTaskNode);
+        addTaskListeners(newTaskNode);
     }
     const removeTask = (event) => {
         objectControllerRemoveObject.removeTaskFromTabArray(event);
@@ -88,9 +84,7 @@ const eventBundler = (() => {
     const addNewChecklistTask = (event) => {
         const newChecklistTaskIndex = objectControllerAddEditObject.addNewChecklistTaskToTask(event);
         const newChecklistTaskNode = DOMControllerAddEdit.addNewChecklistTaskToDOM(event, newChecklistTaskIndex);
-        eventAssigner.addEditChecklistTaskListeners(newChecklistTaskNode);
-        eventAssigner.addToggleChecklistTaskCompleteListener(newChecklistTaskNode);
-        eventAssigner.addRemoveChecklistTaskListener(newChecklistTaskNode);
+        addChecklistTaskListeners(newChecklistTaskNode);
     };
     const insertChecklistTaskInputElement = (event) => {
         if (!helperFunctions.checkForChecklistTaskInputElement(event)) {
@@ -123,8 +117,20 @@ const eventBundler = (() => {
     // const loadTasksFromNewCurrentTab = () => {
     //     for (const task )
     // };
+    const addTaskListeners = (newTaskNode) => {
+        eventAssigner.addRemoveTaskButtonListener(newTaskNode);
+        eventAssigner.addEditTaskListeners(newTaskNode);
+        eventAssigner.addToggleTaskCompleteListener(newTaskNode);
+        eventAssigner.addNewChecklistTaskListener(newTaskNode);
+        eventAssigner.addToggleTaskPinListeners(newTaskNode);
+    };
+    const addChecklistTaskListeners = (newChecklistTaskNode) => {
+        eventAssigner.addEditChecklistTaskListeners(newChecklistTaskNode);
+        eventAssigner.addToggleChecklistTaskCompleteListener(newChecklistTaskNode);
+        eventAssigner.addRemoveChecklistTaskListener(newChecklistTaskNode);
+    };
     return { addTab, insertTabInputElement, updateTab, removeTab, switchTab,
-        newTask, removeTask, insertTaskInputElement, updateTask, toggleTaskComplete, addNewChecklistTask, insertChecklistTaskInputElement, updateChecklistTask, toggleChecklistTaskComplete, removeChecklistTask, toggleTaskPin, };
+        newTask, removeTask, insertTaskInputElement, updateTask, toggleTaskComplete, addNewChecklistTask, insertChecklistTaskInputElement, updateChecklistTask, toggleChecklistTaskComplete, removeChecklistTask, toggleTaskPin, addTaskListeners, addChecklistTaskListeners, };
 })();
 
 export { eventBundler };
