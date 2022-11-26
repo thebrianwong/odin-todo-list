@@ -53,9 +53,11 @@ const DOMControllerAddEdit = (() => {
         const tabButton = document.createElement("button");
         tabButton.classList.add("switch-tab");
         const tabButtonName = document.createElement("h2");
+        tabButtonName.classList.add("tab-name");
         tabButtonName.textContent = tabName;
         tabButton.appendChild(tabButtonName);
         tabElement.insertBefore(tabButton, tabElement.firstChild);
+        return tabElement;
     };
     const setDefaultCurrentTabDOM = (index) => {
         const toDoTabSection = document.querySelector(".to-do-tab-section");
