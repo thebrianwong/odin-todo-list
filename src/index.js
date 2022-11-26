@@ -132,6 +132,15 @@ tab2.addTask(taskA)
 let taskB = toDoTask("THIS IS ONLY A TEST", "Task Due Date", "Task Description", "Task Notes");
 tab2.addTask(taskB)
 
+let checklistTaskA = checklistTaskObject("Checklist Task Description TEST A")
+taskA.addTask(checklistTaskA)
+let checklistTaskB = checklistTaskObject("Checklist Task Description TEST B")
+taskA.addTask(checklistTaskB)
+let checklistTaskC = checklistTaskObject("Checklist Task Description TEST C")
+taskB.addTask(checklistTaskC)
+let checklistTaskD = checklistTaskObject("Checklist Task Description TEST D")
+taskB.addTask(checklistTaskD)
+
 eventAssigner.addNewTabListener();
 // eventAssigner.addEditTabListener();
 eventAssigner.addEditTabButtonListener();
