@@ -354,6 +354,7 @@ const DOMControllerAddEdit = (() => {
                 const newTaskElement = addNewTaskToDOM(taskIndex);
                 eventBundler.addTaskListeners(newTaskElement);
                 setPinButtonImage(newTaskElement);
+                rearrangePinnedTasksPosition(newTaskElement);
                 loadChecklistTasksFromTasks(newTaskElement);
             };
         };
@@ -409,6 +410,31 @@ const DOMControllerAddEdit = (() => {
             pinButtonImage.setAttribute("src", "./assets/pin-pinned.png");
         } else {
             pinButtonImage.setAttribute("src", "./assets/pin-unpinned.png");
+        };
+    };
+    const rearrangePinnedTasksPosition = (newTaskElement) => {
+        const currentTabObject = toDoList.getCurrentTabObject();
+        const currentTaskIndex = newTaskElement.dataset.taskIndex;
+        const currentTaskObject = currentTabObject.getSpecificChecklistTask(currentTaskIndex);
+        const taskContentSection = document.querySelector(".to-do-content");
+        if (currentTaskObject.getPinnedState()) {
+            const listOfPinnedTaskElements = Array.from(document.querySelectorAll(".pinned-task"));
+            if (listOfPinnedTaskElements.length === 0) {
+                taskContentSection.insertBefore(newTaskElement, taskContentSection.firstElementChild);
+            } else {
+                const arrayEndIndex = listOfPinnedTaskElements.length - 1;
+                const lastPinnedTaskElement = listOfPinnedTaskElements[arrayEndIndex];
+                for (const pinnedTaskElement of listOfPinnedTaskElements) {
+                    const pinnedTaskElementIndex = pinnedTaskElement.dataset.taskIndex;
+                    if (currentTaskIndex < pinnedTaskElementIndex) {
+                        taskContentSection.insertBefore(newTaskElement, pinnedTaskElement);
+                        break;
+                    } else if (pinnedTaskElement === lastPinnedTaskElement) {
+                        lastPinnedTaskElement.insertAdjacentElement("afterend", newTaskElement);
+                    };
+                };
+            };
+            newTaskElement.classList.add("pinned-task");
         };
     };
     return { addNewTabToDOM, setTabInputElementValue,
