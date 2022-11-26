@@ -12,8 +12,7 @@ const objectControllerRemoveObject = (() => {
     const removeTaskFromTabArray = (event) => {
         const taskElement = helperFunctions.ensureCorrectTaskElement(event);
         const index = taskElement.dataset.taskIndex;
-        const currentTabIndex = toDoList.getCurrentTabIndex();
-        const currentTabObject = toDoList.getSpecificChecklistTask(currentTabIndex);
+        const currentTabObject = toDoList.getCurrentTabObject();
         currentTabObject.removeTask(index);
     }
     const removeChecklistTaskFromTaskArray = (event) => {
