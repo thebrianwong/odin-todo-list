@@ -60,6 +60,9 @@ const DOMControllerAddEdit = (() => {
     const setDefaultCurrentTabDOM = (index) => {
         const toDoTabSection = document.querySelector(".to-do-tab-section");
         const currentTab = toDoTabSection.querySelector(`[data-tab-index='${index}']`);
+        if (currentTab === null) {
+            return;
+        };
         currentTab.setAttribute("id", "current-tab");
     };
     const setCurrentTabDOM = (event) => {
