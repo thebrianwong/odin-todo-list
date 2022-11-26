@@ -393,3 +393,37 @@ input[type="checkbox"]:checked {
     justify-content: center;
     align-items: center;
 }
+
+@keyframes rotate-display-task-details {
+    from {
+        transform: rotate(0);
+    }
+    to {
+        transform: rotate(180deg);
+    }
+}
+
+@keyframes rotate-hide-task-details {
+    from {
+        transform: rotate(180deg);
+    }
+    to {
+        transform: rotate(0);
+    }
+}
+
+.rotate-display-task-details {
+    animation-name: rotate-display-task-details;
+    animation-duration: 0.25s;
+    animation-fill-mode: forwards;
+    animation-direction: normal;
+    animation-timing-function: linear;
+}
+
+.rotate-hide-task-details {
+    animation-name: rotate-hide-task-details;
+    animation-duration: 0.25s;
+    animation-fill-mode: forwards;
+    animation-direction: normal;
+    animation-timing-function: linear;
+}
