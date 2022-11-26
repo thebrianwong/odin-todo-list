@@ -408,13 +408,13 @@ input[type="checkbox"]:checked {
         transform: rotate(180deg);
     }
     to {
-        transform: rotate(0);
+        transform: rotate(360deg);
     }
 }
 
 .rotate-display-task-details {
     animation-name: rotate-display-task-details;
-    animation-duration: 0.25s;
+    animation-duration: 0.20s;
     animation-fill-mode: forwards;
     animation-direction: normal;
     animation-timing-function: linear;
@@ -422,7 +422,7 @@ input[type="checkbox"]:checked {
 
 .rotate-hide-task-details {
     animation-name: rotate-hide-task-details;
-    animation-duration: 0.25s;
+    animation-duration: 0.20s;
     animation-fill-mode: forwards;
     animation-direction: normal;
     animation-timing-function: linear;
