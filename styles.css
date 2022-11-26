@@ -256,7 +256,7 @@ input[type="checkbox"]:checked {
 }
 
 .hide-to-do-details {
-    display: none;
+    display: none !important;
 }
 
 .to-do-description-section,
