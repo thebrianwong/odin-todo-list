@@ -441,13 +441,28 @@ const DOMControllerAddEdit = (() => {
             newTaskElement.classList.add("pinned-task");
         };
     };
+    const toggleDisplayTaskDetails = (event) => {
+        const taskElement = helperFunctions.ensureCorrectTaskElement(event);
+        const taskDescription = taskElement.querySelector(".to-do-description-section");
+        const taskNotes = taskElement.querySelector(".to-do-notes-section");
+        const taskChecklist = taskElement.querySelector(".checklist");
+        const elementsToToggle = [taskDescription, taskNotes, taskChecklist];
+        elementsToToggle.forEach((element) => {
+            const elementClasses = Array.from(element.classList);
+            if (elementClasses.includes("hide-to-do-details")) {
+                element.classList.remove("hide-to-do-details");
+            } else {
+                element.classList.add("hide-to-do-details");
+            };
+        });
+    };
     return { addNewTabToDOM, setTabInputElementValue,
         insertTabInputElement, insertTabNameElement, setDefaultCurrentTabDOM,
         setCurrentTabDOM, setFirstTabToCurrentTab, addNewTaskToDOM,
         insertTaskInputElement, setTaskInputElementValue, insertTaskSubcontentElement,
         toggleTaskDOMComplete, addNewChecklistTaskToDOM, insertChecklistTaskInputElement,
         setChecklistTaskInputElementValue, insertChecklistTaskDescriptionElement,
-        toggleChecklistTaskDOMComplete, changePinButtonImage, shiftTaskElementPosition, loadTasksFromNewCurrentTab, };
+        toggleChecklistTaskDOMComplete, changePinButtonImage, shiftTaskElementPosition, loadTasksFromNewCurrentTab, toggleDisplayTaskDetails, };
 })();
 
 export { DOMControllerAddEdit };
