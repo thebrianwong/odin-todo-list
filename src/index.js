@@ -140,6 +140,10 @@ let checklistTaskC = checklistTaskObject("Checklist Task Description TEST C")
 taskB.addTask(checklistTaskC)
 let checklistTaskD = checklistTaskObject("Checklist Task Description TEST D")
 taskB.addTask(checklistTaskD)
+let checklistTaskE = checklistTaskObject("Checklist Task Description TEST D")
+taskB.addTask(checklistTaskE)
+
+taskB.removeTask(1)
 
 eventAssigner.addNewTabListener();
 // eventAssigner.addEditTabListener();

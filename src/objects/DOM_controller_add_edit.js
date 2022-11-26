@@ -74,8 +74,7 @@ const DOMControllerAddEdit = (() => {
         firstTab.setAttribute("id", "current-tab");
     }
     const addNewTaskToDOM = (index) => {
-        const currentTabIndex = toDoList.getCurrentTabIndex();
-        const currentTabObject = toDoList.getSpecificChecklistTask(currentTabIndex);
+        const currentTabObject = toDoList.getCurrentTabObject();
         const newTaskObject = currentTabObject.getSpecificChecklistTask(index);
         const toDoContent = document.querySelector(".to-do-content");
         const newTaskNode = document.createElement("div");
@@ -337,13 +336,63 @@ const DOMControllerAddEdit = (() => {
             taskElement.classList.remove("pinned-task");
         };
     };
+    const loadTasksFromNewCurrentTab = () => {
+        const currentTabObject = toDoList.getCurrentTabObject();
+        const listOfTasks = currentTabObject.getChecklistTasks();
+        for (const taskIndex in listOfTasks) {
+            if (listOfTasks[taskIndex] !== undefined) {
+                const newTaskElement = addNewTaskToDOM(taskIndex);
+                loadChecklistTasksFromTasks(newTaskElement);
+            };
+        };
+    };
+    const loadChecklistTasksFromTasks = (newTaskElement) => {
+        const checklistElement = newTaskElement.querySelector(".checklist");
+        const taskIndex = newTaskElement.dataset.taskIndex;
+        const currentTabObject = toDoList.getCurrentTabObject();
+        const currentTaskObject = currentTabObject.getSpecificChecklistTask(taskIndex);
+        const listOfChecklistTasks = currentTaskObject.getChecklistTasks();
+        for (const checklistTaskIndex in listOfChecklistTasks) {
+            if (listOfChecklistTasks[checklistTaskIndex] !== undefined) {
+                const checklistTaskObject = listOfChecklistTasks[checklistTaskIndex];
+                const checklistTaskDescription = checklistTaskObject.getTaskDescription();
+                const checklistTaskCompleted = checklistTaskObject.getCompletedState();
+                const newChecklistTaskNode = document.createElement("div");
+                newChecklistTaskNode.classList.add("checklist-task");
+                newChecklistTaskNode.dataset.checklistTaskIndex = checklistTaskIndex;
+                newChecklistTaskNode.innerHTML = `
+                    <div class="checklist-complete-section">
+                        <input type="checkbox" id="checklist-${taskIndex}-${checklistTaskIndex}" class="checklist-complete-checkbox">
+                        <label for="checklist-${taskIndex}-${checklistTaskIndex}" class="checklist-task-description">
+                            DESCRIPTION PLACEHOLDER
+                        </label>
+                    </div>
+                    <button class="edit-checklist-task" type="button">
+                        <img src="assets/pencil.png" alt="Edit checklist task button">
+                    </button>
+                    <button class="remove-checklist-task" type="button">
+                        <img src="assets/close.png" alt="Edit checklist task button">
+                    </button>
+                `
+                const checklistTaskDescriptionElement = newChecklistTaskNode.querySelector(".checklist-task-description");
+                checklistTaskDescriptionElement.textContent = checklistTaskDescription;
+                const checklistTaskCompletedElement = newChecklistTaskNode.querySelector(`#checklist-${taskIndex}-${checklistTaskIndex}`);
+                if (checklistTaskCompleted) {
+                    checklistTaskCompletedElement.checked = true;
+                } else {
+                    checklistTaskCompletedElement.checked = false;
+                };
+                checklistElement.appendChild(newChecklistTaskNode);
+            };
+        };
+    };
     return { addNewTabToDOM, setTabInputElementValue,
         insertTabInputElement, insertTabNameElement, setDefaultCurrentTabDOM,
         setCurrentTabDOM, setFirstTabToCurrentTab, addNewTaskToDOM,
         insertTaskInputElement, setTaskInputElementValue, insertTaskSubcontentElement,
         toggleTaskDOMComplete, addNewChecklistTaskToDOM, insertChecklistTaskInputElement,
         setChecklistTaskInputElementValue, insertChecklistTaskDescriptionElement,
-        toggleChecklistTaskDOMComplete, changePinButtonImage, shiftTaskElementPosition, };
+        toggleChecklistTaskDOMComplete, changePinButtonImage, shiftTaskElementPosition, loadTasksFromNewCurrentTab, };
 })();
 
 export { DOMControllerAddEdit };

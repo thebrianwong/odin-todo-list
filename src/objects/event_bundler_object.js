@@ -50,6 +50,7 @@ const eventBundler = (() => {
             DOMControllerRemove.resetCurrentTabStatus();
             DOMControllerAddEdit.setCurrentTabDOM(event);
             DOMControllerRemove.removeAllTaskElements();
+            DOMControllerAddEdit.loadTasksFromNewCurrentTab();
         };
     }
     const newTask = () => {
@@ -119,6 +120,9 @@ const eventBundler = (() => {
         DOMControllerAddEdit.changePinButtonImage(event);
         DOMControllerAddEdit.shiftTaskElementPosition(event);
     };
+    // const loadTasksFromNewCurrentTab = () => {
+    //     for (const task )
+    // };
     return { addTab, insertTabInputElement, updateTab, removeTab, switchTab,
         newTask, removeTask, insertTaskInputElement, updateTask, toggleTaskComplete, addNewChecklistTask, insertChecklistTaskInputElement, updateChecklistTask, toggleChecklistTaskComplete, removeChecklistTask, toggleTaskPin, };
 })();
