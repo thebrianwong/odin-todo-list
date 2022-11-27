@@ -1,5 +1,5 @@
-const pinnedBehaviorComponent = (object) => {
-    let pinned = false;
+const pinnedBehaviorComponent = (object, initialPinnedState) => {
+    let pinned = initialPinnedState;
     return Object.assign(object, {
         togglePinnedState() {
             if (pinned) {

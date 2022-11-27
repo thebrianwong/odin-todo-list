@@ -52,8 +52,8 @@ const eventBundler = (() => {
             DOMControllerAddEdit.loadTasksFromNewCurrentTab();
         };
     }
-    const newTask = (event, title="New Task Title", dueDate="Task Due Date", description="Task Description", notes="Task Notes") => {
-        const newTaskIndex = objectControllerAddEditObject.addNewTaskToTab(title, dueDate, description, notes);
+    const newTask = (event, title="New Task Title", dueDate="Task Due Date", description="Task Description", notes="Task Notes", pinned=false, completed=false) => {
+        const newTaskIndex = objectControllerAddEditObject.addNewTaskToTab(title, dueDate, description, notes, pinned, completed);
         const newTaskNode = DOMControllerAddEdit.addNewTaskToDOM(newTaskIndex);
         addTaskListeners(newTaskNode);
         return newTaskIndex;
@@ -145,7 +145,7 @@ const eventBundler = (() => {
             `Tomorrow, next week, or whenever your task is due, you can add it here!
             Click the arrow button to toggle between showing and hiding task details.`,
             "Add a description of your task here! Click the pencil buttons to edit the various parts of your task.",
-            "Jot down some notes here! Mark your task as complete when you're done, or remove it from the list by clicking the X button.");
+            "Jot down some notes here! Mark your task as complete when you're done, or remove it from the list by clicking the X button.", false, false);
         addInstructionsChecklistTask(taskIndex);
     };
     const addInstructionsChecklistTask = (taskIndex) => {

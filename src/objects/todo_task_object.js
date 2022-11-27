@@ -7,7 +7,7 @@ import { pinnedBehaviorComponent } from "../components/pinned_component";
 import { completedBehaviorComponent } from "../components/completed_component";
 import { containsChecklistTaskBehaviorComponent } from "../components/contains_checklist_task_component";
 
-const toDoTask = (title, dueDate, description, notes) => {
+const toDoTask = (title, dueDate, description, notes, pinned, completed) => {
     let object = {};
     Object.assign(object,
         titleBehaviorComponent(object, title), 
@@ -15,8 +15,8 @@ const toDoTask = (title, dueDate, description, notes) => {
         dueDateBehaviorComponent(object, dueDate),
         notesBehaviorComponent(object, notes),
         // containsChecklistBehaviorComponent(object),
-        pinnedBehaviorComponent(object),
-        completedBehaviorComponent(object),
+        pinnedBehaviorComponent(object, pinned),
+        completedBehaviorComponent(object, completed),
         containsChecklistTaskBehaviorComponent(object)
     );
     return object;

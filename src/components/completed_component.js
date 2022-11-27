@@ -14,8 +14,8 @@
 //     }
 // });
 
-const completedBehaviorComponent = (object) => {
-    let completed = false;
+const completedBehaviorComponent = (object, initialCompletedState) => {
+    let completed = initialCompletedState;
     return Object.assign(object, {
         toggleCompletedState() {
             if (completed) {
