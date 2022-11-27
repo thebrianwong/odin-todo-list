@@ -448,11 +448,12 @@ input[type="checkbox"]:checked {
 }
 
 @keyframes hide-to-do-details {
-    37% {
+    20% {
         opacity: 0;
     }
     45% {
         position: absolute;
+        opacity: 0;
         transform: translateY(-600%);
     }
     100% {
@@ -474,7 +475,7 @@ input[type="checkbox"]:checked {
     10% {
         transform: translateY(15%);
     }
-    40% {
+    35% {
         opacity: 0;
     }
     75% {
