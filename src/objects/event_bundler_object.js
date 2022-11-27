@@ -145,7 +145,9 @@ const eventBundler = (() => {
         addInstructionsChecklistTask(taskIndex);
     };
     const addInstructionsChecklistTask = (taskIndex) => {
-        const newChecklistTaskIndex = objectControllerAddEditObject.addInstructionsChecklistTaskObject(taskIndex);
+        const checklistTaskIndex = objectControllerAddEditObject.addInstructionsChecklistTaskObject(taskIndex);
+        const checklistTaskNode = DOMControllerAddEdit.loadInstructionsChecklistTaskElement(taskIndex, checklistTaskIndex);
+        addChecklistTaskListeners(checklistTaskNode);
     };
     return { addTab, insertTabInputElement, updateTab, removeTab, switchTab,
         newTask, removeTask, insertTaskInputElement, updateTask, toggleTaskComplete, addNewChecklistTask, insertChecklistTaskInputElement, updateChecklistTask, toggleChecklistTaskComplete, removeChecklistTask, toggleTaskPin, addTaskListeners, addChecklistTaskListeners, toggleDisplayTaskDetails, addTabListeners, loadInitialPage, };
