@@ -255,9 +255,9 @@ input[type="checkbox"]:checked {
     padding: 10px 0 10px 20px;
 }
 
-.hide-to-do-details {
+/* .hide-to-do-details {
     display: none !important;
-}
+} */
 
 .to-do-description-section,
 .to-do-notes-section {
@@ -426,4 +426,55 @@ input[type="checkbox"]:checked {
     animation-fill-mode: forwards;
     animation-direction: normal;
     animation-timing-function: linear;
+}
+
+@keyframes hide-to-do-details {
+    50% {
+        opacity: 0;
+        transform: translateY(-200%);
+        z-index: -1;
+    }
+    70% {
+        position: absolute;
+        opacity: 0;
+        transform: scale(0);
+    }
+    100% {
+        position: absolute;
+        opacity: 0;
+        transform: scale(0);
+    }
+}
+
+@keyframes display-to-do-details {
+    85% {
+        position: absolute;
+        opacity: 0;
+        transform: translateY(-200%);
+    }
+    90% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    100% {
+        position: absolute;
+        opacity: 0;
+        transform: scale(0);
+    }
+}
+
+.hide-to-do-details {
+    animation-name: hide-to-do-details;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    animation-direction: normal;
+    animation-timing-function: cubic-bezier(1, 0, 0, 1);;
+}
+
+.display-to-do-details {
+    animation-name: display-to-do-details;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    animation-direction: reverse;
+    animation-timing-function: cubic-bezier(1, 0, 1, 0);;
 }
