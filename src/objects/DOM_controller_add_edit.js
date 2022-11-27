@@ -451,8 +451,10 @@ const DOMControllerAddEdit = (() => {
             const elementClasses = Array.from(element.classList);
             if (elementClasses.includes("hide-to-do-details")) {
                 element.classList.remove("hide-to-do-details");
+                element.classList.add("display-to-do-details");
             } else {
                 element.classList.add("hide-to-do-details");
+                element.classList.remove("display-to-do-details");
             };
         });
     };
