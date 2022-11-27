@@ -13,11 +13,11 @@ import { completedBehaviorComponent } from "../components/completed_component";
 //     return { getTaskDescription, setTaskDescription };
 // };
 
-const checklistTaskObject = (description) => {
+const checklistTaskObject = (description, completed) => {
     let object = {};
     Object.assign(object,
         descriptionBehaviorComponent(object, description),
-        completedBehaviorComponent(object)
+        completedBehaviorComponent(object, completed)
     );
     return object;
 }
