@@ -79,7 +79,7 @@ const objectControllerAddEditObject = (() => {
     const addInstructionsChecklistTaskObject = (taskIndex) => {
         const currentTabObject = toDoList.getCurrentTabObject();
         const taskObject = currentTabObject.getSpecificChecklistTask(taskIndex);
-        const newChecklistTask = checklistTaskObject("placeholder for instructions");
+        const newChecklistTask = checklistTaskObject("If your task has multiple steps, try breaking them down into a checklist! Click the plus sign button to add steps as needed.");
         const newChecklistTaskIndex = taskObject.addTask(newChecklistTask);
         return newChecklistTaskIndex;
     };

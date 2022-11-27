@@ -141,7 +141,7 @@ const eventBundler = (() => {
     };
     const loadInitialPage = () => {
         addTab(event, "Instructions");
-        const taskIndex = newTask(event, "test title", "test due date", "test description", "test notes");
+        const taskIndex = newTask(event, "Quick Tips! Click the pin button to pin a task to the top of the list.","Tomorrow, next week, or whenever your task is due, you can add it here! Click arrow button to toggle between showing and hiding task details.", "Add a description of your task here! Click the pencil buttons to edit the various parts of your task.", "Jot down some notes here! Mark your task as complete when you're done, or remove it from the list.");
         addInstructionsChecklistTask(taskIndex);
     };
     const addInstructionsChecklistTask = (taskIndex) => {
