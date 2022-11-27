@@ -76,10 +76,10 @@ const objectControllerAddEditObject = (() => {
         const taskObject = helperFunctions.getTargetTaskObject(event);
         taskObject.togglePinnedState();
     };
-    const addInstructionsChecklistTaskObject = (taskIndex) => {
+    const addInstructionsChecklistTaskObject = (taskIndex, instructions) => {
         const currentTabObject = toDoList.getCurrentTabObject();
         const taskObject = currentTabObject.getSpecificChecklistTask(taskIndex);
-        const newChecklistTask = checklistTaskObject("If your task has multiple steps, try breaking them down into a checklist! Click the plus sign button to add steps as needed.");
+        const newChecklistTask = checklistTaskObject(instructions);
         const newChecklistTaskIndex = taskObject.addTask(newChecklistTask);
         return newChecklistTaskIndex;
     };

@@ -141,13 +141,25 @@ const eventBundler = (() => {
     };
     const loadInitialPage = () => {
         addTab(event, "Instructions");
-        const taskIndex = newTask(event, "Quick Tips! Click the pin button to pin a task to the top of the list.","Tomorrow, next week, or whenever your task is due, you can add it here! Click arrow button to toggle between showing and hiding task details.", "Add a description of your task here! Click the pencil buttons to edit the various parts of your task.", "Jot down some notes here! Mark your task as complete when you're done, or remove it from the list.");
+        const taskIndex = newTask(event, "Quick Tips! Click the pin button to pin a task to the top of the list.",
+            `Tomorrow, next week, or whenever your task is due, you can add it here!
+            Click the arrow button to toggle between showing and hiding task details.`,
+            "Add a description of your task here! Click the pencil buttons to edit the various parts of your task.",
+            "Jot down some notes here! Mark your task as complete when you're done, or remove it from the list by clicking the X button.");
         addInstructionsChecklistTask(taskIndex);
     };
     const addInstructionsChecklistTask = (taskIndex) => {
-        const checklistTaskIndex = objectControllerAddEditObject.addInstructionsChecklistTaskObject(taskIndex);
-        const checklistTaskNode = DOMControllerAddEdit.loadInstructionsChecklistTaskElement(taskIndex, checklistTaskIndex);
-        addChecklistTaskListeners(checklistTaskNode);
+        const instructions = [
+            "If your task has multiple steps, try breaking them down into a checklist! Click the plus sign button to add steps as needed.",
+            "Have a new task you want to keep track of? Add it to the list by clicking on the 'New Task' button below!",
+            `Organize the different types of tasks in your life by creating themed tabs. 
+            Create a new tab by clicking on the plus sign button at the top of the list.
+            Change tabs by clicking on different tab names.`];
+        instructions.forEach((instructionsItem) => {
+            const checklistTaskIndex = objectControllerAddEditObject.addInstructionsChecklistTaskObject(taskIndex, instructionsItem);
+            const checklistTaskNode = DOMControllerAddEdit.loadInstructionsChecklistTaskElement(taskIndex, checklistTaskIndex);
+            addChecklistTaskListeners(checklistTaskNode);
+        })
     };
     return { addTab, insertTabInputElement, updateTab, removeTab, switchTab,
         newTask, removeTask, insertTaskInputElement, updateTask, toggleTaskComplete,
