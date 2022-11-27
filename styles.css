@@ -396,26 +396,44 @@ input[type="checkbox"]:checked {
 }
 
 @keyframes rotate-display-task-details {
-    from {
+    0% {
         transform: rotate(0);
     }
-    to {
+    40% {
+        transform: rotate(205deg);
+    }
+    95% {
+        transform: rotate(205deg);
+    }
+    96% {
+        transform: rotate(200deg);
+    }
+    100% {
         transform: rotate(180deg);
     }
 }
 
 @keyframes rotate-hide-task-details {
-    from {
+    0% {
         transform: rotate(180deg);
     }
-    to {
+    40% {
+        transform: rotate(385deg);
+    }
+    95% {
+        transform: rotate(385deg);
+    }
+    96% {
+        transform: rotate(380deg);
+    }
+    100% {
         transform: rotate(360deg);
     }
 }
 
 .rotate-display-task-details {
     animation-name: rotate-display-task-details;
-    animation-duration: 0.20s;
+    animation-duration: 0.5s;
     animation-fill-mode: forwards;
     animation-direction: normal;
     animation-timing-function: linear;
@@ -423,7 +441,7 @@ input[type="checkbox"]:checked {
 
 .rotate-hide-task-details {
     animation-name: rotate-hide-task-details;
-    animation-duration: 0.20s;
+    animation-duration: 0.75s;
     animation-fill-mode: forwards;
     animation-direction: normal;
     animation-timing-function: linear;
