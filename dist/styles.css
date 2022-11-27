@@ -1,7 +1,6 @@
 * {
     border: solid 1px red;
     font-family: 'Gamja Flower', cursive;
-    word-break: break-all;
 }
 
 h1,
@@ -42,7 +41,7 @@ button:focus-visible {
     display: flex;
     flex-direction: column;
     background-color: whitesmoke;
-    margin: 10vh auto;
+    margin: 5vh auto;
     padding: 10px;
     width: 80%;
     max-width: 600px;
