@@ -512,7 +512,9 @@ const DOMControllerAddEdit = (() => {
         insertTaskInputElement, setTaskInputElementValue, insertTaskSubcontentElement,
         toggleTaskDOMComplete, addNewChecklistTaskToDOM, insertChecklistTaskInputElement,
         setChecklistTaskInputElementValue, insertChecklistTaskDescriptionElement,
-        toggleChecklistTaskDOMComplete, changePinButtonImage, shiftTaskElementPosition, loadTasksFromNewCurrentTab, toggleDisplayTaskDetails, rotateChevronButton, loadInstructionsChecklistTaskElement, };
+        toggleChecklistTaskDOMComplete, changePinButtonImage, shiftTaskElementPosition,
+        loadTasksFromNewCurrentTab, toggleDisplayTaskDetails, rotateChevronButton,
+        loadInstructionsChecklistTaskElement, };
 })();
 
 export { DOMControllerAddEdit };

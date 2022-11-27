@@ -150,7 +150,10 @@ const eventBundler = (() => {
         addChecklistTaskListeners(checklistTaskNode);
     };
     return { addTab, insertTabInputElement, updateTab, removeTab, switchTab,
-        newTask, removeTask, insertTaskInputElement, updateTask, toggleTaskComplete, addNewChecklistTask, insertChecklistTaskInputElement, updateChecklistTask, toggleChecklistTaskComplete, removeChecklistTask, toggleTaskPin, addTaskListeners, addChecklistTaskListeners, toggleDisplayTaskDetails, addTabListeners, loadInitialPage, };
+        newTask, removeTask, insertTaskInputElement, updateTask, toggleTaskComplete,
+        addNewChecklistTask, insertChecklistTaskInputElement, updateChecklistTask,
+        toggleChecklistTaskComplete, removeChecklistTask, toggleTaskPin, addTaskListeners,
+        addChecklistTaskListeners, toggleDisplayTaskDetails, addTabListeners, loadInitialPage, };
 })();
 
 export { eventBundler };

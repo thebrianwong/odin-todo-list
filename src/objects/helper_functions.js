@@ -122,7 +122,9 @@ const helperFunctions = (() => {
     return { ensureCorrectTabElement, checkForTabInputElement, checkIfWasCurrentTab,
         checkIfOnlyOneTab, ensureCorrectTaskElement, ensureCorrectSubcontainer,
         checkForTaskSubcontainerInputElement, getTargetTaskObject, ensureCorrectButtonElement,
-        getButtonType, getSubcontainerType, ensureCorrectChecklistElement, ensureCorrectChecklistTaskElement, checkForChecklistTaskInputElement, getTargetChecklistTaskObject, };
+        getButtonType, getSubcontainerType, ensureCorrectChecklistElement,
+        ensureCorrectChecklistTaskElement, checkForChecklistTaskInputElement,
+        getTargetChecklistTaskObject, };
 })();
 
 export { helperFunctions };

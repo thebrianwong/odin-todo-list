@@ -73,7 +73,8 @@ const DOMControllerRemove = (() => {
     };
     return { removeTabNameElement, removeTabInputElement, removeTabElementFromDOM,
         resetCurrentTabStatus, removeTaskElementFromDOM, removeTaskSubcontentElementFromDOM,
-        removeTaskInputElement, removeChecklistTaskDescriptionDOM, removeChecklistTaskInputElement, removeChecklistTaskElementDOM, removeAllTaskElements, }
+        removeTaskInputElement, removeChecklistTaskDescriptionDOM, removeChecklistTaskInputElement,
+        removeChecklistTaskElementDOM, removeAllTaskElements, }
 })();
 
 export { DOMControllerRemove };
