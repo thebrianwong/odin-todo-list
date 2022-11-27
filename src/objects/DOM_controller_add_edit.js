@@ -144,11 +144,11 @@ const DOMControllerAddEdit = (() => {
         const titleDOM = newTaskNode.querySelector(".to-do-title");
         titleDOM.textContent = newTaskTitle;
         const dueDateDOM = newTaskNode.querySelector(".to-do-due-date");
-        dueDateDOM.textContent = newTaskDueDate;
+        dueDateDOM.textContent = "Due On: " + newTaskDueDate;
         const descriptionDOM = newTaskNode.querySelector(".to-do-description");
-        descriptionDOM.textContent = newTaskDescription;
+        descriptionDOM.textContent = "Description: " + newTaskDescription;
         const notesDOM = newTaskNode.querySelector(".to-do-notes");
-        notesDOM.textContent = newTaskNotes;
+        notesDOM.textContent = "Notes: " + newTaskNotes;
         toDoContent.appendChild(newTaskNode);
         return newTaskNode;
     }
@@ -190,17 +190,17 @@ const DOMControllerAddEdit = (() => {
             const taskDueDate = taskObject.getTaskDueDate();
             taskSubcontentElement = document.createElement("p");
             taskSubcontentElement.classList.add("to-do-due-date");
-            taskSubcontentElement.textContent = taskDueDate;
+            taskSubcontentElement.textContent = "Due On: " + taskDueDate;
         } else if (taskSubcontainerType.includes("to-do-description-section")) {
             const taskDescription = taskObject.getTaskDescription();
             taskSubcontentElement = document.createElement("p");
             taskSubcontentElement.classList.add("to-do-description");
-            taskSubcontentElement.textContent = taskDescription;
+            taskSubcontentElement.textContent = "Description: " + taskDescription;
         } else if (taskSubcontainerType.includes("to-do-notes-section")) {
             const taskNotes = taskObject.getTaskNotes();
             taskSubcontentElement = document.createElement("p");
             taskSubcontentElement.classList.add("to-do-notes");
-            taskSubcontentElement.textContent = taskNotes;
+            taskSubcontentElement.textContent = "Notes: " + taskNotes;
         };
         taskSubcontainer.insertBefore(taskSubcontentElement, taskSubcontainer.firstChild);
     }
