@@ -429,15 +429,13 @@ input[type="checkbox"]:checked {
 }
 
 @keyframes hide-to-do-details {
-    50% {
+    37% {
         opacity: 0;
-        transform: translateY(-200%);
-        z-index: -1;
     }
-    70% {
+    45% {
         position: absolute;
         opacity: 0;
-        transform: scale(0);
+        transform: translateY(-800%);
     }
     100% {
         position: absolute;
@@ -447,14 +445,13 @@ input[type="checkbox"]:checked {
 }
 
 @keyframes display-to-do-details {
-    85% {
+    37% {
+        opacity: 0;
+    }
+    75% {
         position: absolute;
         opacity: 0;
-        transform: translateY(-200%);
-    }
-    90% {
-        opacity: 0;
-        transform: scale(0);
+        transform: translateY(-25000%);
     }
     100% {
         position: absolute;
@@ -468,7 +465,7 @@ input[type="checkbox"]:checked {
     animation-duration: 1s;
     animation-fill-mode: both;
     animation-direction: normal;
-    animation-timing-function: cubic-bezier(1, 0, 0, 1);;
+    animation-timing-function: cubic-bezier(1, 0, 1, 1);;
 }
 
 .display-to-do-details {
