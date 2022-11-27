@@ -13,9 +13,7 @@ const eventBundler = (() => {
     const addTab = () => {
         const newTabIndex = objectControllerAddEditObject.addNewTabToTodoArray();
         const newTabNode = DOMControllerAddEdit.addNewTabToDOM(newTabIndex);
-        eventAssigner.addEditTabButtonListener(newTabNode);
-        eventAssigner.addRemoveTabButtonListener(newTabNode);
-        eventAssigner.addSwitchTabListener(newTabNode);
+        addTabListeners(newTabNode);
         if (helperFunctions.checkIfOnlyOneTab()) {
             const firstTabIndex = objectControllerAddEditObject.setFirstTabToCurrentTab();
             DOMControllerAddEdit.setFirstTabToCurrentTab(firstTabIndex)
@@ -135,8 +133,13 @@ const eventBundler = (() => {
         DOMControllerAddEdit.toggleDisplayTaskDetails(event);
         DOMControllerAddEdit.rotateChevronButton(event);
     };
+    const addTabListeners = (newTabNode) => {
+        eventAssigner.addEditTabButtonListener(newTabNode);
+        eventAssigner.addRemoveTabButtonListener(newTabNode);
+        eventAssigner.addSwitchTabListener(newTabNode);
+    };
     return { addTab, insertTabInputElement, updateTab, removeTab, switchTab,
-        newTask, removeTask, insertTaskInputElement, updateTask, toggleTaskComplete, addNewChecklistTask, insertChecklistTaskInputElement, updateChecklistTask, toggleChecklistTaskComplete, removeChecklistTask, toggleTaskPin, addTaskListeners, addChecklistTaskListeners, toggleDisplayTaskDetails, };
+        newTask, removeTask, insertTaskInputElement, updateTask, toggleTaskComplete, addNewChecklistTask, insertChecklistTaskInputElement, updateChecklistTask, toggleChecklistTaskComplete, removeChecklistTask, toggleTaskPin, addTaskListeners, addChecklistTaskListeners, toggleDisplayTaskDetails, addTabListeners, };
 })();
 
 export { eventBundler };
