@@ -124,6 +124,7 @@ const eventBundler = (() => {
         eventAssigner.addToggleTaskCompleteListener(newTaskNode);
         eventAssigner.addNewChecklistTaskListener(newTaskNode);
         eventAssigner.addToggleTaskPinListeners(newTaskNode);
+        eventAssigner.addToggleDisplayTaskDetailsListeners(newTaskNode);
     };
     const addChecklistTaskListeners = (newChecklistTaskNode) => {
         eventAssigner.addEditChecklistTaskListeners(newChecklistTaskNode);
