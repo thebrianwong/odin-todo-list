@@ -7,8 +7,8 @@ import { toDoTask } from "./todo_task_object";
 import { checklistTaskObject } from "./checklist_task_object";
 
 const objectControllerAddEditObject = (() => {
-    const addNewTabToTodoArray = () => {
-        const newTab = toDoTab("New Tab");
+    const addNewTabToTodoArray = (tabName="New Tab") => {
+        const newTab = toDoTab(tabName);
         return toDoList.addTask(newTab);
     }
     const editTabName = (event) => {
@@ -32,10 +32,10 @@ const objectControllerAddEditObject = (() => {
             }
         }
     };
-    const addNewTaskToTab = () => {
+    const addNewTaskToTab = (title="New Task Title", dueDate="Task Due Date", description="Task Description", notes="Task Notes") => {
         const currentTabIndex = toDoList.getCurrentTabIndex();
         const currentTab = toDoList.getSpecificChecklistTask(currentTabIndex);
-        const newTask = toDoTask("New Task Title", "Task Due Date", "Task Description", "Task Notes");
+        const newTask = toDoTask(title, dueDate, description, notes);
         const newTaskIndex = currentTab.addTask(newTask);
         return newTaskIndex;
     };
@@ -76,9 +76,16 @@ const objectControllerAddEditObject = (() => {
         const taskObject = helperFunctions.getTargetTaskObject(event);
         taskObject.togglePinnedState();
     };
+    const addInstructionsChecklistTaskObject = (taskIndex) => {
+        const currentTabObject = toDoList.getCurrentTabObject();
+        const taskObject = currentTabObject.getSpecificChecklistTask(taskIndex);
+        const newChecklistTask = checklistTaskObject("placeholder for instructions");
+        const newChecklistTaskIndex = taskObject.addTask(newChecklistTask);
+        return newChecklistTaskIndex;
+    };
     return { addNewTabToTodoArray, editTabName, updateCurrentTab, setFirstTabToCurrentTab,
         addNewTaskToTab, editTaskObjectInfo, toggleTaskComplete, addNewChecklistTaskToTask,
-        editChecklistTaskDescription, toggleChecklistTaskComplete, toggleTaskPin, };
+        editChecklistTaskDescription, toggleChecklistTaskComplete, toggleTaskPin, addInstructionsChecklistTaskObject, };
 })();
 
 export { objectControllerAddEditObject };

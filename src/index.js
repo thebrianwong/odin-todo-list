@@ -191,3 +191,5 @@ eventAssigner.addRemoveChecklistTaskListener();
 
 eventAssigner.addToggleTaskPinListeners();
 eventAssigner.addToggleDisplayTaskDetailsListeners();
+
+eventBundler.loadInitialPage();

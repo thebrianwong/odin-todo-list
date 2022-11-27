@@ -10,8 +10,8 @@ import { helperFunctions } from "./helper_functions";
 import { DOMControllerRemove } from "./DOM_controller_remove";
 
 const eventBundler = (() => {
-    const addTab = () => {
-        const newTabIndex = objectControllerAddEditObject.addNewTabToTodoArray();
+    const addTab = (event, tabName="New Tab") => {
+        const newTabIndex = objectControllerAddEditObject.addNewTabToTodoArray(tabName);
         const newTabNode = DOMControllerAddEdit.addNewTabToDOM(newTabIndex);
         addTabListeners(newTabNode);
         if (helperFunctions.checkIfOnlyOneTab()) {
@@ -52,10 +52,11 @@ const eventBundler = (() => {
             DOMControllerAddEdit.loadTasksFromNewCurrentTab();
         };
     }
-    const newTask = () => {
-        const newTaskIndex = objectControllerAddEditObject.addNewTaskToTab();
+    const newTask = (event, title="New Task Title", dueDate="Task Due Date", description="Task Description", notes="Task Notes") => {
+        const newTaskIndex = objectControllerAddEditObject.addNewTaskToTab(title, dueDate, description, notes);
         const newTaskNode = DOMControllerAddEdit.addNewTaskToDOM(newTaskIndex);
         addTaskListeners(newTaskNode);
+        return newTaskIndex;
     }
     const removeTask = (event) => {
         objectControllerRemoveObject.removeTaskFromTabArray(event);
@@ -138,8 +139,16 @@ const eventBundler = (() => {
         eventAssigner.addRemoveTabButtonListener(newTabNode);
         eventAssigner.addSwitchTabListener(newTabNode);
     };
+    const loadInitialPage = () => {
+        addTab(event, "Instructions");
+        const taskIndex = newTask(event, "test title", "test due date", "test description", "test notes");
+        addInstructionsChecklistTask(taskIndex);
+    };
+    const addInstructionsChecklistTask = (taskIndex) => {
+        const newChecklistTaskIndex = objectControllerAddEditObject.addInstructionsChecklistTaskObject(taskIndex);
+    };
     return { addTab, insertTabInputElement, updateTab, removeTab, switchTab,
-        newTask, removeTask, insertTaskInputElement, updateTask, toggleTaskComplete, addNewChecklistTask, insertChecklistTaskInputElement, updateChecklistTask, toggleChecklistTaskComplete, removeChecklistTask, toggleTaskPin, addTaskListeners, addChecklistTaskListeners, toggleDisplayTaskDetails, addTabListeners, };
+        newTask, removeTask, insertTaskInputElement, updateTask, toggleTaskComplete, addNewChecklistTask, insertChecklistTaskInputElement, updateChecklistTask, toggleChecklistTaskComplete, removeChecklistTask, toggleTaskPin, addTaskListeners, addChecklistTaskListeners, toggleDisplayTaskDetails, addTabListeners, loadInitialPage, };
 })();
 
 export { eventBundler };
