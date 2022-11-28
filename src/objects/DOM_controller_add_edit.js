@@ -250,12 +250,6 @@ const DOMControllerAddEdit = (() => {
         `
         const checklistTaskDescriptionElement = newChecklistTaskNode.querySelector(".checklist-task-description");
         checklistTaskDescriptionElement.textContent = newChecklistTaskDescription;
-        const checklistTaskCompletedElement = newChecklistTaskNode.querySelector(`#checklist-${taskIndex}-${newChecklistTaskIndex}`);
-        if (newChecklistTaskCompleted) {
-            checklistTaskCompletedElement.checked = true;
-        } else {
-            checklistTaskCompletedElement.checked = false;
-        };
         checklistElement.appendChild(newChecklistTaskNode);
         return newChecklistTaskNode;
     };
@@ -366,53 +360,22 @@ const DOMControllerAddEdit = (() => {
         const currentTabObject = toDoList.getCurrentTabObject();
         const listOfTasks = currentTabObject.getChecklistTasks();
         for (const taskIndex in listOfTasks) {
-            if (listOfTasks[taskIndex] !== undefined) {
+            const taskObject = listOfTasks[taskIndex]
+            if (taskObject !== undefined) {
                 const newTaskElement = addNewTaskToDOM(taskIndex);
-                eventBundler.addTaskListeners(newTaskElement);
                 setPinButtonImage(newTaskElement);
                 rearrangePinnedTasksPosition(newTaskElement);
-                loadChecklistTasksFromTasks(newTaskElement);
-            };
-        };
-    };
-    const loadChecklistTasksFromTasks = (newTaskElement) => {
-        const checklistElement = newTaskElement.querySelector(".checklist");
-        const taskIndex = newTaskElement.dataset.taskIndex;
-        const currentTabObject = toDoList.getCurrentTabObject();
-        const currentTaskObject = currentTabObject.getSpecificChecklistTask(taskIndex);
-        const listOfChecklistTasks = currentTaskObject.getChecklistTasks();
-        for (const checklistTaskIndex in listOfChecklistTasks) {
-            if (listOfChecklistTasks[checklistTaskIndex] !== undefined) {
-                const checklistTaskObject = listOfChecklistTasks[checklistTaskIndex];
-                const checklistTaskDescription = checklistTaskObject.getTaskDescription();
-                const checklistTaskCompleted = checklistTaskObject.getCompletedState();
-                const newChecklistTaskNode = document.createElement("div");
-                newChecklistTaskNode.classList.add("checklist-task");
-                newChecklistTaskNode.dataset.checklistTaskIndex = checklistTaskIndex;
-                newChecklistTaskNode.innerHTML = `
-                    <div class="checklist-complete-section">
-                        <input type="checkbox" id="checklist-${taskIndex}-${checklistTaskIndex}" class="checklist-complete-checkbox">
-                        <label for="checklist-${taskIndex}-${checklistTaskIndex}" class="checklist-task-description">
-                            DESCRIPTION PLACEHOLDER
-                        </label>
-                    </div>
-                    <button class="edit-checklist-task" type="button">
-                        <img src="assets/pencil.png" alt="Edit checklist task button">
-                    </button>
-                    <button class="remove-checklist-task" type="button">
-                        <img src="assets/close.png" alt="Edit checklist task button">
-                    </button>
-                `
-                const checklistTaskDescriptionElement = newChecklistTaskNode.querySelector(".checklist-task-description");
-                checklistTaskDescriptionElement.textContent = checklistTaskDescription;
-                const checklistTaskCompletedElement = newChecklistTaskNode.querySelector(`#checklist-${taskIndex}-${checklistTaskIndex}`);
-                if (checklistTaskCompleted) {
-                    checklistTaskCompletedElement.checked = true;
-                } else {
-                    checklistTaskCompletedElement.checked = false;
-                };
-                checklistElement.appendChild(newChecklistTaskNode);
-                eventBundler.addChecklistTaskListeners(checklistElement);
+                toggleTaskDOMComplete(taskIndex);
+                eventBundler.addTaskListeners(newTaskElement);
+                const listOfChecklistTasks = taskObject.getChecklistTasks();
+                for (const checklistTaskIndex in listOfChecklistTasks) {
+                    const checklistTaskObject = listOfChecklistTasks[checklistTaskIndex];
+                    if (checklistTaskObject !== undefined) {
+                        const newChecklistTaskElement = addNewChecklistTaskToDOM(taskIndex, checklistTaskIndex);
+                        toggleChecklistTaskDOMComplete(taskIndex, checklistTaskIndex);
+                        eventBundler.addChecklistTaskListeners(newChecklistTaskElement);
+                    }
+                }
             };
         };
     };
