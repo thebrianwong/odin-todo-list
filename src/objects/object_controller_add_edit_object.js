@@ -57,11 +57,12 @@ const objectControllerAddEditObject = (() => {
         const taskObject = helperFunctions.getTargetTaskObject(event);
         taskObject.toggleCompletedState();
     };
-    const addNewChecklistTaskToTask = (event) => {
-        const taskObject = helperFunctions.getTargetTaskObject(event);
-        const newChecklistTask = checklistTaskObject("Checklist Task Description");
+    const addNewChecklistTaskToTask = (taskIndex, description="Checklist Task Description", completed=false) => {
+        const currentTabObject = toDoList.getCurrentTabObject();
+        const taskObject = currentTabObject.getSpecificChecklistTask(taskIndex);
+        const newChecklistTask = checklistTaskObject(description, completed);
         const newChecklistTaskIndex = taskObject.addTask(newChecklistTask);
-        return newChecklistTaskIndex
+        return newChecklistTaskIndex;
     };
     const editChecklistTaskDescription = (event) => {
         const checklistTaskObject = helperFunctions.getTargetChecklistTaskObject(event);
@@ -76,17 +77,9 @@ const objectControllerAddEditObject = (() => {
         const taskObject = helperFunctions.getTargetTaskObject(event);
         taskObject.togglePinnedState();
     };
-    const addInstructionsChecklistTaskObject = (taskIndex, instructions, completed) => {
-        const currentTabObject = toDoList.getCurrentTabObject();
-        const taskObject = currentTabObject.getSpecificChecklistTask(taskIndex);
-        const newChecklistTask = checklistTaskObject(instructions, completed);
-        const newChecklistTaskIndex = taskObject.addTask(newChecklistTask);
-        return newChecklistTaskIndex;
-    };
     return { addNewTabToTodoArray, editTabName, updateCurrentTab, setFirstTabToCurrentTab,
         addNewTaskToTab, editTaskObjectInfo, toggleTaskComplete, addNewChecklistTaskToTask,
-        editChecklistTaskDescription, toggleChecklistTaskComplete, toggleTaskPin,
-        addInstructionsChecklistTaskObject, };
+        editChecklistTaskDescription, toggleChecklistTaskComplete, toggleTaskPin, };
 })();
 
 export { objectControllerAddEditObject };

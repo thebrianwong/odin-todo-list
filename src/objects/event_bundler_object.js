@@ -83,7 +83,8 @@ const eventBundler = (() => {
         DOMControllerAddEdit.toggleTaskDOMComplete(taskIndex);
     };
     const addNewChecklistTask = (event) => {
-        const newChecklistTaskIndex = objectControllerAddEditObject.addNewChecklistTaskToTask(event);
+        const taskIndex = helperFunctions.getTaskIndex(event);
+        const newChecklistTaskIndex = objectControllerAddEditObject.addNewChecklistTaskToTask(taskIndex);
         const newChecklistTaskNode = DOMControllerAddEdit.addNewChecklistTaskToDOM(event, newChecklistTaskIndex);
         addChecklistTaskListeners(newChecklistTaskNode);
     };
@@ -163,7 +164,7 @@ const eventBundler = (() => {
             Create a new tab by clicking on the plus sign button at the top of the list.
             Change tabs by clicking on different tab names.`, false]];
         instructions.forEach((instructionsItem) => {
-            const checklistTaskIndex = objectControllerAddEditObject.addInstructionsChecklistTaskObject(taskIndex, instructionsItem[0], instructionsItem[1]);
+            const checklistTaskIndex = objectControllerAddEditObject.addNewChecklistTaskToTask(taskIndex, instructionsItem[0], instructionsItem[1]);
             const checklistTaskNode = DOMControllerAddEdit.loadInstructionsChecklistTaskElement(taskIndex, checklistTaskIndex);
             DOMControllerAddEdit.toggleChecklistTaskDOMComplete(taskIndex, checklistTaskIndex);
             addChecklistTaskListeners(checklistTaskNode);
