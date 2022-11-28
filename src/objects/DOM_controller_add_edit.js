@@ -90,6 +90,7 @@ const DOMControllerAddEdit = (() => {
         const newTaskDescription = newTaskObject.getTaskDescription();
         const newTaskDueDate = newTaskObject.getTaskDueDate();
         const newTaskNotes = newTaskObject.getTaskNotes();
+        const newTaskCompleteID = `to-do-complete-checkbox-${index}`;
         newTaskNode.innerHTML = `
             <div class="to-do-task-overview">
                 <div class="to-do-title-section to-do-task-subcontainer">
@@ -106,8 +107,8 @@ const DOMControllerAddEdit = (() => {
                 </div>
                 <div class="to-do-complete-section">
                     <div class="to-do-complete">
-                        <label for="to-do-complete-checkbox" class="to-do-complete-label">Completed:</label>
-                        <input type="checkbox" name="" class="to-do-complete-checkbox" id="to-do-complete-checkbox">
+                        <label for="ID PLACEHOLDER" class="to-do-complete-label">Completed:</label>
+                        <input type="checkbox" name="" class="to-do-complete-checkbox" id="ID PLACEHOLDER">
                     </div>
                     <button class="to-do-task-change-display">
                         <img src="assets/chevron-down.png" alt="Change task display button">
@@ -150,6 +151,10 @@ const DOMControllerAddEdit = (() => {
         const notesDOM = newTaskNode.querySelector(".to-do-notes");
         notesDOM.textContent = "Notes: " + newTaskNotes;
         toDoContent.appendChild(newTaskNode);
+        const completeLabel = newTaskNode.querySelector("label");
+        completeLabel.setAttribute("for", newTaskCompleteID);
+        const completeCheckbox = newTaskNode.querySelector(".to-do-complete-checkbox");
+        completeCheckbox.setAttribute("id", newTaskCompleteID);
         return newTaskNode;
     }
     const insertTaskInputElement = (event) => {
