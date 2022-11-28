@@ -116,7 +116,7 @@ const eventBundler = (() => {
         const taskIndex = helperFunctions.getTaskIndex(event);
         objectControllerAddEditObject.toggleTaskPin(event);
         DOMControllerAddEdit.changePinButtonImage(taskIndex);
-        DOMControllerAddEdit.shiftTaskElementPosition(event);
+        DOMControllerAddEdit.shiftTaskElementPosition(taskIndex);
     };
     // const loadTasksFromNewCurrentTab = () => {
     //     for (const task )

@@ -318,9 +318,10 @@ const DOMControllerAddEdit = (() => {
             pinButtonImage.setAttribute("src", "./assets/pin-unpinned.png");
         };
     };
-    const shiftTaskElementPosition = (event) => {
-        const taskObject = helperFunctions.getTargetTaskObject(event);
-        const taskElement = helperFunctions.ensureCorrectTaskElement(event);
+    const shiftTaskElementPosition = (taskIndex) => {
+        const taskElement = document.querySelector(`[data-task-index='${taskIndex}']`);
+        const currentTabObject = toDoList.getCurrentTabObject();
+        const taskObject = currentTabObject.getSpecificChecklistTask(taskIndex);
         const taskElementIndex = taskElement.dataset.taskIndex;
         const taskContentSection = document.querySelector(".to-do-content");
         if (taskObject.getPinnedState()) {
