@@ -121,20 +121,25 @@ const helperFunctions = (() => {
     };
     const getTaskIndex = (event) => {
         const taskElement = ensureCorrectTaskElement(event);
-        const index = taskElement.dataset.taskIndex;
-        return index;
+        const taskIndex = taskElement.dataset.taskIndex;
+        return taskIndex;
     };
     const getChecklistTaskIndex = (event) => {
         const checklistTaskElement = ensureCorrectChecklistTaskElement(event);
         const checklistTaskIndex = checklistTaskElement.dataset.checklistTaskIndex;
         return checklistTaskIndex;
     };
+    const getTabIndex = (event) => {
+        const tabElement = ensureCorrectTabElement(event);
+        const tabIndex = tabElement.dataset.tabIndex;
+        return tabIndex;
+    };
     return { ensureCorrectTabElement, checkForTabInputElement, checkIfWasCurrentTab,
         checkIfOnlyOneTab, ensureCorrectTaskElement, ensureCorrectSubcontainer,
         checkForTaskSubcontainerInputElement, getTargetTaskObject, ensureCorrectButtonElement,
         getButtonType, getSubcontainerType, ensureCorrectChecklistElement,
         ensureCorrectChecklistTaskElement, checkForChecklistTaskInputElement,
-        getTargetChecklistTaskObject, getTaskIndex, getChecklistTaskIndex, };
+        getTargetChecklistTaskObject, getTaskIndex, getChecklistTaskIndex, getTabIndex, };
 })();
 
 export { helperFunctions };
