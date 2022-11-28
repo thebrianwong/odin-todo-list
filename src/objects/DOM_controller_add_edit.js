@@ -291,11 +291,14 @@ const DOMControllerAddEdit = (() => {
         checklistTaskDescriptionElement.textContent = checklistTaskDescription;
         checklistCompleteSection.appendChild(checklistTaskDescriptionElement);
     };
-    const toggleChecklistTaskDOMComplete = (event) => {
-        const checklistTaskElement = helperFunctions.ensureCorrectChecklistTaskElement(event);
+    const toggleChecklistTaskDOMComplete = (taskIndex, checklistTaskIndex) => {
+        const taskElement = document.querySelector(`[data-task-index='${taskIndex}']`);
+        const checklistTaskElement = taskElement.querySelector(`[data-checklist-task-index='${checklistTaskIndex}']`);
         const checklistCompleteSection = checklistTaskElement.querySelector(".checklist-complete-section");
         const checklistCompleteCheckbox = checklistCompleteSection.querySelector(".checklist-complete-checkbox");
-        const checklistTaskObject = helperFunctions.getTargetChecklistTaskObject(event);
+        const currentTabObject = toDoList.getCurrentTabObject();
+        const taskObject = currentTabObject.getSpecificChecklistTask(taskIndex);
+        const checklistTaskObject = taskObject.getSpecificChecklistTask(checklistTaskIndex);
         checklistCompleteCheckbox.checked = checklistTaskObject.getCompletedState();
         if (checklistTaskObject.getCompletedState()) {
             checklistCompleteCheckbox.classList.add("checklist-task-completed");

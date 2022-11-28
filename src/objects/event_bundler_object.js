@@ -103,8 +103,10 @@ const eventBundler = (() => {
         };
     };
     const toggleChecklistTaskComplete = (event) => {
+        const taskIndex = helperFunctions.getTaskIndex(event);
+        const checklistTaskIndex = helperFunctions.getChecklistTaskIndex(event);
         objectControllerAddEditObject.toggleChecklistTaskComplete(event);
-        DOMControllerAddEdit.toggleChecklistTaskDOMComplete(event);
+        DOMControllerAddEdit.toggleChecklistTaskDOMComplete(taskIndex, checklistTaskIndex);
     };
     const removeChecklistTask = (event) => {
         objectControllerRemoveObject.removeChecklistTaskFromTaskArray(event);
@@ -153,13 +155,14 @@ const eventBundler = (() => {
     const addInstructionsChecklistTask = (taskIndex) => {
         const instructions = [
             ["If your task has multiple steps, try breaking them down into a checklist! Click the plus sign button to add steps as needed.", false],
-            ["Have a new task you want to keep track of? Add it to the list by clicking on the 'New Task' button below!", false],
+            ["Have a new task you want to keep track of? Add it to the list by clicking on the 'New Task' button below!", true],
             [`Organize the different types of tasks in your life by creating themed tabs. 
             Create a new tab by clicking on the plus sign button at the top of the list.
             Change tabs by clicking on different tab names.`, false]];
         instructions.forEach((instructionsItem) => {
             const checklistTaskIndex = objectControllerAddEditObject.addInstructionsChecklistTaskObject(taskIndex, instructionsItem[0], instructionsItem[1]);
             const checklistTaskNode = DOMControllerAddEdit.loadInstructionsChecklistTaskElement(taskIndex, checklistTaskIndex);
+            DOMControllerAddEdit.toggleChecklistTaskDOMComplete(taskIndex, checklistTaskIndex);
             addChecklistTaskListeners(checklistTaskNode);
         })
     };
