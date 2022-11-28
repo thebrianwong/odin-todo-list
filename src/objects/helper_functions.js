@@ -119,12 +119,17 @@ const helperFunctions = (() => {
         const checklistTaskObject = taskObject.getSpecificChecklistTask(checklistTaskIndex);
         return checklistTaskObject;
     };
+    const getTaskIndex = (event) => {
+        const taskElement = ensureCorrectTaskElement(event);
+        const index = taskElement.dataset.taskIndex;
+        return index;
+    };
     return { ensureCorrectTabElement, checkForTabInputElement, checkIfWasCurrentTab,
         checkIfOnlyOneTab, ensureCorrectTaskElement, ensureCorrectSubcontainer,
         checkForTaskSubcontainerInputElement, getTargetTaskObject, ensureCorrectButtonElement,
         getButtonType, getSubcontainerType, ensureCorrectChecklistElement,
         ensureCorrectChecklistTaskElement, checkForChecklistTaskInputElement,
-        getTargetChecklistTaskObject, };
+        getTargetChecklistTaskObject, getTaskIndex, };
 })();
 
 export { helperFunctions };

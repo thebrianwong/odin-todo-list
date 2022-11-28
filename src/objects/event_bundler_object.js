@@ -78,8 +78,9 @@ const eventBundler = (() => {
         };
     };
     const toggleTaskComplete = (event) => {
+        const taskIndex = helperFunctions.getTaskIndex(event);
         objectControllerAddEditObject.toggleTaskComplete(event);
-        DOMControllerAddEdit.toggleTaskDOMComplete(event);
+        DOMControllerAddEdit.toggleTaskDOMComplete(taskIndex);
     };
     const addNewChecklistTask = (event) => {
         const newChecklistTaskIndex = objectControllerAddEditObject.addNewChecklistTaskToTask(event);
@@ -146,6 +147,7 @@ const eventBundler = (() => {
             Click the arrow button to toggle between showing and hiding task details.`,
             "Add a description of your task here! Click the pencil buttons to edit the various parts of your task.",
             "Jot down some notes here! Mark your task as complete when you're done, or remove it from the list by clicking the X button.", false, false);
+        DOMControllerAddEdit.toggleTaskDOMComplete(taskIndex);
         addInstructionsChecklistTask(taskIndex);
     };
     const addInstructionsChecklistTask = (taskIndex) => {

@@ -204,10 +204,11 @@ const DOMControllerAddEdit = (() => {
         };
         taskSubcontainer.insertBefore(taskSubcontentElement, taskSubcontainer.firstChild);
     }
-    const toggleTaskDOMComplete = (event) => {
-        const taskElement = helperFunctions.ensureCorrectTaskElement(event);
+    const toggleTaskDOMComplete = (taskIndex) => {
+        const taskElement = document.querySelector(`[data-task-index='${taskIndex}']`);
         const completeCheckbox = taskElement.querySelector(".to-do-complete-checkbox");
-        const taskObject = helperFunctions.getTargetTaskObject(event);
+        const currentTabObject =  toDoList.getCurrentTabObject();
+        const taskObject = currentTabObject.getSpecificChecklistTask(taskIndex);
         const taskCompletedStated = taskObject.getCompletedState();
         if (taskCompletedStated) {
             completeCheckbox.checked = true;
