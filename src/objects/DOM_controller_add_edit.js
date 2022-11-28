@@ -223,14 +223,14 @@ const DOMControllerAddEdit = (() => {
             taskElement.classList.remove("task-completed");
         };
     };
-    const addNewChecklistTaskToDOM = (event, newChecklistTaskIndex) => {
-        const checklistElement = helperFunctions.ensureCorrectChecklistElement(event);
-        const taskElement = helperFunctions.ensureCorrectTaskElement(event);
-        const taskIndex = taskElement.dataset.taskIndex;
-        const taskObject = helperFunctions.getTargetTaskObject(event);
-        const newChecklistTask = taskObject.getSpecificChecklistTask(newChecklistTaskIndex);
-        const newChecklistTaskDescription = newChecklistTask.getTaskDescription();
-        const newChecklistTaskCompleted = newChecklistTask.getCompletedState();
+    const addNewChecklistTaskToDOM = (taskIndex, newChecklistTaskIndex) => {
+        const taskElement = document.querySelector(`[data-task-index='${taskIndex}'`);
+        const checklistElement = taskElement.querySelector(".checklist");
+        const currentTabObject = toDoList.getCurrentTabObject();
+        const taskObject = currentTabObject.getSpecificChecklistTask(taskIndex);
+        const checklistTaskObject = taskObject.getSpecificChecklistTask(newChecklistTaskIndex);
+        const newChecklistTaskDescription = checklistTaskObject.getTaskDescription();
+        const newChecklistTaskCompleted = checklistTaskObject.getCompletedState();
         const newChecklistTaskNode = document.createElement("div");
         newChecklistTaskNode.classList.add("checklist-task");
         newChecklistTaskNode.dataset.checklistTaskIndex = newChecklistTaskIndex;
@@ -482,42 +482,6 @@ const DOMControllerAddEdit = (() => {
             buttonImage.classList.add("rotate-hide-task-details");
         };
     };
-    const loadInstructionsChecklistTaskElement = (taskIndex, checklistTaskIndex) => {
-        const taskElement = document.querySelector(`[data-task-index='${taskIndex}'`);
-        const checklistElement = taskElement.querySelector(".checklist");
-        const currentTabObject = toDoList.getCurrentTabObject();
-        const taskObject = currentTabObject.getSpecificChecklistTask(taskIndex);
-        const checklistTaskObject = taskObject.getSpecificChecklistTask(checklistTaskIndex);
-        const newChecklistTaskDescription = checklistTaskObject.getTaskDescription();
-        const newChecklistTaskCompleted = checklistTaskObject.getCompletedState();
-        const newChecklistTaskNode = document.createElement("div");
-        newChecklistTaskNode.classList.add("checklist-task");
-        newChecklistTaskNode.dataset.checklistTaskIndex = checklistTaskIndex;
-        newChecklistTaskNode.innerHTML = `
-            <div class="checklist-complete-section">
-                <input type="checkbox" id="checklist-${taskIndex}-${checklistTaskIndex}" class="checklist-complete-checkbox">
-                <label for="checklist-${taskIndex}-${checklistTaskIndex}" class="checklist-task-description">
-                    DESCRIPTION PLACEHOLDER
-                </label>
-            </div>
-            <button class="edit-checklist-task" type="button">
-                <img src="assets/pencil.png" alt="Edit checklist task button">
-            </button>
-            <button class="remove-checklist-task" type="button">
-                <img src="assets/close.png" alt="Edit checklist task button">
-            </button>
-        `
-        const checklistTaskDescriptionElement = newChecklistTaskNode.querySelector(".checklist-task-description");
-        checklistTaskDescriptionElement.textContent = newChecklistTaskDescription;
-        const checklistTaskCompletedElement = newChecklistTaskNode.querySelector(`#checklist-${taskIndex}-${checklistTaskIndex}`);
-        if (newChecklistTaskCompleted) {
-            checklistTaskCompletedElement.checked = true;
-        } else {
-            checklistTaskCompletedElement.checked = false;
-        };
-        checklistElement.appendChild(newChecklistTaskNode);
-        return newChecklistTaskNode;
-    };
     return { addNewTabToDOM, setTabInputElementValue,
         insertTabInputElement, insertTabNameElement, setDefaultCurrentTabDOM,
         setCurrentTabDOM, setFirstTabToCurrentTab, addNewTaskToDOM,
@@ -525,8 +489,7 @@ const DOMControllerAddEdit = (() => {
         toggleTaskDOMComplete, addNewChecklistTaskToDOM, insertChecklistTaskInputElement,
         setChecklistTaskInputElementValue, insertChecklistTaskDescriptionElement,
         toggleChecklistTaskDOMComplete, changePinButtonImage, shiftTaskElementPosition,
-        loadTasksFromNewCurrentTab, toggleDisplayTaskDetails, rotateChevronButton,
-        loadInstructionsChecklistTaskElement, };
+        loadTasksFromNewCurrentTab, toggleDisplayTaskDetails, rotateChevronButton, };
 })();
 
 export { DOMControllerAddEdit };

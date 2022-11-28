@@ -85,7 +85,7 @@ const eventBundler = (() => {
     const addNewChecklistTask = (event) => {
         const taskIndex = helperFunctions.getTaskIndex(event);
         const newChecklistTaskIndex = objectControllerAddEditObject.addNewChecklistTaskToTask(taskIndex);
-        const newChecklistTaskNode = DOMControllerAddEdit.addNewChecklistTaskToDOM(event, newChecklistTaskIndex);
+        const newChecklistTaskNode = DOMControllerAddEdit.addNewChecklistTaskToDOM(taskIndex, newChecklistTaskIndex);
         addChecklistTaskListeners(newChecklistTaskNode);
     };
     const insertChecklistTaskInputElement = (event) => {
@@ -150,7 +150,7 @@ const eventBundler = (() => {
             `Tomorrow, next week, or whenever your task is due, you can add it here!
             Click the arrow button to toggle between showing and hiding task details.`,
             "Add a description of your task here! Click the pencil buttons to edit the various parts of your task.",
-            "Jot down some notes here! Mark your task as complete when you're done, or remove it from the list by clicking the X button.", true, false);
+            "Jot down some notes here! Mark your task as complete when you're done, or remove it from the list by clicking the X button.", true, true);
         DOMControllerAddEdit.toggleTaskDOMComplete(taskIndex);
         DOMControllerAddEdit.changePinButtonImage(taskIndex);
         DOMControllerAddEdit.shiftTaskElementPosition(taskIndex);
@@ -158,14 +158,14 @@ const eventBundler = (() => {
     };
     const addInstructionsChecklistTask = (taskIndex) => {
         const instructions = [
-            ["If your task has multiple steps, try breaking them down into a checklist! Click the plus sign button to add steps as needed.", false],
-            ["Have a new task you want to keep track of? Add it to the list by clicking on the 'New Task' button below!", false],
+            ["If your task has multiple steps, try breaking them down into a checklist! Click the plus sign button to add steps as needed.", true],
+            ["Have a new task you want to keep track of? Add it to the list by clicking on the 'New Task' button below!", true],
             [`Organize the different types of tasks in your life by creating themed tabs. 
             Create a new tab by clicking on the plus sign button at the top of the list.
-            Change tabs by clicking on different tab names.`, false]];
+            Change tabs by clicking on different tab names.`, true]];
         instructions.forEach((instructionsItem) => {
             const checklistTaskIndex = objectControllerAddEditObject.addNewChecklistTaskToTask(taskIndex, instructionsItem[0], instructionsItem[1]);
-            const checklistTaskNode = DOMControllerAddEdit.loadInstructionsChecklistTaskElement(taskIndex, checklistTaskIndex);
+            const checklistTaskNode = DOMControllerAddEdit.addNewChecklistTaskToDOM(taskIndex, checklistTaskIndex);
             DOMControllerAddEdit.toggleChecklistTaskDOMComplete(taskIndex, checklistTaskIndex);
             addChecklistTaskListeners(checklistTaskNode);
         })
