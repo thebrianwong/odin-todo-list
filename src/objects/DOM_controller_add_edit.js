@@ -306,9 +306,11 @@ const DOMControllerAddEdit = (() => {
             checklistCompleteCheckbox.classList.remove("checklist-task-completed");
         };
     };
-    const changePinButtonImage = (event) => {
-        const taskObject = helperFunctions.getTargetTaskObject(event);
-        const pinButton = helperFunctions.ensureCorrectButtonElement(event);
+    const changePinButtonImage = (taskIndex) => {
+        const taskElement = document.querySelector(`[data-task-index='${taskIndex}']`);
+        const currentTabObject = toDoList.getCurrentTabObject();
+        const taskObject = currentTabObject.getSpecificChecklistTask(taskIndex);
+        const pinButton = taskElement.querySelector(".to-do-pin")
         const pinButtonImage = pinButton.querySelector("img");
         if (taskObject.getPinnedState()) {
             pinButtonImage.setAttribute("src", "./assets/pin-pinned.png");

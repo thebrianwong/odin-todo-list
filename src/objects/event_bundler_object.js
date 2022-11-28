@@ -113,8 +113,9 @@ const eventBundler = (() => {
         DOMControllerRemove.removeChecklistTaskElementDOM(event);
     };
     const toggleTaskPin = (event) => {
+        const taskIndex = helperFunctions.getTaskIndex(event);
         objectControllerAddEditObject.toggleTaskPin(event);
-        DOMControllerAddEdit.changePinButtonImage(event);
+        DOMControllerAddEdit.changePinButtonImage(taskIndex);
         DOMControllerAddEdit.shiftTaskElementPosition(event);
     };
     // const loadTasksFromNewCurrentTab = () => {
@@ -155,7 +156,7 @@ const eventBundler = (() => {
     const addInstructionsChecklistTask = (taskIndex) => {
         const instructions = [
             ["If your task has multiple steps, try breaking them down into a checklist! Click the plus sign button to add steps as needed.", false],
-            ["Have a new task you want to keep track of? Add it to the list by clicking on the 'New Task' button below!", true],
+            ["Have a new task you want to keep track of? Add it to the list by clicking on the 'New Task' button below!", false],
             [`Organize the different types of tasks in your life by creating themed tabs. 
             Create a new tab by clicking on the plus sign button at the top of the list.
             Change tabs by clicking on different tab names.`, false]];
