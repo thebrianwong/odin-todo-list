@@ -75,8 +75,7 @@ const DOMControllerAddEdit = (() => {
         if (firstTabIndex === undefined) {
             return;
         }
-        const toDoTabSection = document.querySelector(".to-do-tab-section");
-        const firstTab = toDoTabSection.querySelector(`[data-tab-index='${firstTabIndex}']`)
+        const firstTab = document.querySelector(`[data-tab-index='${firstTabIndex}']`)
         firstTab.setAttribute("id", "current-tab");
     }
     const addNewTaskToDOM = (index) => {

@@ -36,8 +36,9 @@ const eventBundler = (() => {
         };
     };
     const removeTab = (event) => {
-        objectControllerRemoveObject.removeTabFromTodoArray(event);
-        DOMControllerRemove.removeTabElementFromDOM(event);
+        const tabIndex = helperFunctions.getTabIndex(event);
+        objectControllerRemoveObject.removeTabFromTodoArray(tabIndex);
+        DOMControllerRemove.removeTabElementFromDOM(tabIndex);
         if (helperFunctions.checkIfWasCurrentTab(event)) {
             const firstTabIndex = objectControllerAddEditObject.setFirstTabToCurrentTab();
             DOMControllerAddEdit.setFirstTabToCurrentTab(firstTabIndex)

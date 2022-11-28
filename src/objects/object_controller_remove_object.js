@@ -4,10 +4,8 @@ import { DOMControllerAddEdit } from "./DOM_controller_add_edit";
 import { helperFunctions } from "./helper_functions";
 
 const objectControllerRemoveObject = (() => {
-    const removeTabFromTodoArray = (event) => {
-        const tabElement = helperFunctions.ensureCorrectTabElement(event);
-        const index = tabElement.dataset.tabIndex;
-        toDoList.removeTask(index);
+    const removeTabFromTodoArray = (tabIndex) => {
+        toDoList.removeTask(tabIndex);
     };
     const removeTaskFromTabArray = (event) => {
         const taskElement = helperFunctions.ensureCorrectTaskElement(event);
