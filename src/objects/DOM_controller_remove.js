@@ -9,8 +9,8 @@ const DOMControllerRemove = (() => {
         tabElement.removeChild(switchTab);
         switchTab = null
     };
-    const removeTabInputElement = (event) => {
-        const tabElement = helperFunctions.ensureCorrectTabElement(event);
+    const removeTabInputElement = (tabIndex) => {
+        const tabElement = document.querySelector(`[data-tab-index='${tabIndex}']`);
         let inputElement = tabElement.querySelector("input");
         tabElement.removeChild(inputElement);
         inputElement = null;

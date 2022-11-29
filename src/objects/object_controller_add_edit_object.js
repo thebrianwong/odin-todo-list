@@ -11,10 +11,9 @@ const objectControllerAddEditObject = (() => {
         const newTab = toDoTab(tabName);
         return toDoList.addTask(newTab);
     }
-    const editTabName = (event) => {
-        const index = event.target.parentElement.dataset.tabIndex;
-        const targetTab = toDoList.getSpecificChecklistTask(index);
-        targetTab.setTaskTitle(event.target.value);
+    const editTabName = (tabIndex, newTabName) => {
+        const tabObject = toDoList.getSpecificChecklistTask(tabIndex);
+        tabObject.setTaskTitle(newTabName);
     }
     const updateCurrentTab = (event) => {
         const newCurrentTab = helperFunctions.ensureCorrectTabElement(event);

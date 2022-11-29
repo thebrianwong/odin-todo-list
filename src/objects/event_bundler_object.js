@@ -30,9 +30,11 @@ const eventBundler = (() => {
     }
     const updateTab = (event) => {
         if (event.code === 'Enter') {
-            objectControllerAddEditObject.editTabName(event);
-            const tabElement = DOMControllerAddEdit.insertTabNameElement(event);
-            DOMControllerRemove.removeTabInputElement(event);
+            const tabIndex = helperFunctions.getTabIndex(event);
+            const newTabName = helperFunctions.getNewValue(event);
+            objectControllerAddEditObject.editTabName(tabIndex, newTabName);
+            const tabElement = DOMControllerAddEdit.insertTabNameElement(tabIndex);
+            DOMControllerRemove.removeTabInputElement(tabIndex);
             eventAssigner.addSwitchTabListener(tabElement);
         };
     };

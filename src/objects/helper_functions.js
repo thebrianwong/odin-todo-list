@@ -134,12 +134,16 @@ const helperFunctions = (() => {
         const tabIndex = tabElement.dataset.tabIndex;
         return tabIndex;
     };
+    const getNewValue = (event) => {
+        const newValue = event.target.value;
+        return newValue;
+    };
     return { ensureCorrectTabElement, checkForTabInputElement, checkIfWasCurrentTab,
         checkIfOnlyOneTab, ensureCorrectTaskElement, ensureCorrectSubcontainer,
         checkForTaskSubcontainerInputElement, getTargetTaskObject, ensureCorrectButtonElement,
         getButtonType, getSubcontainerType, ensureCorrectChecklistElement,
         ensureCorrectChecklistTaskElement, checkForChecklistTaskInputElement,
-        getTargetChecklistTaskObject, getTaskIndex, getChecklistTaskIndex, getTabIndex, };
+        getTargetChecklistTaskObject, getTaskIndex, getChecklistTaskIndex, getTabIndex, getNewValue, };
 })();
 
 export { helperFunctions };

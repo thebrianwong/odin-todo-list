@@ -45,10 +45,9 @@ const DOMControllerAddEdit = (() => {
         inputElement.focus();
         return inputElement;
     }
-    const insertTabNameElement = (event) => {
-        const tabElement = helperFunctions.ensureCorrectTabElement(event);
-        const index = tabElement.dataset.tabIndex;
-        const tabObject = toDoList.getSpecificChecklistTask(index);
+    const insertTabNameElement = (tabIndex) => {
+        const tabElement = document.querySelector(`[data-tab-index='${tabIndex}']`);
+        const tabObject = toDoList.getSpecificChecklistTask(tabIndex);
         const tabName = tabObject.getTaskTitle();
         const tabButton = document.createElement("button");
         tabButton.classList.add("switch-tab");
