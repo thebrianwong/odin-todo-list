@@ -74,11 +74,6 @@ const helperFunctions = (() => {
         };
         return buttonElement;
     };
-    const getButtonType = (event) => {
-        const buttonElement = ensureCorrectButtonElement(event);
-        const buttonClasses = Array.from(buttonElement.classList);
-        return buttonClasses;
-    };
     const getSubcontainerType = (event) => {
         const taskSubcontainer = ensureCorrectSubcontainer(event);
         const subcontainerClasses = Array.from(taskSubcontainer.classList);
@@ -138,12 +133,40 @@ const helperFunctions = (() => {
         const newValue = event.target.value;
         return newValue;
     };
+    const getButtonType = (event) => {
+        const buttonElement = ensureCorrectButtonElement(event);
+        const buttonClasses = Array.from(buttonElement.classList);
+        let buttonType = undefined;
+        if (buttonClasses.includes("edit-task-title")) {
+            buttonType = "Title";
+        } else if (buttonClasses.includes("edit-task-due-date")) {
+            buttonType = "Due Date";
+        } else if (buttonClasses.includes("edit-task-description")) {
+            buttonType = "Description";
+        } else if (buttonClasses.includes("edit-task-notes")) {
+            buttonType = "Notes";
+        };
+        return buttonType;
+    };
+    const getTaskSubcontainerElement = (taskIndex, buttonType) => {
+        const taskElement = document.querySelector(`[data-task-index='${taskIndex}']`);
+        let taskSubcontainerElement = undefined;
+        if (buttonType === "Title") {
+            taskSubcontainerElement = taskElement.querySelector(".to-do-title-section");
+        } else if (buttonType === "Due Date") {
+            taskSubcontainerElement = taskElement.querySelector(".to-do-due-date-section");
+        } else if (buttonType === "Description") {
+            taskSubcontainerElement = taskElement.querySelector(".to-do-description-section");
+        } else if (buttonType === "Notes") {
+            taskSubcontainerElement = taskElement.querySelector(".to-do-notes-section");
+        };
+        return taskSubcontainerElement;
+    };
     return { ensureCorrectTabElement, checkForTabInputElement, checkIfWasCurrentTab,
         checkIfOnlyOneTab, ensureCorrectTaskElement, ensureCorrectSubcontainer,
-        checkForTaskSubcontainerInputElement, getTargetTaskObject, ensureCorrectButtonElement,
-        getButtonType, getSubcontainerType, ensureCorrectChecklistElement,
+        checkForTaskSubcontainerInputElement, getTargetTaskObject, ensureCorrectButtonElement, getSubcontainerType, ensureCorrectChecklistElement,
         ensureCorrectChecklistTaskElement, checkForChecklistTaskInputElement,
-        getTargetChecklistTaskObject, getTaskIndex, getChecklistTaskIndex, getTabIndex, getNewValue, };
+        getTargetChecklistTaskObject, getTaskIndex, getChecklistTaskIndex, getTabIndex, getNewValue, getButtonType, getTaskSubcontainerElement, };
 })();
 
 export { helperFunctions };

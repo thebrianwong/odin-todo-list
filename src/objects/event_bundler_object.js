@@ -70,9 +70,11 @@ const eventBundler = (() => {
     };
     const insertTaskInputElement = (event) => {
         if (!helperFunctions.checkForTaskSubcontainerInputElement(event)) {
-            DOMControllerRemove.removeTaskSubcontentElementFromDOM(event);
-            const inputElement = DOMControllerAddEdit.insertTaskInputElement(event);
-            DOMControllerAddEdit.setTaskInputElementValue(event, inputElement);
+            const taskIndex = helperFunctions.getTaskIndex(event);
+            const buttonType = helperFunctions.getButtonType(event);
+            DOMControllerRemove.removeTaskSubcontentElementFromDOM(taskIndex, buttonType);
+            const inputElement = DOMControllerAddEdit.insertTaskInputElement(taskIndex, buttonType);
+            DOMControllerAddEdit.setTaskInputElementValue(taskIndex, buttonType);
             eventAssigner.addTaskInputListener(inputElement);
         };
     }

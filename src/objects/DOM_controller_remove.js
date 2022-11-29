@@ -35,10 +35,10 @@ const DOMControllerRemove = (() => {
         toDoTaskSection.removeChild(taskElement);
         taskElement = null;
     }
-    const removeTaskSubcontentElementFromDOM = (event) => {
-        const taskSubcontainer = helperFunctions.ensureCorrectSubcontainer(event);
-        let taskSubcontentElement = taskSubcontainer.firstElementChild;
-        taskSubcontainer.removeChild(taskSubcontentElement);
+    const removeTaskSubcontentElementFromDOM = (taskIndex, buttonType) => {
+        const taskSubcontainerElement = helperFunctions.getTaskSubcontainerElement(taskIndex, buttonType);
+        let taskSubcontentElement = taskSubcontainerElement.firstElementChild;
+        taskSubcontainerElement.removeChild(taskSubcontentElement);
         taskSubcontentElement = null
     }
     const removeTaskInputElement = (event) => {

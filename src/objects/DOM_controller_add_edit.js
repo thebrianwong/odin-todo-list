@@ -155,8 +155,8 @@ const DOMControllerAddEdit = (() => {
         completeCheckbox.setAttribute("id", newTaskCompleteID);
         return newTaskNode;
     }
-    const insertTaskInputElement = (event) => {
-        const taskSubcontainer = helperFunctions.ensureCorrectSubcontainer(event);
+    const insertTaskInputElement = (taskIndex, buttonType) => {
+        const taskSubcontainer = helperFunctions.getTaskSubcontainerElement(taskIndex, buttonType);
         const inputElement = document.createElement("input");
         inputElement.classList.add("task-input");
         inputElement.setAttribute("type", "text");
@@ -164,21 +164,23 @@ const DOMControllerAddEdit = (() => {
         inputElement.focus();
         return inputElement;
     };
-    const setTaskInputElementValue = (event, inputElement) => {
-        const taskObject = helperFunctions.getTargetTaskObject(event);
-        const buttonType = helperFunctions.getButtonType(event);
-        let taskSubcontent = undefined;
-        if (buttonType.includes("edit-task-title")) {
-            taskSubcontent = taskObject.getTaskTitle();
-        } else if (buttonType.includes("edit-task-due-date")) {
-            taskSubcontent = taskObject.getTaskDueDate();
-        } else if (buttonType.includes("edit-task-description")) {
-            taskSubcontent = taskObject.getTaskDescription();
-        } else if (buttonType.includes("edit-task-notes")) {
-            taskSubcontent = taskObject.getTaskNotes();
+    const setTaskInputElementValue = (taskIndex, buttonType) => {
+        const taskSubcontainerElement = helperFunctions.getTaskSubcontainerElement(taskIndex, buttonType);
+        const inputElement = taskSubcontainerElement.querySelector("input");
+        const currentTabObject = toDoList.getCurrentTabObject();
+        const taskObject = currentTabObject.getSpecificChecklistTask(taskIndex);
+        let taskObjectValue = undefined;
+        if (buttonType === "Title") {
+            taskObjectValue = taskObject.getTaskTitle();
+        } else if (buttonType === "Due Date") {
+            taskObjectValue = taskObject.getTaskDueDate();
+        } else if (buttonType === "Description") {
+            taskObjectValue = taskObject.getTaskDescription();
+        } else if (buttonType === "Notes") {
+            taskObjectValue = taskObject.getTaskNotes();
         };
-        inputElement.value = taskSubcontent;
-    }
+        inputElement.value = taskObjectValue;
+    };
     const insertTaskSubcontentElement = (event) => {
         const taskSubcontainer = helperFunctions.ensureCorrectSubcontainer(event);
         const taskObject = helperFunctions.getTargetTaskObject(event);
