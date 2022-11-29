@@ -36,18 +36,20 @@ const objectControllerAddEditObject = (() => {
         const newTaskIndex = currentTab.addTask(newTask);
         return newTaskIndex;
     };
-    const editTaskObjectInfo = (event) => {
-        const taskObject = helperFunctions.getTargetTaskObject(event);
-        const newTaskTitleValue = event.target.value;
-        const taskSubcontainerType = helperFunctions.getSubcontainerType(event);
-        if (taskSubcontainerType.includes("to-do-title-section")) {
-            return taskObject.setTaskTitle(newTaskTitleValue);
-        } else if (taskSubcontainerType.includes("to-do-due-date-section")) {
-            return taskObject.setTaskDueDate(newTaskTitleValue);
-        } else if (taskSubcontainerType.includes("to-do-description-section")) {
-            return taskObject.setTaskDescription(newTaskTitleValue);
-        } else if (taskSubcontainerType.includes("to-do-notes-section")) {
-            return taskObject.setTaskNotes(newTaskTitleValue);
+    const editTaskObjectInfo = (taskIndex, buttonType, newTaskSubcontentValue) => {
+        const currentTabObject = toDoList.getCurrentTabObject();
+        const taskObject = currentTabObject.getSpecificChecklistTask(taskIndex);
+        // const taskSubcontainerElement = helperFunctions.getTaskSubcontainerElement(taskIndex, buttonType);
+        // const newTaskTitleValue = event.target.value;
+        // const taskSubcontainerType = helperFunctions.getSubcontainerType(event);
+        if (buttonType === "Title") {
+            taskObject.setTaskTitle(newTaskSubcontentValue);
+        } else if (buttonType === "Due Date") {
+            taskObject.setTaskDueDate(newTaskSubcontentValue);
+        } else if (buttonType === "Description") {
+            taskObject.setTaskDescription(newTaskSubcontentValue);
+        } else if (buttonType === "Notes") {
+            taskObject.setTaskNotes(newTaskSubcontentValue);
         };
     };
     const toggleTaskComplete = (event) => {

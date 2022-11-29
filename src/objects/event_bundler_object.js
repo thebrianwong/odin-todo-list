@@ -80,7 +80,10 @@ const eventBundler = (() => {
     }
     const updateTask = (event) => {
         if (event.code === "Enter") {
-            objectControllerAddEditObject.editTaskObjectInfo(event);
+            const taskIndex = helperFunctions.getTaskIndex(event);
+            const buttonType = helperFunctions.getButtonType(event);
+            const newTaskSubcontentValue = helperFunctions.getNewValue(event);
+            objectControllerAddEditObject.editTaskObjectInfo(taskIndex, buttonType, newTaskSubcontentValue);
             DOMControllerAddEdit.insertTaskSubcontentElement(event);
             DOMControllerRemove.removeTaskInputElement(event);
         };

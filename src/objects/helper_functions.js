@@ -134,16 +134,16 @@ const helperFunctions = (() => {
         return newValue;
     };
     const getButtonType = (event) => {
-        const buttonElement = ensureCorrectButtonElement(event);
+        const buttonElement = ensureCorrectSubcontainer(event);
         const buttonClasses = Array.from(buttonElement.classList);
         let buttonType = undefined;
-        if (buttonClasses.includes("edit-task-title")) {
+        if (buttonClasses.includes("to-do-title-section")) {
             buttonType = "Title";
-        } else if (buttonClasses.includes("edit-task-due-date")) {
+        } else if (buttonClasses.includes("to-do-due-date-section")) {
             buttonType = "Due Date";
-        } else if (buttonClasses.includes("edit-task-description")) {
+        } else if (buttonClasses.includes("to-do-description-section")) {
             buttonType = "Description";
-        } else if (buttonClasses.includes("edit-task-notes")) {
+        } else if (buttonClasses.includes("to-do-notes-section")) {
             buttonType = "Notes";
         };
         return buttonType;
