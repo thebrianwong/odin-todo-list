@@ -29,8 +29,8 @@ const DOMControllerRemove = (() => {
             return;
         };
     }
-    const removeTaskElementFromDOM = (event) => {
-        let taskElement = helperFunctions.ensureCorrectTaskElement(event);
+    const removeTaskElementFromDOM = (taskIndex) => {
+        let taskElement = document.querySelector(`[data-task-index='${taskIndex}']`);
         const toDoTaskSection = document.querySelector(".to-do-content");
         toDoTaskSection.removeChild(taskElement);
         taskElement = null;

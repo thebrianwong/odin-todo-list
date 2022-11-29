@@ -60,8 +60,9 @@ const eventBundler = (() => {
         return newTaskIndex;
     }
     const removeTask = (event) => {
-        objectControllerRemoveObject.removeTaskFromTabArray(event);
-        DOMControllerRemove.removeTaskElementFromDOM(event);
+        const taskIndex = helperFunctions.getTaskIndex(event);
+        objectControllerRemoveObject.removeTaskFromTabArray(taskIndex);
+        DOMControllerRemove.removeTaskElementFromDOM(taskIndex);
     };
     const insertTaskInputElement = (event) => {
         if (!helperFunctions.checkForTaskSubcontainerInputElement(event)) {
