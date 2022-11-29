@@ -3,8 +3,8 @@ import { toDoTab } from "./todo_tab_object";
 import { helperFunctions } from "./helper_functions";
 
 const DOMControllerRemove = (() => {
-    const removeTabNameElement = (event) => {
-        const tabElement = helperFunctions.ensureCorrectTabElement(event);
+    const removeTabNameElement = (tabIndex) => {
+        const tabElement = document.querySelector(`[data-tab-index='${tabIndex}']`);
         let switchTab = tabElement.querySelector(".switch-tab")
         tabElement.removeChild(switchTab);
         switchTab = null

@@ -21,9 +21,10 @@ const eventBundler = (() => {
     }
     const insertTabInputElement = (event) => {
         if (!helperFunctions.checkForTabInputElement(event)) {
-            const inputElement = DOMControllerAddEdit.insertTabInputElement(event);
-            DOMControllerRemove.removeTabNameElement(event);
-            DOMControllerAddEdit.setTabInputElementValue(event, inputElement);
+            const tabIndex = helperFunctions.getTabIndex(event);
+            const inputElement = DOMControllerAddEdit.insertTabInputElement(tabIndex);
+            DOMControllerRemove.removeTabNameElement(tabIndex);
+            DOMControllerAddEdit.setTabInputElementValue(tabIndex);
             eventAssigner.addTabInputListener(inputElement);
         };
     }

@@ -29,15 +29,15 @@ const DOMControllerAddEdit = (() => {
         toDoTabSection.insertBefore(newTabNode, addTabButton);
         return newTabNode;
     }
-    const setTabInputElementValue = (event, inputElement) => {
-        const tabElement = helperFunctions.ensureCorrectTabElement(event);
-        const index = tabElement.dataset.tabIndex;
-        const tabObject = toDoList.getSpecificChecklistTask(index);
+    const setTabInputElementValue = (tabIndex) => {
+        const tabElement = document.querySelector(`[data-tab-index='${tabIndex}']`);
+        const inputElement = tabElement.querySelector("input");
+        const tabObject = toDoList.getSpecificChecklistTask(tabIndex);
         const tabName = tabObject.getTaskTitle();
         inputElement.value = tabName;
     }
-    const insertTabInputElement = (event) => {
-        const tabElement = helperFunctions.ensureCorrectTabElement(event);
+    const insertTabInputElement = (tabIndex) => {
+        const tabElement = document.querySelector(`[data-tab-index='${tabIndex}']`);
         const inputElement = document.createElement("input");
         inputElement.classList.add("tab-name-input");
         inputElement.setAttribute("type", "text");
