@@ -66,9 +66,9 @@ const DOMControllerAddEdit = (() => {
         };
         currentTab.setAttribute("id", "current-tab");
     };
-    const setCurrentTabDOM = (event) => {
-        const newCurrentTab = helperFunctions.ensureCorrectTabElement(event);
-        newCurrentTab.setAttribute("id", "current-tab");
+    const setCurrentTabDOM = (tabIndex) => {
+        const newCurrentTabElement = document.querySelector(`[data-tab-index='${tabIndex}']`);
+        newCurrentTabElement.setAttribute("id", "current-tab");
     }
     const setFirstTabToCurrentTab = (firstTabIndex) => {
         if (firstTabIndex === undefined) {
