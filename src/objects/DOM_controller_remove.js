@@ -61,9 +61,10 @@ const DOMControllerRemove = (() => {
         checklistCompleteSection.removeChild(inputElement);
         inputElement = null;
     };
-    const removeChecklistTaskElementDOM = (event) => {
-        let checklistTaskElement = helperFunctions.ensureCorrectChecklistTaskElement(event);
-        const checklistElement = helperFunctions.ensureCorrectChecklistElement(event);
+    const removeChecklistTaskElementDOM = (taskIndex, checklistTaskIndex) => {
+        const taskElement = document.querySelector(`[data-task-index='${taskIndex}']`);
+        const checklistElement = taskElement.querySelector(".checklist");
+        let checklistTaskElement = checklistElement.querySelector(`[data-checklist-task-index='${checklistTaskIndex}']`);
         checklistElement.removeChild(checklistTaskElement);
         checklistTaskElement = null;
     };

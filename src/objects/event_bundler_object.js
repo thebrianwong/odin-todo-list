@@ -112,8 +112,10 @@ const eventBundler = (() => {
         DOMControllerAddEdit.toggleChecklistTaskDOMComplete(taskIndex, checklistTaskIndex);
     };
     const removeChecklistTask = (event) => {
-        objectControllerRemoveObject.removeChecklistTaskFromTaskArray(event);
-        DOMControllerRemove.removeChecklistTaskElementDOM(event);
+        const taskIndex = helperFunctions.getTaskIndex(event);
+        const checklistTaskIndex = helperFunctions.getChecklistTaskIndex(event);
+        objectControllerRemoveObject.removeChecklistTaskFromTaskArray(taskIndex, checklistTaskIndex);
+        DOMControllerRemove.removeChecklistTaskElementDOM(taskIndex, checklistTaskIndex);
     };
     const toggleTaskPin = (event) => {
         const taskIndex = helperFunctions.getTaskIndex(event);
