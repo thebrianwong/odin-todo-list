@@ -12,8 +12,8 @@ import { DOMControllerRemove } from "./DOM_controller_remove";
 const eventBundler = (() => {
     const addTab = (event) => {
         const newTabIndex = objectControllerAddEditObject.addNewTabToTodoArray();
-        const newTabNode = DOMControllerAddEdit.addNewTabToDOM(newTabIndex);
-        addTabListeners(newTabNode);
+        const newTabElement = DOMControllerAddEdit.addNewTabToDOM(newTabIndex);
+        addTabListeners(newTabElement);
         if (helperFunctions.checkIfOnlyOneTab()) {
             const firstTabIndex = objectControllerAddEditObject.setFirstTabToCurrentTab();
             DOMControllerAddEdit.setFirstTabToCurrentTab(firstTabIndex)
@@ -59,8 +59,8 @@ const eventBundler = (() => {
     }
     const newTask = (event) => {
         const newTaskIndex = objectControllerAddEditObject.addNewTaskToTab();
-        const newTaskNode = DOMControllerAddEdit.addNewTaskToDOM(newTaskIndex);
-        addTaskListeners(newTaskNode);
+        const newTaskElement = DOMControllerAddEdit.addNewTaskToDOM(newTaskIndex);
+        addTaskListeners(newTaskElement);
         return newTaskIndex;
     }
     const removeTask = (event) => {
@@ -96,8 +96,8 @@ const eventBundler = (() => {
     const addNewChecklistTask = (event) => {
         const taskIndex = helperFunctions.getTaskIndex(event);
         const newChecklistTaskIndex = objectControllerAddEditObject.addNewChecklistTaskToTask(taskIndex);
-        const newChecklistTaskNode = DOMControllerAddEdit.addNewChecklistTaskToDOM(taskIndex, newChecklistTaskIndex);
-        addChecklistTaskListeners(newChecklistTaskNode);
+        const newChecklistTaskElement = DOMControllerAddEdit.addNewChecklistTaskToDOM(taskIndex, newChecklistTaskIndex);
+        addChecklistTaskListeners(newChecklistTaskElement);
     };
     const insertChecklistTaskInputElement = (event) => {
         if (!helperFunctions.checkForChecklistTaskInputElement(event)) {
@@ -140,27 +140,27 @@ const eventBundler = (() => {
     // const loadTasksFromNewCurrentTab = () => {
     //     for (const task )
     // };
-    const addTaskListeners = (newTaskNode) => {
-        eventAssigner.addRemoveTaskButtonListener(newTaskNode);
-        eventAssigner.addEditTaskListeners(newTaskNode);
-        eventAssigner.addToggleTaskCompleteListener(newTaskNode);
-        eventAssigner.addNewChecklistTaskListener(newTaskNode);
-        eventAssigner.addToggleTaskPinListeners(newTaskNode);
-        eventAssigner.addToggleDisplayTaskDetailsListeners(newTaskNode);
+    const addTaskListeners = (newTaskElement) => {
+        eventAssigner.addRemoveTaskButtonListener(newTaskElement);
+        eventAssigner.addEditTaskListeners(newTaskElement);
+        eventAssigner.addToggleTaskCompleteListener(newTaskElement);
+        eventAssigner.addNewChecklistTaskListener(newTaskElement);
+        eventAssigner.addToggleTaskPinListeners(newTaskElement);
+        eventAssigner.addToggleDisplayTaskDetailsListeners(newTaskElement);
     };
-    const addChecklistTaskListeners = (newChecklistTaskNode) => {
-        eventAssigner.addEditChecklistTaskListeners(newChecklistTaskNode);
-        eventAssigner.addToggleChecklistTaskCompleteListener(newChecklistTaskNode);
-        eventAssigner.addRemoveChecklistTaskListener(newChecklistTaskNode);
+    const addChecklistTaskListeners = (newChecklistTaskElement) => {
+        eventAssigner.addEditChecklistTaskListeners(newChecklistTaskElement);
+        eventAssigner.addToggleChecklistTaskCompleteListener(newChecklistTaskElement);
+        eventAssigner.addRemoveChecklistTaskListener(newChecklistTaskElement);
     };
     const toggleDisplayTaskDetails = (event) => {
         DOMControllerAddEdit.toggleDisplayTaskDetails(event);
         DOMControllerAddEdit.rotateChevronButton(event);
     };
-    const addTabListeners = (newTabNode) => {
-        eventAssigner.addEditTabButtonListener(newTabNode);
-        eventAssigner.addRemoveTabButtonListener(newTabNode);
-        eventAssigner.addSwitchTabListener(newTabNode);
+    const addTabListeners = (newTabElement) => {
+        eventAssigner.addEditTabButtonListener(newTabElement);
+        eventAssigner.addRemoveTabButtonListener(newTabElement);
+        eventAssigner.addSwitchTabListener(newTabElement);
     };
     const loadInitialPage = () => {
         addTab(event, "Instructions");
@@ -183,9 +183,9 @@ const eventBundler = (() => {
             Change tabs by clicking on different tab names.`, true]];
         instructions.forEach((instructionsItem) => {
             const checklistTaskIndex = objectControllerAddEditObject.addNewChecklistTaskToTask(taskIndex, instructionsItem[0], instructionsItem[1]);
-            const checklistTaskNode = DOMControllerAddEdit.addNewChecklistTaskToDOM(taskIndex, checklistTaskIndex);
+            const checklistTaskElement = DOMControllerAddEdit.addNewChecklistTaskToDOM(taskIndex, checklistTaskIndex);
             DOMControllerAddEdit.toggleChecklistTaskDOMComplete(taskIndex, checklistTaskIndex);
-            addChecklistTaskListeners(checklistTaskNode);
+            addChecklistTaskListeners(checklistTaskElement);
         })
     };
     return { addTab, insertTabInputElement, updateTab, removeTab, switchTab,
