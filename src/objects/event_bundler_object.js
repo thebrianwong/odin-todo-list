@@ -90,7 +90,7 @@ const eventBundler = (() => {
     };
     const toggleTaskComplete = (event) => {
         const taskIndex = helperFunctions.getTaskIndex(event);
-        objectControllerAddEditObject.toggleTaskComplete(event);
+        objectControllerAddEditObject.toggleTaskComplete(taskIndex);
         DOMControllerAddEdit.toggleTaskDOMComplete(taskIndex);
     };
     const addNewChecklistTask = (event) => {

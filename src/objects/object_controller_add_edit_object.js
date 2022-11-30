@@ -49,8 +49,9 @@ const objectControllerAddEditObject = (() => {
             taskObject.setTaskNotes(newTaskSubcontentValue);
         };
     };
-    const toggleTaskComplete = (event) => {
-        const taskObject = helperFunctions.getTargetTaskObject(event);
+    const toggleTaskComplete = (taskIndex) => {
+        const currentTabObject = toDoList.getCurrentTabObject();
+        const taskObject = currentTabObject.getSpecificChecklistTask(taskIndex);
         taskObject.toggleCompletedState();
     };
     const addNewChecklistTaskToTask = (taskIndex, description="Checklist Task Description", completed=false) => {
