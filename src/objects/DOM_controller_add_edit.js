@@ -253,8 +253,8 @@ const DOMControllerAddEdit = (() => {
         checklistElement.appendChild(newChecklistTaskNode);
         return newChecklistTaskNode;
     };
-    const insertChecklistTaskInputElement = (event) => {
-        const checklistTaskElement = helperFunctions.ensureCorrectChecklistTaskElement(event);
+    const insertChecklistTaskInputElement = (taskIndex, checklistTaskIndex) => {
+        const checklistTaskElement = helperFunctions.getChecklistTaskElement(taskIndex, checklistTaskIndex);
         const checklistCompleteSection = checklistTaskElement.querySelector(".checklist-complete-section");
         const inputElement = document.createElement("input");
         inputElement.classList.add("checklist-input");
@@ -263,10 +263,11 @@ const DOMControllerAddEdit = (() => {
         inputElement.focus();
         return inputElement;
     };
-    const setChecklistTaskInputElementValue = (event, inputElement) => {
-        const checklistTaskElement = helperFunctions.ensureCorrectChecklistTaskElement(event);
-        const checklistTaskIndex = checklistTaskElement.dataset.checklistTaskIndex;
-        const taskObject = helperFunctions.getTargetTaskObject(event);
+    const setChecklistTaskInputElementValue = (taskIndex, checklistTaskIndex) => {
+        const checklistTaskElement = helperFunctions.getChecklistTaskElement(taskIndex, checklistTaskIndex);
+        const inputElement = checklistTaskElement.querySelector(".checklist-input");
+        const currentTabObject = toDoList.getCurrentTabObject();
+        const taskObject = currentTabObject.getSpecificChecklistTask(taskIndex);
         const checklistTaskObject = taskObject.getSpecificChecklistTask(checklistTaskIndex);
         const checklistTaskDescription = checklistTaskObject.getTaskDescription();
         inputElement.value = checklistTaskDescription;

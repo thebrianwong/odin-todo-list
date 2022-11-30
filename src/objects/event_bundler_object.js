@@ -101,9 +101,11 @@ const eventBundler = (() => {
     };
     const insertChecklistTaskInputElement = (event) => {
         if (!helperFunctions.checkForChecklistTaskInputElement(event)) {
-            DOMControllerRemove.removeChecklistTaskDescriptionDOM(event);
-            const inputElement = DOMControllerAddEdit.insertChecklistTaskInputElement(event);
-            DOMControllerAddEdit.setChecklistTaskInputElementValue(event, inputElement);
+            const taskIndex = helperFunctions.getTaskIndex(event);
+            const checklistTaskIndex = helperFunctions.getChecklistTaskIndex(event);
+            DOMControllerRemove.removeChecklistTaskDescriptionDOM(taskIndex, checklistTaskIndex);
+            const inputElement = DOMControllerAddEdit.insertChecklistTaskInputElement(taskIndex, checklistTaskIndex);
+            DOMControllerAddEdit.setChecklistTaskInputElementValue(taskIndex, checklistTaskIndex);
             eventAssigner.addChecklistTaskInputListener(inputElement);
         };
     };

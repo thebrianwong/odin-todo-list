@@ -47,10 +47,10 @@ const DOMControllerRemove = (() => {
         taskSubcontainerElement.removeChild(inputElement);
         inputElement = null;
     }
-    const removeChecklistTaskDescriptionDOM = (event) => {
-        const buttonElement = helperFunctions.ensureCorrectButtonElement(event);
-        const checklistCompleteSection = buttonElement.previousElementSibling;
-        let checklistTaskDescription = checklistCompleteSection.querySelector("label");
+    const removeChecklistTaskDescriptionDOM = (taskIndex, checklistTaskIndex) => {
+        const checklistTaskElement = helperFunctions.getChecklistTaskElement(taskIndex, checklistTaskIndex);
+        const checklistCompleteSection = checklistTaskElement.querySelector(".checklist-complete-section");
+        let checklistTaskDescription = checklistTaskElement.querySelector(".checklist-task-description");
         checklistCompleteSection.removeChild(checklistTaskDescription);
         checklistTaskDescription = null;
     };
