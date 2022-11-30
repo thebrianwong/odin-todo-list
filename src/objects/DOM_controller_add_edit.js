@@ -8,12 +8,12 @@ const DOMControllerAddEdit = (() => {
     const addNewTabToDOM = (index) => {
         const addTabButton = document.querySelector(".add-tab");
         const toDoTabSection = document.querySelector(".to-do-tab-section");
-        const newTabNode = document.createElement("div");
+        const newTabElement = document.createElement("div");
         const newTabObject = toDoList.getSpecificChecklistTask(index);
         const newTabObjectTitle = newTabObject.getTaskTitle();
-        newTabNode.classList.add("tab-title");
-        newTabNode.dataset.tabIndex = index;
-        newTabNode.innerHTML = `
+        newTabElement.classList.add("tab-title");
+        newTabElement.dataset.tabIndex = index;
+        newTabElement.innerHTML = `
             <button class="switch-tab">
                 <h2 class="tab-name">TAB NAME PLACEHOLDER</h2>
             </button>
@@ -24,10 +24,10 @@ const DOMControllerAddEdit = (() => {
                 <img src="assets/close.png" alt="Remove tab button">
             </button>
         `;
-        const tabNameDOM = newTabNode.querySelector(".tab-name");
+        const tabNameDOM = newTabElement.querySelector(".tab-name");
         tabNameDOM.textContent = newTabObjectTitle;
-        toDoTabSection.insertBefore(newTabNode, addTabButton);
-        return newTabNode;
+        toDoTabSection.insertBefore(newTabElement, addTabButton);
+        return newTabElement;
     }
     const setTabInputElementValue = (tabIndex) => {
         const tabElement = document.querySelector(`[data-tab-index='${tabIndex}']`);
@@ -81,15 +81,15 @@ const DOMControllerAddEdit = (() => {
         const currentTabObject = toDoList.getCurrentTabObject();
         const newTaskObject = currentTabObject.getSpecificChecklistTask(index);
         const toDoContent = document.querySelector(".to-do-content");
-        const newTaskNode = document.createElement("div");
-        newTaskNode.classList.add("to-do-task");
-        newTaskNode.dataset.taskIndex = index;
+        const newTaskElement = document.createElement("div");
+        newTaskElement.classList.add("to-do-task");
+        newTaskElement.dataset.taskIndex = index;
         const newTaskTitle = newTaskObject.getTaskTitle();
         const newTaskDescription = newTaskObject.getTaskDescription();
         const newTaskDueDate = newTaskObject.getTaskDueDate();
         const newTaskNotes = newTaskObject.getTaskNotes();
         const newTaskCompleteID = `to-do-complete-checkbox-${index}`;
-        newTaskNode.innerHTML = `
+        newTaskElement.innerHTML = `
             <div class="to-do-task-overview">
                 <div class="to-do-title-section to-do-task-subcontainer">
                     <h3 class="to-do-title">TITLE PLACEHOLDER</h3>
@@ -140,20 +140,20 @@ const DOMControllerAddEdit = (() => {
                 </div>
             </div>
         `;
-        const titleDOM = newTaskNode.querySelector(".to-do-title");
+        const titleDOM = newTaskElement.querySelector(".to-do-title");
         titleDOM.textContent = newTaskTitle;
-        const dueDateDOM = newTaskNode.querySelector(".to-do-due-date");
+        const dueDateDOM = newTaskElement.querySelector(".to-do-due-date");
         dueDateDOM.textContent = "Due On: " + newTaskDueDate;
-        const descriptionDOM = newTaskNode.querySelector(".to-do-description");
+        const descriptionDOM = newTaskElement.querySelector(".to-do-description");
         descriptionDOM.textContent = "Description: " + newTaskDescription;
-        const notesDOM = newTaskNode.querySelector(".to-do-notes");
+        const notesDOM = newTaskElement.querySelector(".to-do-notes");
         notesDOM.textContent = "Notes: " + newTaskNotes;
-        toDoContent.appendChild(newTaskNode);
-        const completeLabel = newTaskNode.querySelector("label");
+        toDoContent.appendChild(newTaskElement);
+        const completeLabel = newTaskElement.querySelector("label");
         completeLabel.setAttribute("for", newTaskCompleteID);
-        const completeCheckbox = newTaskNode.querySelector(".to-do-complete-checkbox");
+        const completeCheckbox = newTaskElement.querySelector(".to-do-complete-checkbox");
         completeCheckbox.setAttribute("id", newTaskCompleteID);
-        return newTaskNode;
+        return newTaskElement;
     }
     const insertTaskInputElement = (taskIndex, buttonType) => {
         const taskSubcontainer = helperFunctions.getTaskSubcontainerElement(taskIndex, buttonType);
@@ -231,10 +231,10 @@ const DOMControllerAddEdit = (() => {
         const checklistTaskObject = taskObject.getSpecificChecklistTask(newChecklistTaskIndex);
         const newChecklistTaskDescription = checklistTaskObject.getTaskDescription();
         const newChecklistTaskCompleted = checklistTaskObject.getCompletedState();
-        const newChecklistTaskNode = document.createElement("div");
-        newChecklistTaskNode.classList.add("checklist-task");
-        newChecklistTaskNode.dataset.checklistTaskIndex = newChecklistTaskIndex;
-        newChecklistTaskNode.innerHTML = `
+        const newChecklistTaskElement = document.createElement("div");
+        newChecklistTaskElement.classList.add("checklist-task");
+        newChecklistTaskElement.dataset.checklistTaskIndex = newChecklistTaskIndex;
+        newChecklistTaskElement.innerHTML = `
             <div class="checklist-complete-section">
                 <input type="checkbox" id="checklist-${taskIndex}-${newChecklistTaskIndex}" class="checklist-complete-checkbox">
                 <label for="checklist-${taskIndex}-${newChecklistTaskIndex}" class="checklist-task-description">
@@ -248,10 +248,10 @@ const DOMControllerAddEdit = (() => {
                 <img src="assets/close.png" alt="Edit checklist task button">
             </button>
         `
-        const checklistTaskDescriptionElement = newChecklistTaskNode.querySelector(".checklist-task-description");
+        const checklistTaskDescriptionElement = newChecklistTaskElement.querySelector(".checklist-task-description");
         checklistTaskDescriptionElement.textContent = newChecklistTaskDescription;
-        checklistElement.appendChild(newChecklistTaskNode);
-        return newChecklistTaskNode;
+        checklistElement.appendChild(newChecklistTaskElement);
+        return newChecklistTaskElement;
     };
     const insertChecklistTaskInputElement = (taskIndex, checklistTaskIndex) => {
         const checklistTaskElement = helperFunctions.getChecklistTaskElement(taskIndex, checklistTaskIndex);
