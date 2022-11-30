@@ -111,9 +111,12 @@ const eventBundler = (() => {
     };
     const updateChecklistTask = (event) => {
         if (event.code === "Enter") {
-            objectControllerAddEditObject.editChecklistTaskDescription(event);
-            DOMControllerAddEdit.insertChecklistTaskDescriptionElement(event);
-            DOMControllerRemove.removeChecklistTaskInputElement(event);
+            const taskIndex = helperFunctions.getTaskIndex(event);
+            const checklistTaskIndex = helperFunctions.getChecklistTaskIndex(event);
+            const newDescriptionValue = helperFunctions.getNewValue(event);
+            objectControllerAddEditObject.editChecklistTaskDescription(taskIndex, checklistTaskIndex, newDescriptionValue);
+            DOMControllerAddEdit.insertChecklistTaskDescriptionElement(taskIndex, checklistTaskIndex);
+            DOMControllerRemove.removeChecklistTaskInputElement(taskIndex, checklistTaskIndex);
         };
     };
     const toggleChecklistTaskComplete = (event) => {

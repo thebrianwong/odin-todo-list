@@ -272,13 +272,12 @@ const DOMControllerAddEdit = (() => {
         const checklistTaskDescription = checklistTaskObject.getTaskDescription();
         inputElement.value = checklistTaskDescription;
     };
-    const insertChecklistTaskDescriptionElement = (event) => {
-        const checklistTaskElement = helperFunctions.ensureCorrectChecklistTaskElement(event);
-        const checklistTaskIndex = checklistTaskElement.dataset.checklistTaskIndex;
+    const insertChecklistTaskDescriptionElement = (taskIndex, checklistTaskIndex) => {
+        const checklistTaskElement = helperFunctions.getChecklistTaskElement(taskIndex, checklistTaskIndex);
         const checklistCompleteSection = checklistTaskElement.querySelector(".checklist-complete-section");
-        const taskElement = helperFunctions.ensureCorrectTaskElement(event);
-        const taskIndex = taskElement.dataset.taskIndex;
-        const checklistTaskObject = helperFunctions.getTargetChecklistTaskObject(event);
+        const currentTabObject = toDoList.getCurrentTabObject();
+        const taskObject = currentTabObject.getSpecificChecklistTask(taskIndex);
+        const checklistTaskObject = taskObject.getSpecificChecklistTask(checklistTaskIndex);
         const checklistTaskDescription = checklistTaskObject.getTaskDescription();
         const checklistTaskDescriptionElement = document.createElement("label");
         checklistTaskDescriptionElement.setAttribute("for", `checklist-${taskIndex}-${checklistTaskIndex}`);

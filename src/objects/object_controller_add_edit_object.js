@@ -61,10 +61,11 @@ const objectControllerAddEditObject = (() => {
         const newChecklistTaskIndex = taskObject.addTask(newChecklistTask);
         return newChecklistTaskIndex;
     };
-    const editChecklistTaskDescription = (event) => {
-        const checklistTaskObject = helperFunctions.getTargetChecklistTaskObject(event);
-        const newChecklistTaskDescription = event.target.value;
-        checklistTaskObject.setTaskDescription(newChecklistTaskDescription);
+    const editChecklistTaskDescription = (taskIndex, checklistTaskIndex, newDescriptionValue) => {
+        const currentTabObject = toDoList.getCurrentTabObject();
+        const taskObject = currentTabObject.getSpecificChecklistTask(taskIndex);
+        const checklistTaskObject = taskObject.getSpecificChecklistTask(checklistTaskIndex);
+        checklistTaskObject.setTaskDescription(newDescriptionValue);
     };
     const toggleChecklistTaskComplete = (event) => {
         const checklistTaskObject = helperFunctions.getTargetChecklistTaskObject(event);
