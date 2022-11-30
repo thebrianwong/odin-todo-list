@@ -24,8 +24,8 @@ const DOMControllerAddEdit = (() => {
                 <img src="assets/close.png" alt="Remove tab button">
             </button>
         `;
-        const tabNameDOM = newTabElement.querySelector(".tab-name");
-        tabNameDOM.textContent = newTabObjectTitle;
+        const tabNameElement = newTabElement.querySelector(".tab-name");
+        tabNameElement.textContent = newTabObjectTitle;
         toDoTabSection.insertBefore(newTabElement, addTabButton);
         return newTabElement;
     }
@@ -140,14 +140,14 @@ const DOMControllerAddEdit = (() => {
                 </div>
             </div>
         `;
-        const titleDOM = newTaskElement.querySelector(".to-do-title");
-        titleDOM.textContent = newTaskTitle;
-        const dueDateDOM = newTaskElement.querySelector(".to-do-due-date");
-        dueDateDOM.textContent = "Due On: " + newTaskDueDate;
-        const descriptionDOM = newTaskElement.querySelector(".to-do-description");
-        descriptionDOM.textContent = "Description: " + newTaskDescription;
-        const notesDOM = newTaskElement.querySelector(".to-do-notes");
-        notesDOM.textContent = "Notes: " + newTaskNotes;
+        const titleElement = newTaskElement.querySelector(".to-do-title");
+        titleElement.textContent = newTaskTitle;
+        const dueDateElement = newTaskElement.querySelector(".to-do-due-date");
+        dueDateElement.textContent = "Due On: " + newTaskDueDate;
+        const descriptionElement = newTaskElement.querySelector(".to-do-description");
+        descriptionElement.textContent = "Description: " + newTaskDescription;
+        const notesElement = newTaskElement.querySelector(".to-do-notes");
+        notesElement.textContent = "Notes: " + newTaskNotes;
         toDoContent.appendChild(newTaskElement);
         const completeLabel = newTaskElement.querySelector("label");
         completeLabel.setAttribute("for", newTaskCompleteID);
