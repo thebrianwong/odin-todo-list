@@ -73,8 +73,9 @@ const objectControllerAddEditObject = (() => {
         const checklistTaskObject = taskObject.getSpecificChecklistTask(checklistTaskIndex);
         checklistTaskObject.toggleCompletedState();
     };
-    const toggleTaskPin = (event) => {
-        const taskObject = helperFunctions.getTargetTaskObject(event);
+    const toggleTaskPin = (taskIndex) => {
+        const currentTabObject = toDoList.getCurrentTabObject();
+        const taskObject = currentTabObject.getSpecificChecklistTask(taskIndex);
         taskObject.togglePinnedState();
     };
     return { addNewTabToTodoArray, editTabName, updateCurrentTab, setFirstTabToCurrentTab,

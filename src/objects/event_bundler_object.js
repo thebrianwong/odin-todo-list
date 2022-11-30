@@ -133,7 +133,7 @@ const eventBundler = (() => {
     };
     const toggleTaskPin = (event) => {
         const taskIndex = helperFunctions.getTaskIndex(event);
-        objectControllerAddEditObject.toggleTaskPin(event);
+        objectControllerAddEditObject.toggleTaskPin(taskIndex);
         DOMControllerAddEdit.changePinButtonImage(taskIndex);
         DOMControllerAddEdit.shiftTaskElementPosition(taskIndex);
     };
