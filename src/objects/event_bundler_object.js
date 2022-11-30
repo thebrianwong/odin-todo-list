@@ -10,8 +10,8 @@ import { helperFunctions } from "./helper_functions";
 import { DOMControllerRemove } from "./DOM_controller_remove";
 
 const eventBundler = (() => {
-    const addTab = (event, tabName="New Tab") => {
-        const newTabIndex = objectControllerAddEditObject.addNewTabToTodoArray(tabName);
+    const addTab = (event) => {
+        const newTabIndex = objectControllerAddEditObject.addNewTabToTodoArray();
         const newTabNode = DOMControllerAddEdit.addNewTabToDOM(newTabIndex);
         addTabListeners(newTabNode);
         if (helperFunctions.checkIfOnlyOneTab()) {
@@ -57,8 +57,8 @@ const eventBundler = (() => {
             DOMControllerAddEdit.loadTasksFromNewCurrentTab();
         };
     }
-    const newTask = (event, title="New Task Title", dueDate="Task Due Date", description="Task Description", notes="Task Notes", pinned=false, completed=false) => {
-        const newTaskIndex = objectControllerAddEditObject.addNewTaskToTab(title, dueDate, description, notes, pinned, completed);
+    const newTask = (event) => {
+        const newTaskIndex = objectControllerAddEditObject.addNewTaskToTab();
         const newTaskNode = DOMControllerAddEdit.addNewTaskToDOM(newTaskIndex);
         addTaskListeners(newTaskNode);
         return newTaskIndex;
