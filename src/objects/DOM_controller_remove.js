@@ -41,10 +41,10 @@ const DOMControllerRemove = (() => {
         taskSubcontainerElement.removeChild(taskSubcontentElement);
         taskSubcontentElement = null
     }
-    const removeTaskInputElement = (event) => {
-        const taskSubcontainer = helperFunctions.ensureCorrectSubcontainer(event);
-        let inputElement = taskSubcontainer.querySelector("input");
-        taskSubcontainer.removeChild(inputElement);
+    const removeTaskInputElement = (taskIndex, buttonType) => {
+        const taskSubcontainerElement = helperFunctions.getTaskSubcontainerElement(taskIndex, buttonType);
+        let inputElement = taskSubcontainerElement.querySelector("input");
+        taskSubcontainerElement.removeChild(inputElement);
         inputElement = null;
     }
     const removeChecklistTaskDescriptionDOM = (event) => {

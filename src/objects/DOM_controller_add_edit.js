@@ -181,33 +181,33 @@ const DOMControllerAddEdit = (() => {
         };
         inputElement.value = taskObjectValue;
     };
-    const insertTaskSubcontentElement = (event) => {
-        const taskSubcontainer = helperFunctions.ensureCorrectSubcontainer(event);
-        const taskObject = helperFunctions.getTargetTaskObject(event);
-        const taskSubcontainerType = helperFunctions.getSubcontainerType(event);
+    const insertTaskSubcontentElement = (taskIndex, buttonType) => {
+        const taskSubcontainerElement = helperFunctions.getTaskSubcontainerElement(taskIndex, buttonType);
+        const currentTabObject = toDoList.getCurrentTabObject();
+        const taskObject = currentTabObject.getSpecificChecklistTask(taskIndex);
         let taskSubcontentElement = undefined;
-        if (taskSubcontainerType.includes("to-do-title-section")) {
+        if (buttonType === "Title") {
             const taskTitle = taskObject.getTaskTitle();
             taskSubcontentElement = document.createElement("h3");
             taskSubcontentElement.classList.add("to-do-title");
             taskSubcontentElement.textContent = taskTitle;
-        } else if (taskSubcontainerType.includes("to-do-due-date-section")) {
+        } else if (buttonType === "Due Date") {
             const taskDueDate = taskObject.getTaskDueDate();
             taskSubcontentElement = document.createElement("p");
             taskSubcontentElement.classList.add("to-do-due-date");
             taskSubcontentElement.textContent = "Due On: " + taskDueDate;
-        } else if (taskSubcontainerType.includes("to-do-description-section")) {
+        } else if (buttonType === "Description") {
             const taskDescription = taskObject.getTaskDescription();
             taskSubcontentElement = document.createElement("p");
             taskSubcontentElement.classList.add("to-do-description");
             taskSubcontentElement.textContent = "Description: " + taskDescription;
-        } else if (taskSubcontainerType.includes("to-do-notes-section")) {
+        } else if (buttonType === "Notes") {
             const taskNotes = taskObject.getTaskNotes();
             taskSubcontentElement = document.createElement("p");
             taskSubcontentElement.classList.add("to-do-notes");
             taskSubcontentElement.textContent = "Notes: " + taskNotes;
         };
-        taskSubcontainer.insertBefore(taskSubcontentElement, taskSubcontainer.firstChild);
+        taskSubcontainerElement.insertBefore(taskSubcontentElement, taskSubcontainerElement.firstChild);
     }
     const toggleTaskDOMComplete = (taskIndex) => {
         const taskElement = document.querySelector(`[data-task-index='${taskIndex}']`);

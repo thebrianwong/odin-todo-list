@@ -84,8 +84,8 @@ const eventBundler = (() => {
             const buttonType = helperFunctions.getButtonType(event);
             const newTaskSubcontentValue = helperFunctions.getNewValue(event);
             objectControllerAddEditObject.editTaskObjectInfo(taskIndex, buttonType, newTaskSubcontentValue);
-            DOMControllerAddEdit.insertTaskSubcontentElement(event);
-            DOMControllerRemove.removeTaskInputElement(event);
+            DOMControllerAddEdit.insertTaskSubcontentElement(taskIndex, buttonType);
+            DOMControllerRemove.removeTaskInputElement(taskIndex, buttonType);
         };
     };
     const toggleTaskComplete = (event) => {

@@ -39,9 +39,6 @@ const objectControllerAddEditObject = (() => {
     const editTaskObjectInfo = (taskIndex, buttonType, newTaskSubcontentValue) => {
         const currentTabObject = toDoList.getCurrentTabObject();
         const taskObject = currentTabObject.getSpecificChecklistTask(taskIndex);
-        // const taskSubcontainerElement = helperFunctions.getTaskSubcontainerElement(taskIndex, buttonType);
-        // const newTaskTitleValue = event.target.value;
-        // const taskSubcontainerType = helperFunctions.getSubcontainerType(event);
         if (buttonType === "Title") {
             taskObject.setTaskTitle(newTaskSubcontentValue);
         } else if (buttonType === "Due Date") {
