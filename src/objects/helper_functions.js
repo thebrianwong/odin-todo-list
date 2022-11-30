@@ -149,7 +149,7 @@ const helperFunctions = (() => {
         return buttonType;
     };
     const getTaskSubcontainerElement = (taskIndex, buttonType) => {
-        const taskElement = document.querySelector(`[data-task-index='${taskIndex}']`);
+        const taskElement = getTaskElement(taskIndex);
         let taskSubcontainerElement = undefined;
         if (buttonType === "Title") {
             taskSubcontainerElement = taskElement.querySelector(".to-do-title-section");
@@ -162,11 +162,20 @@ const helperFunctions = (() => {
         };
         return taskSubcontainerElement;
     };
+    const getTaskElement = (taskIndex) => {
+        const taskElement = document.querySelector(`[data-task-index='${taskIndex}']`);
+        return taskElement;
+    }
+    const getChecklistTaskElement = (taskIndex, checklistTaskIndex) => {
+        const taskElement = getTaskElement(taskIndex);
+        const checklistTaskElement = taskElement.querySelector(`[data-checklist-task-index='${checklistTaskIndex}']`);
+        return checklistTaskElement;
+    }
     return { ensureCorrectTabElement, checkForTabInputElement, checkIfWasCurrentTab,
         checkIfOnlyOneTab, ensureCorrectTaskElement, ensureCorrectSubcontainer,
         checkForTaskSubcontainerInputElement, getTargetTaskObject, ensureCorrectButtonElement, getSubcontainerType, ensureCorrectChecklistElement,
         ensureCorrectChecklistTaskElement, checkForChecklistTaskInputElement,
-        getTargetChecklistTaskObject, getTaskIndex, getChecklistTaskIndex, getTabIndex, getNewValue, getButtonType, getTaskSubcontainerElement, };
+        getTargetChecklistTaskObject, getTaskIndex, getChecklistTaskIndex, getTabIndex, getNewValue, getButtonType, getTaskSubcontainerElement, getTaskElement, getChecklistTaskElement, };
 })();
 
 export { helperFunctions };
