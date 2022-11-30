@@ -33,6 +33,7 @@ const helperFunctions = (() => {
             return false;
         };
     };
+    // delete after refactoring toggleDisplayTaskDetails
     const ensureCorrectTaskElement = (event) => {
         let taskElement = event.target.parentElement;
         let classList = Array.from(taskElement.classList);
@@ -42,6 +43,7 @@ const helperFunctions = (() => {
         };
         return taskElement;
     }
+    //
     const ensureCorrectSubcontainer = (event) => {
         let taskSubcontainer = event.target.parentElement;
         let classList = Array.from(taskSubcontainer.classList)
@@ -59,14 +61,7 @@ const helperFunctions = (() => {
             return false;
         };
     };
-    const getTargetTaskObject = (event) => {
-        const taskElement = ensureCorrectTaskElement(event);
-        const index = taskElement.dataset.taskIndex;
-        const currentTabIndex = toDoList.getCurrentTabIndex();
-        const currentTabObject = toDoList.getSpecificChecklistTask(currentTabIndex);
-        const taskObject = currentTabObject.getSpecificChecklistTask(index);
-        return taskObject;
-    };
+    // delete after refactoring rotateChevronButton
     const ensureCorrectButtonElement = (event) => {
         let buttonElement = event.target;
         while (buttonElement.tagName !== "BUTTON") {
@@ -74,20 +69,7 @@ const helperFunctions = (() => {
         };
         return buttonElement;
     };
-    const getSubcontainerType = (event) => {
-        const taskSubcontainer = ensureCorrectSubcontainer(event);
-        const subcontainerClasses = Array.from(taskSubcontainer.classList);
-        return subcontainerClasses;
-    };
-    const ensureCorrectChecklistElement = (event) => {
-        let checklistElement = event.target;
-        let classList = Array.from(checklistElement.classList);
-        while (!classList.includes("checklist")) {
-            checklistElement = checklistElement.parentElement;
-            classList = Array.from(checklistElement.classList);
-        };
-        return checklistElement;
-    };
+    //
     const ensureCorrectChecklistTaskElement = (event) => {
         let checklistTaskElement = event.target;
         let classList = Array.from(checklistTaskElement.classList);
@@ -106,13 +88,6 @@ const helperFunctions = (() => {
         } else {
             return false;
         };
-    };
-    const getTargetChecklistTaskObject = (event) => {
-        const taskObject = getTargetTaskObject(event);
-        const checklistTaskElement = ensureCorrectChecklistTaskElement(event);
-        const checklistTaskIndex = checklistTaskElement.dataset.checklistTaskIndex;
-        const checklistTaskObject = taskObject.getSpecificChecklistTask(checklistTaskIndex);
-        return checklistTaskObject;
     };
     const getTaskIndex = (event) => {
         const taskElement = ensureCorrectTaskElement(event);
@@ -173,9 +148,8 @@ const helperFunctions = (() => {
     }
     return { ensureCorrectTabElement, checkForTabInputElement, checkIfWasCurrentTab,
         checkIfOnlyOneTab, ensureCorrectTaskElement, ensureCorrectSubcontainer,
-        checkForTaskSubcontainerInputElement, getTargetTaskObject, ensureCorrectButtonElement, getSubcontainerType, ensureCorrectChecklistElement,
-        ensureCorrectChecklistTaskElement, checkForChecklistTaskInputElement,
-        getTargetChecklistTaskObject, getTaskIndex, getChecklistTaskIndex, getTabIndex, getNewValue, getButtonType, getTaskSubcontainerElement, getTaskElement, getChecklistTaskElement, };
+        checkForTaskSubcontainerInputElement, ensureCorrectButtonElement,
+        ensureCorrectChecklistTaskElement, checkForChecklistTaskInputElement, getTaskIndex, getChecklistTaskIndex, getTabIndex, getNewValue, getButtonType, getTaskSubcontainerElement, getTaskElement, getChecklistTaskElement, };
 })();
 
 export { helperFunctions };
