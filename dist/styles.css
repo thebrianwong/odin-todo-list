@@ -130,6 +130,10 @@ button:focus-visible {
     margin-top: 10px
 }
 
+.to-do-task {
+    transition: none !important;
+}
+
 .to-do-task > * {
     border: solid 4px #b8e8fc;
     border-radius: 8px;

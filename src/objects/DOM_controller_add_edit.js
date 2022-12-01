@@ -118,19 +118,19 @@ const DOMControllerAddEdit = (() => {
                     </button>
                 </div>
             </div>
-            <div class="to-do-description-section to-do-task-subcontainer">
+            <div class="to-do-description-section to-do-task-subcontainer animation-target">
                 <p class="to-do-description">DESCRIPTION PLACEHOLDER</p>
                 <button class="edit-task-description edit-task">
                     <img src="assets/pencil.png" alt="Edit task description button">
                 </button>
             </div>
-            <div class="to-do-notes-section to-do-task-subcontainer">
+            <div class="to-do-notes-section to-do-task-subcontainer animation-target">
                 <p class="to-do-notes">NOTES PLACEHOLDER</p>
                 <button class="edit-task-notes edit-task">
                     <img src="assets/pencil.png" alt="Edit task notes button">
                 </button>
             </div>
-            <div action="" class="checklist">
+            <div action="" class="checklist animation-target">
                 <div class="checklist-header">
                     <legend class="checklist-label">Checklist</legend>
                     <button class="add-checklist-task" type="button">
@@ -416,10 +416,7 @@ const DOMControllerAddEdit = (() => {
     };
     const toggleDisplayTaskDetails = (taskIndex) => {
         const taskElement = helperFunctions.getTaskElement(taskIndex);
-        const taskDescription = taskElement.querySelector(".to-do-description-section");
-        const taskNotes = taskElement.querySelector(".to-do-notes-section");
-        const taskChecklist = taskElement.querySelector(".checklist");
-        const elementsToToggle = [taskDescription, taskNotes, taskChecklist];
+        const elementsToToggle = Array.from(taskElement.querySelectorAll(".animation-target"));
         elementsToToggle.forEach((element) => {
             const elementClasses = Array.from(element.classList);
             if (elementClasses.includes("hide-to-do-details")) {
