@@ -14,8 +14,8 @@ const helperFunctions = (() => {
             const tabElement = ensureCorrectTabElement(event);
             inputElement = tabElement.querySelector(".tab-name-input");
         } else if (elementType === "Task") {
-            const taskSubcontainer = ensureCorrectSubcontainer(event);
-            inputElement = taskSubcontainer.querySelector(".task-input");
+            const taskSubcontainerElement = ensureCorrectTaskSubcontainerElement(event);
+            inputElement = taskSubcontainerElement.querySelector(".task-input");
         } else if (elementType === "Checklist Task") {
             const checklistTaskElement = ensureCorrectChecklistTaskElement(event);
             const checklistCompleteSection = checklistTaskElement.querySelector(".checklist-complete-section");
@@ -53,14 +53,14 @@ const helperFunctions = (() => {
         };
         return taskElement;
     };
-    const ensureCorrectSubcontainer = (event) => {
-        let taskSubcontainer = event.target.parentElement;
-        let classList = Array.from(taskSubcontainer.classList)
+    const ensureCorrectTaskSubcontainerElement = (event) => {
+        let taskSubcontainerElement = event.target.parentElement;
+        let classList = Array.from(taskSubcontainerElement.classList)
         while (!classList.includes("to-do-task-subcontainer")) {
-            taskSubcontainer = taskSubcontainer.parentElement;
-            classList = Array.from(taskSubcontainer.classList)
+            taskSubcontainerElement = taskSubcontainerElement.parentElement;
+            classList = Array.from(taskSubcontainerElement.classList)
         }
-        return taskSubcontainer;
+        return taskSubcontainerElement;
     };
     const ensureCorrectChecklistTaskElement = (event) => {
         let checklistTaskElement = event.target;
@@ -91,7 +91,7 @@ const helperFunctions = (() => {
         return newValue;
     };
     const getButtonType = (event) => {
-        const buttonElement = ensureCorrectSubcontainer(event);
+        const buttonElement = ensureCorrectTaskSubcontainerElement(event);
         const buttonClasses = Array.from(buttonElement.classList);
         let buttonType = undefined;
         if (buttonClasses.includes("to-do-title-section")) {
