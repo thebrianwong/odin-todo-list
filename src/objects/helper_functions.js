@@ -150,7 +150,7 @@ const helperFunctions = (() => {
         const tabElement = document.querySelector(`[data-tab-index='${tabIndex}']`);
         return tabElement;
     };
-    return { ensureCorrectTabElement, checkForTabInputElement, checkIfWasCurrentTab,
+    return { checkForTabInputElement, checkIfWasCurrentTab,
         checkIfOnlyOneTab, ensureCorrectTaskElement, ensureCorrectSubcontainer,
         checkForTaskSubcontainerInputElement, ensureCorrectButtonElement,
         ensureCorrectChecklistTaskElement, checkForChecklistTaskInputElement,
