@@ -316,6 +316,7 @@ const DOMControllerAddEdit = (() => {
         const taskObject = currentTabObject.getSpecificChecklistTask(taskIndex);
         const taskElementIndex = taskElement.dataset.taskIndex;
         const taskContentSection = document.querySelector(".to-do-content");
+        toggleAnimations(taskElement);
         if (taskObject.getPinnedState()) {
             const listOfPinnedTaskElements = Array.from(document.querySelectorAll(".pinned-task"));
             if (listOfPinnedTaskElements.length === 0) {
@@ -353,6 +354,18 @@ const DOMControllerAddEdit = (() => {
             };
             taskElement.classList.remove("pinned-task");
         };
+        toggleAnimations(taskElement);
+    };
+    const toggleAnimations = (taskElement) => {
+        const elementsToToggle = Array.from(taskElement.querySelectorAll(".animation-target"));
+        elementsToToggle.forEach((element) => {
+            const elementClasses = Array.from(element.classList);
+            if (elementClasses.includes("no-animations")) {
+                element.classList.remove("no-animations");
+            } else {
+                element.classList.add("no-animations");
+            };
+        });
     };
     const loadTasksFromNewCurrentTab = () => {
         const currentTabObject = toDoList.getCurrentTabObject();
