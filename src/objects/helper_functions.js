@@ -132,10 +132,10 @@ const helperFunctions = (() => {
         const tabElement = document.querySelector(`[data-tab-index='${tabIndex}']`);
         return tabElement;
     };
-    return { checkIfWasCurrentTab,
-        checkIfOnlyOneTab,
-        getTaskIndex, getChecklistTaskIndex, getTabIndex, getNewValue, getButtonType,
-        getTaskSubcontainerElement, getTaskElement, getChecklistTaskElement, getTabElement, checkForExistingInputElement, };
+    return { checkIfWasCurrentTab, checkIfOnlyOneTab, getTaskIndex,
+        getChecklistTaskIndex, getTabIndex, getNewValue, getButtonType,
+        getTaskSubcontainerElement, getTaskElement, getChecklistTaskElement,
+        getTabElement, checkForExistingInputElement, };
 })();
 
 export { helperFunctions };
