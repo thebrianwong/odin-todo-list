@@ -209,7 +209,7 @@ const DOMControllerAddEdit = (() => {
         taskSubcontainerElement.insertBefore(taskSubcontentElement, taskSubcontainerElement.firstChild);
     }
     const toggleTaskDOMComplete = (taskIndex) => {
-        const taskElement = document.querySelector(`[data-task-index='${taskIndex}']`);
+        const taskElement = helperFunctions.getTaskElement(taskIndex);
         const completeCheckbox = taskElement.querySelector(".to-do-complete-checkbox");
         const currentTabObject =  toDoList.getCurrentTabObject();
         const taskObject = currentTabObject.getSpecificChecklistTask(taskIndex);
@@ -223,7 +223,7 @@ const DOMControllerAddEdit = (() => {
         };
     };
     const addNewChecklistTaskToDOM = (taskIndex, newChecklistTaskIndex) => {
-        const taskElement = document.querySelector(`[data-task-index='${taskIndex}'`);
+        const taskElement = helperFunctions.getTaskElement(taskIndex);
         const checklistElement = taskElement.querySelector(".checklist");
         const currentTabObject = toDoList.getCurrentTabObject();
         const taskObject = currentTabObject.getSpecificChecklistTask(taskIndex);
@@ -299,7 +299,7 @@ const DOMControllerAddEdit = (() => {
         };
     };
     const changePinButtonImage = (taskIndex) => {
-        const taskElement = document.querySelector(`[data-task-index='${taskIndex}']`);
+        const taskElement = helperFunctions.getTaskElement(taskIndex);
         const currentTabObject = toDoList.getCurrentTabObject();
         const taskObject = currentTabObject.getSpecificChecklistTask(taskIndex);
         const pinButton = taskElement.querySelector(".to-do-pin")
@@ -311,7 +311,7 @@ const DOMControllerAddEdit = (() => {
         };
     };
     const shiftTaskElementPosition = (taskIndex) => {
-        const taskElement = document.querySelector(`[data-task-index='${taskIndex}']`);
+        const taskElement = helperFunctions.getTaskElement(taskIndex);
         const currentTabObject = toDoList.getCurrentTabObject();
         const taskObject = currentTabObject.getSpecificChecklistTask(taskIndex);
         const taskElementIndex = taskElement.dataset.taskIndex;
