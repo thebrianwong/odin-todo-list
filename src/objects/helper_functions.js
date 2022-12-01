@@ -8,9 +8,20 @@ const helperFunctions = (() => {
         };
         return tabElement;
     };
-    const checkForTabInputElement = (event) => {
-        const tabElement = ensureCorrectTabElement(event);
-        if (tabElement.firstElementChild.tagName === "INPUT") {
+    const checkForExistingInputElement = (event, elementType) => {
+        let inputElement = undefined;
+        if (elementType === "Tab") {
+            const tabElement = ensureCorrectTabElement(event);
+            inputElement = tabElement.querySelector(".tab-name-input");
+        } else if (elementType === "Task") {
+            const taskSubcontainer = ensureCorrectSubcontainer(event);
+            inputElement = taskSubcontainer.querySelector(".task-input");
+        } else if (elementType === "Checklist Task") {
+            const checklistTaskElement = ensureCorrectChecklistTaskElement(event);
+            const checklistCompleteSection = checklistTaskElement.querySelector(".checklist-complete-section");
+            inputElement = checklistCompleteSection.querySelector(".checklist-input");
+        };
+        if (inputElement !== null) {
             return true;
         } else {
             return false;
@@ -51,14 +62,6 @@ const helperFunctions = (() => {
         }
         return taskSubcontainer;
     };
-    const checkForTaskSubcontainerInputElement = (event) => {
-        const taskSubcontainer = ensureCorrectSubcontainer(event);
-        if (taskSubcontainer.firstElementChild.tagName === "INPUT") {
-            return true;
-        } else {
-            return false;
-        };
-    };
     const ensureCorrectChecklistTaskElement = (event) => {
         let checklistTaskElement = event.target;
         let classList = Array.from(checklistTaskElement.classList);
@@ -68,16 +71,6 @@ const helperFunctions = (() => {
         };
         return checklistTaskElement;
     }
-    const checkForChecklistTaskInputElement = (event) => {
-        const checklistTaskElement = ensureCorrectChecklistTaskElement(event);
-        const checklistCompleteSection = checklistTaskElement.querySelector(".checklist-complete-section");
-        const inputElement = checklistCompleteSection.querySelector(".checklist-input");
-        if (inputElement !== null) {
-            return true;
-        } else {
-            return false;
-        };
-    };
     const getTaskIndex = (event) => {
         const taskElement = ensureCorrectTaskElement(event);
         const taskIndex = taskElement.dataset.taskIndex;
@@ -139,12 +132,11 @@ const helperFunctions = (() => {
         const tabElement = document.querySelector(`[data-tab-index='${tabIndex}']`);
         return tabElement;
     };
-    return { checkForTabInputElement, checkIfWasCurrentTab,
+    return { checkIfWasCurrentTab,
         checkIfOnlyOneTab, ensureCorrectSubcontainer,
-        checkForTaskSubcontainerInputElement,
-        ensureCorrectChecklistTaskElement, checkForChecklistTaskInputElement,
+        ensureCorrectChecklistTaskElement,
         getTaskIndex, getChecklistTaskIndex, getTabIndex, getNewValue, getButtonType,
-        getTaskSubcontainerElement, getTaskElement, getChecklistTaskElement, getTabElement, };
+        getTaskSubcontainerElement, getTaskElement, getChecklistTaskElement, getTabElement, checkForExistingInputElement, };
 })();
 
 export { helperFunctions };

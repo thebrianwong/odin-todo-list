@@ -20,7 +20,7 @@ const eventBundler = (() => {
         };
     }
     const insertTabInputElement = (event) => {
-        if (!helperFunctions.checkForTabInputElement(event)) {
+        if (!helperFunctions.checkForExistingInputElement(event, "Tab")) {
             const tabIndex = helperFunctions.getTabIndex(event);
             const inputElement = DOMControllerAddEdit.insertTabInputElement(tabIndex);
             DOMControllerRemove.removeTabNameElement(tabIndex);
@@ -69,7 +69,7 @@ const eventBundler = (() => {
         DOMControllerRemove.removeTaskElementFromDOM(taskIndex);
     };
     const insertTaskInputElement = (event) => {
-        if (!helperFunctions.checkForTaskSubcontainerInputElement(event)) {
+        if (!helperFunctions.checkForExistingInputElement(event, "Task")) {
             const taskIndex = helperFunctions.getTaskIndex(event);
             const buttonType = helperFunctions.getButtonType(event);
             DOMControllerRemove.removeTaskSubcontentElementFromDOM(taskIndex, buttonType);
@@ -100,7 +100,7 @@ const eventBundler = (() => {
         addChecklistTaskListeners(newChecklistTaskElement);
     };
     const insertChecklistTaskInputElement = (event) => {
-        if (!helperFunctions.checkForChecklistTaskInputElement(event)) {
+        if (!helperFunctions.checkForExistingInputElement(event, "Checklist Task")) {
             const taskIndex = helperFunctions.getTaskIndex(event);
             const checklistTaskIndex = helperFunctions.getChecklistTaskIndex(event);
             DOMControllerRemove.removeChecklistTaskDescriptionDOM(taskIndex, checklistTaskIndex);
