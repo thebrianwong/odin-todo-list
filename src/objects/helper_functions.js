@@ -133,8 +133,7 @@ const helperFunctions = (() => {
         return tabElement;
     };
     return { checkIfWasCurrentTab,
-        checkIfOnlyOneTab, ensureCorrectSubcontainer,
-        ensureCorrectChecklistTaskElement,
+        checkIfOnlyOneTab,
         getTaskIndex, getChecklistTaskIndex, getTabIndex, getNewValue, getButtonType,
         getTaskSubcontainerElement, getTaskElement, getChecklistTaskElement, getTabElement, checkForExistingInputElement, };
 })();
