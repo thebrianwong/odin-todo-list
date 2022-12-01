@@ -285,8 +285,7 @@ const DOMControllerAddEdit = (() => {
         checklistCompleteSection.appendChild(checklistTaskDescriptionElement);
     };
     const toggleChecklistTaskDOMComplete = (taskIndex, checklistTaskIndex) => {
-        const taskElement = document.querySelector(`[data-task-index='${taskIndex}']`);
-        const checklistTaskElement = taskElement.querySelector(`[data-checklist-task-index='${checklistTaskIndex}']`);
+        const checklistTaskElement = helperFunctions.getChecklistTaskElement(taskIndex, checklistTaskIndex);
         const checklistCompleteSection = checklistTaskElement.querySelector(".checklist-complete-section");
         const checklistCompleteCheckbox = checklistCompleteSection.querySelector(".checklist-complete-checkbox");
         const currentTabObject = toDoList.getCurrentTabObject();

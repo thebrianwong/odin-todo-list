@@ -64,7 +64,7 @@ const DOMControllerRemove = (() => {
     const removeChecklistTaskElementDOM = (taskIndex, checklistTaskIndex) => {
         const taskElement = document.querySelector(`[data-task-index='${taskIndex}']`);
         const checklistElement = taskElement.querySelector(".checklist");
-        let checklistTaskElement = checklistElement.querySelector(`[data-checklist-task-index='${checklistTaskIndex}']`);
+        let checklistTaskElement = helperFunctions.getChecklistTaskElement(taskIndex, checklistTaskIndex);
         checklistElement.removeChild(checklistTaskElement);
         checklistTaskElement = null;
     };
