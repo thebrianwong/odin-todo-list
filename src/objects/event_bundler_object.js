@@ -45,6 +45,8 @@ const eventBundler = (() => {
         if (helperFunctions.checkIfWasCurrentTab(event)) {
             const firstTabIndex = objectControllerAddEditObject.setFirstTabToCurrentTab();
             DOMControllerAddEdit.setFirstTabToCurrentTab(firstTabIndex)
+            DOMControllerRemove.removeAllTaskElements();
+            DOMControllerAddEdit.loadTasksFromNewCurrentTab();
         }
     };
     const switchTab = (event) => {
