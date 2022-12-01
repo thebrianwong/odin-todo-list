@@ -71,21 +71,21 @@ const eventBundler = (() => {
     const insertTaskInputElement = (event) => {
         if (!helperFunctions.checkForExistingInputElement(event, "Task")) {
             const taskIndex = helperFunctions.getTaskIndex(event);
-            const buttonType = helperFunctions.getButtonType(event);
-            DOMControllerRemove.removeTaskSubcontentElementFromDOM(taskIndex, buttonType);
-            const inputElement = DOMControllerAddEdit.insertTaskInputElement(taskIndex, buttonType);
-            DOMControllerAddEdit.setTaskInputElementValue(taskIndex, buttonType);
+            const taskSubcontainerType = helperFunctions.getTaskSubcontainerType(event);
+            DOMControllerRemove.removeTaskSubcontentElementFromDOM(taskIndex, taskSubcontainerType);
+            const inputElement = DOMControllerAddEdit.insertTaskInputElement(taskIndex, taskSubcontainerType);
+            DOMControllerAddEdit.setTaskInputElementValue(taskIndex, taskSubcontainerType);
             eventAssigner.addTaskInputListener(inputElement);
         };
     }
     const updateTask = (event) => {
         if (event.code === "Enter") {
             const taskIndex = helperFunctions.getTaskIndex(event);
-            const buttonType = helperFunctions.getButtonType(event);
+            const taskSubcontainerType = helperFunctions.getTaskSubcontainerType(event);
             const newTaskSubcontentValue = helperFunctions.getNewValue(event);
-            objectControllerAddEditObject.editTaskObjectInfo(taskIndex, buttonType, newTaskSubcontentValue);
-            DOMControllerAddEdit.insertTaskSubcontentElement(taskIndex, buttonType);
-            DOMControllerRemove.removeTaskInputElement(taskIndex, buttonType);
+            objectControllerAddEditObject.editTaskObjectInfo(taskIndex, taskSubcontainerType, newTaskSubcontentValue);
+            DOMControllerAddEdit.insertTaskSubcontentElement(taskIndex, taskSubcontainerType);
+            DOMControllerRemove.removeTaskInputElement(taskIndex, taskSubcontainerType);
         };
     };
     const toggleTaskComplete = (event) => {

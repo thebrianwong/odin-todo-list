@@ -90,20 +90,20 @@ const helperFunctions = (() => {
         const newValue = event.target.value;
         return newValue;
     };
-    const getButtonType = (event) => {
-        const buttonElement = ensureCorrectTaskSubcontainerElement(event);
-        const buttonClasses = Array.from(buttonElement.classList);
-        let buttonType = undefined;
-        if (buttonClasses.includes("to-do-title-section")) {
-            buttonType = "Title";
-        } else if (buttonClasses.includes("to-do-due-date-section")) {
-            buttonType = "Due Date";
-        } else if (buttonClasses.includes("to-do-description-section")) {
-            buttonType = "Description";
-        } else if (buttonClasses.includes("to-do-notes-section")) {
-            buttonType = "Notes";
+    const getTaskSubcontainerType = (event) => {
+        const taskSubcontainerElement = ensureCorrectTaskSubcontainerElement(event);
+        const taskSubcontainerElementClasses = Array.from(taskSubcontainerElement.classList);
+        let taskSubcontainerType = undefined;
+        if (taskSubcontainerElementClasses.includes("to-do-title-section")) {
+            taskSubcontainerType = "Title";
+        } else if (taskSubcontainerElementClasses.includes("to-do-due-date-section")) {
+            taskSubcontainerType = "Due Date";
+        } else if (taskSubcontainerElementClasses.includes("to-do-description-section")) {
+            taskSubcontainerType = "Description";
+        } else if (taskSubcontainerElementClasses.includes("to-do-notes-section")) {
+            taskSubcontainerType = "Notes";
         };
-        return buttonType;
+        return taskSubcontainerType;
     };
     const getTaskSubcontainerElement = (taskIndex, buttonType) => {
         const taskElement = getTaskElement(taskIndex);
@@ -133,7 +133,7 @@ const helperFunctions = (() => {
         return tabElement;
     };
     return { checkIfWasCurrentTab, checkIfOnlyOneTab, getTaskIndex,
-        getChecklistTaskIndex, getTabIndex, getNewValue, getButtonType,
+        getChecklistTaskIndex, getTabIndex, getNewValue, getTaskSubcontainerType,
         getTaskSubcontainerElement, getTaskElement, getChecklistTaskElement,
         getTabElement, checkForExistingInputElement, };
 })();
