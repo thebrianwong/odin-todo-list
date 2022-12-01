@@ -154,8 +154,9 @@ const eventBundler = (() => {
         eventAssigner.addRemoveChecklistTaskListener(newChecklistTaskElement);
     };
     const toggleDisplayTaskDetails = (event) => {
-        DOMControllerAddEdit.toggleDisplayTaskDetails(event);
-        DOMControllerAddEdit.rotateChevronButton(event);
+        const taskIndex = helperFunctions.getTaskIndex(event);
+        DOMControllerAddEdit.toggleDisplayTaskDetails(taskIndex);
+        DOMControllerAddEdit.rotateChevronButton(taskIndex);
     };
     const addTabListeners = (newTabElement) => {
         eventAssigner.addEditTabButtonListener(newTabElement);

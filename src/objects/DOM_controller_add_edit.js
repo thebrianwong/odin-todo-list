@@ -414,8 +414,8 @@ const DOMControllerAddEdit = (() => {
             newTaskElement.classList.add("pinned-task");
         };
     };
-    const toggleDisplayTaskDetails = (event) => {
-        const taskElement = helperFunctions.ensureCorrectTaskElement(event);
+    const toggleDisplayTaskDetails = (taskIndex) => {
+        const taskElement = helperFunctions.getTaskElement(taskIndex);
         const taskDescription = taskElement.querySelector(".to-do-description-section");
         const taskNotes = taskElement.querySelector(".to-do-notes-section");
         const taskChecklist = taskElement.querySelector(".checklist");
@@ -431,9 +431,10 @@ const DOMControllerAddEdit = (() => {
             };
         });
     };
-    const rotateChevronButton = (event) => {
-        const buttonElement = helperFunctions.ensureCorrectButtonElement(event);
-        const buttonImage = buttonElement.querySelector("img");
+    const rotateChevronButton = (taskIndex) => {
+        const taskElement = helperFunctions.getTaskElement(taskIndex);
+        const chevronButton = taskElement.querySelector(".to-do-task-change-display");
+        const buttonImage = chevronButton.querySelector("img");
         const buttonImageClass = buttonImage.getAttribute("class");
         if (buttonImageClass === null || buttonImageClass === "rotate-hide-task-details") {
             buttonImage.classList.toggle("rotate-hide-task-details", false);
