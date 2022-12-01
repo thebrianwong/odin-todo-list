@@ -146,12 +146,16 @@ const helperFunctions = (() => {
         const checklistTaskElement = taskElement.querySelector(`[data-checklist-task-index='${checklistTaskIndex}']`);
         return checklistTaskElement;
     }
+    const getTabElement = (tabIndex) => {
+        const tabElement = document.querySelector(`[data-tab-index='${tabIndex}']`);
+        return tabElement;
+    };
     return { ensureCorrectTabElement, checkForTabInputElement, checkIfWasCurrentTab,
         checkIfOnlyOneTab, ensureCorrectTaskElement, ensureCorrectSubcontainer,
         checkForTaskSubcontainerInputElement, ensureCorrectButtonElement,
         ensureCorrectChecklistTaskElement, checkForChecklistTaskInputElement,
         getTaskIndex, getChecklistTaskIndex, getTabIndex, getNewValue, getButtonType,
-        getTaskSubcontainerElement, getTaskElement, getChecklistTaskElement, };
+        getTaskSubcontainerElement, getTaskElement, getChecklistTaskElement, getTabElement, };
 })();
 
 export { helperFunctions };

@@ -30,14 +30,14 @@ const DOMControllerAddEdit = (() => {
         return newTabElement;
     }
     const setTabInputElementValue = (tabIndex) => {
-        const tabElement = document.querySelector(`[data-tab-index='${tabIndex}']`);
+        const tabElement = helperFunctions.getTabElement(tabIndex);
         const inputElement = tabElement.querySelector("input");
         const tabObject = toDoList.getSpecificChecklistTask(tabIndex);
         const tabName = tabObject.getTaskTitle();
         inputElement.value = tabName;
     }
     const insertTabInputElement = (tabIndex) => {
-        const tabElement = document.querySelector(`[data-tab-index='${tabIndex}']`);
+        const tabElement = helperFunctions.getTabElement(tabIndex);
         const inputElement = document.createElement("input");
         inputElement.classList.add("tab-name-input");
         inputElement.setAttribute("type", "text");
@@ -46,7 +46,7 @@ const DOMControllerAddEdit = (() => {
         return inputElement;
     }
     const insertTabNameElement = (tabIndex) => {
-        const tabElement = document.querySelector(`[data-tab-index='${tabIndex}']`);
+        const tabElement = helperFunctions.getTabElement(tabIndex);
         const tabObject = toDoList.getSpecificChecklistTask(tabIndex);
         const tabName = tabObject.getTaskTitle();
         const tabButton = document.createElement("button");
@@ -58,24 +58,23 @@ const DOMControllerAddEdit = (() => {
         tabElement.insertBefore(tabButton, tabElement.firstChild);
         return tabElement;
     };
-    const setDefaultCurrentTabDOM = (index) => {
-        const toDoTabSection = document.querySelector(".to-do-tab-section");
-        const currentTab = toDoTabSection.querySelector(`[data-tab-index='${index}']`);
-        if (currentTab === null) {
+    const setDefaultCurrentTabDOM = (tabIndex) => {
+        const tabElement = helperFunctions.getTabElement(tabIndex);
+        if (tabElement === null) {
             return;
         };
-        currentTab.setAttribute("id", "current-tab");
+        tabElement.setAttribute("id", "current-tab");
     };
     const setCurrentTabDOM = (tabIndex) => {
-        const newCurrentTabElement = document.querySelector(`[data-tab-index='${tabIndex}']`);
+        const newCurrentTabElement = helperFunctions.getTabElement(tabIndex);
         newCurrentTabElement.setAttribute("id", "current-tab");
     }
     const setFirstTabToCurrentTab = (firstTabIndex) => {
         if (firstTabIndex === undefined) {
             return;
-        }
-        const firstTab = document.querySelector(`[data-tab-index='${firstTabIndex}']`)
-        firstTab.setAttribute("id", "current-tab");
+        };
+        const firstTabElement = helperFunctions.getTabElement(firstTabIndex);
+        firstTabElement.setAttribute("id", "current-tab");
     }
     const addNewTaskToDOM = (index) => {
         const currentTabObject = toDoList.getCurrentTabObject();
