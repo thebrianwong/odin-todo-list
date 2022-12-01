@@ -4,19 +4,19 @@ import { helperFunctions } from "./helper_functions";
 
 const DOMControllerRemove = (() => {
     const removeTabNameElement = (tabIndex) => {
-        const tabElement = document.querySelector(`[data-tab-index='${tabIndex}']`);
+        const tabElement = helperFunctions.getTabElement(tabIndex);
         let switchTab = tabElement.querySelector(".switch-tab")
         tabElement.removeChild(switchTab);
         switchTab = null
     };
     const removeTabInputElement = (tabIndex) => {
-        const tabElement = document.querySelector(`[data-tab-index='${tabIndex}']`);
+        const tabElement = helperFunctions.getTabElement(tabIndex);
         let inputElement = tabElement.querySelector("input");
         tabElement.removeChild(inputElement);
         inputElement = null;
     };
     const removeTabElementFromDOM = (tabIndex) => {
-        let tabElement = document.querySelector(`[data-tab-index='${tabIndex}']`);
+        let tabElement = helperFunctions.getTabElement(tabIndex);
         const toDoTabSection = document.querySelector(".to-do-tab-section");
         toDoTabSection.removeChild(tabElement);
         tabElement = null;
