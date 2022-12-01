@@ -33,7 +33,6 @@ const helperFunctions = (() => {
             return false;
         };
     };
-    // delete after refactoring toggleDisplayTaskDetails
     const ensureCorrectTaskElement = (event) => {
         let taskElement = event.target.parentElement;
         let classList = Array.from(taskElement.classList);
@@ -42,8 +41,7 @@ const helperFunctions = (() => {
             classList = Array.from(taskElement.classList);
         };
         return taskElement;
-    }
-    //
+    };
     const ensureCorrectSubcontainer = (event) => {
         let taskSubcontainer = event.target.parentElement;
         let classList = Array.from(taskSubcontainer.classList)
@@ -61,15 +59,6 @@ const helperFunctions = (() => {
             return false;
         };
     };
-    // delete after refactoring rotateChevronButton
-    const ensureCorrectButtonElement = (event) => {
-        let buttonElement = event.target;
-        while (buttonElement.tagName !== "BUTTON") {
-            buttonElement = buttonElement.parentElement;
-        };
-        return buttonElement;
-    };
-    //
     const ensureCorrectChecklistTaskElement = (event) => {
         let checklistTaskElement = event.target;
         let classList = Array.from(checklistTaskElement.classList);
@@ -151,8 +140,8 @@ const helperFunctions = (() => {
         return tabElement;
     };
     return { checkForTabInputElement, checkIfWasCurrentTab,
-        checkIfOnlyOneTab, ensureCorrectTaskElement, ensureCorrectSubcontainer,
-        checkForTaskSubcontainerInputElement, ensureCorrectButtonElement,
+        checkIfOnlyOneTab, ensureCorrectSubcontainer,
+        checkForTaskSubcontainerInputElement,
         ensureCorrectChecklistTaskElement, checkForChecklistTaskInputElement,
         getTaskIndex, getChecklistTaskIndex, getTabIndex, getNewValue, getButtonType,
         getTaskSubcontainerElement, getTaskElement, getChecklistTaskElement, getTabElement, };
