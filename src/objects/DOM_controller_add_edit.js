@@ -431,6 +431,7 @@ const DOMControllerAddEdit = (() => {
     const toggleDisplayTaskDetails = (taskIndex) => {
         const taskElement = helperFunctions.getTaskElement(taskIndex);
         const elementsToToggle = Array.from(taskElement.querySelectorAll(".animation-target"));
+        let hasTimer = undefined;
         elementsToToggle.forEach((element) => {
             const elementClasses = Array.from(element.classList);
             if (elementClasses.includes("hide-to-do-details")) {
@@ -438,11 +439,14 @@ const DOMControllerAddEdit = (() => {
                 element.classList.add("display-to-do-details");
                 element.style.display = "flex"
             } else {
+            // } else if (elementClasses.includes("display-to-do-details")) {
+            // } else if (element.style.display === "flex") {
                 element.classList.add("hide-to-do-details");
                 element.classList.remove("display-to-do-details");
-                setTimeout(() => {
+                hasTimer = setTimeout(() => {
                     element.style.display = "none"
                 }, 1000);
+                console.log(hasTimer)
             };
         });
     };
