@@ -458,6 +458,7 @@ input[type="checkbox"]:checked {
     100% {
         position: absolute;
         opacity: 0;
+        display: none;
     }
 }
 
@@ -504,4 +505,6 @@ input[type="checkbox"]:checked {
 
 .no-animations {
     transition: none !important;
+    animation: none !important;
+    animation-name: none !important;
 }
