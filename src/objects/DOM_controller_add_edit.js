@@ -356,7 +356,10 @@ const DOMControllerAddEdit = (() => {
     };
     const toggleAnimations = (taskIndex, action) => {
         const taskElement = helperFunctions.getTaskElement(taskIndex);
+        const toggleDisplayButton = taskElement.querySelector(".to-do-task-change-display");
+        const buttonImage = toggleDisplayButton.querySelector("img");
         const elementsToToggle = Array.from(taskElement.querySelectorAll(".animation-target"));
+        elementsToToggle.push(buttonImage)
         elementsToToggle.forEach((element) => {
             if (action === "Enable") {
                 element.classList.add("no-animations");
@@ -447,13 +450,15 @@ const DOMControllerAddEdit = (() => {
         const taskElement = helperFunctions.getTaskElement(taskIndex);
         const chevronButton = taskElement.querySelector(".to-do-task-change-display");
         const buttonImage = chevronButton.querySelector("img");
-        const buttonImageClass = buttonImage.getAttribute("class");
-        if (buttonImageClass === null || buttonImageClass === "rotate-hide-task-details") {
-            buttonImage.classList.toggle("rotate-hide-task-details", false);
+        const buttonImageClasses = Array.from(buttonImage.classList);
+        if (buttonImageClasses.length === 0 || buttonImageClasses.includes("rotate-hide-task-details")) {
+            buttonImage.classList.remove("rotate-hide-task-details");
             buttonImage.classList.add("rotate-display-task-details");
-        } else if (buttonImageClass === "rotate-display-task-details") {
+            buttonImage.classList.add("rotated-chevron");
+        } else if (buttonImageClasses.includes("rotate-display-task-details")) {
             buttonImage.classList.remove("rotate-display-task-details");
             buttonImage.classList.add("rotate-hide-task-details");
+            buttonImage.classList.remove("rotated-chevron");
         };
     };
     return { addNewTabToDOM, setTabInputElementValue,
