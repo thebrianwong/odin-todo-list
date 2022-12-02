@@ -508,3 +508,7 @@ input[type="checkbox"]:checked {
     animation: none !important;
     animation-name: none !important;
 }
+
+.rotated-chevron {
+    transform: rotate(180deg);
+}
