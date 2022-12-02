@@ -316,7 +316,6 @@ const DOMControllerAddEdit = (() => {
         const taskObject = currentTabObject.getSpecificChecklistTask(taskIndex);
         const taskElementIndex = taskElement.dataset.taskIndex;
         const taskContentSection = document.querySelector(".to-do-content");
-        toggleAnimations(taskElement);
         if (taskObject.getPinnedState()) {
             const listOfPinnedTaskElements = Array.from(document.querySelectorAll(".pinned-task"));
             if (listOfPinnedTaskElements.length === 0) {
@@ -354,16 +353,15 @@ const DOMControllerAddEdit = (() => {
             };
             taskElement.classList.remove("pinned-task");
         };
-        toggleAnimations(taskElement);
     };
-    const toggleAnimations = (taskElement) => {
+    const toggleAnimations = (taskIndex, action) => {
+        const taskElement = helperFunctions.getTaskElement(taskIndex);
         const elementsToToggle = Array.from(taskElement.querySelectorAll(".animation-target"));
         elementsToToggle.forEach((element) => {
-            const elementClasses = Array.from(element.classList);
-            if (elementClasses.includes("no-animations")) {
-                element.classList.remove("no-animations");
-            } else {
+            if (action === "Enable") {
                 element.classList.add("no-animations");
+            } else if (action === "Disable"){
+                element.classList.remove("no-animations");
             };
         });
     };
@@ -435,9 +433,13 @@ const DOMControllerAddEdit = (() => {
             if (elementClasses.includes("hide-to-do-details")) {
                 element.classList.remove("hide-to-do-details");
                 element.classList.add("display-to-do-details");
+                element.style.display = "flex"
             } else {
                 element.classList.add("hide-to-do-details");
                 element.classList.remove("display-to-do-details");
+                setTimeout(() => {
+                    element.style.display = "none"
+                }, 1000);
             };
         });
     };
@@ -461,7 +463,7 @@ const DOMControllerAddEdit = (() => {
         toggleTaskDOMComplete, addNewChecklistTaskToDOM, insertChecklistTaskInputElement,
         setChecklistTaskInputElementValue, insertChecklistTaskDescriptionElement,
         toggleChecklistTaskDOMComplete, changePinButtonImage, shiftTaskElementPosition,
-        loadTasksFromNewCurrentTab, toggleDisplayTaskDetails, rotateChevronButton, };
+        loadTasksFromNewCurrentTab, toggleDisplayTaskDetails, rotateChevronButton, toggleAnimations, };
 })();
 
 export { DOMControllerAddEdit };

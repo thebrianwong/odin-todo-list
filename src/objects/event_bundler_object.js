@@ -135,6 +135,7 @@ const eventBundler = (() => {
     };
     const toggleTaskPin = (event) => {
         const taskIndex = helperFunctions.getTaskIndex(event);
+        DOMControllerAddEdit.toggleAnimations(taskIndex, "Enable");
         objectControllerAddEditObject.toggleTaskPin(taskIndex);
         DOMControllerAddEdit.changePinButtonImage(taskIndex);
         DOMControllerAddEdit.shiftTaskElementPosition(taskIndex);
@@ -157,6 +158,7 @@ const eventBundler = (() => {
     };
     const toggleDisplayTaskDetails = (event) => {
         const taskIndex = helperFunctions.getTaskIndex(event);
+        DOMControllerAddEdit.toggleAnimations(taskIndex, "Disable");
         DOMControllerAddEdit.toggleDisplayTaskDetails(taskIndex);
         DOMControllerAddEdit.rotateChevronButton(taskIndex);
     };
