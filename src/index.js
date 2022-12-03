@@ -27,6 +27,10 @@ import { eventBundler } from "./objects/event_bundler_object";
 import { eventAssigner } from "./objects/event_assigner_object";
 import { DOMControllerAddEdit } from "./objects/DOM_controller_add_edit";
 
+
+// testing for storage
+import { storage } from "./objects/storage_object";
+
 // let test = checklistTaskObject("ddtest");
 // console.log(test)
 
@@ -193,3 +197,5 @@ eventAssigner.addToggleTaskPinListeners();
 eventAssigner.addToggleDisplayTaskDetailsListeners();
 
 eventBundler.loadInitialPage();
+
+storage.setTab(0)
