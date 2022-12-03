@@ -158,9 +158,11 @@ const eventBundler = (() => {
     };
     const toggleDisplayTaskDetails = (event) => {
         const taskIndex = helperFunctions.getTaskIndex(event);
-        DOMControllerAddEdit.toggleAnimations(taskIndex, "Disable");
-        DOMControllerAddEdit.toggleDisplayTaskDetails(taskIndex);
-        DOMControllerAddEdit.rotateChevronButton(taskIndex);
+        if (!helperFunctions.tryingToDoubleClick(taskIndex)) {
+            DOMControllerAddEdit.toggleAnimations(taskIndex, "Disable");
+            DOMControllerAddEdit.toggleDisplayTaskDetails(taskIndex);
+            DOMControllerAddEdit.rotateChevronButton(taskIndex);
+        };
     };
     const addTabListeners = (newTabElement) => {
         eventAssigner.addEditTabButtonListener(newTabElement);

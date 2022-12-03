@@ -431,24 +431,27 @@ const DOMControllerAddEdit = (() => {
     const toggleDisplayTaskDetails = (taskIndex) => {
         const taskElement = helperFunctions.getTaskElement(taskIndex);
         const elementsToToggle = Array.from(taskElement.querySelectorAll(".animation-target"));
-        let hasTimer = undefined;
         elementsToToggle.forEach((element) => {
             const elementClasses = Array.from(element.classList);
             if (elementClasses.includes("hide-to-do-details")) {
                 element.classList.remove("hide-to-do-details");
                 element.classList.add("display-to-do-details");
-                element.style.display = "flex"
+                element.style.display = "flex";
             } else {
-            // } else if (elementClasses.includes("display-to-do-details")) {
-            // } else if (element.style.display === "flex") {
                 element.classList.add("hide-to-do-details");
                 element.classList.remove("display-to-do-details");
-                hasTimer = setTimeout(() => {
-                    element.style.display = "none"
+                setTimeout(() => {
+                    element.style.display = "none";
                 }, 1000);
-                console.log(hasTimer)
             };
         });
+        preventDoubleClick(taskElement);
+    };
+    const preventDoubleClick = (taskElement) => {
+        taskElement.classList.add("mid-animation");
+        setTimeout(() => {
+            taskElement.classList.remove("mid-animation");
+        }, 1000);
     };
     const rotateChevronButton = (taskIndex) => {
         const taskElement = helperFunctions.getTaskElement(taskIndex);

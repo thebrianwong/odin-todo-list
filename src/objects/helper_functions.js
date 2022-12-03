@@ -132,10 +132,19 @@ const helperFunctions = (() => {
         const tabElement = document.querySelector(`[data-tab-index='${tabIndex}']`);
         return tabElement;
     };
+    const tryingToDoubleClick = (taskIndex) => {
+        const taskElement = getTaskElement(taskIndex);
+        const taskClasses = Array.from(taskElement.classList);
+        if (taskClasses.includes("mid-animation")) {
+            return true;
+        } else {
+            return false;
+        };
+    };
     return { checkIfWasCurrentTab, checkIfOnlyOneTab, getTaskIndex,
         getChecklistTaskIndex, getTabIndex, getNewValue, getTaskSubcontainerType,
         getTaskSubcontainerElement, getTaskElement, getChecklistTaskElement,
-        getTabElement, checkForExistingInputElement, };
+        getTabElement, checkForExistingInputElement, tryingToDoubleClick };
 })();
 
 export { helperFunctions };
