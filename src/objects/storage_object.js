@@ -5,9 +5,11 @@ import { containsChecklistTaskBehaviorComponent } from "../components/contains_c
 const storage = (() => {
     const initializeTodoList = () => {
         const emptyObjectString = `{
+            "current_tab": ${toDoList.getCurrentTabIndex()},
             "tabs": {}
         }`;
         const parsedString = JSON.parse(emptyObjectString);
+        console.log(parsedString)
         const stringifiedObject = JSON.stringify(parsedString);
         localStorage.setItem("to_do_list", stringifiedObject);
     };
@@ -32,8 +34,8 @@ const storage = (() => {
             "due-date": "${taskObject.getTaskDueDate()}",
             "description": "${taskObject.getTaskDescription()}",
             "notes": "${taskObject.getTaskNotes()}",
-            "completed": "${taskObject.getCompletedState()}",
-            "pinned": "${taskObject.getPinnedState()}",
+            "completed": ${taskObject.getCompletedState()},
+            "pinned": ${taskObject.getPinnedState()},
             "checklist_tasks": {}
         }`;
         const taskParsedString = JSON.parse(taskRawString);
@@ -49,7 +51,7 @@ const storage = (() => {
         const checklistTaskObject = taskObject.getSpecificChecklistTask(checklistTaskIndex);
         const checklistTaskRawString = `{
             "description": "${checklistTaskObject.getTaskDescription()}",
-            "completed": "${checklistTaskObject.getCompletedState()}"
+            "completed": ${checklistTaskObject.getCompletedState()}
         }`;
         const checklistTaskParsedString = JSON.parse(checklistTaskRawString);
         const todoListRawString = localStorage.getItem("to_do_list");
