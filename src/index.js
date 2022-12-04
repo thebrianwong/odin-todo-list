@@ -211,5 +211,6 @@ storage.setCurrentTab(1)
 console.log(JSON.parse(localStorage.getItem("to_do_list")))
 
 storage.setCurrentTab(0)
+storage.setChecklistTaskCompleted(0,0,0)
 
 console.log(JSON.parse(localStorage.getItem("to_do_list")))

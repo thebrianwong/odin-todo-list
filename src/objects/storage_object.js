@@ -95,6 +95,18 @@ const storage = (() => {
         todoListParsedObject["tabs"][`tab_${tabIndex}`]["tasks"][`task_${taskIndex}`]["pinned"] = taskObject.getPinnedState();
         updateLocalStorageValue(todoListParsedObject);
     };
+    const setChecklistTaskDescription = (tabIndex, taskIndex, checklistTaskIndex) => {
+        const checklistTaskObject = helperFunctions.getChecklistTaskObject(tabIndex, taskIndex, checklistTaskIndex);
+        const todoListParsedObject = getLocalStorageValue();
+        todoListParsedObject["tabs"][`tab_${tabIndex}`]["tasks"][`task_${taskIndex}`]["checklist_tasks"][`checklist_task_${checklistTaskIndex}`]["description"] = checklistTaskObject.getTaskDescription();
+        updateLocalStorageValue(todoListParsedObject);
+    };
+    const setChecklistTaskCompleted = (tabIndex, taskIndex, checklistTaskIndex) => {
+        const checklistTaskObject = helperFunctions.getChecklistTaskObject(tabIndex, taskIndex, checklistTaskIndex);
+        const todoListParsedObject = getLocalStorageValue();
+        todoListParsedObject["tabs"][`tab_${tabIndex}`]["tasks"][`task_${taskIndex}`]["checklist_tasks"][`checklist_task_${checklistTaskIndex}`]["completed"] = checklistTaskObject.getCompletedState();
+        updateLocalStorageValue(todoListParsedObject);
+    };
     // const updateLocalStorage = (objectType, tabIndex, taskIndex, checklistTaskIndex) => {
     //     const todoListRawString = localStorage.getItem("to_do_list");
     //     const todoListParsedString = JSON.parse(todoListRawString);
@@ -121,7 +133,7 @@ const storage = (() => {
     //         objectParsedString = JSON.parse(taskRawString);
     //     }
     // };
-    return { initializeTodoList, addTab, addTask, addChecklistTask, setCurrentTab, setTabName, setTaskSubcontainerValue, setTaskCompleted, setTaskPinned, }
+    return { initializeTodoList, addTab, addTask, addChecklistTask, setCurrentTab, setTabName, setTaskSubcontainerValue, setTaskCompleted, setTaskPinned, setChecklistTaskDescription, setChecklistTaskCompleted, }
 })();
 
 export { storage };
