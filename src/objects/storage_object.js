@@ -14,7 +14,7 @@ const storage = (() => {
         localStorage.setItem("to_do_list", stringifiedObject);
     };
     const addTab = (tabIndex) => {
-        const tabObject = toDoList.getSpecificChecklistTask(tabIndex);
+        const tabObject = helperFunctions.getTabObject(tabIndex);
         const tabRawString = `{
             "title": "${tabObject.getTaskTitle()}",
             "tasks": {}
@@ -27,8 +27,7 @@ const storage = (() => {
         localStorage.setItem("to_do_list", todoListStringifiedObject);
     };
     const addTask = (tabIndex, taskIndex) => {
-        const tabObject = toDoList.getSpecificChecklistTask(tabIndex);
-        const taskObject = tabObject.getSpecificChecklistTask(taskIndex);
+        const taskObject = helperFunctions.getTaskObject(tabIndex, taskIndex);
         const taskRawString = `{
             "title": "${taskObject.getTaskTitle()}",
             "due-date": "${taskObject.getTaskDueDate()}",
@@ -46,9 +45,7 @@ const storage = (() => {
         localStorage.setItem("to_do_list", todoListStringifiedObject);
     };
     const addChecklistTask = (tabIndex, taskIndex, checklistTaskIndex) => {
-        const tabObject = toDoList.getSpecificChecklistTask(tabIndex);
-        const taskObject = tabObject.getSpecificChecklistTask(taskIndex);
-        const checklistTaskObject = taskObject.getSpecificChecklistTask(checklistTaskIndex);
+        const checklistTaskObject = helperFunctions.getChecklistTaskObject(tabIndex, taskIndex, checklistTaskIndex);
         const checklistTaskRawString = `{
             "description": "${checklistTaskObject.getTaskDescription()}",
             "completed": ${checklistTaskObject.getCompletedState()}
