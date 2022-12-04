@@ -13,7 +13,7 @@ const storage = (() => {
         const stringifiedObject = JSON.stringify(parsedString);
         localStorage.setItem("to_do_list", stringifiedObject);
     };
-    const setTab = (tabIndex) => {
+    const addTab = (tabIndex) => {
         const tabObject = toDoList.getSpecificChecklistTask(tabIndex);
         const tabRawString = `{
             "title": "${tabObject.getTaskTitle()}",
@@ -26,7 +26,7 @@ const storage = (() => {
         const todoListStringifiedObject = JSON.stringify(todoListParsedString);
         localStorage.setItem("to_do_list", todoListStringifiedObject);
     };
-    const setTask = (tabIndex, taskIndex) => {
+    const addTask = (tabIndex, taskIndex) => {
         const tabObject = toDoList.getSpecificChecklistTask(tabIndex);
         const taskObject = tabObject.getSpecificChecklistTask(taskIndex);
         const taskRawString = `{
@@ -45,7 +45,7 @@ const storage = (() => {
         const todoListStringifiedObject = JSON.stringify(todoListParsedString);
         localStorage.setItem("to_do_list", todoListStringifiedObject);
     };
-    const setChecklistTask = (tabIndex, taskIndex, checklistTaskIndex) => {
+    const addChecklistTask = (tabIndex, taskIndex, checklistTaskIndex) => {
         const tabObject = toDoList.getSpecificChecklistTask(tabIndex);
         const taskObject = tabObject.getSpecificChecklistTask(taskIndex);
         const checklistTaskObject = taskObject.getSpecificChecklistTask(checklistTaskIndex);
@@ -86,7 +86,7 @@ const storage = (() => {
     //         objectParsedString = JSON.parse(taskRawString);
     //     }
     // };
-    return { initializeTodoList, setTab, setTask, setChecklistTask}
+    return { initializeTodoList, addTab, addTask, addChecklistTask}
 })();
 
 export { storage };

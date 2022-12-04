@@ -199,11 +199,11 @@ eventAssigner.addToggleDisplayTaskDetailsListeners();
 eventBundler.loadInitialPage();
 
 // storage.initializeTodoList();
-storage.setTab(0)
-storage.setTask(0,0)
-storage.setChecklistTask(0,0,0)
-storage.setChecklistTask(0,0,1)
-storage.setChecklistTask(0,0,2)
+storage.addTab(0)
+storage.addTask(0,0)
+storage.addChecklistTask(0,0,0)
+storage.addChecklistTask(0,0,1)
+storage.addChecklistTask(0,0,2)
 // localStorage.clear()
 
 console.log(JSON.parse(localStorage.getItem("to_do_list")))
