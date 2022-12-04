@@ -44,7 +44,19 @@ const storage = (() => {
         localStorage.setItem("to_do_list", todoListStringifiedObject);
     };
     const setChecklistTask = (tabIndex, taskIndex, checklistTaskIndex) => {
-        // const 
+        const tabObject = toDoList.getSpecificChecklistTask(tabIndex);
+        const taskObject = tabObject.getSpecificChecklistTask(taskIndex);
+        const checklistTaskObject = taskObject.getSpecificChecklistTask(checklistTaskIndex);
+        const checklistTaskRawString = `{
+            "description": "${checklistTaskObject.getTaskDescription()}",
+            "completed": "${checklistTaskObject.getCompletedState()}"
+        }`;
+        const checklistTaskParsedString = JSON.parse(checklistTaskRawString);
+        const todoListRawString = localStorage.getItem("to_do_list");
+        const todoListParsedString = JSON.parse(todoListRawString);
+        todoListParsedString["tabs"][`tab_${tabIndex}`]["tasks"][`task_${taskIndex}`]["checklist_tasks"][`checklist_task_${checklistTaskIndex}`] = checklistTaskParsedString;
+        const todoListStringifiedObject = JSON.stringify(todoListParsedString);
+        localStorage.setItem("to_do_list", todoListStringifiedObject);
     };
     return { initializeTodoList, setTab, setTask, setChecklistTask}
 })();

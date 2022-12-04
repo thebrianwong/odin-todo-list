@@ -201,4 +201,7 @@ eventBundler.loadInitialPage();
 // storage.initializeTodoList();
 storage.setTab(0)
 storage.setTask(0,0)
+storage.setChecklistTask(0,0,0)
+storage.setChecklistTask(0,0,1)
+storage.setChecklistTask(0,0,2)
 // localStorage.clear()

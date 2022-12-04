@@ -184,9 +184,7 @@ const eventBundler = (() => {
         const instructions = [
             ["If your task has multiple steps, try breaking them down into a checklist! Click the plus sign button to add steps as needed.", true],
             ["Have a new task you want to keep track of? Add it to the list by clicking on the 'New Task' button below!", true],
-            [`Organize the different types of tasks in your life by creating themed tabs. 
-            Create a new tab by clicking on the plus sign button at the top of the list.
-            Change tabs by clicking on different tab names.`, true]];
+            [`Organize the different types of tasks in your life by creating themed tabs. Create a new tab by clicking on the plus sign button at the top of the list. Change tabs by clicking on different tab names.`, true]];
         instructions.forEach((instructionsItem) => {
             const checklistTaskIndex = objectControllerAddEditObject.addNewChecklistTaskToTask(taskIndex, instructionsItem[0], instructionsItem[1]);
             const checklistTaskElement = DOMControllerAddEdit.addNewChecklistTaskToDOM(taskIndex, checklistTaskIndex);
