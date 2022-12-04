@@ -229,7 +229,6 @@ const DOMControllerAddEdit = (() => {
         const taskObject = currentTabObject.getSpecificChecklistTask(taskIndex);
         const checklistTaskObject = taskObject.getSpecificChecklistTask(newChecklistTaskIndex);
         const newChecklistTaskDescription = checklistTaskObject.getTaskDescription();
-        const newChecklistTaskCompleted = checklistTaskObject.getCompletedState();
         const newChecklistTaskElement = document.createElement("div");
         newChecklistTaskElement.classList.add("checklist-task");
         newChecklistTaskElement.dataset.checklistTaskIndex = newChecklistTaskIndex;
