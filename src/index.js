@@ -198,4 +198,7 @@ eventAssigner.addToggleDisplayTaskDetailsListeners();
 
 eventBundler.loadInitialPage();
 
+// storage.initializeTodoList();
 storage.setTab(0)
+
+// localStorage.clear()
