@@ -58,6 +58,32 @@ const storage = (() => {
         const todoListStringifiedObject = JSON.stringify(todoListParsedString);
         localStorage.setItem("to_do_list", todoListStringifiedObject);
     };
+    // const updateLocalStorage = (objectType, tabIndex, taskIndex, checklistTaskIndex) => {
+    //     const todoListRawString = localStorage.getItem("to_do_list");
+    //     const todoListParsedString = JSON.parse(todoListRawString);
+    //     let objectParsedString = undefined;
+    //     if (objectType === "Tab") {
+    //         const tabObject = toDoList.getSpecificChecklistTask(tabIndex);
+    //         const tabRawString = `{
+    //             "title": "${tabObject.getTaskTitle()}",
+    //             "tasks": {}
+    //         }`;
+    //         objectParsedString = JSON.parse(tabRawString);
+    //     } else if (objectType === "Task") {
+    //         const tabObject = toDoList.getSpecificChecklistTask(tabIndex);
+    //         const taskObject = tabObject.getSpecificChecklistTask(taskIndex);
+    //         const taskRawString = `{
+    //             "title": "${taskObject.getTaskTitle()}",
+    //             "due-date": "${taskObject.getTaskDueDate()}",
+    //             "description": "${taskObject.getTaskDescription()}",
+    //             "notes": "${taskObject.getTaskNotes()}",
+    //             "completed": "${taskObject.getCompletedState()}",
+    //             "pinned": "${taskObject.getPinnedState()}",
+    //             "checklist_tasks": {}
+    //         }`;
+    //         objectParsedString = JSON.parse(taskRawString);
+    //     }
+    // };
     return { initializeTodoList, setTab, setTask, setChecklistTask}
 })();
 
