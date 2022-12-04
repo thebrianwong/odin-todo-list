@@ -83,6 +83,18 @@ const storage = (() => {
         };
         updateLocalStorageValue(todoListParsedObject);
     };
+    const setTaskCompleted = (tabIndex, taskIndex) => {
+        const taskObject = helperFunctions.getTaskObject(tabIndex, taskIndex);
+        const todoListParsedObject = getLocalStorageValue();
+        todoListParsedObject["tabs"][`tab_${tabIndex}`]["tasks"][`task_${taskIndex}`]["completed"] = taskObject.getCompletedState();
+        updateLocalStorageValue(todoListParsedObject);
+    };
+    const setTaskPinned = (tabIndex, taskIndex) => {
+        const taskObject = helperFunctions.getTaskObject(tabIndex, taskIndex);
+        const todoListParsedObject = getLocalStorageValue();
+        todoListParsedObject["tabs"][`tab_${tabIndex}`]["tasks"][`task_${taskIndex}`]["pinned"] = taskObject.getPinnedState();
+        updateLocalStorageValue(todoListParsedObject);
+    };
     // const updateLocalStorage = (objectType, tabIndex, taskIndex, checklistTaskIndex) => {
     //     const todoListRawString = localStorage.getItem("to_do_list");
     //     const todoListParsedString = JSON.parse(todoListRawString);
@@ -109,7 +121,7 @@ const storage = (() => {
     //         objectParsedString = JSON.parse(taskRawString);
     //     }
     // };
-    return { initializeTodoList, addTab, addTask, addChecklistTask, setCurrentTab, setTabName, setTaskSubcontainerValue, }
+    return { initializeTodoList, addTab, addTask, addChecklistTask, setCurrentTab, setTabName, setTaskSubcontainerValue, setTaskCompleted, setTaskPinned, }
 })();
 
 export { storage };
