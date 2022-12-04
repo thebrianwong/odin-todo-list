@@ -29,7 +29,7 @@ import { DOMControllerAddEdit } from "./objects/DOM_controller_add_edit";
 
 
 // testing for storage
-import { storage } from "./objects/storage_object";
+import { todoListStorage } from "./objects/todo_list_storage_object";
 
 // let test = checklistTaskObject("ddtest");
 // console.log(test)
@@ -198,19 +198,19 @@ eventAssigner.addToggleDisplayTaskDetailsListeners();
 
 eventBundler.loadInitialPage();
 
-storage.initializeTodoList();
-storage.addTab(0)
-storage.addTask(0,0)
-storage.addChecklistTask(0,0,0)
-storage.addChecklistTask(0,0,1)
-storage.addChecklistTask(0,0,2)
+todoListStorage.initializeTodoList();
+todoListStorage.addTab(0)
+todoListStorage.addTask(0,0)
+todoListStorage.addChecklistTask(0,0,0)
+todoListStorage.addChecklistTask(0,0,1)
+todoListStorage.addChecklistTask(0,0,2)
 // localStorage.clear()
 
-storage.setCurrentTab(1)
+todoListStorage.setCurrentTab(1)
 
 console.log(JSON.parse(localStorage.getItem("to_do_list")))
 
-storage.setCurrentTab(0)
-storage.setChecklistTaskCompleted(0,0,0)
+todoListStorage.setCurrentTab(0)
+todoListStorage.setChecklistTaskCompleted(0,0,0)
 
 console.log(JSON.parse(localStorage.getItem("to_do_list")))

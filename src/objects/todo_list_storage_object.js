@@ -2,7 +2,7 @@ import { helperFunctions } from "./helper_functions";
 import { toDoList } from "./todo_list_object";
 import { containsChecklistTaskBehaviorComponent } from "../components/contains_checklist_task_component";
 
-const storage = (() => {
+const todoListStorage = (() => {
     const initializeTodoList = () => {
         const todoListJSONString = `{
             "current_tab": ${toDoList.getCurrentTabIndex()},
@@ -136,4 +136,4 @@ const storage = (() => {
     return { initializeTodoList, addTab, addTask, addChecklistTask, setCurrentTab, setTabName, setTaskSubcontainerValue, setTaskCompleted, setTaskPinned, setChecklistTaskDescription, setChecklistTaskCompleted, }
 })();
 
-export { storage };
+export { todoListStorage };
