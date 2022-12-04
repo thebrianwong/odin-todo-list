@@ -4,31 +4,28 @@ import { containsChecklistTaskBehaviorComponent } from "../components/contains_c
 
 const storage = (() => {
     const initializeTodoList = () => {
-        const emptyObjectString = `{
+        const todoListJSONString = `{
             "current_tab": ${toDoList.getCurrentTabIndex()},
             "tabs": {}
         }`;
-        const parsedString = JSON.parse(emptyObjectString);
-        console.log(parsedString)
-        const stringifiedObject = JSON.stringify(parsedString);
-        localStorage.setItem("to_do_list", stringifiedObject);
+        const todoListParsedObject = JSON.parse(todoListJSONString);
+        updateLocalStorageValue(todoListParsedObject);
     };
     const addTab = (tabIndex) => {
         const tabObject = helperFunctions.getTabObject(tabIndex);
-        const tabRawString = `{
+        const todoListParsedObject = getLocalStorageValue();
+        const tabJSONString = `{
             "title": "${tabObject.getTaskTitle()}",
             "tasks": {}
         }`;
-        const tabParsedString = JSON.parse(tabRawString);
-        const todoListRawString = localStorage.getItem("to_do_list");
-        const todoListParsedString = JSON.parse(todoListRawString);
-        todoListParsedString["tabs"][`tab_${tabIndex}`] = tabParsedString;
-        const todoListStringifiedObject = JSON.stringify(todoListParsedString);
-        localStorage.setItem("to_do_list", todoListStringifiedObject);
+        const tabParsedObject = JSON.parse(tabJSONString);
+        todoListParsedObject["tabs"][`tab_${tabIndex}`] = tabParsedObject;
+        updateLocalStorageValue(todoListParsedObject);
     };
     const addTask = (tabIndex, taskIndex) => {
         const taskObject = helperFunctions.getTaskObject(tabIndex, taskIndex);
-        const taskRawString = `{
+        const todoListParsedObject = getLocalStorageValue();
+        const taskJSONString = `{
             "title": "${taskObject.getTaskTitle()}",
             "due-date": "${taskObject.getTaskDueDate()}",
             "description": "${taskObject.getTaskDescription()}",
@@ -37,25 +34,29 @@ const storage = (() => {
             "pinned": ${taskObject.getPinnedState()},
             "checklist_tasks": {}
         }`;
-        const taskParsedString = JSON.parse(taskRawString);
-        const todoListRawString = localStorage.getItem("to_do_list");
-        const todoListParsedString = JSON.parse(todoListRawString);
-        todoListParsedString["tabs"][`tab_${tabIndex}`]["tasks"][`task_${taskIndex}`] = taskParsedString;
-        const todoListStringifiedObject = JSON.stringify(todoListParsedString);
-        localStorage.setItem("to_do_list", todoListStringifiedObject);
+        const taskParsedObject = JSON.parse(taskJSONString);
+        todoListParsedObject["tabs"][`tab_${tabIndex}`]["tasks"][`task_${taskIndex}`] = taskParsedObject;
+        updateLocalStorageValue(todoListParsedObject);
     };
     const addChecklistTask = (tabIndex, taskIndex, checklistTaskIndex) => {
         const checklistTaskObject = helperFunctions.getChecklistTaskObject(tabIndex, taskIndex, checklistTaskIndex);
-        const checklistTaskRawString = `{
+        const todoListParsedObject = getLocalStorageValue();
+        const checklistTaskJSONString = `{
             "description": "${checklistTaskObject.getTaskDescription()}",
             "completed": ${checklistTaskObject.getCompletedState()}
         }`;
-        const checklistTaskParsedString = JSON.parse(checklistTaskRawString);
-        const todoListRawString = localStorage.getItem("to_do_list");
-        const todoListParsedString = JSON.parse(todoListRawString);
-        todoListParsedString["tabs"][`tab_${tabIndex}`]["tasks"][`task_${taskIndex}`]["checklist_tasks"][`checklist_task_${checklistTaskIndex}`] = checklistTaskParsedString;
-        const todoListStringifiedObject = JSON.stringify(todoListParsedString);
-        localStorage.setItem("to_do_list", todoListStringifiedObject);
+        const checklistTaskParsedObject = JSON.parse(checklistTaskJSONString);
+        todoListParsedObject["tabs"][`tab_${tabIndex}`]["tasks"][`task_${taskIndex}`]["checklist_tasks"][`checklist_task_${checklistTaskIndex}`] = checklistTaskParsedObject;
+        updateLocalStorageValue(todoListParsedObject);
+    };
+    const getLocalStorageValue = () => {
+        const todoListJSONString = localStorage.getItem("to_do_list");
+        const todoListParsedObject = JSON.parse(todoListJSONString);
+        return todoListParsedObject;
+    };
+    const updateLocalStorageValue = (newValue) => {
+        const updatedJSONStringValue = JSON.stringify(newValue);
+        localStorage.setItem("to_do_list", updatedJSONStringValue);
     };
     // const updateLocalStorage = (objectType, tabIndex, taskIndex, checklistTaskIndex) => {
     //     const todoListRawString = localStorage.getItem("to_do_list");

@@ -198,7 +198,7 @@ eventAssigner.addToggleDisplayTaskDetailsListeners();
 
 eventBundler.loadInitialPage();
 
-// storage.initializeTodoList();
+storage.initializeTodoList();
 storage.addTab(0)
 storage.addTask(0,0)
 storage.addChecklistTask(0,0,0)
