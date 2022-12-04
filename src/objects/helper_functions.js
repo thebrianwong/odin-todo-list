@@ -141,10 +141,24 @@ const helperFunctions = (() => {
             return false;
         };
     };
+    const getTabObject = (tabIndex) => {
+        const tabObject = toDoList.getSpecificChecklistTask(tabIndex);
+        return tabObject;
+    };
+    const getTaskObject = (tabIndex, taskIndex) => {
+        const tabObject = getTabObject(tabIndex);
+        const taskObject = tabObject.getSpecificChecklistTask(taskIndex);
+        return taskObject;
+    };
+    const getChecklistTaskObject = (tabIndex, taskIndex, checklistTaskIndex) => {
+        const taskObject = getTaskObject(tabIndex, taskIndex);
+        const checklistTaskObject = taskObject.getSpecificChecklistTask(checklistTaskIndex);
+        return checklistTaskObject;
+    }
     return { checkIfWasCurrentTab, checkIfOnlyOneTab, getTaskIndex,
         getChecklistTaskIndex, getTabIndex, getNewValue, getTaskSubcontainerType,
         getTaskSubcontainerElement, getTaskElement, getChecklistTaskElement,
-        getTabElement, checkForExistingInputElement, tryingToDoubleClick };
+        getTabElement, checkForExistingInputElement, tryingToDoubleClick, getTabObject, getTaskObject, getChecklistTaskObject };
 })();
 
 export { helperFunctions };
