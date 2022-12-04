@@ -200,5 +200,5 @@ eventBundler.loadInitialPage();
 
 // storage.initializeTodoList();
 storage.setTab(0)
-
+storage.setTask(0,0)
 // localStorage.clear()
