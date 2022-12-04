@@ -27,7 +27,7 @@ const storage = (() => {
         const todoListParsedObject = getLocalStorageValue();
         const taskJSONString = `{
             "title": "${taskObject.getTaskTitle()}",
-            "due-date": "${taskObject.getTaskDueDate()}",
+            "due_date": "${taskObject.getTaskDueDate()}",
             "description": "${taskObject.getTaskDescription()}",
             "notes": "${taskObject.getTaskNotes()}",
             "completed": ${taskObject.getCompletedState()},
@@ -58,6 +58,31 @@ const storage = (() => {
         const updatedJSONStringValue = JSON.stringify(newValue);
         localStorage.setItem("to_do_list", updatedJSONStringValue);
     };
+    const setCurrentTab = (tabIndex) => {
+        const todoListParsedObject = getLocalStorageValue();
+        todoListParsedObject["current_tab"] = tabIndex;
+        updateLocalStorageValue(todoListParsedObject)
+    };
+    const setTabName = (tabIndex) => {
+        const tabObject = helperFunctions.getTabObject(tabIndex);
+        const todoListParsedObject = getLocalStorageValue();
+        todoListParsedObject["tabs"][`tab_${tabIndex}`]["title"] = tabObject.getTaskTitle();
+        updateLocalStorageValue(todoListParsedObject);
+    };
+    const setTaskSubcontainerValue = (tabIndex, taskIndex, subcontainerType) => {
+        const taskObject = helperFunctions.getTaskObject(tabIndex, taskIndex);
+        const todoListParsedObject = getLocalStorageValue();
+        if (subcontainerType === "Title") {
+            todoListParsedObject["tabs"][`tab_${tabIndex}`]["tasks"][`task_${taskIndex}`]["title"] = taskObject.getTaskTitle();
+        } else if (subcontainerType === "Due Date") {
+            todoListParsedObject["tabs"][`tab_${tabIndex}`]["tasks"][`task_${taskIndex}`]["due_date"] = taskObject.getTaskDueDate();
+        } else if (subcontainerType === "Description") {
+            todoListParsedObject["tabs"][`tab_${tabIndex}`]["tasks"][`task_${taskIndex}`]["description"] = taskObject.getTaskDescription();
+        } else if (subcontainerType === "Notes") {
+            todoListParsedObject["tabs"][`tab_${tabIndex}`]["tasks"][`task_${taskIndex}`]["notes"] = taskObject.getTaskNotes();
+        };
+        updateLocalStorageValue(todoListParsedObject);
+    };
     // const updateLocalStorage = (objectType, tabIndex, taskIndex, checklistTaskIndex) => {
     //     const todoListRawString = localStorage.getItem("to_do_list");
     //     const todoListParsedString = JSON.parse(todoListRawString);
@@ -84,7 +109,7 @@ const storage = (() => {
     //         objectParsedString = JSON.parse(taskRawString);
     //     }
     // };
-    return { initializeTodoList, addTab, addTask, addChecklistTask}
+    return { initializeTodoList, addTab, addTask, addChecklistTask, setCurrentTab, setTabName, setTaskSubcontainerValue, }
 })();
 
 export { storage };

@@ -206,4 +206,10 @@ storage.addChecklistTask(0,0,1)
 storage.addChecklistTask(0,0,2)
 // localStorage.clear()
 
+storage.setCurrentTab(1)
+
+console.log(JSON.parse(localStorage.getItem("to_do_list")))
+
+storage.setCurrentTab(0)
+
 console.log(JSON.parse(localStorage.getItem("to_do_list")))
