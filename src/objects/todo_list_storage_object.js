@@ -60,7 +60,7 @@ const todoListStorage = (() => {
     };
     const setCurrentTab = (tabIndex) => {
         const todoListParsedObject = getLocalStorageValue();
-        todoListParsedObject["current_tab"] = tabIndex;
+        todoListParsedObject["current_tab"] = Number(tabIndex);
         updateLocalStorageValue(todoListParsedObject)
     };
     const setTabName = (tabIndex) => {

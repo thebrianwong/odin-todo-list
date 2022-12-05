@@ -18,6 +18,7 @@ const eventBundler = (() => {
         if (helperFunctions.checkIfOnlyOneTab()) {
             const firstTabIndex = objectControllerAddEditObject.setFirstTabToCurrentTab();
             DOMControllerAddEdit.setFirstTabToCurrentTab(firstTabIndex)
+            todoListStorage.setCurrentTab(firstTabIndex);
         };
         todoListStorage.addTab(newTabIndex);
         return newTabIndex
@@ -49,6 +50,7 @@ const eventBundler = (() => {
             const firstTabIndex = objectControllerAddEditObject.setFirstTabToCurrentTab();
             DOMControllerAddEdit.setFirstTabToCurrentTab(firstTabIndex)
             DOMControllerRemove.removeAllTaskElements();
+            todoListStorage.setCurrentTab(firstTabIndex);
             if (!helperFunctions.checkIfNoMoreTabs()) {
                 DOMControllerAddEdit.loadTasksFromNewCurrentTab();
             }
@@ -62,6 +64,7 @@ const eventBundler = (() => {
             DOMControllerAddEdit.setCurrentTabDOM(tabIndex);
             DOMControllerRemove.removeAllTaskElements();
             DOMControllerAddEdit.loadTasksFromNewCurrentTab();
+            todoListStorage.setCurrentTab(tabIndex);
         };
     }
     const newTask = (event, title="New Task Title", dueDate="Task Due Date", description="Task Description", notes="Task Notes", pinned=false, completed=false) => {
