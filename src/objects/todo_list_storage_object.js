@@ -30,8 +30,8 @@ const todoListStorage = (() => {
             "due_date": "${taskObject.getTaskDueDate()}",
             "description": "${taskObject.getTaskDescription()}",
             "notes": "${taskObject.getTaskNotes()}",
-            "completed": ${taskObject.getCompletedState()},
             "pinned": ${taskObject.getPinnedState()},
+            "completed": ${taskObject.getCompletedState()},
             "checklist_tasks": {}
         }`;
         const taskParsedObject = JSON.parse(taskJSONString);
