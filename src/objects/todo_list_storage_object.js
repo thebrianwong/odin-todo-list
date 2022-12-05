@@ -160,8 +160,10 @@ const todoListStorage = (() => {
     };
     const checkForExistingStorage = () => {
         if (localStorage.getItem("to_do_list")) {
+            // prob loadInLocalStorage()
             return true;
         } else {
+            // prob loadInInstructionsPage()
             return false;
         }
     };
