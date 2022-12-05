@@ -122,7 +122,42 @@ const todoListStorage = (() => {
         todoListParsedObject["tabs"][`tab_${tabIndex}`]["tasks"][`task_${taskIndex}`]["checklist_tasks"][`checklist_task_${checklistTaskIndex}`] = null;
         updateLocalStorageValue(todoListParsedObject);
     };
-
+    const getCurrentTabIndex = () => {
+        const todoListParsedObject = getLocalStorageValue();
+        const currentTabIndex = todoListParsedObject["current_tab"];
+        return currentTabIndex;
+    };
+    const getTabName = (tabIndex) => {
+        const todoListParsedObject = getLocalStorageValue();
+        const tabName = todoListParsedObject["tabs"][`tab_${tabIndex}`]["title"];
+        return tabName;
+    };
+    const getTaskValues = (tabIndex, taskIndex) => {
+        const todoListParsedObject = getLocalStorageValue();
+        let taskValues = [];
+        const taskTitle = todoListParsedObject["tabs"][`tab_${tabIndex}`]["tasks"][`task_${taskIndex}`]["title"];
+        taskValues.push(taskTitle);
+        const taskDueDate = todoListParsedObject["tabs"][`tab_${tabIndex}`]["tasks"][`task_${taskIndex}`]["due_date"];
+        taskValues.push(taskDueDate);
+        const taskDescription = todoListParsedObject["tabs"][`tab_${tabIndex}`]["tasks"][`task_${taskIndex}`]["description"];
+        taskValues.push(taskDescription);
+        const taskNotes = todoListParsedObject["tabs"][`tab_${tabIndex}`]["tasks"][`task_${taskIndex}`]["notes"];
+        taskValues.push(taskNotes);
+        const taskPinned = todoListParsedObject["tabs"][`tab_${tabIndex}`]["tasks"][`task_${taskIndex}`]["pinned"];
+        taskValues.push(taskPinned);
+        const taskCompleted = todoListParsedObject["tabs"][`tab_${tabIndex}`]["tasks"][`task_${taskIndex}`]["completed"];
+        taskValues.push(taskCompleted);
+        return taskValues;
+    };
+    const getChecklistTaskValues = (tabIndex, taskIndex, checklistTaskIndex) => {
+        const todoListParsedObject = getLocalStorageValue();
+        let checklistTaskValues = [];
+        const checklistTaskDescription = todoListParsedObject["tabs"][`tab_${tabIndex}`]["tasks"][`task_${taskIndex}`]["checklist_tasks"][`checklist_task_${checklistTaskIndex}`]["description"];
+        checklistTaskValues.push(checklistTaskDescription);
+        const checklistTaskCompleted = todoListParsedObject["tabs"][`tab_${tabIndex}`]["tasks"][`task_${taskIndex}`]["checklist_tasks"][`checklist_task_${checklistTaskIndex}`]["completed"];
+        checklistTaskValues.push(checklistTaskCompleted);
+        return checklistTaskValues;
+    };
     // const updateLocalStorage = (objectType, tabIndex, taskIndex, checklistTaskIndex) => {
     //     const todoListRawString = localStorage.getItem("to_do_list");
     //     const todoListParsedString = JSON.parse(todoListRawString);
@@ -149,7 +184,7 @@ const todoListStorage = (() => {
     //         objectParsedString = JSON.parse(taskRawString);
     //     }
     // };
-    return { initializeTodoList, addTab, addTask, addChecklistTask, setCurrentTab, setTabName, setTaskSubcontainerValue, setTaskCompleted, setTaskPinned, setChecklistTaskDescription, setChecklistTaskCompleted, removeTab, removeTask, removeChecklistTask, }
+    return { initializeTodoList, addTab, addTask, addChecklistTask, setCurrentTab, setTabName, setTaskSubcontainerValue, setTaskCompleted, setTaskPinned, setChecklistTaskDescription, setChecklistTaskCompleted, removeTab, removeTask, removeChecklistTask, getCurrentTabIndex, getTabName, getTaskValues, getChecklistTaskValues, }
 })();
 
 export { todoListStorage };
