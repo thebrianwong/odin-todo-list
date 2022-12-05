@@ -188,7 +188,7 @@ const eventBundler = (() => {
         eventAssigner.addRemoveTabButtonListener(newTabElement);
         eventAssigner.addSwitchTabListener(newTabElement);
     };
-    const loadInitialPage = () => {
+    const loadInInstructionsPage = () => {
         todoListStorage.initializeTodoList();
         const tabIndex = addTab(event, "Instructions");
         const taskIndex = newTask(event, "Quick Tips! Click the pin button to pin a task to the top of the list.",
@@ -198,26 +198,25 @@ const eventBundler = (() => {
         DOMControllerAddEdit.toggleTaskDOMComplete(taskIndex);
         DOMControllerAddEdit.changePinButtonImage(taskIndex);
         DOMControllerAddEdit.shiftTaskElementPosition(taskIndex);
-        addInstructionsChecklistTask(tabIndex, taskIndex);
+        addLoadedInChecklistTask(tabIndex, taskIndex,
+            "If your task has multiple steps, try breaking them down into a checklist! Click the plus sign button to add steps as needed.", true);
+        addLoadedInChecklistTask(tabIndex, taskIndex,
+            "Have a new task you want to keep track of? Add it to the list by clicking on the 'New Task' button below!", true);
+        addLoadedInChecklistTask(tabIndex, taskIndex,
+            "Organize the different types of tasks in your life by creating themed tabs. Create a new tab by clicking on the plus sign button at the top of the list. Change tabs by clicking on different tab names.", true);
     };
-    const addInstructionsChecklistTask = (tabIndex, taskIndex) => {
-        const instructions = [
-            ["If your task has multiple steps, try breaking them down into a checklist! Click the plus sign button to add steps as needed.", true],
-            ["Have a new task you want to keep track of? Add it to the list by clicking on the 'New Task' button below!", true],
-            [`Organize the different types of tasks in your life by creating themed tabs. Create a new tab by clicking on the plus sign button at the top of the list. Change tabs by clicking on different tab names.`, true]];
-        instructions.forEach((instructionsItem) => {
-            const checklistTaskIndex = objectControllerAddEditObject.addNewChecklistTaskToTask(taskIndex, instructionsItem[0], instructionsItem[1]);
-            const checklistTaskElement = DOMControllerAddEdit.addNewChecklistTaskToDOM(taskIndex, checklistTaskIndex);
-            DOMControllerAddEdit.toggleChecklistTaskDOMComplete(taskIndex, checklistTaskIndex);
-            addChecklistTaskListeners(checklistTaskElement);
-            todoListStorage.addChecklistTask(tabIndex, taskIndex, checklistTaskIndex)
-        })
+    const addLoadedInChecklistTask = (tabIndex, taskIndex, description, completed) => {
+        const checklistTaskIndex = objectControllerAddEditObject.addNewChecklistTaskToTask(taskIndex, description, completed);
+        const checklistTaskElement = DOMControllerAddEdit.addNewChecklistTaskToDOM(taskIndex, checklistTaskIndex);
+        DOMControllerAddEdit.toggleChecklistTaskDOMComplete(taskIndex, checklistTaskIndex);
+        addChecklistTaskListeners(checklistTaskElement);
+        todoListStorage.addChecklistTask(tabIndex, taskIndex, checklistTaskIndex)
     };
     return { addTab, insertTabInputElement, updateTab, removeTab, switchTab,
         newTask, removeTask, insertTaskInputElement, updateTask, toggleTaskComplete,
         addNewChecklistTask, insertChecklistTaskInputElement, updateChecklistTask,
         toggleChecklistTaskComplete, removeChecklistTask, toggleTaskPin, addTaskListeners,
-        addChecklistTaskListeners, toggleDisplayTaskDetails, addTabListeners, loadInitialPage, };
+        addChecklistTaskListeners, toggleDisplayTaskDetails, addTabListeners, loadInInstructionsPage, };
 })();
 
 export { eventBundler };

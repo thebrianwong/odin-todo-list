@@ -196,7 +196,7 @@ eventAssigner.addRemoveChecklistTaskListener();
 eventAssigner.addToggleTaskPinListeners();
 eventAssigner.addToggleDisplayTaskDetailsListeners();
 
-eventBundler.loadInitialPage();
+eventBundler.loadInInstructionsPage();
 
 // todoListStorage.initializeTodoList();
 // todoListStorage.addTab(0)
