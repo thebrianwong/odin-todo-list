@@ -40,6 +40,7 @@ const eventBundler = (() => {
             const tabElement = DOMControllerAddEdit.insertTabNameElement(tabIndex);
             DOMControllerRemove.removeTabInputElement(tabIndex);
             eventAssigner.addSwitchTabListener(tabElement);
+            todoListStorage.setTabName(tabIndex);
         };
     };
     const removeTab = (event) => {
@@ -98,6 +99,8 @@ const eventBundler = (() => {
             objectControllerAddEditObject.editTaskObjectInfo(taskIndex, taskSubcontainerType, newTaskSubcontentValue);
             DOMControllerAddEdit.insertTaskSubcontentElement(taskIndex, taskSubcontainerType);
             DOMControllerRemove.removeTaskInputElement(taskIndex, taskSubcontainerType);
+            const currentTabIndex = toDoList.getCurrentTabIndex();
+            todoListStorage.setTaskSubcontainerValue(currentTabIndex, taskIndex, taskSubcontainerType);
         };
     };
     const toggleTaskComplete = (event) => {
