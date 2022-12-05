@@ -47,6 +47,7 @@ const eventBundler = (() => {
         const tabIndex = helperFunctions.getTabIndex(event);
         objectControllerRemoveObject.removeTabFromTodoArray(tabIndex);
         DOMControllerRemove.removeTabElementFromDOM(tabIndex);
+        todoListStorage.removeTab(tabIndex);
         if (helperFunctions.checkIfWasCurrentTab(event)) {
             const firstTabIndex = objectControllerAddEditObject.setFirstTabToCurrentTab();
             DOMControllerAddEdit.setFirstTabToCurrentTab(firstTabIndex)
@@ -79,6 +80,7 @@ const eventBundler = (() => {
         const taskIndex = helperFunctions.getTaskIndex(event);
         objectControllerRemoveObject.removeTaskFromTabArray(taskIndex);
         DOMControllerRemove.removeTaskElementFromDOM(taskIndex);
+        todoListStorage.removeTask(toDoList.getCurrentTabIndex(), taskIndex);
     };
     const insertTaskInputElement = (event) => {
         if (!helperFunctions.checkForExistingInputElement(event, "Task")) {
@@ -147,6 +149,7 @@ const eventBundler = (() => {
         const checklistTaskIndex = helperFunctions.getChecklistTaskIndex(event);
         objectControllerRemoveObject.removeChecklistTaskFromTaskArray(taskIndex, checklistTaskIndex);
         DOMControllerRemove.removeChecklistTaskElementDOM(taskIndex, checklistTaskIndex);
+        todoListStorage.removeChecklistTask(toDoList.getCurrentTabIndex(), taskIndex, checklistTaskIndex);
     };
     const toggleTaskPin = (event) => {
         const taskIndex = helperFunctions.getTaskIndex(event);
