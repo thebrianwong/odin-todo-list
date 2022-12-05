@@ -105,6 +105,7 @@ const eventBundler = (() => {
         const taskIndex = helperFunctions.getTaskIndex(event);
         objectControllerAddEditObject.toggleTaskComplete(taskIndex);
         DOMControllerAddEdit.toggleTaskDOMComplete(taskIndex);
+        todoListStorage.toggleTaskCompleted(toDoList.getCurrentTabIndex(), taskIndex);
     };
     const addNewChecklistTask = (event) => {
         const taskIndex = helperFunctions.getTaskIndex(event);
@@ -151,6 +152,7 @@ const eventBundler = (() => {
         objectControllerAddEditObject.toggleTaskPin(taskIndex);
         DOMControllerAddEdit.changePinButtonImage(taskIndex);
         DOMControllerAddEdit.shiftTaskElementPosition(taskIndex);
+        todoListStorage.toggleTaskPinned(toDoList.getCurrentTabIndex(), taskIndex);
     };
     // const loadTasksFromNewCurrentTab = () => {
     //     for (const task )
