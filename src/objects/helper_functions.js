@@ -155,10 +155,19 @@ const helperFunctions = (() => {
         const checklistTaskObject = taskObject.getSpecificChecklistTask(checklistTaskIndex);
         return checklistTaskObject;
     }
+    const checkIfNoMoreTabs = () => {
+        const toDoTabSection = document.querySelector(".to-do-tab-section");
+        const toDoTabs = Array.from(toDoTabSection.querySelectorAll(".tab-title"));
+        if (toDoTabs.length === 0) {
+            return true;
+        } else {
+            return false;
+        };
+    };
     return { checkIfWasCurrentTab, checkIfOnlyOneTab, getTaskIndex,
         getChecklistTaskIndex, getTabIndex, getNewValue, getTaskSubcontainerType,
         getTaskSubcontainerElement, getTaskElement, getChecklistTaskElement,
-        getTabElement, checkForExistingInputElement, tryingToDoubleClick, getTabObject, getTaskObject, getChecklistTaskObject };
+        getTabElement, checkForExistingInputElement, tryingToDoubleClick, getTabObject, getTaskObject, getChecklistTaskObject, checkIfNoMoreTabs };
 })();
 
 export { helperFunctions };
