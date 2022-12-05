@@ -212,11 +212,19 @@ const eventBundler = (() => {
         addChecklistTaskListeners(checklistTaskElement);
         todoListStorage.addChecklistTask(tabIndex, taskIndex, checklistTaskIndex)
     };
+    const loadInLocalStorage = () => {
+        const todoListParsedObject = todoListStorage.getLocalStorageValue();
+        loadInCurrentTabIndex();
+    };
+    const loadInCurrentTabIndex = () => {
+        const currentTabIndex = todoListStorage.getCurrentTabIndex();
+        toDoList.setCurrentTabIndex(currentTabIndex);
+    };
     return { addTab, insertTabInputElement, updateTab, removeTab, switchTab,
         newTask, removeTask, insertTaskInputElement, updateTask, toggleTaskComplete,
         addNewChecklistTask, insertChecklistTaskInputElement, updateChecklistTask,
         toggleChecklistTaskComplete, removeChecklistTask, toggleTaskPin, addTaskListeners,
-        addChecklistTaskListeners, toggleDisplayTaskDetails, addTabListeners, loadInInstructionsPage, };
+        addChecklistTaskListeners, toggleDisplayTaskDetails, addTabListeners, loadInInstructionsPage, loadInLocalStorage };
 })();
 
 export { eventBundler };
