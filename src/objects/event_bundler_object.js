@@ -72,8 +72,7 @@ const eventBundler = (() => {
         const newTaskIndex = objectControllerAddEditObject.addNewTaskToTab(title, dueDate, description, notes, pinned, completed);
         const newTaskElement = DOMControllerAddEdit.addNewTaskToDOM(newTaskIndex);
         addTaskListeners(newTaskElement);
-        const currentTabIndex = toDoList.getCurrentTabIndex();
-        todoListStorage.addTask(currentTabIndex, newTaskIndex);
+        todoListStorage.addTask(toDoList.getCurrentTabIndex(), newTaskIndex);
         return newTaskIndex;
     }
     const removeTask = (event) => {
@@ -99,8 +98,7 @@ const eventBundler = (() => {
             objectControllerAddEditObject.editTaskObjectInfo(taskIndex, taskSubcontainerType, newTaskSubcontentValue);
             DOMControllerAddEdit.insertTaskSubcontentElement(taskIndex, taskSubcontainerType);
             DOMControllerRemove.removeTaskInputElement(taskIndex, taskSubcontainerType);
-            const currentTabIndex = toDoList.getCurrentTabIndex();
-            todoListStorage.setTaskSubcontainerValue(currentTabIndex, taskIndex, taskSubcontainerType);
+            todoListStorage.setTaskSubcontainerValue(toDoList.getCurrentTabIndex(), taskIndex, taskSubcontainerType);
         };
     };
     const toggleTaskComplete = (event) => {
@@ -113,8 +111,7 @@ const eventBundler = (() => {
         const newChecklistTaskIndex = objectControllerAddEditObject.addNewChecklistTaskToTask(taskIndex);
         const newChecklistTaskElement = DOMControllerAddEdit.addNewChecklistTaskToDOM(taskIndex, newChecklistTaskIndex);
         addChecklistTaskListeners(newChecklistTaskElement);
-        const currentTabIndex = toDoList.getCurrentTabIndex();
-        todoListStorage.addChecklistTask(currentTabIndex, taskIndex, newChecklistTaskIndex);
+        todoListStorage.addChecklistTask(toDoList.getCurrentTabIndex(), taskIndex, newChecklistTaskIndex);
     };
     const insertChecklistTaskInputElement = (event) => {
         if (!helperFunctions.checkForExistingInputElement(event, "Checklist Task")) {
