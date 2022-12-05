@@ -158,6 +158,13 @@ const todoListStorage = (() => {
         checklistTaskValues.push(checklistTaskCompleted);
         return checklistTaskValues;
     };
+    const checkForExistingStorage = () => {
+        if (localStorage.getItem("to_do_list")) {
+            return true;
+        } else {
+            return false;
+        }
+    };
     // const updateLocalStorage = (objectType, tabIndex, taskIndex, checklistTaskIndex) => {
     //     const todoListRawString = localStorage.getItem("to_do_list");
     //     const todoListParsedString = JSON.parse(todoListRawString);
@@ -184,7 +191,7 @@ const todoListStorage = (() => {
     //         objectParsedString = JSON.parse(taskRawString);
     //     }
     // };
-    return { initializeTodoList, addTab, addTask, addChecklistTask, setCurrentTab, setTabName, setTaskSubcontainerValue, toggleTaskCompleted, toggleTaskPinned, setChecklistTaskDescription, toggleChecklistTaskCompleted, removeTab, removeTask, removeChecklistTask, getCurrentTabIndex, getTabName, getTaskValues, getChecklistTaskValues, }
+    return { initializeTodoList, addTab, addTask, addChecklistTask, setCurrentTab, setTabName, setTaskSubcontainerValue, toggleTaskCompleted, toggleTaskPinned, setChecklistTaskDescription, toggleChecklistTaskCompleted, removeTab, removeTask, removeChecklistTask, getCurrentTabIndex, getTabName, getTaskValues, getChecklistTaskValues, checkForExistingStorage, }
 })();
 
 export { todoListStorage };
