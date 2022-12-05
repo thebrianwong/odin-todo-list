@@ -109,19 +109,20 @@ const todoListStorage = (() => {
     };
     const removeTab = (tabIndex) => {
         const todoListParsedObject = getLocalStorageValue();
-        delete todoListParsedObject["tabs"][`tab_${tabIndex}`];
+        todoListParsedObject["tabs"][`tab_${tabIndex}`] = null;
         updateLocalStorageValue(todoListParsedObject);
     };
     const removeTask = (tabIndex, taskIndex) => {
         const todoListParsedObject = getLocalStorageValue();
-        delete todoListParsedObject["tabs"][`tab_${tabIndex}`]["tasks"][`task_${taskIndex}`];
+        todoListParsedObject["tabs"][`tab_${tabIndex}`]["tasks"][`task_${taskIndex}`] = null;
         updateLocalStorageValue(todoListParsedObject);
     };
     const removeChecklistTask = (tabIndex, taskIndex, checklistTaskIndex) => {
         const todoListParsedObject = getLocalStorageValue();
-        delete todoListParsedObject["tabs"][`tab_${tabIndex}`]["tasks"][`task_${taskIndex}`]["checklist_tasks"][`checklist_task_${checklistTaskIndex}`];
+        todoListParsedObject["tabs"][`tab_${tabIndex}`]["tasks"][`task_${taskIndex}`]["checklist_tasks"][`checklist_task_${checklistTaskIndex}`] = null;
         updateLocalStorageValue(todoListParsedObject);
     };
+
     // const updateLocalStorage = (objectType, tabIndex, taskIndex, checklistTaskIndex) => {
     //     const todoListRawString = localStorage.getItem("to_do_list");
     //     const todoListParsedString = JSON.parse(todoListRawString);
