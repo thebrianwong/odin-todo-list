@@ -8,6 +8,7 @@ import { eventAssigner } from "./event_assigner_object";
 import { objectControllerRemoveObject } from "./object_controller_remove_object";
 import { helperFunctions } from "./helper_functions";
 import { DOMControllerRemove } from "./DOM_controller_remove";
+import { todoListStorage } from "./todo_list_storage_object";
 
 const eventBundler = (() => {
     const addTab = (event, tabName="New Tab") => {
@@ -18,6 +19,7 @@ const eventBundler = (() => {
             const firstTabIndex = objectControllerAddEditObject.setFirstTabToCurrentTab();
             DOMControllerAddEdit.setFirstTabToCurrentTab(firstTabIndex)
         };
+        todoListStorage.addTab(newTabIndex);
         return newTabIndex
     }
     const insertTabInputElement = (event) => {
@@ -66,6 +68,8 @@ const eventBundler = (() => {
         const newTaskIndex = objectControllerAddEditObject.addNewTaskToTab(title, dueDate, description, notes, pinned, completed);
         const newTaskElement = DOMControllerAddEdit.addNewTaskToDOM(newTaskIndex);
         addTaskListeners(newTaskElement);
+        const currentTabIndex = toDoList.getCurrentTabIndex();
+        todoListStorage.addTask(currentTabIndex, newTaskIndex);
         return newTaskIndex;
     }
     const removeTask = (event) => {
@@ -103,6 +107,8 @@ const eventBundler = (() => {
         const newChecklistTaskIndex = objectControllerAddEditObject.addNewChecklistTaskToTask(taskIndex);
         const newChecklistTaskElement = DOMControllerAddEdit.addNewChecklistTaskToDOM(taskIndex, newChecklistTaskIndex);
         addChecklistTaskListeners(newChecklistTaskElement);
+        const currentTabIndex = toDoList.getCurrentTabIndex();
+        todoListStorage.addChecklistTask(currentTabIndex, taskIndex, newChecklistTaskIndex);
     };
     const insertChecklistTaskInputElement = (event) => {
         if (!helperFunctions.checkForExistingInputElement(event, "Checklist Task")) {
@@ -173,6 +179,7 @@ const eventBundler = (() => {
         eventAssigner.addSwitchTabListener(newTabElement);
     };
     const loadInitialPage = () => {
+        todoListStorage.initializeTodoList();
         const tabIndex = addTab(event, "Instructions");
         const taskIndex = newTask(event, "Quick Tips! Click the pin button to pin a task to the top of the list.",
             `Tomorrow, next week, or whenever your task is due, you can add it here! Click the arrow button to toggle between showing and hiding task details.`,
@@ -193,6 +200,7 @@ const eventBundler = (() => {
             const checklistTaskElement = DOMControllerAddEdit.addNewChecklistTaskToDOM(taskIndex, checklistTaskIndex);
             DOMControllerAddEdit.toggleChecklistTaskDOMComplete(taskIndex, checklistTaskIndex);
             addChecklistTaskListeners(checklistTaskElement);
+            todoListStorage.addChecklistTask(tabIndex, taskIndex, checklistTaskIndex)
         })
     };
     return { addTab, insertTabInputElement, updateTab, removeTab, switchTab,

@@ -198,19 +198,19 @@ eventAssigner.addToggleDisplayTaskDetailsListeners();
 
 eventBundler.loadInitialPage();
 
-todoListStorage.initializeTodoList();
-todoListStorage.addTab(0)
-todoListStorage.addTask(0,0)
-todoListStorage.addChecklistTask(0,0,0)
-todoListStorage.addChecklistTask(0,0,1)
-todoListStorage.addChecklistTask(0,0,2)
+// todoListStorage.initializeTodoList();
+// todoListStorage.addTab(0)
+// todoListStorage.addTask(0,0)
+// todoListStorage.addChecklistTask(0,0,0)
+// todoListStorage.addChecklistTask(0,0,1)
+// todoListStorage.addChecklistTask(0,0,2)
 // localStorage.clear()
 
-todoListStorage.setCurrentTab(1)
+// todoListStorage.setCurrentTab(1)
 
 console.log(JSON.parse(localStorage.getItem("to_do_list")))
 
-todoListStorage.setCurrentTab(0)
-todoListStorage.setChecklistTaskCompleted(0,0,0)
+// todoListStorage.setCurrentTab(0)
+// todoListStorage.setChecklistTaskCompleted(0,0,0)
 // todoListStorage.removeTab(0)
 console.log(JSON.parse(localStorage.getItem("to_do_list")))
