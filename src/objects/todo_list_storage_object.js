@@ -83,13 +83,13 @@ const todoListStorage = (() => {
         };
         updateLocalStorageValue(todoListParsedObject);
     };
-    const setTaskCompleted = (tabIndex, taskIndex) => {
+    const toggleTaskCompleted = (tabIndex, taskIndex) => {
         const taskObject = helperFunctions.getTaskObject(tabIndex, taskIndex);
         const todoListParsedObject = getLocalStorageValue();
         todoListParsedObject["tabs"][`tab_${tabIndex}`]["tasks"][`task_${taskIndex}`]["completed"] = taskObject.getCompletedState();
         updateLocalStorageValue(todoListParsedObject);
     };
-    const setTaskPinned = (tabIndex, taskIndex) => {
+    const toggleTaskPinned = (tabIndex, taskIndex) => {
         const taskObject = helperFunctions.getTaskObject(tabIndex, taskIndex);
         const todoListParsedObject = getLocalStorageValue();
         todoListParsedObject["tabs"][`tab_${tabIndex}`]["tasks"][`task_${taskIndex}`]["pinned"] = taskObject.getPinnedState();
@@ -101,7 +101,7 @@ const todoListStorage = (() => {
         todoListParsedObject["tabs"][`tab_${tabIndex}`]["tasks"][`task_${taskIndex}`]["checklist_tasks"][`checklist_task_${checklistTaskIndex}`]["description"] = checklistTaskObject.getTaskDescription();
         updateLocalStorageValue(todoListParsedObject);
     };
-    const setChecklistTaskCompleted = (tabIndex, taskIndex, checklistTaskIndex) => {
+    const toggleChecklistTaskCompleted = (tabIndex, taskIndex, checklistTaskIndex) => {
         const checklistTaskObject = helperFunctions.getChecklistTaskObject(tabIndex, taskIndex, checklistTaskIndex);
         const todoListParsedObject = getLocalStorageValue();
         todoListParsedObject["tabs"][`tab_${tabIndex}`]["tasks"][`task_${taskIndex}`]["checklist_tasks"][`checklist_task_${checklistTaskIndex}`]["completed"] = checklistTaskObject.getCompletedState();
@@ -184,7 +184,7 @@ const todoListStorage = (() => {
     //         objectParsedString = JSON.parse(taskRawString);
     //     }
     // };
-    return { initializeTodoList, addTab, addTask, addChecklistTask, setCurrentTab, setTabName, setTaskSubcontainerValue, setTaskCompleted, setTaskPinned, setChecklistTaskDescription, setChecklistTaskCompleted, removeTab, removeTask, removeChecklistTask, getCurrentTabIndex, getTabName, getTaskValues, getChecklistTaskValues, }
+    return { initializeTodoList, addTab, addTask, addChecklistTask, setCurrentTab, setTabName, setTaskSubcontainerValue, toggleTaskCompleted, toggleTaskPinned, setChecklistTaskDescription, toggleChecklistTaskCompleted, removeTab, removeTask, removeChecklistTask, getCurrentTabIndex, getTabName, getTaskValues, getChecklistTaskValues, }
 })();
 
 export { todoListStorage };
