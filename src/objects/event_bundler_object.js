@@ -132,6 +132,7 @@ const eventBundler = (() => {
             objectControllerAddEditObject.editChecklistTaskDescription(taskIndex, checklistTaskIndex, newDescriptionValue);
             DOMControllerAddEdit.insertChecklistTaskDescriptionElement(taskIndex, checklistTaskIndex);
             DOMControllerRemove.removeChecklistTaskInputElement(taskIndex, checklistTaskIndex);
+            todoListStorage.setChecklistTaskDescription(toDoList.getCurrentTabIndex(), taskIndex, checklistTaskIndex);
         };
     };
     const toggleChecklistTaskComplete = (event) => {
@@ -139,6 +140,7 @@ const eventBundler = (() => {
         const checklistTaskIndex = helperFunctions.getChecklistTaskIndex(event);
         objectControllerAddEditObject.toggleChecklistTaskComplete(taskIndex, checklistTaskIndex);
         DOMControllerAddEdit.toggleChecklistTaskDOMComplete(taskIndex, checklistTaskIndex);
+        todoListStorage.toggleChecklistTaskCompleted(toDoList.getCurrentTabIndex(), taskIndex, checklistTaskIndex);
     };
     const removeChecklistTask = (event) => {
         const taskIndex = helperFunctions.getTaskIndex(event);
