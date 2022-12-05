@@ -107,6 +107,11 @@ const todoListStorage = (() => {
         todoListParsedObject["tabs"][`tab_${tabIndex}`]["tasks"][`task_${taskIndex}`]["checklist_tasks"][`checklist_task_${checklistTaskIndex}`]["completed"] = checklistTaskObject.getCompletedState();
         updateLocalStorageValue(todoListParsedObject);
     };
+    const removeTab = (tabIndex) => {
+        const todoListParsedObject = getLocalStorageValue();
+        delete todoListParsedObject["tabs"][`tab_${tabIndex}`];
+        updateLocalStorageValue(todoListParsedObject);
+    };
     // const updateLocalStorage = (objectType, tabIndex, taskIndex, checklistTaskIndex) => {
     //     const todoListRawString = localStorage.getItem("to_do_list");
     //     const todoListParsedString = JSON.parse(todoListRawString);
@@ -133,7 +138,7 @@ const todoListStorage = (() => {
     //         objectParsedString = JSON.parse(taskRawString);
     //     }
     // };
-    return { initializeTodoList, addTab, addTask, addChecklistTask, setCurrentTab, setTabName, setTaskSubcontainerValue, setTaskCompleted, setTaskPinned, setChecklistTaskDescription, setChecklistTaskCompleted, }
+    return { initializeTodoList, addTab, addTask, addChecklistTask, setCurrentTab, setTabName, setTaskSubcontainerValue, setTaskCompleted, setTaskPinned, setChecklistTaskDescription, setChecklistTaskCompleted, removeTab, }
 })();
 
 export { todoListStorage };
