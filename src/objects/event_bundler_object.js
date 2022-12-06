@@ -226,12 +226,10 @@ const eventBundler = (() => {
             if (tabObjects[tab] === null) {
                 toDoList.addTask(undefined);
             } else {
-                const tabTitle = tabObjects[tab]["title"];
-                // objectControllerAddEditObject.addNewTabToTodoArray(tabTitle);
+                const tabTitle = todoListStorage.getTabTitle(tab)
                 const tabIndex = addTab(event, tabTitle)
                 loadInTaskObjects(tabIndex);
             };
-            console.log(tabObjects[tab])
         };
     };
     return { addTab, insertTabInputElement, updateTab, removeTab, switchTab,

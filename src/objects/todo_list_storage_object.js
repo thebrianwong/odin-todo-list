@@ -127,9 +127,9 @@ const todoListStorage = (() => {
         const currentTabIndex = todoListParsedObject["current_tab"];
         return currentTabIndex;
     };
-    const getTabTitle = (tabIndex) => {
+    const getTabTitle = (tabKey) => {
         const todoListParsedObject = getLocalStorageValue();
-        const tabTitle = todoListParsedObject["tabs"][`tab_${tabIndex}`]["title"];
+        const tabTitle = todoListParsedObject["tabs"][tabKey]["title"];
         return tabTitle;
     };
     const getTaskValues = (tabIndex, taskIndex) => {
