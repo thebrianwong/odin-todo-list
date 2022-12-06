@@ -150,12 +150,12 @@ const todoListStorage = (() => {
         taskValues.push(taskCompleted);
         return taskValues;
     };
-    const getChecklistTaskValues = (tabIndex, taskIndex, checklistTaskIndex) => {
+    const getChecklistTaskValues = (tabKey, taskKey, checklistTaskKey) => {
         const todoListParsedObject = getLocalStorageValue();
         let checklistTaskValues = [];
-        const checklistTaskDescription = todoListParsedObject["tabs"][`tab_${tabIndex}`]["tasks"][`task_${taskIndex}`]["checklist_tasks"][`checklist_task_${checklistTaskIndex}`]["description"];
+        const checklistTaskDescription = todoListParsedObject["tabs"][tabKey]["tasks"][taskKey]["checklist_tasks"][checklistTaskKey]["description"];
         checklistTaskValues.push(checklistTaskDescription);
-        const checklistTaskCompleted = todoListParsedObject["tabs"][`tab_${tabIndex}`]["tasks"][`task_${taskIndex}`]["checklist_tasks"][`checklist_task_${checklistTaskIndex}`]["completed"];
+        const checklistTaskCompleted = todoListParsedObject["tabs"][tabKey]["tasks"][taskKey]["checklist_tasks"][checklistTaskKey]["completed"];
         checklistTaskValues.push(checklistTaskCompleted);
         return checklistTaskValues;
     };

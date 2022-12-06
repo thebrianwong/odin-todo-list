@@ -216,7 +216,9 @@ const eventBundler = (() => {
         const checklistTaskElement = DOMControllerAddEdit.addNewChecklistTaskToDOM(taskIndex, checklistTaskIndex);
         DOMControllerAddEdit.toggleChecklistTaskDOMComplete(taskIndex, checklistTaskIndex);
         addChecklistTaskListeners(checklistTaskElement);
-        todoListStorage.addChecklistTask(tabIndex, taskIndex, checklistTaskIndex)
+        if (!todoListStorage.isLoading()) {
+            todoListStorage.addChecklistTask(tabIndex, taskIndex, checklistTaskIndex)
+        };
     };
     const loadInLocalStorage = () => {
         const todoListParsedObject = todoListStorage.getLocalStorageValue();
@@ -255,11 +257,28 @@ const eventBundler = (() => {
                 const taskNotes = taskValues[3];
                 const taskPinned = taskValues[4];
                 const taskCompleted = taskValues[5];
+                if (tabIndex === toDoList.getCurrentTabIndex()) {
+                    console.log(223)
+                }
                 const taskIndex = newTask(event, taskTitle, taskDueDate, taskDescription, taskNotes, taskPinned, taskCompleted);
                 DOMControllerAddEdit.toggleTaskDOMComplete(taskIndex);
                 DOMControllerAddEdit.changePinButtonImage(taskIndex);
                 DOMControllerAddEdit.shiftTaskElementPosition(taskIndex);
                 loadInChecklistTaskObjects(tabIndex, tabKey, taskIndex, taskKey);
+            };
+        };
+    };
+    const loadInChecklistTaskObjects = (tabIndex, tabKey, taskIndex, taskKey) => {
+        const taskObject = helperFunctions.getTaskObject(tabIndex, taskIndex);
+        const checklistTaskObjects = todoListStorage.getChecklistTaskObjects(tabIndex, taskIndex);
+        for (const checklistTaskKey in checklistTaskObjects) {
+            if (checklistTaskObjects[checklistTaskKey] === null) {
+                taskObject.addTab(undefined);
+            } else {
+                const checklistTaskValues = todoListStorage.getChecklistTaskValues(tabKey, taskKey, checklistTaskKey);
+                const checklistTaskDescription = checklistTaskValues[0];
+                const checklistTaskCompleted = checklistTaskValues[1];
+                const checklistTaskIndex = addLoadedInChecklistTask(tabIndex, taskIndex, checklistTaskDescription, checklistTaskCompleted)
             };
         };
     };
