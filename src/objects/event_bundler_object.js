@@ -223,6 +223,7 @@ const eventBundler = (() => {
         todoListStorage.toggleLoading();
         loadInCurrentTabIndex();
         loadInTabObjects()
+        todoListStorage.toggleLoading();
     };
     const loadInCurrentTabIndex = () => {
         const currentTabIndex = todoListStorage.getCurrentTabIndex();
@@ -243,15 +244,24 @@ const eventBundler = (() => {
     const loadInTaskObjects = (tabIndex, tabKey) => {
         const tabObject = helperFunctions.getTabObject(tabIndex);
         const taskObjects = todoListStorage.getTaskObjects(tabIndex);
-        console.log(taskObjects)
         for (const taskKey in taskObjects) {
             if (taskObjects[taskKey] === null) {
                 tabObject.addTask(undefined);
             } else {
                 const taskValues = todoListStorage.getTaskValues(tabKey, taskKey)
-                console.log(taskValues)
-            }
-        }
+                const taskTitle = taskValues[0];
+                const taskDueDate = taskValues[1];
+                const taskDescription = taskValues[2];
+                const taskNotes = taskValues[3];
+                const taskPinned = taskValues[4];
+                const taskCompleted = taskValues[5];
+                const taskIndex = newTask(event, taskTitle, taskDueDate, taskDescription, taskNotes, taskPinned, taskCompleted);
+                DOMControllerAddEdit.toggleTaskDOMComplete(taskIndex);
+                DOMControllerAddEdit.changePinButtonImage(taskIndex);
+                DOMControllerAddEdit.shiftTaskElementPosition(taskIndex);
+                loadInChecklistTaskObjects(tabIndex, tabKey, taskIndex, taskKey);
+            };
+        };
     };
     return { addTab, insertTabInputElement, updateTab, removeTab, switchTab,
         newTask, removeTask, insertTaskInputElement, updateTask, toggleTaskComplete,
