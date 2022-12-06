@@ -196,7 +196,7 @@ eventAssigner.addRemoveChecklistTaskListener();
 eventAssigner.addToggleTaskPinListeners();
 eventAssigner.addToggleDisplayTaskDetailsListeners();
 
-eventBundler.loadInInstructionsPage();
+// eventBundler.loadInInstructionsPage();
 
 // todoListStorage.initializeTodoList();
 // todoListStorage.addTab(0)
@@ -215,4 +215,11 @@ console.log(JSON.parse(localStorage.getItem("to_do_list")))
 // todoListStorage.removeTab(0)
 console.log(JSON.parse(localStorage.getItem("to_do_list")))
 
-eventBundler.loadInTabObjects()
+// eventBundler.loadInLocalStorage()
+// eventBundler.loadInTabObjects()
+
+// eventBundler.loadInInstructionsPage();
+// todoListStorage.initializeTodoList();
+eventBundler.loadInLocalStorage()
+// eventBundler.loadInTabObjects()
+// localStorage.clear()
