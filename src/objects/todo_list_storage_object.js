@@ -167,6 +167,21 @@ const todoListStorage = (() => {
             return false;
         }
     };
+    const getTabObjects = () => {
+        const todoListParsedObject = todoListStorage.getLocalStorageValue();
+        const tabObjects = todoListParsedObject["tabs"];
+        return tabObjects;
+    };
+    const getTaskObjects = (tabIndex) => {
+        const todoListParsedObject = todoListStorage.getLocalStorageValue();
+        const taskObjects = todoListParsedObject["tabs"][`tab_${tabIndex}`]["tasks"];
+        return taskObjects;
+    };
+    const getChecklistTaskObjects = (tabIndex, taskIndex) => {
+        const todoListParsedObject = todoListStorage.getLocalStorageValue();
+        const checklistTaskObjects = todoListParsedObject["tabs"][`tab_${tabIndex}`]["tasks"][`task_${taskIndex}`]["checklist_tasks"];
+        return checklistTaskObjects;
+    };
     // const updateLocalStorage = (objectType, tabIndex, taskIndex, checklistTaskIndex) => {
     //     const todoListRawString = localStorage.getItem("to_do_list");
     //     const todoListParsedString = JSON.parse(todoListRawString);
@@ -193,7 +208,7 @@ const todoListStorage = (() => {
     //         objectParsedString = JSON.parse(taskRawString);
     //     }
     // };
-    return { initializeTodoList, addTab, addTask, addChecklistTask, setCurrentTab, setTabName, setTaskSubcontainerValue, toggleTaskCompleted, toggleTaskPinned, setChecklistTaskDescription, toggleChecklistTaskCompleted, removeTab, removeTask, removeChecklistTask, getCurrentTabIndex, getTabName, getTaskValues, getChecklistTaskValues, checkForExistingStorage, }
+    return { initializeTodoList, addTab, addTask, addChecklistTask, setCurrentTab, setTabName, setTaskSubcontainerValue, toggleTaskCompleted, toggleTaskPinned, setChecklistTaskDescription, toggleChecklistTaskCompleted, removeTab, removeTask, removeChecklistTask, getCurrentTabIndex, getTabName, getTaskValues, getChecklistTaskValues, checkForExistingStorage, getLocalStorageValue, getTabObjects, getTaskObjects, getChecklistTaskObjects, }
 })();
 
 export { todoListStorage };
