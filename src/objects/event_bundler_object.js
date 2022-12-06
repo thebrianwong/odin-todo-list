@@ -220,11 +220,25 @@ const eventBundler = (() => {
         const currentTabIndex = todoListStorage.getCurrentTabIndex();
         toDoList.setCurrentTabIndex(currentTabIndex);
     };
+    const loadInTabObjects = () => {
+        const tabObjects = todoListStorage.getTabObjects();
+        for (const tab in tabObjects) {
+            if (tabObjects[tab] === null) {
+                toDoList.addTask(undefined);
+            } else {
+                const tabTitle = tabObjects[tab]["title"];
+                // objectControllerAddEditObject.addNewTabToTodoArray(tabTitle);
+                const tabIndex = addTab(event, tabTitle)
+                loadInTaskObjects(tabIndex);
+            };
+            console.log(tabObjects[tab])
+        };
+    };
     return { addTab, insertTabInputElement, updateTab, removeTab, switchTab,
         newTask, removeTask, insertTaskInputElement, updateTask, toggleTaskComplete,
         addNewChecklistTask, insertChecklistTaskInputElement, updateChecklistTask,
         toggleChecklistTaskComplete, removeChecklistTask, toggleTaskPin, addTaskListeners,
-        addChecklistTaskListeners, toggleDisplayTaskDetails, addTabListeners, loadInInstructionsPage, loadInLocalStorage };
+        addChecklistTaskListeners, toggleDisplayTaskDetails, addTabListeners, loadInInstructionsPage, loadInLocalStorage, loadInTabObjects };
 })();
 
 export { eventBundler };
