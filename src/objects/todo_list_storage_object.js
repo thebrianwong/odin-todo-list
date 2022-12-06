@@ -127,10 +127,10 @@ const todoListStorage = (() => {
         const currentTabIndex = todoListParsedObject["current_tab"];
         return currentTabIndex;
     };
-    const getTabName = (tabIndex) => {
+    const getTabTitle = (tabIndex) => {
         const todoListParsedObject = getLocalStorageValue();
-        const tabName = todoListParsedObject["tabs"][`tab_${tabIndex}`]["title"];
-        return tabName;
+        const tabTitle = todoListParsedObject["tabs"][`tab_${tabIndex}`]["title"];
+        return tabTitle;
     };
     const getTaskValues = (tabIndex, taskIndex) => {
         const todoListParsedObject = getLocalStorageValue();
@@ -208,7 +208,7 @@ const todoListStorage = (() => {
     //         objectParsedString = JSON.parse(taskRawString);
     //     }
     // };
-    return { initializeTodoList, addTab, addTask, addChecklistTask, setCurrentTab, setTabName, setTaskSubcontainerValue, toggleTaskCompleted, toggleTaskPinned, setChecklistTaskDescription, toggleChecklistTaskCompleted, removeTab, removeTask, removeChecklistTask, getCurrentTabIndex, getTabName, getTaskValues, getChecklistTaskValues, checkForExistingStorage, getLocalStorageValue, getTabObjects, getTaskObjects, getChecklistTaskObjects, }
+    return { initializeTodoList, addTab, addTask, addChecklistTask, setCurrentTab, setTabName, setTaskSubcontainerValue, toggleTaskCompleted, toggleTaskPinned, setChecklistTaskDescription, toggleChecklistTaskCompleted, removeTab, removeTask, removeChecklistTask, getCurrentTabIndex, getTabTitle, getTaskValues, getChecklistTaskValues, checkForExistingStorage, getLocalStorageValue, getTabObjects, getTaskObjects, getChecklistTaskObjects, }
 })();
 
 export { todoListStorage };
