@@ -29,11 +29,13 @@ const objectControllerAddEditObject = (() => {
             }
         }
     };
-    const addNewTaskToTab = (title="New Task Title", dueDate="Task Due Date", description="Task Description", notes="Task Notes", pinned=false, completed=false) => {
-        const currentTabIndex = toDoList.getCurrentTabIndex();
-        const currentTab = toDoList.getSpecificChecklistTask(currentTabIndex);
+    const addNewTaskToTab = (tabIndex, title="New Task Title", dueDate="Task Due Date", description="Task Description", notes="Task Notes", pinned=false, completed=false) => {
+        // const currentTabIndex = toDoList.getCurrentTabIndex();
+        const tabObject = toDoList.getSpecificChecklistTask(tabIndex);
+        // console.log(tabIndex)
         const newTask = toDoTask(title, dueDate, description, notes, pinned, completed);
-        const newTaskIndex = currentTab.addTask(newTask);
+        // console.log(newTask)
+        const newTaskIndex = tabObject.addTask(newTask);
         return newTaskIndex;
     };
     const editTaskObjectInfo = (taskIndex, buttonType, newTaskSubcontentValue) => {
@@ -54,9 +56,11 @@ const objectControllerAddEditObject = (() => {
         const taskObject = currentTabObject.getSpecificChecklistTask(taskIndex);
         taskObject.toggleCompletedState();
     };
-    const addNewChecklistTaskToTask = (taskIndex, description="Checklist Task Description", completed=false) => {
-        const currentTabObject = toDoList.getCurrentTabObject();
-        const taskObject = currentTabObject.getSpecificChecklistTask(taskIndex);
+    const addNewChecklistTaskToTask = (tabIndex, taskIndex, description="Checklist Task Description", completed=false) => {
+        // console.log(taskIndex)
+        // console.log(toDoList.getCurrentTabIndex())
+        const tabObject = toDoList.getSpecificChecklistTask(tabIndex);
+        const taskObject = tabObject.getSpecificChecklistTask(taskIndex);
         const newChecklistTask = checklistTaskObject(description, completed);
         const newChecklistTaskIndex = taskObject.addTask(newChecklistTask);
         return newChecklistTaskIndex;

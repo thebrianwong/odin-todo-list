@@ -15,13 +15,24 @@ const eventBundler = (() => {
         const newTabIndex = objectControllerAddEditObject.addNewTabToTodoArray(tabName);
         const newTabElement = DOMControllerAddEdit.addNewTabToDOM(newTabIndex);
         addTabListeners(newTabElement);
-        if (helperFunctions.checkIfOnlyOneTab()) {
-            const firstTabIndex = objectControllerAddEditObject.setFirstTabToCurrentTab();
-            DOMControllerAddEdit.setFirstTabToCurrentTab(firstTabIndex)
-            todoListStorage.setCurrentTab(firstTabIndex);
-        };
+        // if (helperFunctions.checkIfOnlyOneTab()) {
+        //     console.log(tabName)
+        //     console.log(toDoList.getCurrentTabIndex())
+        //     const firstTabIndex = objectControllerAddEditObject.setFirstTabToCurrentTab();
+        //     DOMControllerAddEdit.setFirstTabToCurrentTab(firstTabIndex)
+        //     todoListStorage.setCurrentTab(firstTabIndex);
+        //     console.log(toDoList.getCurrentTabIndex())
+        // };
         if (!todoListStorage.isLoading()) {
             todoListStorage.addTab(newTabIndex);
+            if (helperFunctions.checkIfOnlyOneTab()) {
+                console.log(tabName)
+                console.log(toDoList.getCurrentTabIndex())
+                const firstTabIndex = objectControllerAddEditObject.setFirstTabToCurrentTab();
+                DOMControllerAddEdit.setFirstTabToCurrentTab(firstTabIndex)
+                todoListStorage.setCurrentTab(firstTabIndex);
+                console.log(toDoList.getCurrentTabIndex())
+            };
         }
         return newTabIndex
     }
@@ -71,8 +82,8 @@ const eventBundler = (() => {
             todoListStorage.setCurrentTab(tabIndex);
         };
     }
-    const newTask = (event, title="New Task Title", dueDate="Task Due Date", description="Task Description", notes="Task Notes", pinned=false, completed=false) => {
-        const newTaskIndex = objectControllerAddEditObject.addNewTaskToTab(title, dueDate, description, notes, pinned, completed);
+    const newTask = (event, tabIndex, title="New Task Title", dueDate="Task Due Date", description="Task Description", notes="Task Notes", pinned=false, completed=false) => {
+        const newTaskIndex = objectControllerAddEditObject.addNewTaskToTab(tabIndex, title, dueDate, description, notes, pinned, completed);
         const newTaskElement = DOMControllerAddEdit.addNewTaskToDOM(newTaskIndex);
         addTaskListeners(newTaskElement);
         if (!todoListStorage.isLoading()) {
@@ -114,8 +125,9 @@ const eventBundler = (() => {
         todoListStorage.toggleTaskCompleted(toDoList.getCurrentTabIndex(), taskIndex);
     };
     const addNewChecklistTask = (event) => {
+        const tabIndex = helperFunctions.getTabIndex(event);
         const taskIndex = helperFunctions.getTaskIndex(event);
-        const newChecklistTaskIndex = objectControllerAddEditObject.addNewChecklistTaskToTask(taskIndex);
+        const newChecklistTaskIndex = objectControllerAddEditObject.addNewChecklistTaskToTask(tabIndex, taskIndex);
         const newChecklistTaskElement = DOMControllerAddEdit.addNewChecklistTaskToDOM(taskIndex, newChecklistTaskIndex);
         addChecklistTaskListeners(newChecklistTaskElement);
         if (!todoListStorage.isLoading()) {
@@ -197,7 +209,7 @@ const eventBundler = (() => {
     const loadInInstructionsPage = () => {
         todoListStorage.initializeTodoList();
         const tabIndex = addTab(event, "Instructions");
-        const taskIndex = newTask(event, "Quick Tips! Click the pin button to pin a task to the top of the list.",
+        const taskIndex = newTask(event, tabIndex, "Quick Tips! Click the pin button to pin a task to the top of the list.",
             `Tomorrow, next week, or whenever your task is due, you can add it here! Click the arrow button to toggle between showing and hiding task details.`,
             "Add a description of your task here! Click the pencil buttons to edit the various parts of your task.",
             "Jot down some notes here! Mark your task as complete when you're done, or remove it from the list by clicking the X button.", true, true);
@@ -212,7 +224,7 @@ const eventBundler = (() => {
             "Organize the different types of tasks in your life by creating themed tabs. Create a new tab by clicking on the plus sign button at the top of the list. Change tabs by clicking on different tab names.", true);
     };
     const addLoadedInChecklistTask = (tabIndex, taskIndex, description, completed) => {
-        const checklistTaskIndex = objectControllerAddEditObject.addNewChecklistTaskToTask(taskIndex, description, completed);
+        const checklistTaskIndex = objectControllerAddEditObject.addNewChecklistTaskToTask(tabIndex, taskIndex, description, completed);
         const checklistTaskElement = DOMControllerAddEdit.addNewChecklistTaskToDOM(taskIndex, checklistTaskIndex);
         DOMControllerAddEdit.toggleChecklistTaskDOMComplete(taskIndex, checklistTaskIndex);
         addChecklistTaskListeners(checklistTaskElement);
@@ -229,6 +241,7 @@ const eventBundler = (() => {
     };
     const loadInCurrentTabIndex = () => {
         const currentTabIndex = todoListStorage.getCurrentTabIndex();
+        console.log(currentTabIndex)
         toDoList.setCurrentTabIndex(currentTabIndex);
     };
     const loadInTabObjects = () => {
@@ -239,6 +252,7 @@ const eventBundler = (() => {
             } else {
                 const tabTitle = todoListStorage.getTabTitle(tabKey)
                 const tabIndex = addTab(event, tabTitle)
+                console.log(tabIndex)
                 loadInTaskObjects(tabIndex, tabKey);
             };
         };
@@ -247,23 +261,29 @@ const eventBundler = (() => {
         const tabObject = helperFunctions.getTabObject(tabIndex);
         const taskObjects = todoListStorage.getTaskObjects(tabIndex);
         for (const taskKey in taskObjects) {
+            console.log(taskObjects[taskKey])
             if (taskObjects[taskKey] === null) {
+                console.log("FEF")
                 tabObject.addTask(undefined);
             } else {
                 const taskValues = todoListStorage.getTaskValues(tabKey, taskKey)
+                console.log(taskValues)
                 const taskTitle = taskValues[0];
                 const taskDueDate = taskValues[1];
                 const taskDescription = taskValues[2];
                 const taskNotes = taskValues[3];
                 const taskPinned = taskValues[4];
                 const taskCompleted = taskValues[5];
+                let taskIndex = undefined;
                 if (tabIndex === toDoList.getCurrentTabIndex()) {
-                    console.log(223)
+                    console.log(tabIndex)
+                    taskIndex = newTask(event, tabIndex, taskTitle, taskDueDate, taskDescription, taskNotes, taskPinned, taskCompleted);
+                    DOMControllerAddEdit.toggleTaskDOMComplete(taskIndex);
+                    DOMControllerAddEdit.changePinButtonImage(taskIndex);
+                    DOMControllerAddEdit.shiftTaskElementPosition(taskIndex);
+                } else {
+                    taskIndex = objectControllerAddEditObject.addNewTaskToTab(tabIndex, taskTitle, taskDueDate, taskDescription, taskNotes, taskPinned, taskCompleted);
                 }
-                const taskIndex = newTask(event, taskTitle, taskDueDate, taskDescription, taskNotes, taskPinned, taskCompleted);
-                DOMControllerAddEdit.toggleTaskDOMComplete(taskIndex);
-                DOMControllerAddEdit.changePinButtonImage(taskIndex);
-                DOMControllerAddEdit.shiftTaskElementPosition(taskIndex);
                 loadInChecklistTaskObjects(tabIndex, tabKey, taskIndex, taskKey);
             };
         };
@@ -278,7 +298,20 @@ const eventBundler = (() => {
                 const checklistTaskValues = todoListStorage.getChecklistTaskValues(tabKey, taskKey, checklistTaskKey);
                 const checklistTaskDescription = checklistTaskValues[0];
                 const checklistTaskCompleted = checklistTaskValues[1];
-                const checklistTaskIndex = addLoadedInChecklistTask(tabIndex, taskIndex, checklistTaskDescription, checklistTaskCompleted)
+                let checklistTaskIndex = undefined;
+                if (tabIndex === toDoList.getCurrentTabIndex()) {
+                    // const checklistTaskValues = todoListStorage.getChecklistTaskValues(tabKey, taskKey, checklistTaskKey);
+                    // const checklistTaskDescription = checklistTaskValues[0];
+                    // const checklistTaskCompleted = checklistTaskValues[1];
+                    checklistTaskIndex = addLoadedInChecklistTask(tabIndex, taskIndex, checklistTaskDescription, checklistTaskCompleted)
+                    DOMControllerAddEdit.toggleChecklistTaskDOMComplete(taskIndex, checklistTaskIndex);
+                } else {
+                    checklistTaskIndex = objectControllerAddEditObject.addNewChecklistTaskToTask(tabIndex, taskIndex);
+                };
+                // const checklistTaskValues = todoListStorage.getChecklistTaskValues(tabKey, taskKey, checklistTaskKey);
+                // const checklistTaskDescription = checklistTaskValues[0];
+                // const checklistTaskCompleted = checklistTaskValues[1];
+                // const checklistTaskIndex = addLoadedInChecklistTask(tabIndex, taskIndex, checklistTaskDescription, checklistTaskCompleted)
             };
         };
     };
