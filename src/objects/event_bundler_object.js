@@ -82,7 +82,7 @@ const eventBundler = (() => {
             todoListStorage.setCurrentTab(tabIndex);
         };
     }
-    const newTask = (event, tabIndex, title="New Task Title", dueDate="Task Due Date", description="Task Description", notes="Task Notes", pinned=false, completed=false) => {
+    const newTask = (event, tabIndex=toDoList.getCurrentTabIndex(), title="New Task Title", dueDate="Task Due Date", description="Task Description", notes="Task Notes", pinned=false, completed=false) => {
         const newTaskIndex = objectControllerAddEditObject.addNewTaskToTab(tabIndex, title, dueDate, description, notes, pinned, completed);
         const newTaskElement = DOMControllerAddEdit.addNewTaskToDOM(newTaskIndex);
         addTaskListeners(newTaskElement);
@@ -304,7 +304,8 @@ const eventBundler = (() => {
                     // const checklistTaskDescription = checklistTaskValues[0];
                     // const checklistTaskCompleted = checklistTaskValues[1];
                     checklistTaskIndex = addLoadedInChecklistTask(tabIndex, taskIndex, checklistTaskDescription, checklistTaskCompleted)
-                    DOMControllerAddEdit.toggleChecklistTaskDOMComplete(taskIndex, checklistTaskIndex);
+                    console.log(checklistTaskIndex)
+                    // DOMControllerAddEdit.toggleChecklistTaskDOMComplete(taskIndex, checklistTaskIndex);
                 } else {
                     checklistTaskIndex = objectControllerAddEditObject.addNewChecklistTaskToTask(tabIndex, taskIndex);
                 };
