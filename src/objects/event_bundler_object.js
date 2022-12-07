@@ -125,7 +125,7 @@ const eventBundler = (() => {
         todoListStorage.toggleTaskCompleted(toDoList.getCurrentTabIndex(), taskIndex);
     };
     const addNewChecklistTask = (event) => {
-        const tabIndex = helperFunctions.getTabIndex(event);
+        const tabIndex = toDoList.getCurrentTabIndex();
         const taskIndex = helperFunctions.getTaskIndex(event);
         const newChecklistTaskIndex = objectControllerAddEditObject.addNewChecklistTaskToTask(tabIndex, taskIndex);
         const newChecklistTaskElement = DOMControllerAddEdit.addNewChecklistTaskToDOM(taskIndex, newChecklistTaskIndex);
@@ -293,7 +293,7 @@ const eventBundler = (() => {
         const checklistTaskObjects = todoListStorage.getChecklistTaskObjects(tabIndex, taskIndex);
         for (const checklistTaskKey in checklistTaskObjects) {
             if (checklistTaskObjects[checklistTaskKey] === null) {
-                taskObject.addTab(undefined);
+                taskObject.addTask(undefined);
             } else {
                 const checklistTaskValues = todoListStorage.getChecklistTaskValues(tabKey, taskKey, checklistTaskKey);
                 const checklistTaskDescription = checklistTaskValues[0];
