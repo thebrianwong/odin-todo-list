@@ -19,7 +19,8 @@ const eventBundler = (() => {
         //     console.log(tabName)
         //     console.log(toDoList.getCurrentTabIndex())
         //     const firstTabIndex = objectControllerAddEditObject.setFirstTabToCurrentTab();
-        //     DOMControllerAddEdit.setFirstTabToCurrentTab(firstTabIndex)
+            // DOMControllerAddEdit.setFirstTabToCurrentTab(firstTabIndex)
+            // DOMControllerAddEdit.addCurrentTabIndicator()
         //     todoListStorage.setCurrentTab(firstTabIndex);
         //     console.log(toDoList.getCurrentTabIndex())
         // };
@@ -29,7 +30,8 @@ const eventBundler = (() => {
                 console.log(tabName)
                 console.log(toDoList.getCurrentTabIndex())
                 const firstTabIndex = objectControllerAddEditObject.setFirstTabToCurrentTab();
-                DOMControllerAddEdit.setFirstTabToCurrentTab(firstTabIndex)
+                // DOMControllerAddEdit.setFirstTabToCurrentTab(firstTabIndex)
+                DOMControllerAddEdit.addCurrentTabIndicator()
                 todoListStorage.setCurrentTab(firstTabIndex);
                 console.log(toDoList.getCurrentTabIndex())
             };
@@ -63,7 +65,9 @@ const eventBundler = (() => {
         todoListStorage.removeTab(tabIndex);
         if (helperFunctions.checkIfWasCurrentTab(event)) {
             const firstTabIndex = objectControllerAddEditObject.setFirstTabToCurrentTab();
-            DOMControllerAddEdit.setFirstTabToCurrentTab(firstTabIndex)
+            console.log(firstTabIndex)
+            // DOMControllerAddEdit.setFirstTabToCurrentTab(firstTabIndex)
+            DOMControllerAddEdit.addCurrentTabIndicator()
             DOMControllerRemove.removeAllTaskElements();
             todoListStorage.setCurrentTab(firstTabIndex);
             if (!helperFunctions.checkIfNoMoreTabs()) {

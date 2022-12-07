@@ -69,12 +69,15 @@ const DOMControllerAddEdit = (() => {
         const newCurrentTabElement = helperFunctions.getTabElement(tabIndex);
         newCurrentTabElement.setAttribute("id", "current-tab");
     }
-    const setFirstTabToCurrentTab = (firstTabIndex) => {
-        if (firstTabIndex === undefined) {
+    const addCurrentTabIndicator = () => {
+        const currentTabIndex = toDoList.getCurrentTabIndex();
+        console.log(currentTabIndex)
+        if (currentTabIndex === null) {
             return;
         };
-        const firstTabElement = helperFunctions.getTabElement(firstTabIndex);
-        firstTabElement.setAttribute("id", "current-tab");
+        const tabElement = helperFunctions.getTabElement(currentTabIndex);
+        // const firstTabElement = helperFunctions.getTabElement(firstTabIndex);
+        tabElement.setAttribute("id", "current-tab");
     }
     const addNewTaskToDOM = (index) => {
         const currentTabObject = toDoList.getCurrentTabObject();
@@ -469,7 +472,7 @@ const DOMControllerAddEdit = (() => {
     };
     return { addNewTabToDOM, setTabInputElementValue,
         insertTabInputElement, insertTabNameElement, setDefaultCurrentTabDOM,
-        setCurrentTabDOM, setFirstTabToCurrentTab, addNewTaskToDOM,
+        setCurrentTabDOM, addCurrentTabIndicator, addNewTaskToDOM,
         insertTaskInputElement, setTaskInputElementValue, insertTaskSubcontentElement,
         toggleTaskDOMComplete, addNewChecklistTaskToDOM, insertChecklistTaskInputElement,
         setChecklistTaskInputElementValue, insertChecklistTaskDescriptionElement,

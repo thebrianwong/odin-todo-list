@@ -28,6 +28,7 @@ const objectControllerAddEditObject = (() => {
                 return firstTab;
             }
         }
+        return null
     };
     const addNewTaskToTab = (tabIndex, title="New Task Title", dueDate="Task Due Date", description="Task Description", notes="Task Notes", pinned=false, completed=false) => {
         // const currentTabIndex = toDoList.getCurrentTabIndex();
