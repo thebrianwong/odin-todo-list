@@ -314,10 +314,11 @@ const eventBundler = (() => {
                     // const checklistTaskDescription = checklistTaskValues[0];
                     // const checklistTaskCompleted = checklistTaskValues[1];
                     checklistTaskIndex = addLoadedInChecklistTask(tabIndex, taskIndex, checklistTaskDescription, checklistTaskCompleted)
+                    console.log(tabIndex, taskIndex, checklistTaskDescription, checklistTaskCompleted)
                     console.log(checklistTaskIndex)
                     // DOMControllerAddEdit.toggleChecklistTaskDOMComplete(taskIndex, checklistTaskIndex);
                 } else {
-                    checklistTaskIndex = objectControllerAddEditObject.addNewChecklistTaskToTask(tabIndex, taskIndex);
+                    checklistTaskIndex = objectControllerAddEditObject.addNewChecklistTaskToTask(tabIndex, taskIndex, checklistTaskDescription, checklistTaskCompleted);
                 };
                 // const checklistTaskValues = todoListStorage.getChecklistTaskValues(tabKey, taskKey, checklistTaskKey);
                 // const checklistTaskDescription = checklistTaskValues[0];
