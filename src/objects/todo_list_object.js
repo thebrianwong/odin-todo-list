@@ -7,7 +7,11 @@ const toDoList = (() => {
         return currentTab;
     };
     const setCurrentTabIndex = (newCurrentTab) => {
-        currentTab = Number(newCurrentTab);
+        if (newCurrentTab === null) {
+            currentTab = null;
+        } else {
+            currentTab = Number(newCurrentTab);
+        };
     };
     const getCurrentTabObject = () => {
         const currentTabIndex = getCurrentTabIndex();
