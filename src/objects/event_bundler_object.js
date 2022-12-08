@@ -327,11 +327,18 @@ const eventBundler = (() => {
             };
         };
     };
+    const loadInPage = () => {
+        if (todoListStorage.checkForExistingStorage()) {
+            loadInLocalStorage();
+        } else {
+            loadInInstructionsPage()
+        };
+    };
     return { addTab, insertTabInputElement, updateTab, removeTab, switchTab,
         newTask, removeTask, insertTaskInputElement, updateTask, toggleTaskComplete,
         addNewChecklistTask, insertChecklistTaskInputElement, updateChecklistTask,
         toggleChecklistTaskComplete, removeChecklistTask, toggleTaskPin, addTaskListeners,
-        addChecklistTaskListeners, toggleDisplayTaskDetails, addTabListeners, loadInInstructionsPage, loadInLocalStorage, loadInTabObjects };
+        addChecklistTaskListeners, toggleDisplayTaskDetails, addTabListeners, loadInInstructionsPage, loadInLocalStorage, loadInTabObjects, loadInPage };
 })();
 
 export { eventBundler };

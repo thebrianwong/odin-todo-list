@@ -220,6 +220,7 @@ console.log(JSON.parse(localStorage.getItem("to_do_list")))
 
 // eventBundler.loadInInstructionsPage();
 // todoListStorage.initializeTodoList();
-eventBundler.loadInLocalStorage()
+// eventBundler.loadInLocalStorage()
 // eventBundler.loadInTabObjects()
 // localStorage.clear()
+eventBundler.loadInPage();
