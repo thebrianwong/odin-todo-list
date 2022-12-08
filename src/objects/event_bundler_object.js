@@ -256,7 +256,6 @@ const eventBundler = (() => {
         };
     };
     const loadInLocalStorage = () => {
-        const todoListParsedObject = todoListStorage.getLocalStorageValue();
         todoListStorage.toggleLoading();
         loadInCurrentTabIndex();
         loadInTabObjects()
