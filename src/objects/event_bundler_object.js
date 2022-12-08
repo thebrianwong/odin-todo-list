@@ -71,7 +71,7 @@ const eventBundler = (() => {
             todoListStorage.setCurrentTab(tabIndex);
         }
     };
-    const newTask = (
+    const addTask = (
         event,
         tabIndex=toDoList.getCurrentTabIndex(),
         title="New Task Title",
@@ -215,7 +215,7 @@ const eventBundler = (() => {
     };
     const loadInInstructionsPage = () => {
         const tabIndex = addTab(event, "Instructions");
-        const taskIndex = newTask(
+        const taskIndex = addTask(
             event,
             tabIndex,
             "Quick Tips! Click the pin button to pin a task to the top of the list.",
@@ -295,7 +295,7 @@ const eventBundler = (() => {
                 const taskCompleted = taskValues[5];
                 let taskIndex = undefined;
                 if (tabIndex === toDoList.getCurrentTabIndex()) {
-                    taskIndex = newTask(
+                    taskIndex = addTask(
                         event,
                         tabIndex,
                         taskTitle,
@@ -356,7 +356,7 @@ const eventBundler = (() => {
         updateTab,
         removeTab,
         switchTab,
-        newTask,
+        addTask,
         removeTask,
         insertTaskInputElement,
         updateTask,

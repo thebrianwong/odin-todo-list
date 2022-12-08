@@ -31,7 +31,7 @@ const eventAssigner = (() => {
     }
     const addNewTaskListener = () => {
         const newTaskButton = document.querySelector(".new-to-do-task");
-        newTaskButton.addEventListener("click", eventBundler.newTask);
+        newTaskButton.addEventListener("click", eventBundler.addTask);
     }
     const addRemoveTaskButtonListener = (scope=document) => {
         const taskRemoveButtons = Array.from(scope.querySelectorAll(".to-do-remove-task"));
