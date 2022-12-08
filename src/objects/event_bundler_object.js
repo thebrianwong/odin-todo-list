@@ -69,14 +69,31 @@ const eventBundler = (() => {
             DOMControllerRemove.removeAllTaskElements();
             DOMControllerAddEdit.loadTasksFromNewCurrentTab();
             todoListStorage.setCurrentTab(tabIndex);
-        };
-    }
-    const newTask = (event, tabIndex=toDoList.getCurrentTabIndex(), title="New Task Title", dueDate="Task Due Date", description="Task Description", notes="Task Notes", pinned=false, completed=false) => {
+        }
+    };
+    const newTask = (
+        event,
+        tabIndex=toDoList.getCurrentTabIndex(),
+        title="New Task Title",
+        dueDate="Task Due Date",
+        description="Task Description",
+        notes="Task Notes",
+        pinned=false,
+        completed=false
+    ) => {
         if (toDoList.getCurrentTabIndex() === null) {
             loadInInstructionsPage();
             return;
         };
-        const newTaskIndex = objectControllerAddEditObject.addNewTaskToTab(tabIndex, title, dueDate, description, notes, pinned, completed);
+        const newTaskIndex = objectControllerAddEditObject.addNewTaskToTab(
+            tabIndex,
+            title,
+            dueDate,
+            description,
+            notes,
+            pinned,
+            completed
+        );
         const newTaskElement = DOMControllerAddEdit.addNewTaskToDOM(newTaskIndex);
         addTaskListeners(newTaskElement);
         if (!todoListStorage.isLoading()) {
@@ -198,19 +215,36 @@ const eventBundler = (() => {
     };
     const loadInInstructionsPage = () => {
         const tabIndex = addTab(event, "Instructions");
-        const taskIndex = newTask(event, tabIndex, "Quick Tips! Click the pin button to pin a task to the top of the list.",
+        const taskIndex = newTask(
+            event,
+            tabIndex,
+            "Quick Tips! Click the pin button to pin a task to the top of the list.",
             "Tomorrow, next week, or whenever your task is due, you can add it here! Click the arrow button to toggle between showing and hiding task details.",
             "Add a description of your task here! Click the pencil buttons to edit the various parts of your task.",
-            "Jot down some notes here! Mark your task as complete when you're done, or remove it from the list by clicking the X button.", true, true);
+            "Jot down some notes here! Mark your task as complete when you're done, or remove it from the list by clicking the X button.",
+            true,
+            true
+        );
         DOMControllerAddEdit.toggleTaskDOMComplete(taskIndex);
         DOMControllerAddEdit.changePinButtonImage(taskIndex);
         DOMControllerAddEdit.shiftTaskElementPosition(taskIndex);
-        addLoadedInChecklistTask(tabIndex, taskIndex,
-            "If your task has multiple steps, try breaking them down into a checklist! Click the plus sign button to add steps as needed.", true);
-        addLoadedInChecklistTask(tabIndex, taskIndex,
-            "Have a new task you want to keep track of? Add it to the list by clicking on the 'New Task' button below!", true);
-        addLoadedInChecklistTask(tabIndex, taskIndex,
-            "Organize the different types of tasks in your life by creating themed tabs. Create a new tab by clicking on the plus sign button at the top of the list. Change tabs by clicking on different tab names.", true);
+        addLoadedInChecklistTask(
+            tabIndex,
+            taskIndex,
+            "If your task has multiple steps, try breaking them down into a checklist! Click the plus sign button to add steps as needed.",
+            true
+        );
+        addLoadedInChecklistTask(
+            tabIndex,
+            taskIndex,
+            "Have a new task you want to keep track of? Add it to the list by clicking on the 'New Task' button below!",
+            true
+        );
+        addLoadedInChecklistTask(tabIndex,
+            taskIndex,
+            "Organize the different types of tasks in your life by creating themed tabs. Create a new tab by clicking on the plus sign button at the top of the list. Change tabs by clicking on different tab names.",
+            true
+        );
     };
     const addLoadedInChecklistTask = (tabIndex, taskIndex, description, completed) => {
         const checklistTaskIndex = objectControllerAddEditObject.addNewChecklistTaskToTask(tabIndex, taskIndex, description, completed);
@@ -261,12 +295,29 @@ const eventBundler = (() => {
                 const taskCompleted = taskValues[5];
                 let taskIndex = undefined;
                 if (tabIndex === toDoList.getCurrentTabIndex()) {
-                    taskIndex = newTask(event, tabIndex, taskTitle, taskDueDate, taskDescription, taskNotes, taskPinned, taskCompleted);
+                    taskIndex = newTask(
+                        event,
+                        tabIndex,
+                        taskTitle,
+                        taskDueDate,
+                        taskDescription,
+                        taskNotes,
+                        taskPinned,
+                        taskCompleted
+                    );
                     DOMControllerAddEdit.toggleTaskDOMComplete(taskIndex);
                     DOMControllerAddEdit.changePinButtonImage(taskIndex);
                     DOMControllerAddEdit.shiftTaskElementPosition(taskIndex);
                 } else {
-                    taskIndex = objectControllerAddEditObject.addNewTaskToTab(tabIndex, taskTitle, taskDueDate, taskDescription, taskNotes, taskPinned, taskCompleted);
+                    taskIndex = objectControllerAddEditObject.addNewTaskToTab(
+                        tabIndex,
+                        taskTitle,
+                        taskDueDate,
+                        taskDescription,
+                        taskNotes,
+                        taskPinned,
+                        taskCompleted
+                    );
                 }
                 loadInChecklistTaskObjects(tabIndex, tabKey, taskIndex, taskKey);
             };
@@ -299,12 +350,32 @@ const eventBundler = (() => {
             loadInInstructionsPage();
         };
     };
-    return { addTab, insertTabInputElement, updateTab, removeTab, switchTab,
-        newTask, removeTask, insertTaskInputElement, updateTask, toggleTaskComplete,
-        addNewChecklistTask, insertChecklistTaskInputElement, updateChecklistTask,
-        toggleChecklistTaskComplete, removeChecklistTask, toggleTaskPin, addTaskListeners,
-        addChecklistTaskListeners, toggleDisplayTaskDetails, addTabListeners, loadInInstructionsPage,
-        loadInLocalStorage, loadInTabObjects, loadInPage };
+    return {
+        addTab,
+        insertTabInputElement,
+        updateTab,
+        removeTab,
+        switchTab,
+        newTask,
+        removeTask,
+        insertTaskInputElement,
+        updateTask,
+        toggleTaskComplete,
+        addNewChecklistTask,
+        insertChecklistTaskInputElement,
+        updateChecklistTask,
+        toggleChecklistTaskComplete,
+        removeChecklistTask,
+        toggleTaskPin,
+        addTaskListeners,
+        addChecklistTaskListeners,
+        toggleDisplayTaskDetails,
+        addTabListeners,
+        loadInInstructionsPage,
+        loadInLocalStorage,
+        loadInTabObjects,
+        loadInPage,
+    };
 })();
 
 export { eventBundler };
