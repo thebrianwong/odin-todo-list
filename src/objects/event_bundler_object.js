@@ -87,6 +87,11 @@ const eventBundler = (() => {
         };
     }
     const newTask = (event, tabIndex=toDoList.getCurrentTabIndex(), title="New Task Title", dueDate="Task Due Date", description="Task Description", notes="Task Notes", pinned=false, completed=false) => {
+        console.log(toDoList.getCurrentTabIndex())
+        console.log(tabIndex)
+        if (toDoList.getCurrentTabIndex() === null) {
+            return;
+        };
         const newTaskIndex = objectControllerAddEditObject.addNewTaskToTab(tabIndex, title, dueDate, description, notes, pinned, completed);
         const newTaskElement = DOMControllerAddEdit.addNewTaskToDOM(newTaskIndex);
         addTaskListeners(newTaskElement);

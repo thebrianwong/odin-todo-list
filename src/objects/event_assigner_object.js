@@ -1,6 +1,7 @@
 import { checklistObject } from "./checklist_object";
 import { DOMUpdateController } from "./DOM_controller_add_edit";
 import { eventBundler } from "./event_bundler_object";
+import { toDoList } from "./todo_list_object";
 
 const eventAssigner = (() => {
     const addNewTabListener = () => {
