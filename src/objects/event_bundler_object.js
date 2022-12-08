@@ -71,6 +71,11 @@ const eventBundler = (() => {
             todoListStorage.setCurrentTab(tabIndex);
         }
     };
+    const addTabListeners = (newTabElement) => {
+        eventAssigner.addEditTabButtonListener(newTabElement);
+        eventAssigner.addRemoveTabButtonListener(newTabElement);
+        eventAssigner.addSwitchTabListener(newTabElement);
+    };
     const addTask = (
         event,
         tabIndex=toDoList.getCurrentTabIndex(),
@@ -101,12 +106,6 @@ const eventBundler = (() => {
         };
         return newTaskIndex;
     }
-    const removeTask = (event) => {
-        const taskIndex = helperFunctions.getTaskIndex(event);
-        objectControllerRemoveObject.removeTaskFromTabArray(taskIndex);
-        DOMControllerRemove.removeTaskElementFromDOM(taskIndex);
-        todoListStorage.removeTask(toDoList.getCurrentTabIndex(), taskIndex);
-    };
     const insertTaskInputElement = (event) => {
         if (!helperFunctions.checkForExistingInputElement(event, "Task")) {
             const taskIndex = helperFunctions.getTaskIndex(event);
@@ -128,11 +127,33 @@ const eventBundler = (() => {
             todoListStorage.setTaskSubcontainerValue(toDoList.getCurrentTabIndex(), taskIndex, taskSubcontainerType);
         };
     };
+    const toggleTaskPin = (event) => {
+        const taskIndex = helperFunctions.getTaskIndex(event);
+        DOMControllerAddEdit.toggleAnimations(taskIndex, "Enable");
+        objectControllerAddEditObject.toggleTaskPin(taskIndex);
+        DOMControllerAddEdit.changePinButtonImage(taskIndex);
+        DOMControllerAddEdit.shiftTaskElementPosition(taskIndex);
+        todoListStorage.toggleTaskPinned(toDoList.getCurrentTabIndex(), taskIndex);
+    };
     const toggleTaskComplete = (event) => {
         const taskIndex = helperFunctions.getTaskIndex(event);
         objectControllerAddEditObject.toggleTaskComplete(taskIndex);
         DOMControllerAddEdit.toggleTaskDOMComplete(taskIndex);
         todoListStorage.toggleTaskCompleted(toDoList.getCurrentTabIndex(), taskIndex);
+    };
+    const removeTask = (event) => {
+        const taskIndex = helperFunctions.getTaskIndex(event);
+        objectControllerRemoveObject.removeTaskFromTabArray(taskIndex);
+        DOMControllerRemove.removeTaskElementFromDOM(taskIndex);
+        todoListStorage.removeTask(toDoList.getCurrentTabIndex(), taskIndex);
+    };
+    const addTaskListeners = (newTaskElement) => {
+        eventAssigner.addRemoveTaskButtonListener(newTaskElement);
+        eventAssigner.addEditTaskListeners(newTaskElement);
+        eventAssigner.addToggleTaskCompleteListener(newTaskElement);
+        eventAssigner.addNewChecklistTaskListener(newTaskElement);
+        eventAssigner.addToggleTaskPinListeners(newTaskElement);
+        eventAssigner.addToggleDisplayTaskDetailsListeners(newTaskElement);
     };
     const addNewChecklistTask = (event) => {
         const tabIndex = toDoList.getCurrentTabIndex();
@@ -179,22 +200,6 @@ const eventBundler = (() => {
         DOMControllerRemove.removeChecklistTaskElementDOM(taskIndex, checklistTaskIndex);
         todoListStorage.removeChecklistTask(toDoList.getCurrentTabIndex(), taskIndex, checklistTaskIndex);
     };
-    const toggleTaskPin = (event) => {
-        const taskIndex = helperFunctions.getTaskIndex(event);
-        DOMControllerAddEdit.toggleAnimations(taskIndex, "Enable");
-        objectControllerAddEditObject.toggleTaskPin(taskIndex);
-        DOMControllerAddEdit.changePinButtonImage(taskIndex);
-        DOMControllerAddEdit.shiftTaskElementPosition(taskIndex);
-        todoListStorage.toggleTaskPinned(toDoList.getCurrentTabIndex(), taskIndex);
-    };
-    const addTaskListeners = (newTaskElement) => {
-        eventAssigner.addRemoveTaskButtonListener(newTaskElement);
-        eventAssigner.addEditTaskListeners(newTaskElement);
-        eventAssigner.addToggleTaskCompleteListener(newTaskElement);
-        eventAssigner.addNewChecklistTaskListener(newTaskElement);
-        eventAssigner.addToggleTaskPinListeners(newTaskElement);
-        eventAssigner.addToggleDisplayTaskDetailsListeners(newTaskElement);
-    };
     const addChecklistTaskListeners = (newChecklistTaskElement) => {
         eventAssigner.addEditChecklistTaskListeners(newChecklistTaskElement);
         eventAssigner.addToggleChecklistTaskCompleteListener(newChecklistTaskElement);
@@ -207,11 +212,6 @@ const eventBundler = (() => {
             DOMControllerAddEdit.toggleDisplayTaskDetails(taskIndex);
             DOMControllerAddEdit.rotateChevronButton(taskIndex);
         };
-    };
-    const addTabListeners = (newTabElement) => {
-        eventAssigner.addEditTabButtonListener(newTabElement);
-        eventAssigner.addRemoveTabButtonListener(newTabElement);
-        eventAssigner.addSwitchTabListener(newTabElement);
     };
     const loadInInstructionsPage = () => {
         const tabIndex = addTab(event, "Instructions");
@@ -354,23 +354,23 @@ const eventBundler = (() => {
         addTab,
         insertTabInputElement,
         updateTab,
-        removeTab,
         switchTab,
+        removeTab,
+        addTabListeners,
         addTask,
-        removeTask,
         insertTaskInputElement,
         updateTask,
+        toggleTaskPin,
         toggleTaskComplete,
+        removeTask,
+        addTaskListeners,
         addNewChecklistTask,
         insertChecklistTaskInputElement,
         updateChecklistTask,
         toggleChecklistTaskComplete,
         removeChecklistTask,
-        toggleTaskPin,
-        addTaskListeners,
         addChecklistTaskListeners,
         toggleDisplayTaskDetails,
-        addTabListeners,
         loadInInstructionsPage,
         loadInLocalStorage,
         loadInTabObjects,
