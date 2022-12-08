@@ -90,6 +90,7 @@ const eventBundler = (() => {
         console.log(toDoList.getCurrentTabIndex())
         console.log(tabIndex)
         if (toDoList.getCurrentTabIndex() === null) {
+            loadInInstructionsPage();
             return;
         };
         const newTaskIndex = objectControllerAddEditObject.addNewTaskToTab(tabIndex, title, dueDate, description, notes, pinned, completed);
@@ -216,7 +217,6 @@ const eventBundler = (() => {
         eventAssigner.addSwitchTabListener(newTabElement);
     };
     const loadInInstructionsPage = () => {
-        todoListStorage.initializeTodoList();
         const tabIndex = addTab(event, "Instructions");
         const taskIndex = newTask(event, tabIndex, "Quick Tips! Click the pin button to pin a task to the top of the list.",
             `Tomorrow, next week, or whenever your task is due, you can add it here! Click the arrow button to toggle between showing and hiding task details.`,
@@ -331,7 +331,8 @@ const eventBundler = (() => {
         if (todoListStorage.checkForExistingStorage()) {
             loadInLocalStorage();
         } else {
-            loadInInstructionsPage()
+            todoListStorage.initializeTodoList();;
+            loadInInstructionsPage();
         };
     };
     return { addTab, insertTabInputElement, updateTab, removeTab, switchTab,
