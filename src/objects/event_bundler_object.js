@@ -265,6 +265,7 @@ const eventBundler = (() => {
                 loadInTaskObjects(tabIndex, tabKey);
             };
         };
+        DOMControllerAddEdit.addCurrentTabIndicator()
     };
     const loadInTaskObjects = (tabIndex, tabKey) => {
         const tabObject = helperFunctions.getTabObject(tabIndex);
