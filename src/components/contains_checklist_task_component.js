@@ -6,7 +6,6 @@ const containsChecklistTaskBehaviorComponent = (object) => {
     return Object.assign(object, {
         addTask(task) {
             checklist.push(task);
-            // return checklist.length - 1;
             return getTaskIndex();
         },
         removeTask(index) {
