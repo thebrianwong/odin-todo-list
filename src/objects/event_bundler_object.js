@@ -1,13 +1,10 @@
+import { eventAssigner } from "./event_assigner_object";
 import { toDoList } from "./todo_list_object";
-import { toDoTab } from "./todo_tab_object";
-import { titleBehaviorComponent } from "../components/title_component";
-import { containsChecklistTaskBehaviorComponent } from "../components/contains_checklist_task_component";
 import { objectControllerAddEditObject } from "./object_controller_add_edit_object";
 import { DOMControllerAddEdit } from "./DOM_controller_add_edit";
-import { eventAssigner } from "./event_assigner_object";
+import { DOMControllerRemove } from "./DOM_controller_remove";
 import { objectControllerRemoveObject } from "./object_controller_remove_object";
 import { helperFunctions } from "./helper_functions";
-import { DOMControllerRemove } from "./DOM_controller_remove";
 import { todoListStorage } from "./todo_list_storage_object";
 
 const eventBundler = (() => {
@@ -149,11 +146,11 @@ const eventBundler = (() => {
     };
     const addTaskListeners = (newTaskElement) => {
         eventAssigner.addRemoveTaskButtonListener(newTaskElement);
-        eventAssigner.addEditTaskListeners(newTaskElement);
+        eventAssigner.addEditTaskListener(newTaskElement);
         eventAssigner.addToggleTaskCompleteListener(newTaskElement);
         eventAssigner.addNewChecklistTaskListener(newTaskElement);
-        eventAssigner.addToggleTaskPinListeners(newTaskElement);
-        eventAssigner.addToggleDisplayTaskDetailsListeners(newTaskElement);
+        eventAssigner.addToggleTaskPinListener(newTaskElement);
+        eventAssigner.addToggleDisplayTaskDetailsListener(newTaskElement);
     };
     const addNewChecklistTask = (event) => {
         const tabIndex = toDoList.getCurrentTabIndex();
@@ -201,7 +198,7 @@ const eventBundler = (() => {
         todoListStorage.removeChecklistTask(toDoList.getCurrentTabIndex(), taskIndex, checklistTaskIndex);
     };
     const addChecklistTaskListeners = (newChecklistTaskElement) => {
-        eventAssigner.addEditChecklistTaskListeners(newChecklistTaskElement);
+        eventAssigner.addEditChecklistTaskListener(newChecklistTaskElement);
         eventAssigner.addToggleChecklistTaskCompleteListener(newChecklistTaskElement);
         eventAssigner.addRemoveChecklistTaskListener(newChecklistTaskElement);
     };

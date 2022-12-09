@@ -1,7 +1,4 @@
-import { checklistObject } from "./checklist_object";
-import { DOMUpdateController } from "./DOM_controller_add_edit";
 import { eventBundler } from "./event_bundler_object";
-import { toDoList } from "./todo_list_object";
 
 const eventAssigner = (() => {
     const addNewTabListener = () => {
@@ -33,13 +30,7 @@ const eventAssigner = (() => {
         const newTaskButton = document.querySelector(".new-to-do-task");
         newTaskButton.addEventListener("click", eventBundler.addTask);
     }
-    const addRemoveTaskButtonListener = (scope=document) => {
-        const taskRemoveButtons = Array.from(scope.querySelectorAll(".to-do-remove-task"));
-        for (const button of taskRemoveButtons) {
-            button.addEventListener("click", eventBundler.removeTask);
-        };
-    };
-    const addEditTaskListeners = (scope=document) => {
+    const addEditTaskListener = (scope=document) => {
         const taskEditButtons = Array.from(scope.querySelectorAll(".edit-task"));
         for (const button of taskEditButtons) {
             button.addEventListener("click", eventBundler.insertTaskInputElement);
@@ -48,10 +39,22 @@ const eventAssigner = (() => {
     const addTaskInputListener = (inputElement) => {
         inputElement.addEventListener("keydown", eventBundler.updateTask);
     };
+    const addToggleTaskPinListener = (scope=document) => {
+        const taskPinButtons = scope.querySelectorAll(".to-do-pin");
+        for (const button of taskPinButtons) {
+            button.addEventListener("click", eventBundler.toggleTaskPin);
+        };
+    };
     const addToggleTaskCompleteListener = (scope=document) => {
         const taskCompleteCheckboxes = scope.querySelectorAll(".to-do-complete-checkbox");
         for (const checkbox of taskCompleteCheckboxes) {
             checkbox.addEventListener("click", eventBundler.toggleTaskComplete);
+        };
+    };
+    const addRemoveTaskButtonListener = (scope=document) => {
+        const taskRemoveButtons = Array.from(scope.querySelectorAll(".to-do-remove-task"));
+        for (const button of taskRemoveButtons) {
+            button.addEventListener("click", eventBundler.removeTask);
         };
     };
     const addNewChecklistTaskListener = (scope=document) => {
@@ -60,7 +63,7 @@ const eventAssigner = (() => {
             button.addEventListener("click", eventBundler.addNewChecklistTask)
         };
     };
-    const addEditChecklistTaskListeners = (scope=document) => {
+    const addEditChecklistTaskListener = (scope=document) => {
         const checklistEditButtons = Array.from(scope.querySelectorAll(".edit-checklist-task"));
         for (const button of checklistEditButtons) {
             button.addEventListener("click", eventBundler.insertChecklistTaskInputElement);
@@ -81,13 +84,7 @@ const eventAssigner = (() => {
             button.addEventListener("click", eventBundler.removeChecklistTask);
         };
     };
-    const addToggleTaskPinListeners = (scope=document) => {
-        const taskPinButtons = scope.querySelectorAll(".to-do-pin");
-        for (const button of taskPinButtons) {
-            button.addEventListener("click", eventBundler.toggleTaskPin);
-        };
-    };
-    const addToggleDisplayTaskDetailsListeners = (scope=document) => {
+    const addToggleDisplayTaskDetailsListener = (scope=document) => {
         const taskToggleDisplayButtons = scope.querySelectorAll(".to-do-task-change-display");
         for (const button of taskToggleDisplayButtons) {
             button.addEventListener("click", eventBundler.toggleDisplayTaskDetails);
@@ -100,17 +97,17 @@ const eventAssigner = (() => {
         addRemoveTabButtonListener,
         addSwitchTabListener,
         addNewTaskListener,
-        addRemoveTaskButtonListener,
-        addEditTaskListeners,
+        addEditTaskListener,
         addTaskInputListener,
+        addToggleTaskPinListener,
         addToggleTaskCompleteListener,
+        addRemoveTaskButtonListener,
         addNewChecklistTaskListener,
-        addEditChecklistTaskListeners,
+        addEditChecklistTaskListener,
         addChecklistTaskInputListener,
         addToggleChecklistTaskCompleteListener,
         addRemoveChecklistTaskListener,
-        addToggleTaskPinListeners,
-        addToggleDisplayTaskDetailsListeners
+        addToggleDisplayTaskDetailsListener
     };
 })();
 
