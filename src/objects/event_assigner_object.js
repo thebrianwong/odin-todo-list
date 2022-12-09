@@ -52,7 +52,7 @@ const eventAssigner = (() => {
         };
     };
     const addRemoveTaskButtonListener = (scope=document) => {
-        const taskRemoveButtons = Array.from(scope.querySelectorAll(".to-do-remove-task"));
+        const taskRemoveButtons = Array.from(scope.querySelectorAll(".remove-task"));
         for (const button of taskRemoveButtons) {
             button.addEventListener("click", eventBundler.removeTask);
         };

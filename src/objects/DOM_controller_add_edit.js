@@ -109,7 +109,7 @@ const DOMControllerAddEdit = (() => {
                     <button class="edit-task-title edit-task">
                         <img src="assets/pencil.png" alt="Edit task title button">
                     </button>
-                    <button class="to-do-remove-task">
+                    <button class="remove-task">
                         <img src="assets/close.png" alt="Remove task button">
                     </button>
                 </div>
