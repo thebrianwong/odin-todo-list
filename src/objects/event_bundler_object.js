@@ -44,7 +44,7 @@ const eventBundler = (() => {
     };
     const removeTab = (event) => {
         const tabIndex = helperFunctions.getTabIndex(event);
-        objectControllerRemoveObject.removeTabFromTodoArray(tabIndex);
+        objectControllerRemoveObject.removeTabFromTodoList(tabIndex);
         DOMControllerRemove.removeTabElementFromDOM(tabIndex);
         todoListStorage.removeTab(tabIndex);
         if (helperFunctions.checkIfWasCurrentTab(event)) {
@@ -140,7 +140,7 @@ const eventBundler = (() => {
     };
     const removeTask = (event) => {
         const taskIndex = helperFunctions.getTaskIndex(event);
-        objectControllerRemoveObject.removeTaskFromTabArray(taskIndex);
+        objectControllerRemoveObject.removeTaskFromTab(taskIndex);
         DOMControllerRemove.removeTaskElementFromDOM(taskIndex);
         todoListStorage.removeTask(toDoList.getCurrentTabIndex(), taskIndex);
     };
@@ -193,7 +193,7 @@ const eventBundler = (() => {
     const removeChecklistTask = (event) => {
         const taskIndex = helperFunctions.getTaskIndex(event);
         const checklistTaskIndex = helperFunctions.getChecklistTaskIndex(event);
-        objectControllerRemoveObject.removeChecklistTaskFromTaskArray(taskIndex, checklistTaskIndex);
+        objectControllerRemoveObject.removeChecklistTaskFromTask(taskIndex, checklistTaskIndex);
         DOMControllerRemove.removeChecklistTaskElementDOM(taskIndex, checklistTaskIndex);
         todoListStorage.removeChecklistTask(toDoList.getCurrentTabIndex(), taskIndex, checklistTaskIndex);
     };

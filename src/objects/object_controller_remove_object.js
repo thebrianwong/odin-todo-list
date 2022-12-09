@@ -1,22 +1,22 @@
 import { toDoList } from "./todo_list_object";
 
 const objectControllerRemoveObject = (() => {
-    const removeTabFromTodoArray = (tabIndex) => {
+    const removeTabFromTodoList = (tabIndex) => {
         toDoList.removeTask(tabIndex);
     };
-    const removeTaskFromTabArray = (taskIndex) => {
+    const removeTaskFromTab = (taskIndex) => {
         const currentTabObject = toDoList.getCurrentTabObject();
         currentTabObject.removeTask(taskIndex);
     }
-    const removeChecklistTaskFromTaskArray = (taskIndex, checklistTaskIndex) => {
+    const removeChecklistTaskFromTask = (taskIndex, checklistTaskIndex) => {
         const currentTabObject = toDoList.getCurrentTabObject();
         const taskObject = currentTabObject.getSpecificChecklistTask(taskIndex);
         taskObject.removeTask(checklistTaskIndex);
     };
     return {
-        removeTabFromTodoArray,
-        removeTaskFromTabArray,
-        removeChecklistTaskFromTaskArray
+        removeTabFromTodoList,
+        removeTaskFromTab,
+        removeChecklistTaskFromTask
     };
 })();
 
