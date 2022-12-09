@@ -47,6 +47,11 @@ const objectControllerAddEditObject = (() => {
             taskObject.setTaskNotes(newTaskSubcontentValue);
         };
     };
+    const toggleTaskPin = (taskIndex) => {
+        const currentTabObject = toDoList.getCurrentTabObject();
+        const taskObject = currentTabObject.getSpecificChecklistTask(taskIndex);
+        taskObject.togglePinnedState();
+    };
     const toggleTaskComplete = (taskIndex) => {
         const currentTabObject = toDoList.getCurrentTabObject();
         const taskObject = currentTabObject.getSpecificChecklistTask(taskIndex);
@@ -71,11 +76,6 @@ const objectControllerAddEditObject = (() => {
         const checklistTaskObject = taskObject.getSpecificChecklistTask(checklistTaskIndex);
         checklistTaskObject.toggleCompletedState();
     };
-    const toggleTaskPin = (taskIndex) => {
-        const currentTabObject = toDoList.getCurrentTabObject();
-        const taskObject = currentTabObject.getSpecificChecklistTask(taskIndex);
-        taskObject.togglePinnedState();
-    };
     return {
         addNewTabToTodoList,
         editTabName,
@@ -83,11 +83,11 @@ const objectControllerAddEditObject = (() => {
         setFirstTabToCurrentTab,
         addNewTaskToTab,
         editTaskInfo,
+        toggleTaskPin,
         toggleTaskComplete,
         addNewChecklistTaskToTask,
         editChecklistTaskDescription,
-        toggleChecklistTaskComplete,
-        toggleTaskPin
+        toggleChecklistTaskComplete
     };
 })();
 
