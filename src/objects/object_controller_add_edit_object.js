@@ -4,7 +4,7 @@ import { toDoTask } from "./todo_task_object";
 import { checklistTaskObject } from "./checklist_task_object";
 
 const objectControllerAddEditObject = (() => {
-    const addNewTabToTodoArray = (tabName="New Tab") => {
+    const addNewTabToTodoList = (tabName="New Tab") => {
         const newTab = toDoTab(tabName);
         return toDoList.addTask(newTab);
     }
@@ -34,7 +34,7 @@ const objectControllerAddEditObject = (() => {
         const newTaskIndex = tabObject.addTask(newTask);
         return newTaskIndex;
     };
-    const editTaskObjectInfo = (taskIndex, buttonType, newTaskSubcontentValue) => {
+    const editTaskInfo = (taskIndex, buttonType, newTaskSubcontentValue) => {
         const currentTabObject = toDoList.getCurrentTabObject();
         const taskObject = currentTabObject.getSpecificChecklistTask(taskIndex);
         if (buttonType === "Title") {
@@ -76,9 +76,19 @@ const objectControllerAddEditObject = (() => {
         const taskObject = currentTabObject.getSpecificChecklistTask(taskIndex);
         taskObject.togglePinnedState();
     };
-    return { addNewTabToTodoArray, editTabName, updateCurrentTab, setFirstTabToCurrentTab,
-        addNewTaskToTab, editTaskObjectInfo, toggleTaskComplete, addNewChecklistTaskToTask,
-        editChecklistTaskDescription, toggleChecklistTaskComplete, toggleTaskPin, };
+    return {
+        addNewTabToTodoList,
+        editTabName,
+        updateCurrentTab,
+        setFirstTabToCurrentTab,
+        addNewTaskToTab,
+        editTaskInfo,
+        toggleTaskComplete,
+        addNewChecklistTaskToTask,
+        editChecklistTaskDescription,
+        toggleChecklistTaskComplete,
+        toggleTaskPin
+    };
 })();
 
 export { objectControllerAddEditObject };

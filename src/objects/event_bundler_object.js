@@ -9,7 +9,7 @@ import { todoListStorage } from "./todo_list_storage_object";
 
 const eventBundler = (() => {
     const addTab = (event, tabName="New Tab") => {
-        const newTabIndex = objectControllerAddEditObject.addNewTabToTodoArray(tabName);
+        const newTabIndex = objectControllerAddEditObject.addNewTabToTodoList(tabName);
         const newTabElement = DOMControllerAddEdit.addNewTabToDOM(newTabIndex);
         addTabListeners(newTabElement);
         if (!todoListStorage.isLoading()) {
@@ -118,7 +118,7 @@ const eventBundler = (() => {
             const taskIndex = helperFunctions.getTaskIndex(event);
             const taskSubcontainerType = helperFunctions.getTaskSubcontainerType(event);
             const newTaskSubcontentValue = helperFunctions.getNewValue(event);
-            objectControllerAddEditObject.editTaskObjectInfo(taskIndex, taskSubcontainerType, newTaskSubcontentValue);
+            objectControllerAddEditObject.editTaskInfo(taskIndex, taskSubcontainerType, newTaskSubcontentValue);
             DOMControllerAddEdit.insertTaskSubcontentElement(taskIndex, taskSubcontainerType);
             DOMControllerRemove.removeTaskInputElement(taskIndex, taskSubcontainerType);
             todoListStorage.setTaskSubcontainerValue(toDoList.getCurrentTabIndex(), taskIndex, taskSubcontainerType);
