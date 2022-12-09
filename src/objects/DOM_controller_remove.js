@@ -1,5 +1,3 @@
-import { toDoList } from "./todo_list_object";
-import { toDoTab } from "./todo_tab_object";
 import { helperFunctions } from "./helper_functions";
 
 const DOMControllerRemove = (() => {
@@ -15,12 +13,6 @@ const DOMControllerRemove = (() => {
         tabElement.removeChild(inputElement);
         inputElement = null;
     };
-    const removeTabElementFromDOM = (tabIndex) => {
-        let tabElement = helperFunctions.getTabElement(tabIndex);
-        const toDoTabSection = document.querySelector(".to-do-tab-section");
-        toDoTabSection.removeChild(tabElement);
-        tabElement = null;
-    };
     const resetCurrentTabStatus = () => {
         const currentTab = document.querySelector("#current-tab");
         if (currentTab !== null) {
@@ -29,6 +21,12 @@ const DOMControllerRemove = (() => {
             return;
         };
     }
+    const removeTabElementFromDOM = (tabIndex) => {
+        let tabElement = helperFunctions.getTabElement(tabIndex);
+        const toDoTabSection = document.querySelector(".to-do-tab-section");
+        toDoTabSection.removeChild(tabElement);
+        tabElement = null;
+    };
     const removeTaskElementFromDOM = (taskIndex) => {
         let taskElement = helperFunctions.getTaskElement(taskIndex);
         const toDoTaskSection = document.querySelector(".to-do-content");
@@ -72,10 +70,19 @@ const DOMControllerRemove = (() => {
         const taskContentSection = document.querySelector(".to-do-content");
         taskContentSection.replaceChildren();
     };
-    return { removeTabNameElement, removeTabInputElement, removeTabElementFromDOM,
-        resetCurrentTabStatus, removeTaskElementFromDOM, removeTaskSubcontentElementFromDOM,
-        removeTaskInputElement, removeChecklistTaskDescriptionDOM, removeChecklistTaskInputElement,
-        removeChecklistTaskElementDOM, removeAllTaskElements, }
+    return {
+        removeTabNameElement,
+        removeTabInputElement,
+        resetCurrentTabStatus,
+        removeTabElementFromDOM,
+        removeTaskElementFromDOM,
+        removeTaskSubcontentElementFromDOM,
+        removeTaskInputElement,
+        removeChecklistTaskDescriptionDOM,
+        removeChecklistTaskInputElement,
+        removeChecklistTaskElementDOM,
+        removeAllTaskElements
+    }
 })();
 
 export { DOMControllerRemove };
