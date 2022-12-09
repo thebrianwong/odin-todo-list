@@ -27,7 +27,7 @@ const eventAssigner = (() => {
         };
     }
     const addNewTaskListener = () => {
-        const newTaskButton = document.querySelector(".new-to-do-task");
+        const newTaskButton = document.querySelector(".new-task");
         newTaskButton.addEventListener("click", eventBundler.addTask);
     }
     const addEditTaskListener = (scope=document) => {

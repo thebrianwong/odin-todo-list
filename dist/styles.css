@@ -116,7 +116,7 @@ button:focus-visible {
 }
 
 .to-do-task,
-.new-to-do-task {
+.new-task {
     display: flex;
     flex-direction: column;
     background-color: #fdfdbd;
@@ -364,7 +364,7 @@ input[type="checkbox"]:checked {
     margin-left: 5px;
 }
 
-.new-to-do-task {
+.new-task {
     display: flex;
     flex-direction: row;
     justify-content: center;
