@@ -71,12 +71,10 @@ const DOMControllerAddEdit = (() => {
     }
     const addCurrentTabIndicator = () => {
         const currentTabIndex = toDoList.getCurrentTabIndex();
-        console.log(currentTabIndex)
         if (currentTabIndex === null) {
             return;
         };
         const tabElement = helperFunctions.getTabElement(currentTabIndex);
-        // const firstTabElement = helperFunctions.getTabElement(firstTabIndex);
         tabElement.setAttribute("id", "current-tab");
     }
     const addNewTaskToDOM = (index) => {
@@ -470,14 +468,31 @@ const DOMControllerAddEdit = (() => {
             buttonImage.classList.remove("rotated-chevron");
         };
     };
-    return { addNewTabToDOM, setTabInputElementValue,
-        insertTabInputElement, insertTabNameElement, setDefaultCurrentTabDOM,
-        setCurrentTabDOM, addCurrentTabIndicator, addNewTaskToDOM,
-        insertTaskInputElement, setTaskInputElementValue, insertTaskSubcontentElement,
-        toggleTaskDOMComplete, addNewChecklistTaskToDOM, insertChecklistTaskInputElement,
-        setChecklistTaskInputElementValue, insertChecklistTaskDescriptionElement,
-        toggleChecklistTaskDOMComplete, changePinButtonImage, shiftTaskElementPosition,
-        loadTasksFromNewCurrentTab, toggleDisplayTaskDetails, rotateChevronButton, toggleAnimations, };
+    return {
+        addNewTabToDOM,
+        setTabInputElementValue,
+        insertTabInputElement,
+        insertTabNameElement,
+        setDefaultCurrentTabDOM,
+        setCurrentTabDOM,
+        addCurrentTabIndicator,
+        addNewTaskToDOM,
+        insertTaskInputElement,
+        setTaskInputElementValue,
+        insertTaskSubcontentElement,
+        toggleTaskDOMComplete,
+        addNewChecklistTaskToDOM,
+        insertChecklistTaskInputElement,
+        setChecklistTaskInputElementValue,
+        insertChecklistTaskDescriptionElement,
+        toggleChecklistTaskDOMComplete,
+        changePinButtonImage,
+        shiftTaskElementPosition,
+        loadTasksFromNewCurrentTab,
+        toggleDisplayTaskDetails,
+        rotateChevronButton,
+        toggleAnimations
+    };
 })();
 
 export { DOMControllerAddEdit };
