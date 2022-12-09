@@ -152,10 +152,10 @@ import { todoListStorage } from "./objects/todo_list_storage_object";
 
 // taskB.removeTask(1)
 
-eventAssigner.addNewTabListener();
+// eventAssigner.addNewTabListener();
 // eventAssigner.addEditTabListener();
-eventAssigner.addEditTabButtonListener();
-eventAssigner.addRemoveTabButtonListener();
+// eventAssigner.addEditTabButtonListener();
+// eventAssigner.addRemoveTabButtonListener();
 
 
 
@@ -166,15 +166,15 @@ eventAssigner.addRemoveTabButtonListener();
 // console.log(tab1.getSpecificChecklistTask(0))
 // console.log(tab1.getSpecificChecklistTask(0).getTaskTitle())
 
-DOMControllerAddEdit.setDefaultCurrentTabDOM(0)
+// DOMControllerAddEdit.setDefaultCurrentTabDOM(0)
 
-eventAssigner.addSwitchTabListener()
+// eventAssigner.addSwitchTabListener()
 
-eventAssigner.addNewTaskListener();
+// eventAssigner.addNewTaskListener();
 
-eventAssigner.addRemoveTaskButtonListener();
+// eventAssigner.addRemoveTaskButtonListener();
 
-eventAssigner.addEditTaskListeners();
+// eventAssigner.addEditTaskListeners();
 
 // const heh = () => {
 //     console.log("bloop")
@@ -183,18 +183,18 @@ eventAssigner.addEditTaskListeners();
 // const boi = document.querySelector(".to-do-complete-checkbox")
 // boi.addEventListener("click", heh)
 
-eventAssigner.addToggleTaskCompleteListener();
-eventAssigner.addNewChecklistTaskListener();
-eventAssigner.addEditChecklistTaskListeners();
+// eventAssigner.addToggleTaskCompleteListener();
+// eventAssigner.addNewChecklistTaskListener();
+// eventAssigner.addEditChecklistTaskListeners();
 
 // let checklistTask1 = checklistTaskObject("Checklist Task Description TEST")
 // task1.addTask(checklistTask1)
 
-eventAssigner.addToggleChecklistTaskCompleteListener();
-eventAssigner.addRemoveChecklistTaskListener();
+// eventAssigner.addToggleChecklistTaskCompleteListener();
+// eventAssigner.addRemoveChecklistTaskListener();
 
-eventAssigner.addToggleTaskPinListeners();
-eventAssigner.addToggleDisplayTaskDetailsListeners();
+// eventAssigner.addToggleTaskPinListeners();
+// eventAssigner.addToggleDisplayTaskDetailsListeners();
 
 // eventBundler.loadInInstructionsPage();
 

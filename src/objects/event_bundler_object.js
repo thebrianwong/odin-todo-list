@@ -341,7 +341,12 @@ const eventBundler = (() => {
             };
         };
     };
+    const loadInInitialListeners = () => {
+        eventAssigner.addNewTabListener();
+        eventAssigner.addNewTaskListener();
+    };
     const loadInPage = () => {
+        loadInInitialListeners();
         if (todoListStorage.checkForExistingStorage()) {
             loadInLocalStorage();
         } else {
@@ -373,6 +378,7 @@ const eventBundler = (() => {
         loadInInstructionsPage,
         loadInLocalStorage,
         loadInTabObjects,
+        loadInInitialListeners,
         loadInPage,
     };
 })();
