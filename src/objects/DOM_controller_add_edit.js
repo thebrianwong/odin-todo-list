@@ -58,17 +58,6 @@ const DOMControllerAddEdit = (() => {
         tabElement.insertBefore(tabButton, tabElement.firstChild);
         return tabElement;
     };
-    const setDefaultCurrentTabDOM = (tabIndex) => {
-        const tabElement = helperFunctions.getTabElement(tabIndex);
-        if (tabElement === null) {
-            return;
-        };
-        tabElement.setAttribute("id", "current-tab");
-    };
-    const setCurrentTabDOM = (tabIndex) => {
-        const newCurrentTabElement = helperFunctions.getTabElement(tabIndex);
-        newCurrentTabElement.setAttribute("id", "current-tab");
-    }
     const addCurrentTabIndicator = () => {
         const currentTabIndex = toDoList.getCurrentTabIndex();
         if (currentTabIndex === null) {
@@ -473,8 +462,6 @@ const DOMControllerAddEdit = (() => {
         setTabInputElementValue,
         insertTabInputElement,
         insertTabNameElement,
-        setDefaultCurrentTabDOM,
-        setCurrentTabDOM,
         addCurrentTabIndicator,
         addNewTaskToDOM,
         insertTaskInputElement,

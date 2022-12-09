@@ -62,7 +62,8 @@ const eventBundler = (() => {
             const tabIndex = helperFunctions.getTabIndex(event);
             objectControllerAddEditObject.updateCurrentTab(tabIndex);
             DOMControllerRemove.resetCurrentTabStatus();
-            DOMControllerAddEdit.setCurrentTabDOM(tabIndex);
+            // DOMControllerAddEdit.setCurrentTabDOM(tabIndex);
+            DOMControllerAddEdit.addCurrentTabIndicator();
             DOMControllerRemove.removeAllTaskElements();
             DOMControllerAddEdit.loadTasksFromNewCurrentTab();
             todoListStorage.setCurrentTab(tabIndex);
