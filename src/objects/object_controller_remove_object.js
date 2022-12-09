@@ -1,7 +1,4 @@
 import { toDoList } from "./todo_list_object";
-import { toDoTab } from "./todo_tab_object";
-import { DOMControllerAddEdit } from "./DOM_controller_add_edit";
-import { helperFunctions } from "./helper_functions";
 
 const objectControllerRemoveObject = (() => {
     const removeTabFromTodoArray = (tabIndex) => {
@@ -16,7 +13,11 @@ const objectControllerRemoveObject = (() => {
         const taskObject = currentTabObject.getSpecificChecklistTask(taskIndex);
         taskObject.removeTask(checklistTaskIndex);
     };
-    return { removeTabFromTodoArray, removeTaskFromTabArray, removeChecklistTaskFromTaskArray, };
+    return {
+        removeTabFromTodoArray,
+        removeTaskFromTabArray,
+        removeChecklistTaskFromTaskArray
+    };
 })();
 
 export { objectControllerRemoveObject };
