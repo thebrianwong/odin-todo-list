@@ -363,7 +363,7 @@ const DOMControllerAddEdit = (() => {
             if (taskObject !== undefined) {
                 const newTaskElement = addNewTaskToDOM(taskIndex);
                 changePinButtonImage(taskIndex);
-                rearrangePinnedTasksPosition(newTaskElement);
+                shiftTaskElementPosition(taskIndex);
                 toggleTaskDOMComplete(taskIndex);
                 eventBundler.addTaskListeners(newTaskElement);
                 const listOfChecklistTasks = taskObject.getChecklistTasks();
@@ -376,32 +376,6 @@ const DOMControllerAddEdit = (() => {
                     }
                 }
             };
-        };
-    };
-
-    const rearrangePinnedTasksPosition = (newTaskElement) => {
-        const currentTabObject = toDoList.getCurrentTabObject();
-        const currentTaskIndex = newTaskElement.dataset.taskIndex;
-        const currentTaskObject = currentTabObject.getSpecificChecklistTask(currentTaskIndex);
-        const taskContentSection = document.querySelector(".to-do-content");
-        if (currentTaskObject.getPinnedState()) {
-            const listOfPinnedTaskElements = Array.from(document.querySelectorAll(".pinned-task"));
-            if (listOfPinnedTaskElements.length === 0) {
-                taskContentSection.insertBefore(newTaskElement, taskContentSection.firstElementChild);
-            } else {
-                const arrayEndIndex = listOfPinnedTaskElements.length - 1;
-                const lastPinnedTaskElement = listOfPinnedTaskElements[arrayEndIndex];
-                for (const pinnedTaskElement of listOfPinnedTaskElements) {
-                    const pinnedTaskElementIndex = pinnedTaskElement.dataset.taskIndex;
-                    if (currentTaskIndex < pinnedTaskElementIndex) {
-                        taskContentSection.insertBefore(newTaskElement, pinnedTaskElement);
-                        break;
-                    } else if (pinnedTaskElement === lastPinnedTaskElement) {
-                        lastPinnedTaskElement.insertAdjacentElement("afterend", newTaskElement);
-                    };
-                };
-            };
-            newTaskElement.classList.add("pinned-task");
         };
     };
     const toggleDisplayTaskDetails = (taskIndex) => {
