@@ -23,7 +23,7 @@ const helperFunctions = (() => {
         };
     };
     const checkIfOnlyOneTab = () => {
-        const toDoTabSection = document.querySelector(".to-do-tab-section");
+        const toDoTabSection = document.querySelector(".tab-section");
         const toDoTabs = Array.from(toDoTabSection.querySelectorAll(".tab-title"));
         if (toDoTabs.length === 1) {
             return true;
@@ -32,7 +32,7 @@ const helperFunctions = (() => {
         };
     };
     const checkIfNoMoreTabs = () => {
-        const toDoTabSection = document.querySelector(".to-do-tab-section");
+        const toDoTabSection = document.querySelector(".tab-section");
         const toDoTabs = Array.from(toDoTabSection.querySelectorAll(".tab-title"));
         if (toDoTabs.length === 0) {
             return true;

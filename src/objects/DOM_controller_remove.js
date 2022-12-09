@@ -23,7 +23,7 @@ const DOMControllerRemove = (() => {
     }
     const removeTabElementFromDOM = (tabIndex) => {
         let tabElement = helperFunctions.getTabElement(tabIndex);
-        const toDoTabSection = document.querySelector(".to-do-tab-section");
+        const toDoTabSection = document.querySelector(".tab-section");
         toDoTabSection.removeChild(tabElement);
         tabElement = null;
     };

@@ -5,7 +5,7 @@ import { helperFunctions } from "./helper_functions";
 const DOMControllerAddEdit = (() => {
     const addNewTabToDOM = (index) => {
         const addTabButton = document.querySelector(".add-tab");
-        const toDoTabSection = document.querySelector(".to-do-tab-section");
+        const toDoTabSection = document.querySelector(".tab-section");
         const newTabElement = document.createElement("div");
         const newTabObject = toDoList.getSpecificChecklistTask(index);
         const newTabObjectTitle = newTabObject.getTaskTitle();
@@ -100,7 +100,7 @@ const DOMControllerAddEdit = (() => {
         const newTaskNotes = newTaskObject.getTaskNotes();
         const newTaskCompleteID = `to-do-complete-checkbox-${index}`;
         newTaskElement.innerHTML = `
-            <div class="to-do-task-overview">
+            <div class="task-overview">
                 <div class="to-do-title-section to-do-task-subcontainer">
                     <h3 class="to-do-title">TITLE PLACEHOLDER</h3>
                     <button class="to-do-pin">

@@ -32,7 +32,7 @@ button:focus-visible {
     z-index: 1;
 }
 
-.task-completed > .to-do-task-overview > .to-do-title-section > h3,
+.task-completed > .task-overview > .to-do-title-section > h3,
 .checklist-task-completed + label {
     text-decoration: line-through;
 }
@@ -58,7 +58,7 @@ button:focus-visible {
     padding: 10px;
 }
 
-.to-do-tab-section {
+.tab-section {
     display: flex;
     flex-wrap: wrap;
     background-color: #fdfdbd;
@@ -66,15 +66,15 @@ button:focus-visible {
     border-radius: 8px;
 }
 
-.to-do-tab-section .tab-title:nth-child(3n+1) {
+.tab-section .tab-title:nth-child(3n+1) {
     background-color: #c8ffd4;
 }
 
-.to-do-tab-section .tab-title:nth-child(3n+2) {
+.tab-section .tab-title:nth-child(3n+2) {
     background-color: #b8e8fc;
 }
 
-.to-do-tab-section .tab-title:nth-child(3n) {
+.tab-section .tab-title:nth-child(3n) {
     background-color: #b1afff;
 }
 
@@ -140,15 +140,15 @@ button:focus-visible {
 }
 
 /* Alternating colors for overviews */
-.to-do-task:nth-child(3n+1) .to-do-task-overview {
+.to-do-task:nth-child(3n+1) .task-overview {
     background-color: #fdbdfd;
 }
 
-.to-do-task:nth-child(3n+2) .to-do-task-overview {
+.to-do-task:nth-child(3n+2) .task-overview {
     background-color: #bdfdbd;
 }
 
-.to-do-task:nth-child(3n) .to-do-task-overview {
+.to-do-task:nth-child(3n) .task-overview {
     background-color: #fdddbd;
 }
 
@@ -178,7 +178,7 @@ button:focus-visible {
     background-color: #bdfdbd;
 }
 
-.to-do-task-overview {
+.task-overview {
     display: flex;
     flex-direction: column;
     padding: 0 10px;
