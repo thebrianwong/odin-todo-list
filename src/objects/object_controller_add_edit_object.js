@@ -1,8 +1,5 @@
 import { toDoList } from "./todo_list_object";
 import { toDoTab } from "./todo_tab_object";
-import { titleBehaviorComponent } from "../components/title_component";
-import { containsChecklistTaskBehaviorComponent } from "../components/contains_checklist_task_component";
-import { helperFunctions } from "./helper_functions";
 import { toDoTask } from "./todo_task_object";
 import { checklistTaskObject } from "./checklist_task_object";
 
@@ -32,11 +29,8 @@ const objectControllerAddEditObject = (() => {
         return null
     };
     const addNewTaskToTab = (tabIndex, title="New Task Title", dueDate="Task Due Date", description="Task Description", notes="Task Notes", pinned=false, completed=false) => {
-        // const currentTabIndex = toDoList.getCurrentTabIndex();
         const tabObject = toDoList.getSpecificChecklistTask(tabIndex);
-        // console.log(tabIndex)
         const newTask = toDoTask(title, dueDate, description, notes, pinned, completed);
-        // console.log(newTask)
         const newTaskIndex = tabObject.addTask(newTask);
         return newTaskIndex;
     };
@@ -59,8 +53,6 @@ const objectControllerAddEditObject = (() => {
         taskObject.toggleCompletedState();
     };
     const addNewChecklistTaskToTask = (tabIndex, taskIndex, description="Checklist Task Description", completed=false) => {
-        // console.log(taskIndex)
-        // console.log(toDoList.getCurrentTabIndex())
         const tabObject = toDoList.getSpecificChecklistTask(tabIndex);
         const taskObject = tabObject.getSpecificChecklistTask(taskIndex);
         const newChecklistTask = checklistTaskObject(description, completed);
