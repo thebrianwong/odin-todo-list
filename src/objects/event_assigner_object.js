@@ -93,12 +93,25 @@ const eventAssigner = (() => {
             button.addEventListener("click", eventBundler.toggleDisplayTaskDetails);
         }
     };
-    return { addNewTabListener, addEditTabButtonListener, addTabInputListener, addRemoveTabButtonListener,
-        addSwitchTabListener, addNewTaskListener, addRemoveTaskButtonListener,
-        addEditTaskListeners, addTaskInputListener, addToggleTaskCompleteListener,
-        addNewChecklistTaskListener, addEditChecklistTaskListeners, addChecklistTaskInputListener,
-        addToggleChecklistTaskCompleteListener, addRemoveChecklistTaskListener, addToggleTaskPinListeners,
-        addToggleDisplayTaskDetailsListeners, };
+    return {
+        addNewTabListener,
+        addEditTabButtonListener,
+        addTabInputListener,
+        addRemoveTabButtonListener,
+        addSwitchTabListener,
+        addNewTaskListener,
+        addRemoveTaskButtonListener,
+        addEditTaskListeners,
+        addTaskInputListener,
+        addToggleTaskCompleteListener,
+        addNewChecklistTaskListener,
+        addEditChecklistTaskListeners,
+        addChecklistTaskInputListener,
+        addToggleChecklistTaskCompleteListener,
+        addRemoveChecklistTaskListener,
+        addToggleTaskPinListeners,
+        addToggleDisplayTaskDetailsListeners
+    };
 })();
 
 export { eventAssigner };
