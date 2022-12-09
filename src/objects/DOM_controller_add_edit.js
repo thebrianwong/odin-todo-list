@@ -1,8 +1,6 @@
-import { toDoList } from "./todo_list_object";
-import { toDoTab } from "./todo_tab_object";
-import { helperFunctions } from "./helper_functions";
-import { eventAssigner } from "./event_assigner_object";
 import { eventBundler } from "./event_bundler_object";
+import { toDoList } from "./todo_list_object";
+import { helperFunctions } from "./helper_functions";
 
 const DOMControllerAddEdit = (() => {
     const addNewTabToDOM = (index) => {
@@ -29,13 +27,6 @@ const DOMControllerAddEdit = (() => {
         toDoTabSection.insertBefore(newTabElement, addTabButton);
         return newTabElement;
     }
-    const setTabInputElementValue = (tabIndex) => {
-        const tabElement = helperFunctions.getTabElement(tabIndex);
-        const inputElement = tabElement.querySelector("input");
-        const tabObject = toDoList.getSpecificChecklistTask(tabIndex);
-        const tabName = tabObject.getTaskTitle();
-        inputElement.value = tabName;
-    }
     const insertTabInputElement = (tabIndex) => {
         const tabElement = helperFunctions.getTabElement(tabIndex);
         const inputElement = document.createElement("input");
@@ -44,6 +35,13 @@ const DOMControllerAddEdit = (() => {
         tabElement.insertBefore(inputElement, tabElement.firstChild);
         inputElement.focus();
         return inputElement;
+    }
+    const setTabInputElementValue = (tabIndex) => {
+        const tabElement = helperFunctions.getTabElement(tabIndex);
+        const inputElement = tabElement.querySelector("input");
+        const tabObject = toDoList.getSpecificChecklistTask(tabIndex);
+        const tabName = tabObject.getTaskTitle();
+        inputElement.value = tabName;
     }
     const insertTabNameElement = (tabIndex) => {
         const tabElement = helperFunctions.getTabElement(tabIndex);
@@ -66,6 +64,29 @@ const DOMControllerAddEdit = (() => {
         const tabElement = helperFunctions.getTabElement(currentTabIndex);
         tabElement.setAttribute("id", "current-tab");
     }
+    const loadTasksFromNewCurrentTab = () => {
+        const currentTabObject = toDoList.getCurrentTabObject();
+        const listOfTasks = currentTabObject.getChecklistTasks();
+        for (const taskIndex in listOfTasks) {
+            const taskObject = listOfTasks[taskIndex]
+            if (taskObject !== undefined) {
+                const newTaskElement = addNewTaskToDOM(taskIndex);
+                changePinButtonImage(taskIndex);
+                shiftTaskElementPosition(taskIndex);
+                toggleTaskDOMComplete(taskIndex);
+                eventBundler.addTaskListeners(newTaskElement);
+                const listOfChecklistTasks = taskObject.getChecklistTasks();
+                for (const checklistTaskIndex in listOfChecklistTasks) {
+                    const checklistTaskObject = listOfChecklistTasks[checklistTaskIndex];
+                    if (checklistTaskObject !== undefined) {
+                        const newChecklistTaskElement = addNewChecklistTaskToDOM(taskIndex, checklistTaskIndex);
+                        toggleChecklistTaskDOMComplete(taskIndex, checklistTaskIndex);
+                        eventBundler.addChecklistTaskListeners(newChecklistTaskElement);
+                    }
+                }
+            };
+        };
+    };
     const addNewTaskToDOM = (index) => {
         const currentTabObject = toDoList.getCurrentTabObject();
         const newTaskObject = currentTabObject.getSpecificChecklistTask(index);
@@ -341,43 +362,6 @@ const DOMControllerAddEdit = (() => {
             taskElement.classList.remove("pinned-task");
         };
     };
-    const toggleAnimations = (taskIndex, action) => {
-        const taskElement = helperFunctions.getTaskElement(taskIndex);
-        const toggleDisplayButton = taskElement.querySelector(".to-do-task-change-display");
-        const buttonImage = toggleDisplayButton.querySelector("img");
-        const elementsToToggle = Array.from(taskElement.querySelectorAll(".animation-target"));
-        elementsToToggle.push(buttonImage)
-        elementsToToggle.forEach((element) => {
-            if (action === "Enable") {
-                element.classList.add("no-animations");
-            } else if (action === "Disable"){
-                element.classList.remove("no-animations");
-            };
-        });
-    };
-    const loadTasksFromNewCurrentTab = () => {
-        const currentTabObject = toDoList.getCurrentTabObject();
-        const listOfTasks = currentTabObject.getChecklistTasks();
-        for (const taskIndex in listOfTasks) {
-            const taskObject = listOfTasks[taskIndex]
-            if (taskObject !== undefined) {
-                const newTaskElement = addNewTaskToDOM(taskIndex);
-                changePinButtonImage(taskIndex);
-                shiftTaskElementPosition(taskIndex);
-                toggleTaskDOMComplete(taskIndex);
-                eventBundler.addTaskListeners(newTaskElement);
-                const listOfChecklistTasks = taskObject.getChecklistTasks();
-                for (const checklistTaskIndex in listOfChecklistTasks) {
-                    const checklistTaskObject = listOfChecklistTasks[checklistTaskIndex];
-                    if (checklistTaskObject !== undefined) {
-                        const newChecklistTaskElement = addNewChecklistTaskToDOM(taskIndex, checklistTaskIndex);
-                        toggleChecklistTaskDOMComplete(taskIndex, checklistTaskIndex);
-                        eventBundler.addChecklistTaskListeners(newChecklistTaskElement);
-                    }
-                }
-            };
-        };
-    };
     const toggleDisplayTaskDetails = (taskIndex) => {
         const taskElement = helperFunctions.getTaskElement(taskIndex);
         const elementsToToggle = Array.from(taskElement.querySelectorAll(".animation-target"));
@@ -418,6 +402,20 @@ const DOMControllerAddEdit = (() => {
             buttonImage.classList.remove("rotated-chevron");
         };
     };
+    const toggleAnimations = (taskIndex, action) => {
+        const taskElement = helperFunctions.getTaskElement(taskIndex);
+        const toggleDisplayButton = taskElement.querySelector(".to-do-task-change-display");
+        const buttonImage = toggleDisplayButton.querySelector("img");
+        const elementsToToggle = Array.from(taskElement.querySelectorAll(".animation-target"));
+        elementsToToggle.push(buttonImage)
+        elementsToToggle.forEach((element) => {
+            if (action === "Enable") {
+                element.classList.add("no-animations");
+            } else if (action === "Disable"){
+                element.classList.remove("no-animations");
+            };
+        });
+    };
     return {
         addNewTabToDOM,
         insertTabInputElement,
@@ -425,22 +423,18 @@ const DOMControllerAddEdit = (() => {
         insertTabNameElement,
         addCurrentTabIndicator,
         loadTasksFromNewCurrentTab,
-
         addNewTaskToDOM,
         insertTaskInputElement,
         setTaskInputElementValue,
         insertTaskSubcontentElement,
         toggleTaskDOMComplete,
-
         addNewChecklistTaskToDOM,
         insertChecklistTaskInputElement,
         setChecklistTaskInputElementValue,
         insertChecklistTaskDescriptionElement,
         toggleChecklistTaskDOMComplete,
-
         changePinButtonImage,
         shiftTaskElementPosition,
-        
         toggleDisplayTaskDetails,
         rotateChevronButton,
         toggleAnimations
