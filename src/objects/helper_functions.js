@@ -1,31 +1,18 @@
 import { toDoList } from "./todo_list_object";
 
 const helperFunctions = (() => {
-    const ensureCorrectTabElement = (event) => {
-        let tabElement = event.target.parentElement;
-        while (tabElement.getAttribute("class") !== "tab-title") {
-            tabElement = tabElement.parentElement;
-        };
-        return tabElement;
+    const getTabIndex = (event) => {
+        const tabElement = ensureCorrectTabElement(event);
+        const tabIndex = tabElement.dataset.tabIndex;
+        return tabIndex;
     };
-    const checkForExistingInputElement = (event, elementType) => {
-        let inputElement = undefined;
-        if (elementType === "Tab") {
-            const tabElement = ensureCorrectTabElement(event);
-            inputElement = tabElement.querySelector(".tab-name-input");
-        } else if (elementType === "Task") {
-            const taskSubcontainerElement = ensureCorrectTaskSubcontainerElement(event);
-            inputElement = taskSubcontainerElement.querySelector(".task-input");
-        } else if (elementType === "Checklist Task") {
-            const checklistTaskElement = ensureCorrectChecklistTaskElement(event);
-            const checklistCompleteSection = checklistTaskElement.querySelector(".checklist-complete-section");
-            inputElement = checklistCompleteSection.querySelector(".checklist-input");
-        };
-        if (inputElement !== null) {
-            return true;
-        } else {
-            return false;
-        };
+    const getTabObject = (tabIndex) => {
+        const tabObject = toDoList.getSpecificChecklistTask(tabIndex);
+        return tabObject;
+    };
+    const getTabElement = (tabIndex) => {
+        const tabElement = document.querySelector(`[data-tab-index='${tabIndex}']`);
+        return tabElement;
     };
     const checkIfWasCurrentTab = (event) => {
         const tabElement = ensureCorrectTabElement(event);
@@ -44,52 +31,29 @@ const helperFunctions = (() => {
             return false;
         };
     };
-    const ensureCorrectTaskElement = (event) => {
-        let taskElement = event.target.parentElement;
-        let classList = Array.from(taskElement.classList);
-        while (!classList.includes("to-do-task")) {
-            taskElement = taskElement.parentElement;
-            classList = Array.from(taskElement.classList);
+    const checkIfNoMoreTabs = () => {
+        const toDoTabSection = document.querySelector(".to-do-tab-section");
+        const toDoTabs = Array.from(toDoTabSection.querySelectorAll(".tab-title"));
+        if (toDoTabs.length === 0) {
+            return true;
+        } else {
+            return false;
         };
-        return taskElement;
     };
-    const ensureCorrectTaskSubcontainerElement = (event) => {
-        let taskSubcontainerElement = event.target.parentElement;
-        let classList = Array.from(taskSubcontainerElement.classList)
-        while (!classList.includes("to-do-task-subcontainer")) {
-            taskSubcontainerElement = taskSubcontainerElement.parentElement;
-            classList = Array.from(taskSubcontainerElement.classList)
-        }
-        return taskSubcontainerElement;
-    };
-    const ensureCorrectChecklistTaskElement = (event) => {
-        let checklistTaskElement = event.target;
-        let classList = Array.from(checklistTaskElement.classList);
-        while (!classList.includes("checklist-task")) {
-            checklistTaskElement = checklistTaskElement.parentElement;
-            classList = Array.from(checklistTaskElement.classList);
-        };
-        return checklistTaskElement;
-    }
     const getTaskIndex = (event) => {
         const taskElement = ensureCorrectTaskElement(event);
         const taskIndex = taskElement.dataset.taskIndex;
         return taskIndex;
     };
-    const getChecklistTaskIndex = (event) => {
-        const checklistTaskElement = ensureCorrectChecklistTaskElement(event);
-        const checklistTaskIndex = checklistTaskElement.dataset.checklistTaskIndex;
-        return checklistTaskIndex;
+    const getTaskObject = (tabIndex, taskIndex) => {
+        const tabObject = getTabObject(tabIndex);
+        const taskObject = tabObject.getSpecificChecklistTask(taskIndex);
+        return taskObject;
     };
-    const getTabIndex = (event) => {
-        const tabElement = ensureCorrectTabElement(event);
-        const tabIndex = tabElement.dataset.tabIndex;
-        return tabIndex;
-    };
-    const getNewValue = (event) => {
-        const newValue = event.target.value;
-        return newValue;
-    };
+    const getTaskElement = (taskIndex) => {
+        const taskElement = document.querySelector(`[data-task-index='${taskIndex}']`);
+        return taskElement;
+    }
     const getTaskSubcontainerType = (event) => {
         const taskSubcontainerElement = ensureCorrectTaskSubcontainerElement(event);
         const taskSubcontainerElementClasses = Array.from(taskSubcontainerElement.classList);
@@ -119,18 +83,43 @@ const helperFunctions = (() => {
         };
         return taskSubcontainerElement;
     };
-    const getTaskElement = (taskIndex) => {
-        const taskElement = document.querySelector(`[data-task-index='${taskIndex}']`);
-        return taskElement;
+    const getChecklistTaskIndex = (event) => {
+        const checklistTaskElement = ensureCorrectChecklistTaskElement(event);
+        const checklistTaskIndex = checklistTaskElement.dataset.checklistTaskIndex;
+        return checklistTaskIndex;
+    };
+    const getChecklistTaskObject = (tabIndex, taskIndex, checklistTaskIndex) => {
+        const taskObject = getTaskObject(tabIndex, taskIndex);
+        const checklistTaskObject = taskObject.getSpecificChecklistTask(checklistTaskIndex);
+        return checklistTaskObject;
     }
     const getChecklistTaskElement = (taskIndex, checklistTaskIndex) => {
         const taskElement = getTaskElement(taskIndex);
         const checklistTaskElement = taskElement.querySelector(`[data-checklist-task-index='${checklistTaskIndex}']`);
         return checklistTaskElement;
     }
-    const getTabElement = (tabIndex) => {
-        const tabElement = document.querySelector(`[data-tab-index='${tabIndex}']`);
-        return tabElement;
+    const getNewValue = (event) => {
+        const newValue = event.target.value;
+        return newValue;
+    };
+    const checkForExistingInputElement = (event, elementType) => {
+        let inputElement = undefined;
+        if (elementType === "Tab") {
+            const tabElement = ensureCorrectTabElement(event);
+            inputElement = tabElement.querySelector(".tab-name-input");
+        } else if (elementType === "Task") {
+            const taskSubcontainerElement = ensureCorrectTaskSubcontainerElement(event);
+            inputElement = taskSubcontainerElement.querySelector(".task-input");
+        } else if (elementType === "Checklist Task") {
+            const checklistTaskElement = ensureCorrectChecklistTaskElement(event);
+            const checklistCompleteSection = checklistTaskElement.querySelector(".checklist-complete-section");
+            inputElement = checklistCompleteSection.querySelector(".checklist-input");
+        };
+        if (inputElement !== null) {
+            return true;
+        } else {
+            return false;
+        };
     };
     const tryingToDoubleClick = (taskIndex) => {
         const taskElement = getTaskElement(taskIndex);
@@ -141,33 +130,59 @@ const helperFunctions = (() => {
             return false;
         };
     };
-    const getTabObject = (tabIndex) => {
-        const tabObject = toDoList.getSpecificChecklistTask(tabIndex);
-        return tabObject;
-    };
-    const getTaskObject = (tabIndex, taskIndex) => {
-        const tabObject = getTabObject(tabIndex);
-        const taskObject = tabObject.getSpecificChecklistTask(taskIndex);
-        return taskObject;
-    };
-    const getChecklistTaskObject = (tabIndex, taskIndex, checklistTaskIndex) => {
-        const taskObject = getTaskObject(tabIndex, taskIndex);
-        const checklistTaskObject = taskObject.getSpecificChecklistTask(checklistTaskIndex);
-        return checklistTaskObject;
-    }
-    const checkIfNoMoreTabs = () => {
-        const toDoTabSection = document.querySelector(".to-do-tab-section");
-        const toDoTabs = Array.from(toDoTabSection.querySelectorAll(".tab-title"));
-        if (toDoTabs.length === 0) {
-            return true;
-        } else {
-            return false;
+    const ensureCorrectTabElement = (event) => {
+        let tabElement = event.target.parentElement;
+        while (tabElement.getAttribute("class") !== "tab-title") {
+            tabElement = tabElement.parentElement;
         };
+        return tabElement;
     };
-    return { checkIfWasCurrentTab, checkIfOnlyOneTab, getTaskIndex,
-        getChecklistTaskIndex, getTabIndex, getNewValue, getTaskSubcontainerType,
-        getTaskSubcontainerElement, getTaskElement, getChecklistTaskElement,
-        getTabElement, checkForExistingInputElement, tryingToDoubleClick, getTabObject, getTaskObject, getChecklistTaskObject, checkIfNoMoreTabs };
+    const ensureCorrectTaskElement = (event) => {
+        let taskElement = event.target.parentElement;
+        let classList = Array.from(taskElement.classList);
+        while (!classList.includes("to-do-task")) {
+            taskElement = taskElement.parentElement;
+            classList = Array.from(taskElement.classList);
+        };
+        return taskElement;
+    };
+    const ensureCorrectTaskSubcontainerElement = (event) => {
+        let taskSubcontainerElement = event.target.parentElement;
+        let classList = Array.from(taskSubcontainerElement.classList)
+        while (!classList.includes("to-do-task-subcontainer")) {
+            taskSubcontainerElement = taskSubcontainerElement.parentElement;
+            classList = Array.from(taskSubcontainerElement.classList)
+        }
+        return taskSubcontainerElement;
+    };
+    const ensureCorrectChecklistTaskElement = (event) => {
+        let checklistTaskElement = event.target;
+        let classList = Array.from(checklistTaskElement.classList);
+        while (!classList.includes("checklist-task")) {
+            checklistTaskElement = checklistTaskElement.parentElement;
+            classList = Array.from(checklistTaskElement.classList);
+        };
+        return checklistTaskElement;
+    }
+    return {
+        getTabIndex,
+        getTabObject,
+        getTabElement,
+        checkIfWasCurrentTab,
+        checkIfOnlyOneTab,
+        checkIfNoMoreTabs,
+        getTaskIndex,
+        getTaskObject,
+        getTaskElement,
+        getTaskSubcontainerType,
+        getTaskSubcontainerElement,
+        getChecklistTaskIndex,
+        getChecklistTaskObject,
+        getChecklistTaskElement,
+        getNewValue,
+        checkForExistingInputElement,
+        tryingToDoubleClick,
+    };
 })();
 
 export { helperFunctions };
