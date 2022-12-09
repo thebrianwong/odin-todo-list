@@ -293,11 +293,9 @@ const DOMControllerAddEdit = (() => {
         const taskObject = currentTabObject.getSpecificChecklistTask(taskIndex);
         const pinButton = taskElement.querySelector(".to-do-pin")
         const pinButtonImage = pinButton.querySelector("img");
-        if (taskObject.getPinnedState()) {
-            pinButtonImage.setAttribute("src", "./assets/pin-pinned.png");
-        } else {
-            pinButtonImage.setAttribute("src", "./assets/pin-unpinned.png");
-        };
+        taskObject.getPinnedState()
+            ? pinButtonImage.setAttribute("src", "./assets/pin-pinned.png")
+            : pinButtonImage.setAttribute("src", "./assets/pin-unpinned.png");
     };
     const shiftTaskElementPosition = (taskIndex) => {
         const taskElement = helperFunctions.getTaskElement(taskIndex);
@@ -386,11 +384,14 @@ const DOMControllerAddEdit = (() => {
         const currentTaskObject = currentTabObject.getSpecificChecklistTask(currentTaskIndex);
         const pinButton = newTaskElement.querySelector(".to-do-pin");
         const pinButtonImage = pinButton.querySelector("img");
-        if (currentTaskObject.getPinnedState()) {
-            pinButtonImage.setAttribute("src", "./assets/pin-pinned.png");
-        } else {
-            pinButtonImage.setAttribute("src", "./assets/pin-unpinned.png");
-        };
+        // if (currentTaskObject.getPinnedState()) {
+        //     pinButtonImage.setAttribute("src", "./assets/pin-pinned.png");
+        // } else {
+        //     pinButtonImage.setAttribute("src", "./assets/pin-unpinned.png");
+        // };
+        currentTaskObject.getPinnedState()
+            ? pinButtonImage.setAttribute("src", "./assets/pin-pinned.png")
+            : pinButtonImage.setAttribute("src", "./assets/pin-unpinned.png")
     };
     const rearrangePinnedTasksPosition = (newTaskElement) => {
         const currentTabObject = toDoList.getCurrentTabObject();
@@ -459,23 +460,27 @@ const DOMControllerAddEdit = (() => {
     };
     return {
         addNewTabToDOM,
-        setTabInputElementValue,
         insertTabInputElement,
+        setTabInputElementValue,
         insertTabNameElement,
         addCurrentTabIndicator,
+        loadTasksFromNewCurrentTab,
+
         addNewTaskToDOM,
         insertTaskInputElement,
         setTaskInputElementValue,
         insertTaskSubcontentElement,
         toggleTaskDOMComplete,
+
         addNewChecklistTaskToDOM,
         insertChecklistTaskInputElement,
         setChecklistTaskInputElementValue,
         insertChecklistTaskDescriptionElement,
         toggleChecklistTaskDOMComplete,
+
         changePinButtonImage,
         shiftTaskElementPosition,
-        loadTasksFromNewCurrentTab,
+        
         toggleDisplayTaskDetails,
         rotateChevronButton,
         toggleAnimations
