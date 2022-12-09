@@ -90,7 +90,7 @@ const DOMControllerAddEdit = (() => {
     const addNewTaskToDOM = (index) => {
         const currentTabObject = toDoList.getCurrentTabObject();
         const newTaskObject = currentTabObject.getSpecificChecklistTask(index);
-        const toDoContent = document.querySelector(".to-do-content");
+        const toDoContent = document.querySelector(".content-section");
         const newTaskElement = document.createElement("div");
         newTaskElement.classList.add("to-do-task");
         newTaskElement.dataset.taskIndex = index;
@@ -323,7 +323,7 @@ const DOMControllerAddEdit = (() => {
         const currentTabObject = toDoList.getCurrentTabObject();
         const taskObject = currentTabObject.getSpecificChecklistTask(taskIndex);
         const taskElementIndex = taskElement.dataset.taskIndex;
-        const taskContentSection = document.querySelector(".to-do-content");
+        const taskContentSection = document.querySelector(".content-section");
         if (taskObject.getPinnedState()) {
             const listOfPinnedTaskElements = Array.from(document.querySelectorAll(".pinned-task"));
             if (listOfPinnedTaskElements.length === 0) {

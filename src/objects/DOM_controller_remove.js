@@ -29,7 +29,7 @@ const DOMControllerRemove = (() => {
     };
     const removeTaskElementFromDOM = (taskIndex) => {
         let taskElement = helperFunctions.getTaskElement(taskIndex);
-        const toDoTaskSection = document.querySelector(".to-do-content");
+        const toDoTaskSection = document.querySelector(".content-section");
         toDoTaskSection.removeChild(taskElement);
         taskElement = null;
     }
@@ -67,7 +67,7 @@ const DOMControllerRemove = (() => {
         checklistTaskElement = null;
     };
     const removeAllTaskElements = () => {
-        const taskContentSection = document.querySelector(".to-do-content");
+        const taskContentSection = document.querySelector(".content-section");
         taskContentSection.replaceChildren();
     };
     return {
