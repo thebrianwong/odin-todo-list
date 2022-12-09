@@ -362,7 +362,7 @@ const DOMControllerAddEdit = (() => {
             const taskObject = listOfTasks[taskIndex]
             if (taskObject !== undefined) {
                 const newTaskElement = addNewTaskToDOM(taskIndex);
-                setPinButtonImage(newTaskElement);
+                changePinButtonImage(taskIndex);
                 rearrangePinnedTasksPosition(newTaskElement);
                 toggleTaskDOMComplete(taskIndex);
                 eventBundler.addTaskListeners(newTaskElement);
@@ -378,21 +378,7 @@ const DOMControllerAddEdit = (() => {
             };
         };
     };
-    const setPinButtonImage = (newTaskElement) => {
-        const currentTabObject = toDoList.getCurrentTabObject();
-        const currentTaskIndex = newTaskElement.dataset.taskIndex;
-        const currentTaskObject = currentTabObject.getSpecificChecklistTask(currentTaskIndex);
-        const pinButton = newTaskElement.querySelector(".to-do-pin");
-        const pinButtonImage = pinButton.querySelector("img");
-        // if (currentTaskObject.getPinnedState()) {
-        //     pinButtonImage.setAttribute("src", "./assets/pin-pinned.png");
-        // } else {
-        //     pinButtonImage.setAttribute("src", "./assets/pin-unpinned.png");
-        // };
-        currentTaskObject.getPinnedState()
-            ? pinButtonImage.setAttribute("src", "./assets/pin-pinned.png")
-            : pinButtonImage.setAttribute("src", "./assets/pin-unpinned.png")
-    };
+
     const rearrangePinnedTasksPosition = (newTaskElement) => {
         const currentTabObject = toDoList.getCurrentTabObject();
         const currentTaskIndex = newTaskElement.dataset.taskIndex;
