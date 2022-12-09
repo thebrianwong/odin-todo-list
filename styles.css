@@ -255,10 +255,6 @@ input[type="checkbox"]:checked {
     padding: 10px 0 10px 20px;
 }
 
-/* .hide-to-do-details {
-    display: none !important;
-} */
-
 .to-do-description-section,
 .to-do-notes-section {
     display: flex;
@@ -273,11 +269,7 @@ input[type="checkbox"]:checked {
 
 .edit-tab,
 .remove-tab,
-/* .edit-task-title, */
 .to-do-remove-task,
-/* .edit-task-due-date,
-.edit-task-description,
-.edit-task-notes, */
 .edit-task,
 .remove-checklist-task,
 .edit-checklist-task {
@@ -357,10 +349,6 @@ input[type="checkbox"]:checked {
     flex-direction: row;
     align-items: center;
     padding: 10px 10px 10px 30px;
-}
-
-.checklist-label {
-    /* padding: 10px 30px; */
 }
 
 .add-checklist-task {
