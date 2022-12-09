@@ -1,4 +1,3 @@
-// import { containsChecklistBehaviorComponent } from "../components/contains_checklist_component";
 import { containsChecklistTaskBehaviorComponent } from "../components/contains_checklist_task_component";
 
 const toDoList = (() => {
@@ -7,11 +6,9 @@ const toDoList = (() => {
         return currentTab;
     };
     const setCurrentTabIndex = (newCurrentTab) => {
-        if (newCurrentTab === null) {
-            currentTab = null;
-        } else {
-            currentTab = Number(newCurrentTab);
-        };
+        newCurrentTab === null
+            ? currentTab = null
+            : currentTab = Number(newCurrentTab);
     };
     const getCurrentTabObject = () => {
         const currentTabIndex = getCurrentTabIndex();
