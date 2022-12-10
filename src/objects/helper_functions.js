@@ -58,13 +58,13 @@ const helperFunctions = (() => {
         const taskSubcontainerElement = ensureCorrectTaskSubcontainerElement(event);
         const taskSubcontainerElementClasses = Array.from(taskSubcontainerElement.classList);
         let taskSubcontainerType = undefined;
-        if (taskSubcontainerElementClasses.includes("to-do-title-section")) {
+        if (taskSubcontainerElementClasses.includes("task-title-section")) {
             taskSubcontainerType = "Title";
-        } else if (taskSubcontainerElementClasses.includes("to-do-due-date-section")) {
+        } else if (taskSubcontainerElementClasses.includes("task-due-date-section")) {
             taskSubcontainerType = "Due Date";
-        } else if (taskSubcontainerElementClasses.includes("to-do-description-section")) {
+        } else if (taskSubcontainerElementClasses.includes("task-description-section")) {
             taskSubcontainerType = "Description";
-        } else if (taskSubcontainerElementClasses.includes("to-do-notes-section")) {
+        } else if (taskSubcontainerElementClasses.includes("task-notes-section")) {
             taskSubcontainerType = "Notes";
         };
         return taskSubcontainerType;
@@ -73,13 +73,13 @@ const helperFunctions = (() => {
         const taskElement = getTaskElement(taskIndex);
         let taskSubcontainerElement = undefined;
         if (buttonType === "Title") {
-            taskSubcontainerElement = taskElement.querySelector(".to-do-title-section");
+            taskSubcontainerElement = taskElement.querySelector(".task-title-section");
         } else if (buttonType === "Due Date") {
-            taskSubcontainerElement = taskElement.querySelector(".to-do-due-date-section");
+            taskSubcontainerElement = taskElement.querySelector(".task-due-date-section");
         } else if (buttonType === "Description") {
-            taskSubcontainerElement = taskElement.querySelector(".to-do-description-section");
+            taskSubcontainerElement = taskElement.querySelector(".task-description-section");
         } else if (buttonType === "Notes") {
-            taskSubcontainerElement = taskElement.querySelector(".to-do-notes-section");
+            taskSubcontainerElement = taskElement.querySelector(".task-notes-section");
         };
         return taskSubcontainerElement;
     };

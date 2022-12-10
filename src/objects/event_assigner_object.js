@@ -40,13 +40,13 @@ const eventAssigner = (() => {
         inputElement.addEventListener("keydown", eventBundler.updateTask);
     };
     const addToggleTaskPinListener = (scope=document) => {
-        const taskPinButtons = scope.querySelectorAll(".to-do-pin");
+        const taskPinButtons = scope.querySelectorAll(".task-pin");
         for (const button of taskPinButtons) {
             button.addEventListener("click", eventBundler.toggleTaskPin);
         };
     };
     const addToggleTaskCompleteListener = (scope=document) => {
-        const taskCompleteCheckboxes = scope.querySelectorAll(".to-do-complete-checkbox");
+        const taskCompleteCheckboxes = scope.querySelectorAll(".task-complete-checkbox");
         for (const checkbox of taskCompleteCheckboxes) {
             checkbox.addEventListener("click", eventBundler.toggleTaskComplete);
         };
@@ -85,7 +85,7 @@ const eventAssigner = (() => {
         };
     };
     const addToggleDisplayTaskDetailsListener = (scope=document) => {
-        const taskToggleDisplayButtons = scope.querySelectorAll(".to-do-task-change-display");
+        const taskToggleDisplayButtons = scope.querySelectorAll(".task-change-display");
         for (const button of taskToggleDisplayButtons) {
             button.addEventListener("click", eventBundler.toggleDisplayTaskDetails);
         }

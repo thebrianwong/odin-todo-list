@@ -98,12 +98,12 @@ const DOMControllerAddEdit = (() => {
         const newTaskDescription = newTaskObject.getTaskDescription();
         const newTaskDueDate = newTaskObject.getTaskDueDate();
         const newTaskNotes = newTaskObject.getTaskNotes();
-        const newTaskCompleteID = `to-do-complete-checkbox-${index}`;
+        const newTaskCompleteID = `task-complete-checkbox-${index}`;
         newTaskElement.innerHTML = `
             <div class="task-overview">
-                <div class="to-do-title-section to-do-task-subcontainer">
+                <div class="task-title-section to-do-task-subcontainer">
                     <h3 class="to-do-title">TITLE PLACEHOLDER</h3>
-                    <button class="to-do-pin">
+                    <button class="task-pin">
                         <img src="./assets/pin-unpinned.png" alt="Pin task button">
                     </button>
                     <button class="edit-task-title edit-task">
@@ -113,29 +113,29 @@ const DOMControllerAddEdit = (() => {
                         <img src="assets/close.png" alt="Remove task button">
                     </button>
                 </div>
-                <div class="to-do-complete-section">
-                    <div class="to-do-complete">
-                        <label for="ID PLACEHOLDER" class="to-do-complete-label">Completed:</label>
-                        <input type="checkbox" name="" class="to-do-complete-checkbox" id="ID PLACEHOLDER">
+                <div class="task-misc-section">
+                    <div class="task-complete-section">
+                        <label for="ID PLACEHOLDER" class="task-complete-label">Completed:</label>
+                        <input type="checkbox" name="" class="task-complete-checkbox" id="ID PLACEHOLDER">
                     </div>
-                    <button class="to-do-task-change-display">
+                    <button class="task-change-display">
                         <img src="assets/chevron-down.png" alt="Change task display button">
                     </button>
                 </div>
-                <div class="to-do-due-date-section to-do-task-subcontainer">
+                <div class="task-due-date-section to-do-task-subcontainer">
                     <p class="to-do-due-date">DUE DATE PLACEHOLDER</p>
                     <button class="edit-task-due-date edit-task">
                         <img src="assets/pencil.png" alt="Edit task due date button">
                     </button>
                 </div>
             </div>
-            <div class="to-do-description-section to-do-task-subcontainer animation-target">
+            <div class="task-description-section to-do-task-subcontainer animation-target">
                 <p class="to-do-description">DESCRIPTION PLACEHOLDER</p>
                 <button class="edit-task-description edit-task">
                     <img src="assets/pencil.png" alt="Edit task description button">
                 </button>
             </div>
-            <div class="to-do-notes-section to-do-task-subcontainer animation-target">
+            <div class="task-notes-section to-do-task-subcontainer animation-target">
                 <p class="to-do-notes">NOTES PLACEHOLDER</p>
                 <button class="edit-task-notes edit-task">
                     <img src="assets/pencil.png" alt="Edit task notes button">
@@ -161,7 +161,7 @@ const DOMControllerAddEdit = (() => {
         toDoContent.appendChild(newTaskElement);
         const completeLabel = newTaskElement.querySelector("label");
         completeLabel.setAttribute("for", newTaskCompleteID);
-        const completeCheckbox = newTaskElement.querySelector(".to-do-complete-checkbox");
+        const completeCheckbox = newTaskElement.querySelector(".task-complete-checkbox");
         completeCheckbox.setAttribute("id", newTaskCompleteID);
         return newTaskElement;
     }
@@ -221,7 +221,7 @@ const DOMControllerAddEdit = (() => {
     }
     const toggleTaskDOMComplete = (taskIndex) => {
         const taskElement = helperFunctions.getTaskElement(taskIndex);
-        const completeCheckbox = taskElement.querySelector(".to-do-complete-checkbox");
+        const completeCheckbox = taskElement.querySelector(".task-complete-checkbox");
         const currentTabObject =  toDoList.getCurrentTabObject();
         const taskObject = currentTabObject.getSpecificChecklistTask(taskIndex);
         const taskCompletedStated = taskObject.getCompletedState();
@@ -312,7 +312,7 @@ const DOMControllerAddEdit = (() => {
         const taskElement = helperFunctions.getTaskElement(taskIndex);
         const currentTabObject = toDoList.getCurrentTabObject();
         const taskObject = currentTabObject.getSpecificChecklistTask(taskIndex);
-        const pinButton = taskElement.querySelector(".to-do-pin")
+        const pinButton = taskElement.querySelector(".task-pin")
         const pinButtonImage = pinButton.querySelector("img");
         taskObject.getPinnedState()
             ? pinButtonImage.setAttribute("src", "./assets/pin-pinned.png")
@@ -389,7 +389,7 @@ const DOMControllerAddEdit = (() => {
     };
     const rotateChevronButton = (taskIndex) => {
         const taskElement = helperFunctions.getTaskElement(taskIndex);
-        const chevronButton = taskElement.querySelector(".to-do-task-change-display");
+        const chevronButton = taskElement.querySelector(".task-change-display");
         const buttonImage = chevronButton.querySelector("img");
         const buttonImageClasses = Array.from(buttonImage.classList);
         if (buttonImageClasses.length === 0 || buttonImageClasses.includes("rotate-hide-task-details")) {
@@ -404,7 +404,7 @@ const DOMControllerAddEdit = (() => {
     };
     const toggleAnimations = (taskIndex, action) => {
         const taskElement = helperFunctions.getTaskElement(taskIndex);
-        const toggleDisplayButton = taskElement.querySelector(".to-do-task-change-display");
+        const toggleDisplayButton = taskElement.querySelector(".task-change-display");
         const buttonImage = toggleDisplayButton.querySelector("img");
         const elementsToToggle = Array.from(taskElement.querySelectorAll(".animation-target"));
         elementsToToggle.push(buttonImage)
