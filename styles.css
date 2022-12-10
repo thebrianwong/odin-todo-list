@@ -202,10 +202,6 @@ button:focus-visible {
     vertical-align: -8px;
 }
 
-.edit-task-title {
-    margin-left: auto;
-}
-
 .remove-task {
     margin-left: auto;
     padding: 0;
@@ -488,4 +484,8 @@ input[type="checkbox"]:checked {
 
 .rotated-chevron {
     transform: rotate(180deg);
+}
+
+.edit-task-title {
+    margin-left: auto;
 }
