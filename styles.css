@@ -32,7 +32,7 @@ button:focus-visible {
     z-index: 1;
 }
 
-.task-completed > .task-overview > .to-do-title-section > h3,
+.task-completed > .task-overview > .task-title-section > h3,
 .checklist-task-completed + label {
     text-decoration: line-through;
 }
@@ -126,7 +126,7 @@ button:focus-visible {
     gap: 5px;
 }
 
-.to-do-title-section .task-input {
+.task-title-section .task-input {
     margin-top: 10px
 }
 
@@ -185,16 +185,16 @@ button:focus-visible {
     z-index: 1;
 }
 
-.to-do-title-section {
+.task-title-section {
     display: flex;
     gap: 10px;
 }
 
-.to-do-title-section * {
+.task-title-section * {
     margin-top: 10px;
 }
 
-.to-do-pin {
+.task-pin {
     cursor: pointer;
     padding: 0;
     height: 24px;
@@ -207,7 +207,7 @@ button:focus-visible {
     padding: 0;
 }
 
-.to-do-complete-section {
+.task-misc-section {
     display: flex;
     align-items: flex-start;
     box-shadow: 0 1px 0 black;
@@ -215,12 +215,12 @@ button:focus-visible {
     padding-bottom: 10px;
 }
 
-.to-do-complete {
+.task-complete-section {
     display: flex;
     align-items: center;
 }
 
-.to-do-complete-label {
+.task-complete-label {
     margin-right: 5px;
 }
 
@@ -237,20 +237,20 @@ input[type="checkbox"]:checked {
     background-color: #b1afff;
 }
 
-.to-do-task-change-display {
+.task-change-display {
     width: 24px;
     height: 24px;
     margin-left: auto;
     padding: 0;
 }
 
-.to-do-due-date-section {
+.task-due-date-section {
     display: flex;
     padding: 10px 0 10px 20px;
 }
 
-.to-do-description-section,
-.to-do-notes-section {
+.task-description-section,
+.task-notes-section {
     display: flex;
     align-items: center;
     padding: 10px 10px 10px 30px;
@@ -270,7 +270,7 @@ input[type="checkbox"]:checked {
 }
 
 .edit-task-title,
-.to-do-pin,
+.task-pin,
 .remove-task {
     margin: 0;
 }
